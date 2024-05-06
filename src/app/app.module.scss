@@ -1,0 +1,16 @@
+.homeContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftBar {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
