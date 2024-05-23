@@ -1,15 +1,19 @@
-import Image from "next/image";
-import styles from './app.module.scss';
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className={styles.homeContainer}>
-      <div className={styles.leftBar}>
-        <div>hey</div>
-      </div>
-      <div className={styles.body}>
-        <div>Hello</div>
-      </div>
-    </div>
+    <>
+      <div>Home page</div>
+      <p>Todo to this page: </p>
+      <ul>
+        <li>Make styling match dashboard</li>
+        <li>Intro blurb</li>
+        <li>Announcement board</li>
+        <li>Hours</li>
+      </ul>
+
+      <Link href="/dashboard">Go to dashboard</Link>
+    </>
+    
   );
 }

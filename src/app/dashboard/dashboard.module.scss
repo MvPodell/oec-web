@@ -1,0 +1,46 @@
+.dashHeader {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashHours {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.dashBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashPanel {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    // width: 100vh;
+    padding: 3rem;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.subtitle2 {
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+.boldTitle {
+    font-size: 7rem;
+    font-weight: 800;
+    color: #0057b8;
+    line-height: 1;
+}
+
+
