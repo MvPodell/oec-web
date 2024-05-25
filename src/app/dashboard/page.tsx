@@ -1,6 +1,6 @@
 
 import styles from '@/app/dashboard/dashboard.module.scss';
-import { useFirebaseAuth, oecUser, UserName } from '@/config/AuthContext';
+import { UserName } from '@/config/AuthContext';
 
 export default function Page() {
     return (

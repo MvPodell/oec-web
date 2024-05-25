@@ -19,6 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <FirebaseAuthProvider >
+      <head>
+        <link rel="icon" href="/images/icon.ico"></link>
+      </head>
         <body className={inter.className}>{children}</body>
       </FirebaseAuthProvider>
     </html>
