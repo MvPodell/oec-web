@@ -1,7 +1,7 @@
 .banner {
     display: flex;
     justify-content: center;
-    padding: 1rem 0;
+    padding: 2rem 0;
     margin: 2rem 0;
     background-color: #467fbf;
     color: white;
@@ -20,15 +20,53 @@
     flex-direction: column;
     flex-grow: 1;
     font-family: 'Open Sans';
+    overflow-y: auto;
+    margin-left: 16rem;
+}
+
+.corkBody {
+    background-color: white;
+    // border: 1px dashed black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem 0;
+    width: 100%;
 }
 
 .corkContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    // max-width: 40rem;
+}
+
+.corkHeader {
+    background-color: #467fbf;
+    color: white;
+    display: flex;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.corkImage {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.corkItem {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background-color: #467fbf;
-    width: 100%;
-    height: auto;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 
 }
 
@@ -37,13 +75,14 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .dashHours {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .dashBody {
@@ -65,6 +104,74 @@
     display: flex;
     flex-direction: row;
     height: 100vh;
+    overflow: hidden;
+}
+
+.leftBar {
+    @media (min-width: 768px) {
+        min-width: 16rem;
+        overflow-y: hidden;
+        margin-bottom: 0.5rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    color: black;
+    width: 16rem;
+    font-family: 'Open Sans';
+    flex-grow: 1;
+}
+
+.leftLogo {
+    position: relative;
+    display: flex;
+    height: 14rem;
+    background-color: #0057b8;
+    border-radius: 0.375rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logoImage {
+    width: 90%;
+    height: auto;
+}
+
+.leftNavItem {
+    background-color: #F9FAFB;
+    color: #0057b8;
+    display: flex;
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+
+    &Fill {
+        flex-grow: 1;
+        width: 100%;
+        height: auto;
+        background-color: #F9FAFB;
+        border-radius: 0.375rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.leftNavLink {
+    text-decoration: none;
+}
+
+.sideNavContainer {
+    position: fixed;
+    height: 100vh;
+    width: 16rem;
+    /* Adjust based on your design */
+    overflow: hidden;
+    /* Prevent the SideNav from scrolling */
+    display: flex;
+    flex-direction: column;
 }
 
 .subtitle {
@@ -72,6 +179,7 @@
     font-size: 1.5rem;
     line-height: 1;
 }
+
 .subtitle2 {
     font-size: 1rem;
     margin: 1rem;
@@ -83,5 +191,3 @@
     color: #0057b8;
     line-height: 1;
 }
-
-
