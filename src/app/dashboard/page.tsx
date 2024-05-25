@@ -1,6 +1,7 @@
 
 import styles from '@/app/dashboard/dashboard.module.scss';
 import { UserName } from '@/config/AuthContext';
+import CorkBoard from '../ui/dashboard/CorkBoard';
 
 export default function Page() {
     return (
@@ -21,6 +22,7 @@ export default function Page() {
                 The Outdoor Education Center of Pomona College is one of the premier outdoor education programs in the country. We provide hands-on opportunities for all students in outdoor recreation and education, promote the preservation and conservation of the natural environment, and develop student leadership skills. We believe it's important that students can get out and have fun without losing sight of the general mission to educate and build leadership skills. The OEC, housed in LEED Platinum-certified Dialynas Hall (map), is deeply committed to sustainable programming and community engagement. We have many partnerships, both on and off campus, with academic departments, intercollegiate programs, and community organizations. 
                 </div> */}
                 <UserName />
+                <CorkBoard />
             </div>
             <div></div>
         </div>

@@ -1,4 +1,4 @@
-import styles from '@/app/app.module.scss';
+import styles from '@/app/ui/dashboard/sidenav.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/app/ui/dashboard/OECtemplogo.png';
