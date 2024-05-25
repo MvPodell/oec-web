@@ -6,9 +6,10 @@ import Logo from '@/app/ui/dashboard/OECtemplogo.png';
 export default function SideNav() {
     const links = [
         { name: 'Home', href: '/dashboard'},
-        { name: 'Resources', href: '/dashboard/resources'},
         { name: 'Services', href: '/dashboard/services'},
+        { name: 'Resources', href: '/dashboard/resources'},
         { name: 'Contact', href: '/dashboard/contact'},
+        { name: 'About Us', href: '/dashboard/services'},
     ]
     return (
         <div className={styles.leftBar}>
@@ -31,6 +32,7 @@ export default function SideNav() {
                 );
             })}
             <div className={styles.leftNavItemFill}></div>
+            <div className={styles.leftNavItem}>Login </div>
             </div>
     );
 }
