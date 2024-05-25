@@ -3,18 +3,22 @@ import { useState } from "react";
 import { auth } from "@/config/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+// import { NextApiRequest, NextApiResponse } from "next";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [notice, setNotice] = useState("");
+    const router = useRouter();
 
     const loginWithUsernameAndPassword = async (e: React.MouseEvent) => {
         e.preventDefault();
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            // navigate("/home");
+            console.log("Login successful!")
+            router.push('/dashboard');
         } catch {
             setNotice("You entered a wrong username or password.");
         }

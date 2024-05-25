@@ -1,9 +1,12 @@
-
+'use client'
 import styles from '@/app/dashboard/dashboard.module.scss';
 import { UserName } from '@/config/AuthContext';
 import CorkBoard from '../ui/dashboard/CorkBoard';
+import { auth } from '@/config/firebaseConfig';
 
 export default function Page() {
+    const user = auth.currentUser;
+
     return (
         <div>
             <div className={styles.dashHeader}>
