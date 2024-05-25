@@ -1,7 +1,8 @@
-import styles from '@/app/app.module.scss';
+import styles from '@/app/dashboard/dashboard.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/app/ui/dashboard/OECtemplogo.png';
+import { UserName } from '@/config/AuthContext';
 
 export default function SideNav() {
     const links = [
@@ -32,7 +33,12 @@ export default function SideNav() {
                 );
             })}
             <div className={styles.leftNavItemFill}></div>
-            <div className={styles.leftNavItem}>Login </div>
+            <Link 
+                key="login"
+                href="/login"
+                className={styles.leftNavLink}
+            ><div className={styles.leftNavItem}><b>Login</b> <UserName /></div></Link>
+            
             </div>
     );
 }
