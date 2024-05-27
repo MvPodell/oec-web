@@ -4,9 +4,10 @@ import { auth } from "@/config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 // import { Link, useNavigate } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
-import {addDocToFirestore} from "@/config/firestore";
+import { addDocToFirestore } from "@/config/firestore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import styles from "@/app/login/login.module.scss";
 
 const Signup = () => {
     // const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Signup = () => {
                 }
             } catch {
                 setNotice("Sorry, something went wrong. Please try again.");
-            }     
+            }
         } else {
             setNotice("Passwords don't match. Please try again.");
         }
@@ -46,41 +47,49 @@ const Signup = () => {
     }
 
 
-    return(
-        <div className = "">
-            <div className = "">
-                <form className = "">
-                    { "" !== notice &&
-                        <div className = "" role = "alert">
-                            { notice }    
+    return (
+        <div className={styles.loginContainer}>
+            <div className={styles.loginModule}>
+                <div className={styles.formHeaderContainer}>
+                    <div className={styles.formBackContainer}>
+                        <Link className={styles.formBackButton} href="/login">Back to Login</Link>
+                    </div>
+                    <div className={styles.formHeader}>
+                        Sign Up
+                    </div>
+                </div>
+                <div className={styles.loginFormContainer}>
+                    <form className={styles.loginForm}>
+                        {"" !== notice &&
+                            <div className="alert alert-warning" role="alert">
+                                {notice}
+                            </div>
+                        }
+                        <div className={styles.formInputContainer}>
+                            <label htmlFor="signupEmail" className={styles.formLabel}>Enter a username</label>
+                            <input id="signupUsername" type="username" className={styles.formInput} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
                         </div>
-                    }
-                     <div className = "">
-                        <input id = "signupUsername" type = "username" className = "form-control" placeholder = "username" value = { username } onChange = { (e) => setUsername(e.target.value) }></input>
-                        <label htmlFor = "signupEmail" className = "form-label">Enter a username</label>
-                    </div>
-                    <div className = "">
-                        <input id = "signupEmail" type = "email" className = "form-control" aria-describedby = "emailHelp" placeholder = "name@example.com" value = { email } onChange = { (e) => setEmail(e.target.value) }></input>
-                        <label htmlFor = "signupEmail" className = "form-label">Enter an email address</label>
-                    </div>
-                    <div className = "">
-                        <input id = "signupPassword" type = "password" className = "form-control" placeholder = "Password" value = { password } onChange = { (e) => setPassword(e.target.value) }></input>
-                        <label htmlFor = "signupPassword" className = "form-label">Password</label>
-                    </div>
-                    <div className = "">
-                        <input id = "confirmPassword" type = "password" className = "form-control" placeholder = "Confirm Password" value = { confirmPassword } onChange = { (e) => setConfirmPassword(e.target.value) }></input>
-                        <label htmlFor = "confirmPassword" className = "form-label">Confirm Password</label>
-                    </div>                    
-                    <div className = "">
-                        <button type = "submit" className = "" onClick = {(e) => handleSubmit(e)}>Signup</button>
-                    </div>
-                    <div className = "mt-3 text-center">
-                        <span>Go back to login? <Link href= "/login">Click here.</Link></span>
-                    </div>                    
-                </form>
+                        <div className={styles.formInputContainer}>
+                            <label htmlFor="signupEmail" className={styles.formLabel}>Enter an email address</label>
+                            <input id="signupEmail" type="email" className={styles.formInput} aria-describedby="emailHelp" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                        </div>
+                        <div className={styles.formInputContainer}>
+                            <label htmlFor="signupPassword" className={styles.formLabel}>Password</label>
+                            <input id="signupPassword" type="password" className={styles.formInput} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                        </div>
+                        <div className={styles.formInputContainer}>
+                            <label htmlFor="confirmPassword" className={styles.formLabel}>Confirm Password</label>
+                            <input id="confirmPassword" type="password" className={styles.formInput} placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></input>
+                        </div>
+                        <div className={styles.formSubmitContainer}>
+                            <button type="submit" className={styles.formSubmit} onClick={(e) => signupWithUsernameAndPassword(e)}>Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+
         </div>
     )
-}
+};
 
 export default Signup

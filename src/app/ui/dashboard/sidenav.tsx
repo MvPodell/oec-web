@@ -11,14 +11,15 @@ import { auth } from '@/config/firebaseConfig';
 export default function SideNav() {
     const links = [
         { name: 'Home', href: '/dashboard' },
+        { name: 'Trips', href: '/dashboard/trips'},
         { name: 'Services', href: '/dashboard/services' },
         { name: 'Resources', href: '/dashboard/resources' },
         { name: 'Contact', href: '/dashboard/contact' },
-        { name: 'About Us', href: '/dashboard/services' },
+        { name: 'About Us', href: '/dashboard/about' },
     ];
 
     const [loginStatus, setLoginStatus] = useState<"login" | "logout">("login");
-    const user = useFirebaseAuth();
+
     const currentUser = auth.currentUser;
 
     const logoutUser = async (e: React.MouseEvent) => {
@@ -48,24 +49,27 @@ export default function SideNav() {
                     </Link>
                 );
             })}
-            <div className={styles.leftNavItemFill}></div>
+            <div className={styles.leftNavItemFill}>
+                 {/* remove later */}
+                {currentUser ? (`Welcome ${currentUser.email}`): ("")}
+            </div>
             {currentUser ? (
-                <div className={styles.leftNavLink} id="logout" onClick={(e) => logoutUser(e)}>
-                    <div className={styles.leftNavItem} id="logout">
+                <Link
+                    key="logout"
+                    href={"/dashboard"}
+                    className={styles.leftNavLink}
+                    onClick={(e)=> logoutUser(e)}>
+                    <div className={styles.leftNavItem}>
                         <b>Logout</b>
                     </div>
-                </div>
+                </Link>
             ) : (
                 <Link
                     key="login"
-                    href={`/${loginStatus}`}
+                    href={"/login"}
                     className={styles.leftNavLink}>
                     <div className={styles.leftNavItem}>
-                        {currentUser ? (
-                            <b>Logout</b>
-                        ) : (
-                            <b>Login</b>
-                        )}
+                        <b>Login</b>
                     </div>
                 </Link>
             )}
