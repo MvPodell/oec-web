@@ -4,8 +4,24 @@ import styles from "@/app/ui/trips/trips.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Trip } from "@/app/dashboard/trips/page";
+import {auth} from "@/config/firebaseConfig";
+import { updateTripFromFirestore } from "@/config/firestore";
 
-export const TripDetails: React.FC<Trip> = ({title, date, description, image}) => {
+export const TripDetails: React.FC<Trip> = ({title, id, date, description, image}) => {
+
+    const user = auth.currentUser;
+    const joinTrip = async(e: React.MouseEvent) => {
+        e.preventDefault();
+
+        if (user) {
+            await updateTripFromFirestore(id, user.uid);
+            console.log("user added to firestore trip doc");
+        } else {
+            alert("Please login to join this trip.");
+        }
+
+    };
+
     return (
         <div className={styles.tripDetailsContainer}>
             <div className={styles.backButtonContainer}>
@@ -24,9 +40,9 @@ export const TripDetails: React.FC<Trip> = ({title, date, description, image}) =
                     <div className={styles.cardHeader}>
                         {title}
                         <div className={styles.cardButtonContainer}>
-                            <Link className={styles.joinButton} href={"/dashboard/trips/trip-details"}>
+                            <button className={styles.joinButton} onClick={(e) => joinTrip(e)}>
                                 JOIN
-                            </Link>
+                            </button>
                         </div>
                     </div>
                     <div className={styles.cardDate}>{date}</div>

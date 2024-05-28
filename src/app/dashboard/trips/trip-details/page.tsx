@@ -8,6 +8,7 @@ export default function Page() {
     
     const tripDetails: Trip = {
         title: "Josua Tree",
+        id: "JoshuaTree",
         key: "JoshuaTree",
         date: "March 24th, 2024",
         description: "I am trying my best here. Details Details Details Details Details Details Details",
@@ -15,7 +16,7 @@ export default function Page() {
     }
     return (
         <div className={styles.tripDetails}>
-            <TripDetails title={tripDetails.title} key={tripDetails.key} date={tripDetails.date} description={tripDetails.description} image={tripDetails.image} />
+            <TripDetails title={tripDetails.title} id={tripDetails.id} key={tripDetails.key} date={tripDetails.date} description={tripDetails.description} image={tripDetails.image} />
         </div>
     )
 }

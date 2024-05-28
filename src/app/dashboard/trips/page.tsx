@@ -4,6 +4,7 @@ import { TripCard } from "@/app/ui/trips/TripCard";
 
 export interface Trip {
     key: string;
+    id: string;
     title: string;
     date: string;
     description: string;
@@ -15,6 +16,7 @@ export default function Page() {
     const trips: Trip[] = [
         { 
             key: "JoshuaTree",
+            id: "JoshuaTree",
             title: "Joshua Tree",
             date: "March 5th, 2024",
             description: "Super beautiful",
@@ -22,6 +24,7 @@ export default function Page() {
         },
         {
             key: "Yosemite",
+            id: "JoshuaTree",
             title: "Yosemite",
             date: "March 5th, 2024",
             description: "yahoo!",
@@ -32,36 +35,42 @@ export default function Page() {
     const pastTrips: Trip[] = [
         { 
             key: "JoshuaTree",
+            id: "JoshuaTree",
             title: "Joshua Tree",
             date: "March 5th, 2024",
             description: "Super beautiful",
         },
         {
             key: "Yosemite",
+            id: "JoshuaTree",
             title: "Yosemite",
             date: "March 5th, 2024",
             description: "yahoo!"
         },
         { 
             key: "JoshuaTree",
+            id: "JoshuaTree",
             title: "Joshua Tree",
             date: "March 5th, 2024",
             description: "Super beautiful",
         },
         {
             key: "Yosemite",
+            id: "JoshuaTree",
             title: "Yosemite",
             date: "March 5th, 2024",
             description: "yahoo!"
         },
         { 
             key: "JoshuaTree",
+            id: "JoshuaTree",
             title: "Joshua Tree",
             date: "March 5th, 2024",
             description: "Super beautiful",
         },
         {
             key: "Yosemite",
+            id: "JoshuaTree",
             title: "Yosemite",
             date: "March 5th, 2024",
             description: "yahoo!"
@@ -74,7 +83,7 @@ export default function Page() {
                 <div className={styles.sectionHeader}>Current Trips</div>
                 <div className={styles.deckContainer}> 
                     {trips.map((trip) => (
-                        <TripCard key={trip.key} title={trip.title} date={trip.date} description={trip.description} image={trip.image}/>
+                        <TripCard key={trip.key} id={trip.id} title={trip.title} date={trip.date} description={trip.description} image={trip.image}/>
                     ))}
                 </div>
                 
@@ -83,7 +92,7 @@ export default function Page() {
                 <div className={styles.sectionHeader}>Past Trips</div>
                 <div className={styles.deckContainer}> 
                     {pastTrips.map((trip) => (
-                        <TripCard key={trip.key} title={trip.title} date={trip.date} description={trip.description} />
+                        <TripCard key={trip.key} id={trip.id} title={trip.title} date={trip.date} description={trip.description} />
                     ))}
                 </div>
             </div>
