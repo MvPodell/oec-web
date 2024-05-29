@@ -4,11 +4,11 @@ import { Trip } from "@/app/dashboard/trips/page";
 import { Profile } from "@/app/signup/page";
 
 
-export async function addDocToFirestore(username: string, userId: string) {
+export async function addDocToFirestore(username: string, firstName: string, lastName: string, email: string, userId: string) {
     console.log("user inside addDoctToFirestore: ", username, userId);
     try {
         const docRef = doc(db, "users", userId);
-        await setDoc(docRef, { username: username })
+        await setDoc(docRef, { username: username, firstName: firstName, lastName: lastName, email: email  })
         console.log("New user document created for username:", username);
     } catch (error) {
         console.error("Error adding document: ", error);

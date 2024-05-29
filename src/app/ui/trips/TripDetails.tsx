@@ -4,23 +4,35 @@ import styles from "@/app/ui/trips/trips.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Trip } from "@/app/dashboard/trips/page";
-import { auth } from "@/config/firebaseConfig";
 import { checkAndAddUser, isUserMemberOfTrip, removeUserFromTrip, currentTripSize, getTripCapacity, getTrip } from "@/config/firestore";
 import { useSearchParams } from "next/navigation";
 import { TripQueue } from "./TripQueue";
+import { getAuth } from "firebase/auth";
 
 export const TripDetails: React.FC = () => {
+    const auth = getAuth();
     const [isMember, setIsMember] = useState(false);
+    const [user, setUser] = useState(auth.currentUser);
     const [tripSize, setTripSize] = useState(0);
     const [currentTrip, setCurrentTrip] = useState<Trip | null>(null);
 
-    const user = auth.currentUser;
     const searchParams = useSearchParams();
     const tripId = searchParams.get("id");
+
+
 
     useEffect(() => {
         fetchTripDetails();
     }, [tripId]);
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+            console.log("login state changed to: ", user ? "logout" : "login")
+        });
+        return () => unsubscribe();
+        
+    }, [auth]);
 
     useEffect(() => {
         const fetchMemberStatus = async () => {
@@ -98,7 +110,7 @@ export const TripDetails: React.FC = () => {
                                 <div className={styles.cardHeaderCapacity}>{tripSize} / {currentTrip.capacity} </div>
                             </div>
                             <div className={styles.cardButtonContainer}>
-                                {isMember ? (
+                                {user && isMember ? (
                                     <button className={styles.joinButton} onClick={(e) => leaveTrip(e)}>
                                         LEAVE TRIP
                                     </button>
