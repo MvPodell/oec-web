@@ -1,0 +1,194 @@
+@import "/src/styles/variables.module.scss";
+
+.backArrow {
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+    min-width: 4rem;
+    justify-content: center;
+    color: $muted-blue;
+    font-size: 0.85rem;
+    line-height: 1.75;
+    border: 0;
+    background-color: white;
+    text-decoration: none;
+}
+
+.backArrow:hover {
+    background-color: $hover-blue;
+    border-radius: 0.375;
+    transition-duration: 1s;
+}
+
+.backButtonContainer {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+}
+
+.backArrowContainer {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 48rem;
+    border-radius: 0.375rem;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardButton {
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    color: $muted-blue;
+    display: flex;
+    font-size: 0.85rem;
+    justify-content: center;
+    margin-right: 0.5rem;
+    min-width: 4rem;
+    padding: 0.25rem;
+    line-height: 1.75;
+    text-decoration: none;
+}
+
+.joinButton {
+    @extend .cardButton;
+    margin-right: 0;
+}
+
+.cardButton:hover, .joinButton:hover {
+    background-color: $hover-blue;
+    border-radius: 0.375;
+    transition-duration: 1s;
+}
+
+.cardButtonContainer {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.cardContent {
+    padding: 1rem;
+}
+
+.cardDate {
+    color: grey;
+    margin-bottom: 1rem;
+}
+
+.cardHeader {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cardHeaderText {
+    @extend .cardHeader;
+    justify-content: left;
+}
+
+.cardHeaderTitle {
+    @extend .cardHeader;
+    margin-right: 1rem;
+}
+
+.cardHeaderCapacity {
+    @extend .cardHeader;
+    font-size: 1rem;
+    color: grey;
+    }
+
+.cardImage {
+    // width: 100%;
+    height: auto;
+    max-width: 70%;
+    box-sizing: border-box;
+    object-fit: contain;
+    overflow-x: hidden;
+    display: flex;
+    flex-grow: 1;
+}
+
+.cardInfoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.cardMedia {
+    width: 100%;
+    overflow: hidden;
+    max-height: 50vh;
+    object-fit: contain;
+}
+
+.cardText {
+    font-size: 0.8rem;
+    color: grey;
+}
+
+.cardMemberQueue {
+    margin: 1rem 0;
+}
+
+.currentTripsSection, .pastTripsSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
+    width: 100%;
+
+}
+
+.deckContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tripsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.tripCardContainer {
+    margin: 1rem 0;
+}
+
+.tripDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tripDetailsImage {
+    width: 100%;
+    height: auto;
+}
+
+.sectionHeader {
+    background-color: $muted-blue;
+    color: white;
+    display: flex;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    justify-content: center;
+}
