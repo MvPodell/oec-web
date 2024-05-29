@@ -6,8 +6,9 @@ import { auth } from '@/config/firebaseConfig';
 
 export default function Page() {
     const user = auth.currentUser;
-
+    console.log("user from dashboard: ", user);
     return (
+
         <div>
             <div className={styles.dashHeader}>
                 <div className={styles.subtitle}>Welcome to the</div>

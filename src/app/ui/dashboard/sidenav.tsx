@@ -1,17 +1,17 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '@/app/dashboard/dashboard.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/app/ui/dashboard/OECtemplogo.png';
 import { UserName, useFirebaseAuth } from '@/config/AuthContext';
-import { signOut } from 'firebase/auth';
-import { auth } from '@/config/firebaseConfig';
+import { getAuth, signOut } from 'firebase/auth';
 
 export default function SideNav() {
+    const auth = getAuth();
     const links = [
         { name: 'Home', href: '/dashboard' },
-        { name: 'Trips', href: '/dashboard/trips'},
+        { name: 'Trips', href: '/dashboard/trips' },
         { name: 'Services', href: '/dashboard/services' },
         { name: 'Resources', href: '/dashboard/resources' },
         { name: 'Contact', href: '/dashboard/contact' },
@@ -19,14 +19,31 @@ export default function SideNav() {
     ];
 
     const [loginStatus, setLoginStatus] = useState<"login" | "logout">("login");
+    const [currentUser, setCurrentUser] = useState(auth.currentUser);
+    
 
-    const currentUser = auth.currentUser;
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setCurrentUser(user);
+            setLoginStatus(user ? "logout" : "login")
+            console.log("login state changed to: ", user ? "logout" : "login")
+        });
+        return () => unsubscribe();
+        
+    }, [auth]);
 
     const logoutUser = async (e: React.MouseEvent) => {
         e.preventDefault();
-    
-        await signOut(auth);
-      }
+        console.log("attempting to sign out");
+        signOut(auth).then(() => {
+            setLoginStatus("login");
+        console.log("user logged out");
+        }).catch((error) => {
+            console.error("Error signing out: ", error);
+        });
+        
+
+    }
 
 
     return (
@@ -50,19 +67,19 @@ export default function SideNav() {
                 );
             })}
             <div className={styles.leftNavItemFill}>
-                 {/* remove later */}
-                {currentUser ? (`Welcome ${currentUser.email}`): ("")}
+                {/* remove later */}
+                {currentUser ? (`Welcome ${currentUser.email}`) : ("")}
             </div>
             {currentUser ? (
-                <Link
-                    key="logout"
-                    href={"/dashboard"}
-                    className={styles.leftNavLink}
-                    onClick={(e)=> logoutUser(e)}>
-                    <div className={styles.leftNavItem}>
-                        <b>Logout</b>
-                    </div>
-                </Link>
+                <div className={styles.leftNavItem}>
+                    <button
+                        key="logout"
+                        className={styles.logoutButton}
+                        onClick={logoutUser}>
+                            <b>Logout</b>
+                    </button>
+                </div>
+
             ) : (
                 <Link
                     key="login"
