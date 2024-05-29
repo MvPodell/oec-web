@@ -7,6 +7,7 @@ import { Trip } from "@/app/dashboard/trips/page";
 import { auth } from "@/config/firebaseConfig";
 import { checkAndAddUser, isUserMemberOfTrip, removeUserFromTrip, currentTripSize, getTripCapacity, getTrip } from "@/config/firestore";
 import { useSearchParams } from "next/navigation";
+import { TripQueue } from "./TripQueue";
 
 export const TripDetails: React.FC = () => {
     const [isMember, setIsMember] = useState(false);
@@ -18,16 +19,6 @@ export const TripDetails: React.FC = () => {
     const tripId = searchParams.get("id");
 
     useEffect(() => {
-        const fetchTripDetails = async () => {
-            if (tripId) {
-                const tripData = await getTrip(tripId);
-                if (tripData) {
-                    setCurrentTrip(tripData);
-                    setTripSize(tripData.members.length)
-                }
-            }
-        };
-
         fetchTripDetails();
     }, [tripId]);
 
@@ -52,12 +43,22 @@ export const TripDetails: React.FC = () => {
         fetchTripSize();
     }, [isMember]);
 
+    const fetchTripDetails = async () => {
+        if (tripId) {
+            const tripData = await getTrip(tripId);
+            if (tripData) {
+                setCurrentTrip(tripData);
+                setTripSize(tripData.members.length)
+            }
+        }
+    };
+
     const joinTrip = async (e: React.MouseEvent) => {
         e.preventDefault();
-        console.log("user: ", user);
         if (user && currentTrip) {
             await checkAndAddUser(currentTrip.id, user.uid);
             setIsMember(true);
+            fetchTripDetails();
         } else {
             alert("Please login to join this trip.");
         }
@@ -65,10 +66,10 @@ export const TripDetails: React.FC = () => {
 
     const leaveTrip = async (e: React.MouseEvent) => {
         e.preventDefault();
-        console.log("user: ", user);
         if (user && currentTrip) {
             await removeUserFromTrip(currentTrip.id, user.uid);
             setIsMember(false);
+            fetchTripDetails();
         } else {
             alert("Please login to leave this trip.");
         }
@@ -105,13 +106,16 @@ export const TripDetails: React.FC = () => {
                                     <button className={styles.joinButton} onClick={(e) => joinTrip(e)}>
                                         JOIN
                                     </button>
-
                                 )}
-
                             </div>
                         </div>
                         <div className={styles.cardDate}>{currentTrip.date}</div>
-                        <div className={styles.cardText}>{currentTrip.description}</div>
+                        <div className={styles.cardText}>
+                            {currentTrip.description}
+                            <div className={styles.cardMemberQueue}>
+                                <TripQueue tripMembers={currentTrip.members} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

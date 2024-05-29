@@ -9,6 +9,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "@/app/login/login.module.scss";
 
+export interface Profile {
+    id: string,
+    firstName: string,
+    lastName: string,
+    username: string,
+}
+
 const Signup = () => {
     // const navigate = useNavigate();
     const [username, setUsername] = useState("");

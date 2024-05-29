@@ -1,6 +1,7 @@
 import { getDoc, setDoc, doc, updateDoc, arrayUnion, arrayRemove, collection, getDocs } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { Trip } from "@/app/dashboard/trips/page";
+import { Profile } from "@/app/signup/page";
 
 
 export async function addDocToFirestore(username: string, userId: string) {
@@ -26,27 +27,36 @@ export async function addTripToFirestore(tripId: string, capacity: number) {
     }
 };
 
+export async function getUsers(): Promise<Profile[]> {
+    const userCollection = await getDocs(collection(db, 'users'));
+    const userList = userCollection.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    } as Profile)); 
+    return userList;
+};
 
-export async function updateTripFromFirestore(tripId: string, userId:string ) {
-        try {
-            const docRef = doc(db, "trips", tripId);
-            const tripDoc = await getDoc(docRef);
-            if (tripDoc.exists()) {
-                const tripData = tripDoc.data();
-                const tripMembers = tripData.members || [];
-                // Compare user's high score with current game's high score
-                if (!tripMembers.includes(userId)) {
-                    addUserToTrip(tripId, userId);
-                }
-            } else {
-                // User document does not exist, create a new document
-                console.log("Trip does not exist");
+
+export async function updateTripFromFirestore(tripId: string, userId: string) {
+    try {
+        const docRef = doc(db, "trips", tripId);
+        const tripDoc = await getDoc(docRef);
+        if (tripDoc.exists()) {
+            const tripData = tripDoc.data();
+            const tripMembers = tripData.members || [];
+            // Compare user's high score with current game's high score
+            if (!tripMembers.includes(userId)) {
+                addUserToTrip(tripId, userId);
             }
-        } catch (error) {
-            console.error("Error fetching trip's data:", error);
+        } else {
+            // User document does not exist, create a new document
+            console.log("Trip does not exist");
         }
-    };
-    
+    } catch (error) {
+        console.error("Error fetching trip's data:", error);
+    }
+};
+
 export async function addUserToTrip(tripId: string, userId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -78,7 +88,7 @@ export async function checkAndAddUser(tripId: string, userId: string) {
 
             }
         } else {
-            console.log("Trip does not exist"); 
+            console.log("Trip does not exist");
         }
     } catch (error) {
         console.error("Error checking or adding user to trip: ", error);
