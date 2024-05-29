@@ -1,99 +1,36 @@
 import React from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { TripCard } from "@/app/ui/trips/TripCard";
+import { TripList } from "@/app/ui/trips/TripList";
 
 export interface Trip {
-    key: string;
-    id: string;
-    title: string;
+    capacity: string;
     date: string;
     description: string;
-    image?: string;
+    id: string;
+    image: string;
+    key: string;
+    members: string[];
+    shortDescription: string;
+    title: string;
 };
 
 export default function Page() {
-    
-    const trips: Trip[] = [
-        { 
-            key: "JoshuaTree",
-            id: "JoshuaTree",
-            title: "Joshua Tree",
-            date: "March 5th, 2024",
-            description: "Super beautiful",
-            image: "JoshuaTree",
-        },
-        {
-            key: "Yosemite",
-            id: "JoshuaTree",
-            title: "Yosemite",
-            date: "March 5th, 2024",
-            description: "yahoo!",
-            image: "Yosemite",
-        }
-    ];
 
-    const pastTrips: Trip[] = [
-        { 
-            key: "JoshuaTree",
-            id: "JoshuaTree",
-            title: "Joshua Tree",
-            date: "March 5th, 2024",
-            description: "Super beautiful",
-        },
-        {
-            key: "Yosemite",
-            id: "JoshuaTree",
-            title: "Yosemite",
-            date: "March 5th, 2024",
-            description: "yahoo!"
-        },
-        { 
-            key: "JoshuaTree",
-            id: "JoshuaTree",
-            title: "Joshua Tree",
-            date: "March 5th, 2024",
-            description: "Super beautiful",
-        },
-        {
-            key: "Yosemite",
-            id: "JoshuaTree",
-            title: "Yosemite",
-            date: "March 5th, 2024",
-            description: "yahoo!"
-        },
-        { 
-            key: "JoshuaTree",
-            id: "JoshuaTree",
-            title: "Joshua Tree",
-            date: "March 5th, 2024",
-            description: "Super beautiful",
-        },
-        {
-            key: "Yosemite",
-            id: "JoshuaTree",
-            title: "Yosemite",
-            date: "March 5th, 2024",
-            description: "yahoo!"
-        }
-    ]
 
     return (
         <div className={styles.tripsContainer}>
             <div className={styles.currentTripsSection}>
                 <div className={styles.sectionHeader}>Current Trips</div>
                 <div className={styles.deckContainer}> 
-                    {trips.map((trip) => (
-                        <TripCard key={trip.key} id={trip.id} title={trip.title} date={trip.date} description={trip.description} image={trip.image}/>
-                    ))}
+                    <TripList />
                 </div>
                 
             </div>
             <div className={styles.pastTripsSection}>
                 <div className={styles.sectionHeader}>Past Trips</div>
                 <div className={styles.deckContainer}> 
-                    {pastTrips.map((trip) => (
-                        <TripCard key={trip.key} id={trip.id} title={trip.title} date={trip.date} description={trip.description} />
-                    ))}
+                    <TripList />
                 </div>
             </div>
             

@@ -93,7 +93,24 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
 }
+
+.cardHeaderText {
+    @extend .cardHeader;
+    justify-content: left;
+}
+
+.cardHeaderTitle {
+    @extend .cardHeader;
+    margin-right: 1rem;
+}
+
+.cardHeaderCapacity {
+    @extend .cardHeader;
+    font-size: 1rem;
+    color: grey;
+    }
 
 .cardImage {
     // width: 100%;

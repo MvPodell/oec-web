@@ -1,11 +1,19 @@
 'use client';
-import React from "react";
+import React, {useState} from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 import Link from "next/link";
 import Image from "next/image";
 
-export const TripCard: React.FC<Trip> = ({ title, date, description, image }) => {
+interface TripCardProps {
+    id: string,
+    title: string,
+    date: string,
+    shortDescription: string,
+    image: string
+}
+
+export const TripCard: React.FC<TripCardProps> = ({id, title, date, shortDescription, image }) => {
 
     return (
         <div className={styles.tripCardContainer}>
@@ -15,10 +23,10 @@ export const TripCard: React.FC<Trip> = ({ title, date, description, image }) =>
                         <div className={styles.cardContent}>
                             <div className={styles.cardHeader}>{title}</div>
                             <div className={styles.cardDate}>{date}</div>
-                            <div className={styles.cardText}>{description}</div>
+                            <div className={styles.cardText}>{shortDescription}</div>
                         </div>
                         <div className={styles.cardButtonContainer}>
-                            <Link className={styles.cardButton} href={"/dashboard/trips/trip-details"}>
+                            <Link className={styles.cardButton} href={`/dashboard/trips/trip-details?id=${id}`} >
                                 LEARN MORE
                             </Link>
                         </div>
