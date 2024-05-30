@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     overflow-y: auto;
     margin-left: 16rem;
 }
@@ -31,6 +31,7 @@
     // border: 1px dashed black;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 1rem 0;
     width: 100%;
@@ -45,6 +46,10 @@
     // max-width: 40rem;
     width: 99%;
     align-items: center;
+}
+
+.corkDate {
+    margin-bottom: 1rem;
 }
 
 .corkHeader {
@@ -71,9 +76,19 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    max-width: 15rem;
-    margin: 0 1rem;
-
+    max-width: 16rem;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid $oec-blue;
+    border-radius: 1rem;
+    color: $oec-blue;
+    font-size: 0.75rem;
+    font-weight: 100;
+    text-decoration: none;
+    box-shadow:
+        0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .dashHeader {
@@ -88,7 +103,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .dashBody {
@@ -124,7 +138,7 @@
     flex-direction: column;
     color: black;
     width: 16rem;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     flex-grow: 1;
 }
 
@@ -148,7 +162,7 @@
 }
 
 .leftNavItem {
-    background-color: #F9FAFB;
+    background-color: #f9fafb;
     color: $oec-blue;
     display: flex;
     border-radius: 0.375rem;
@@ -159,7 +173,7 @@
         flex-grow: 1;
         width: 100%;
         height: auto;
-        background-color: #F9FAFB;
+        background-color: #f9fafb;
         border-radius: 0.375rem;
         margin-bottom: 0.5rem;
     }
@@ -168,14 +182,14 @@
 .leftNavLink {
     text-decoration: none;
 }
+
 .logoutButton {
-    background-color: #F9FAFB;
+    background-color: #f9fafb;
     border: 0;
     color: $oec-blue;
     font-size: 1rem;
     padding: 0;
     cursor: pointer;
-
 }
 
 .sideNavContainer {

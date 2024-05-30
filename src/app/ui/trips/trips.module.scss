@@ -163,6 +163,11 @@
     align-items: center;
 }
 
+.emptyTripWarning {
+    margin-top: 1rem;
+    color: $oec-blue;
+}
+
 .tripsContainer {
     display: flex;
     flex-direction: column;

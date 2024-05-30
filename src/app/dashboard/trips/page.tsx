@@ -23,14 +23,14 @@ export default function Page() {
             <div className={styles.currentTripsSection}>
                 <div className={styles.sectionHeader}>Current Trips</div>
                 <div className={styles.deckContainer}> 
-                    <TripList />
+                    <TripList kind="present"/>
                 </div>
                 
             </div>
             <div className={styles.pastTripsSection}>
                 <div className={styles.sectionHeader}>Past Trips</div>
                 <div className={styles.deckContainer}> 
-                    <TripList />
+                    <TripList kind="past" />
                 </div>
             </div>
             

@@ -10,10 +10,13 @@ import { Event } from "@/app/dashboard/page";
 export default function CorkBoard() {
     const [events, setEvents] = useState<Event[]>([]);
 
+    const currentDate = new Date();
+
     useEffect(() => {
         const fetchEvents = async () => {
             const eventData = await getEventList();
-            setEvents(eventData);
+            const sortedEvents = eventData.filter(event => new Date(event.date) >= currentDate).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            setEvents(sortedEvents);
         };
         fetchEvents();
     }, []);
@@ -27,7 +30,7 @@ export default function CorkBoard() {
             <div className={styles.corkBody}>
                 {events.map(event => (
                     <div className={styles.corkItem}>
-                        <div>{event.date}</div>
+                        <div className={styles.corkDate}>{event.date}</div>
                         <Image 
                             className={styles.corkImage}
                             src={event.imageURL || "/images/Pomona.jpeg"}
@@ -37,18 +40,6 @@ export default function CorkBoard() {
                         />
                     </div>
                 ))}
-                {/* <div className={styles.corkItem}>
-                    <div>August 12, 2024</div>
-                    <Image className={styles.corkImage} src={Gay} alt="gaypril"></Image>
-                </div>
-                <div className={styles.corkItem}>
-                    <div>August 12, 2024</div>
-                    <Image className={styles.corkImage} src={Gay} alt="gaypril"></Image>
-                </div>
-                <div className={styles.corkItem}>
-                    <div>August 12, 2024</div>
-                    <Image className={styles.corkImage} src={Gay} alt="gaypril"></Image>
-                </div> */}
             </div>
         </div>
 
