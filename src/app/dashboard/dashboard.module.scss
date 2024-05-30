@@ -43,6 +43,8 @@
     margin: 1rem 0;
     padding: 1rem 0;
     // max-width: 40rem;
+    width: 99%;
+    align-items: center;
 }
 
 .corkHeader {
@@ -69,6 +71,8 @@
     align-items: center;
     position: relative;
     overflow: hidden;
+    max-width: 15rem;
+    margin: 0 1rem;
 
 }
 
@@ -112,7 +116,7 @@
 .leftBar {
     @media (min-width: 768px) {
         min-width: 16rem;
-        overflow-y: hidden;
+        overflow-y: scroll;
         margin-bottom: 0.5rem;
     }
 
@@ -135,7 +139,7 @@
     padding: 0.5rem;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .logoImage {

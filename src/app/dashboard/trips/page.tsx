@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { TripList } from "@/app/ui/trips/TripList";
-import { AddTripButton } from "@/app/ui/trips/AddTripButton";
+import { StaffButton } from "@/app/ui/trips/StaffButton";
 
 export interface Trip {
     capacity: string;
@@ -19,7 +19,7 @@ export default function Page() {
 
     return (
         <div className={styles.tripsContainer}>
-            <AddTripButton />
+            <StaffButton label="Add Trip" dest="/form/add-trip"/>
             <div className={styles.currentTripsSection}>
                 <div className={styles.sectionHeader}>Current Trips</div>
                 <div className={styles.deckContainer}> 

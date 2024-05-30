@@ -2,6 +2,7 @@ import { getDoc, setDoc, doc, updateDoc, arrayUnion, arrayRemove, collection, ge
 import { db } from "@/config/firebaseConfig";
 import { Trip } from "@/app/dashboard/trips/page";
 import { Profile } from "@/app/form/signup/page";
+import { Event } from "@/app/dashboard/page";
 
 /**
  * 
@@ -77,6 +78,30 @@ export async function addTripToFirestore(
             shortDescription: tripShortDescription,
             title: tripTitle, })
         console.log("New trip document created for trip:", tripId);
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        throw error;
+    }
+};
+
+export async function addEventToFirestore(
+    eventDate: string,
+    eventDescription: string,
+    eventId: string,
+    imageURL: string,
+    eventLocation: string,
+    eventTitle: string,) {
+    try {
+        const docRef = doc(db, "events", eventId);
+        await setDoc(docRef, { 
+            key: eventId, 
+            date: eventDate,
+            description: eventDescription,
+            id: eventId,
+            imageURL: imageURL,
+            location: eventLocation,
+            title: eventTitle, })
+        console.log("New trip document created for event: ", eventId);
     } catch (error) {
         console.error("Error adding document: ", error);
         throw error;
@@ -316,4 +341,13 @@ export async function getTripList(): Promise<Trip[]> {
         ...doc.data()
     } as Trip)); // Ensure the cast to Trip type
     return tripList;
+}
+
+export async function getEventList(): Promise<Event[]> {
+    const eventsCollection = await getDocs(collection(db, 'events'));
+    const eventList = eventsCollection.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    } as Event)); // Ensure the cast to Event type
+    return eventList;
 }

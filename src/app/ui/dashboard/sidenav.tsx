@@ -12,9 +12,7 @@ export default function SideNav() {
     const links = [
         { name: 'Home', href: '/dashboard' },
         { name: 'Trips', href: '/dashboard/trips' },
-        { name: 'Services', href: '/dashboard/services' },
         { name: 'Resources', href: '/dashboard/resources' },
-        { name: 'Contact', href: '/dashboard/contact' },
         { name: 'About Us', href: '/dashboard/about' },
     ];
 
