@@ -4,8 +4,17 @@ import { UserName } from '@/config/AuthContext';
 import CorkBoard from '../ui/dashboard/CorkBoard';
 import { auth } from '@/config/firebaseConfig';
 
-export default function Page() {
+export interface Event {
+    date: string;
+    description: string;
+    id: string;
+    imageURL: string;
+    key: string;
+    location: string;
+    title: string;
+};
 
+export default function Page() {
     return (
 
         <div>

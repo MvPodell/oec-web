@@ -5,7 +5,12 @@ import { getAuth } from "firebase/auth";
 import { getUserRole } from "@/config/firestore";
 import Link from "next/link";
 
-export const AddTripButton = () => {
+interface StaffButtonProps {
+    label: string;
+    dest: string;
+}
+
+export const StaffButton: React.FC<StaffButtonProps> = ({label, dest}) => {
     const auth = getAuth();
     const [user, setUser] = useState(auth.currentUser);
     const [isStaff, setIsStaff] = useState<boolean>(false);
@@ -35,8 +40,8 @@ export const AddTripButton = () => {
         <>
             {isStaff && (
                 <div className={styles.addTripContainer}>
-                    <Link href="/form/add-trip" className={styles.addTrip}>
-                        Add Trip
+                    <Link href={`${dest}`} className={styles.addTrip}>
+                        {label}
                     </Link>
                 </div>
 
