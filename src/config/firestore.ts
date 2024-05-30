@@ -62,7 +62,7 @@ export async function addTripToFirestore(
     tripDate: string,
     tripDescription: string,
     tripId: string,
-    tripImage: string,
+    imageURL: string,
     tripShortDescription: string,
     tripTitle: string,) {
     try {
@@ -73,7 +73,7 @@ export async function addTripToFirestore(
             date: tripDate,
             description: tripDescription,
             id: tripId,
-            image: tripImage,
+            imageURL: imageURL,
             shortDescription: tripShortDescription,
             title: tripTitle, })
         console.log("New trip document created for trip:", tripId);

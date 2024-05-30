@@ -8,7 +8,7 @@ export interface Trip {
     date: string;
     description: string;
     id: string;
-    image: string;
+    imageURL: string;
     key: string;
     members: string[];
     shortDescription: string;
