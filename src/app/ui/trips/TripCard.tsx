@@ -10,10 +10,10 @@ interface TripCardProps {
     title: string,
     date: string,
     shortDescription: string,
-    image: string
+    imageURL: string
 }
 
-export const TripCard: React.FC<TripCardProps> = ({id, title, date, shortDescription, image }) => {
+export const TripCard: React.FC<TripCardProps> = ({id, title, date, shortDescription, imageURL }) => {
 
     return (
         <div className={styles.tripCardContainer}>
@@ -31,10 +31,10 @@ export const TripCard: React.FC<TripCardProps> = ({id, title, date, shortDescrip
                             </Link>
                         </div>
                     </div>
-                    {image ? (
-                        <Image src={`/images/${image}.jpeg`} width="800" height="200" alt={title} className={styles.cardImage} />
+                    {imageURL ? (
+                        <Image src={imageURL} width="800" height="200" alt={title} className={styles.cardImage} />
                     ) : (
-                        <Image src={`/images/Pomona.jpeg`} width="800" height="200" alt={title} className={styles.cardImage} />
+                        <Image src={imageURL} width="800" height="200" alt={title} className={styles.cardImage} />
                     )}
                 </div>
             </div>

@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from "react";
 import { Trip } from "@/app/dashboard/trips/page";
 import { getUsers } from "@/config/firestore";
-import { Profile } from "@/app/signup/page";
+import { Profile } from "@/app/form/signup/page";
 
 interface TripQueueProps {
     tripMembers: string[];

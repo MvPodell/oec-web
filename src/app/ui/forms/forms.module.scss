@@ -1,5 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
 @import "/src/styles/variables.module.scss";
+
+
+.addTrip {
+    text-decoration: none;
+}
+
+.addTripContainer {
+    padding: 0.2rem 1rem;
+    border: 1px solid $oec-blue;
+    border-radius: 1rem;
+    color: $oec-blue;
+    font-size: 0.75rem;
+    font-weight: 100;
+    text-decoration: none;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
 
 .formBackButton {
     margin-top: 1rem;
@@ -68,13 +84,13 @@
     margin-bottom: 1rem;
 }
 
-.loginContainer {
+.formShell {
     display: flex;
     justify-content: center;
     font-family: "Open Sans";
 }
 
-.loginFormContainer {
+.formFieldsContainer {
     display: flex;
     justify-content: center;
 }
@@ -83,7 +99,7 @@
     margin-bottom: 1rem;
 }
 
-.loginForm {
+.formFields {
     box-sizing: border-box;
     @media (min-width: 768px) {
         display: flex;
@@ -97,7 +113,7 @@
     }
 }
 
-.loginModule{
+.formModule{
     display: flex;
     justify-content: center;
     flex-direction: column;

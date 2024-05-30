@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "@/app/login/login.module.scss";
-import { SignUpForm } from "../ui/signup/SignUpForm";
+import styles from "@/app/ui/forms/forms.module.scss";
+import { SignUpForm } from "../../ui/forms/SignUpForm";
 
 export interface Profile {
     id: string,
@@ -12,7 +12,7 @@ export interface Profile {
 const Signup = () => {
     
     return (
-        <div className={styles.loginContainer}>
+        <div className={styles.formShell}>
             <SignUpForm />
         </div>
     )

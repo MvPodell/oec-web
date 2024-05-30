@@ -1,6 +1,6 @@
 'use client';
 import React, {useState} from "react";
-import styles from "@/app/login/login.module.scss";
+import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { auth } from "@/config/firebaseConfig";
@@ -26,7 +26,7 @@ export const LoginForm = () => {
     };
 
     return (
-        <div className={styles.loginModule}>
+        <div className={styles.formModule}>
                 <div className={styles.formHeaderContainer}>
                     <div className={styles.formBackContainer}>
                         <Link className={styles.formBackButton} href="/dashboard">Back to dashboard</Link>
@@ -35,8 +35,8 @@ export const LoginForm = () => {
                         Login
                     </div>
                 </div>
-                <div className={styles.loginFormContainer}>
-                    <form className={styles.loginForm}>
+                <div className={styles.formFieldsContainer}>
+                    <form className={styles.formFields}>
                         {"" !== notice &&
                             <div className="alert alert-warning" role="alert">
                                 {notice}
@@ -79,7 +79,7 @@ export const LoginForm = () => {
                             <button type="submit" className={styles.formSubmit} onClick={(e) => loginWithUsernameAndPassword(e)}>Submit</button>
                         </div>
                         <div className="">
-                            <span>Need to sign up for an account? <Link href="/signup">Click here.</Link></span>
+                            <span>Need to sign up for an account? <Link href="/form/signup">Click here.</Link></span>
                         </div>
                     </form>
                 </div>

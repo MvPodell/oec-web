@@ -28,7 +28,7 @@ export const TripDetails: React.FC = () => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setUser(user);
-            console.log("login state changed to: ", user ? "logout" : "login")
+            console.log("User set in TripDetails")
         });
         return () => unsubscribe();
         
@@ -60,8 +60,12 @@ export const TripDetails: React.FC = () => {
             const tripData = await getTrip(tripId);
             if (tripData) {
                 setCurrentTrip(tripData);
-                setTripSize(tripData.members.length)
             }
+        }
+        if (currentTrip) {
+            const size = await currentTripSize(currentTrip.id);
+            console.log("currently", size, "members on trip");
+            setTripSize(size);
         }
     };
 
@@ -102,7 +106,7 @@ export const TripDetails: React.FC = () => {
             </div>
             {currentTrip && (
                 <div className={styles.card}>
-                    <Image priority className={styles.tripDetailsImage} src={`/images/${currentTrip.image}.jpeg`} alt="Joshua Tree" width="800" height="200" />
+                    <Image priority className={styles.tripDetailsImage} src={currentTrip.imageURL} alt="Joshua Tree" width="800" height="200" />
                     <div className={styles.cardContent}>
                         <div className={styles.cardHeader}>
                             <div className={styles.cardHeaderText}>

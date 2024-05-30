@@ -83,7 +83,7 @@ export default function SideNav() {
             ) : (
                 <Link
                     key="login"
-                    href={"/login"}
+                    href={"/form/login"}
                     className={styles.leftNavLink}>
                     <div className={styles.leftNavItem}>
                         <b>Login</b>

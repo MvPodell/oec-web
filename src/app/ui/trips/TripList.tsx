@@ -24,7 +24,7 @@ export const TripList = () => {
                     title={trip.title}
                     date={trip.date}
                     shortDescription={trip.shortDescription}
-                    image={trip.image}
+                    imageURL={trip.imageURL || "/images/Pomona.jpeg"}
                 />
             ))}
         </div>
