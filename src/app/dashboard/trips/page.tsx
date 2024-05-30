@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
-import { TripCard } from "@/app/ui/trips/TripCard";
 import { TripList } from "@/app/ui/trips/TripList";
+import { AddTripButton } from "@/app/ui/trips/AddTripButton";
 
 export interface Trip {
     capacity: string;
@@ -17,9 +17,9 @@ export interface Trip {
 
 export default function Page() {
 
-
     return (
         <div className={styles.tripsContainer}>
+            <AddTripButton />
             <div className={styles.currentTripsSection}>
                 <div className={styles.sectionHeader}>Current Trips</div>
                 <div className={styles.deckContainer}> 

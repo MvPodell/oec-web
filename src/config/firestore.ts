@@ -1,14 +1,22 @@
 import { getDoc, setDoc, doc, updateDoc, arrayUnion, arrayRemove, collection, getDocs } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { Trip } from "@/app/dashboard/trips/page";
-import { Profile } from "@/app/signup/page";
+import { Profile } from "@/app/form/signup/page";
 
-
+/**
+ * 
+ * Creates a new user Document in Firestore
+ * 
+ * @param username 
+ * @param firstName 
+ * @param lastName 
+ * @param email 
+ * @param userId 
+ */
 export async function addDocToFirestore(username: string, firstName: string, lastName: string, email: string, userId: string) {
-    console.log("user inside addDoctToFirestore: ", username, userId);
     try {
         const docRef = doc(db, "users", userId);
-        await setDoc(docRef, { username: username, firstName: firstName, lastName: lastName, email: email  })
+        await setDoc(docRef, { username: username, firstName: firstName, lastName: lastName, email: email, role: "student" })
         console.log("New user document created for username:", username);
     } catch (error) {
         console.error("Error adding document: ", error);
@@ -16,10 +24,58 @@ export async function addDocToFirestore(username: string, firstName: string, las
     }
 };
 
-export async function addTripToFirestore(tripId: string, capacity: number) {
+
+/**
+ * Returns the user's role
+ *
+ * @export
+ * @async
+ * @param userId - user's id
+ * @returns userRole - user's role
+ */
+export async function getUserRole(userId: string) {
+    try {
+        const docRef = doc(db, "users", userId);
+        const userDoc = await getDoc(docRef);
+
+        if (userDoc.exists()) {
+            const userData = userDoc.data();
+            const userRole: string = userData.role;
+            return userRole;
+        } else {
+            console.log("User does not exist!")
+        }
+    } catch (error) {
+        console.error("Error getting user's role: ", error);
+    }
+}
+
+/**
+ * 
+ * Creates a new trip document in Firestore
+ * 
+ * @param tripId 
+ * @param capacity 
+ */
+export async function addTripToFirestore(
+    tripCapacity: string,
+    tripDate: string,
+    tripDescription: string,
+    tripId: string,
+    tripImage: string,
+    tripShortDescription: string,
+    tripTitle: string,) {
     try {
         const docRef = doc(db, "trips", tripId);
-        await setDoc(docRef, { key: tripId })
+        await setDoc(docRef, { 
+            key: tripId, 
+            capacity: tripCapacity,
+            date: tripDate,
+            description: tripDescription,
+            id: tripId,
+            image: tripImage,
+            shortDescription: tripShortDescription,
+            title: tripTitle, })
         console.log("New trip document created for trip:", tripId);
     } catch (error) {
         console.error("Error adding document: ", error);
@@ -27,36 +83,28 @@ export async function addTripToFirestore(tripId: string, capacity: number) {
     }
 };
 
+/**
+ * 
+ * Returns a list of all users.
+ * 
+ * @returns userList - list of user Profiles
+ */
 export async function getUsers(): Promise<Profile[]> {
     const userCollection = await getDocs(collection(db, 'users'));
     const userList = userCollection.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
-    } as Profile)); 
+    } as Profile));
     return userList;
 };
 
-
-export async function updateTripFromFirestore(tripId: string, userId: string) {
-    try {
-        const docRef = doc(db, "trips", tripId);
-        const tripDoc = await getDoc(docRef);
-        if (tripDoc.exists()) {
-            const tripData = tripDoc.data();
-            const tripMembers = tripData.members || [];
-            // Compare user's high score with current game's high score
-            if (!tripMembers.includes(userId)) {
-                addUserToTrip(tripId, userId);
-            }
-        } else {
-            // User document does not exist, create a new document
-            console.log("Trip does not exist");
-        }
-    } catch (error) {
-        console.error("Error fetching trip's data:", error);
-    }
-};
-
+/**
+ * 
+ * Adds a user to a trip
+ * 
+ * @param tripId
+ * @param userId 
+ */
 export async function addUserToTrip(tripId: string, userId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -68,6 +116,13 @@ export async function addUserToTrip(tripId: string, userId: string) {
     }
 };
 
+/**
+ * 
+ * Adds a user to the trip members. 
+ * 
+ * @param tripId 
+ * @param userId 
+ */
 export async function checkAndAddUser(tripId: string, userId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -95,6 +150,13 @@ export async function checkAndAddUser(tripId: string, userId: string) {
     }
 }
 
+/**
+ * 
+ * Removes the user from the trip in Firestore
+ * 
+ * @param tripId 
+ * @param userId 
+ */
 export async function removeUserFromTrip(tripId: string, userId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -113,7 +175,14 @@ export async function removeUserFromTrip(tripId: string, userId: string) {
     }
 }
 
-
+/**
+ * 
+ * Returns if the user is signed up for the trip.
+ * 
+ * @param tripId 
+ * @param userId 
+ * @returns 
+ */
 export async function isUserMemberOfTrip(tripId: string, userId: string): Promise<boolean> {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -133,6 +202,13 @@ export async function isUserMemberOfTrip(tripId: string, userId: string): Promis
     }
 }
 
+/**
+ * 
+ * Returns if the trip is full. 
+ * 
+ * @param tripId 
+ * @returns
+ */
 export async function isTripAtCapacity(tripId: string): Promise<boolean> {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -153,6 +229,13 @@ export async function isTripAtCapacity(tripId: string): Promise<boolean> {
     }
 }
 
+/**
+ * 
+ * Returns the number of members signed up for the trip.
+ * 
+ * @param tripId 
+ * @returns
+ */
 export async function currentTripSize(tripId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -170,6 +253,14 @@ export async function currentTripSize(tripId: string) {
     }
 }
 
+/**
+ * Returns the capacity of the trip
+ *
+ * @export
+ * @async
+ * @param tripId
+ * @returns tripCapacity
+ */
 export async function getTripCapacity(tripId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -188,6 +279,14 @@ export async function getTripCapacity(tripId: string) {
 }
 
 
+/**
+ * Returns the trip 
+ *
+ * @export
+ * @async
+ * @param tripId
+ * @returns tripData
+ */
 export async function getTrip(tripId: string) {
     try {
         const docRef = doc(db, "trips", tripId);
@@ -204,6 +303,12 @@ export async function getTrip(tripId: string) {
     }
 }
 
+/**
+ * 
+ * Gets a list of all stored trips
+ * 
+ * @returns tripList
+ */
 export async function getTripList(): Promise<Trip[]> {
     const tripsCollection = await getDocs(collection(db, 'trips'));
     const tripList = tripsCollection.docs.map(doc => ({

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebaseConfig";
 import { addDocToFirestore } from "@/config/firestore";
-import styles from "@/app/login/login.module.scss";
+import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 
 
@@ -71,17 +71,17 @@ export const SignUpForm = () => {
 
 
     return (
-        <div className={styles.loginModule}>
+        <div className={styles.formModule}>
             <div className={styles.formHeaderContainer}>
                 <div className={styles.formBackContainer}>
-                    <Link className={styles.formBackButton} href="/login">Back to Login</Link>
+                    <Link className={styles.formBackButton} href="/form/login">Back to Login</Link>
                 </div>
                 <div className={styles.formHeader}>
                     Sign Up
                 </div>
             </div>
-            <div className={styles.loginFormContainer}>
-                <form className={styles.loginForm}>
+            <div className={styles.formFieldsContainer}>
+                <form className={styles.formFields}>
                     {"" !== notice &&
                         <div className="alert alert-warning" role="alert">
                             {notice}
