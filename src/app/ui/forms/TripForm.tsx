@@ -87,7 +87,7 @@ export const TripForm = () => {
         <div className={styles.formModule}>
             <div className={styles.formHeaderContainer}>
                 <div className={styles.formBackContainer}>
-                    <Link className={styles.formBackButton} href="/dashboard/trips">Back to Trips</Link>
+                    <Link className={styles.formBackButton} href="/dashboard">Back to Dashboard</Link>
                 </div>
                 <div className={styles.formHeader}>
                     Create a trip
@@ -123,6 +123,7 @@ export const TripForm = () => {
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripId" className={styles.formLabel}>Trip ID</label>
+                        <div className={styles.sublabel}>Like a username for your trip!</div>
                         <input 
                         id="tripId" 
                         className={styles.formInput} 
@@ -134,6 +135,7 @@ export const TripForm = () => {
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripCapacity" className={styles.formLabel}>Trip Capacity</label>
+                        <div className={styles.sublabel}>How many people can you bring?</div>
                         <input 
                             id="tripCapacity" 
                             className={styles.formInput} 
@@ -146,6 +148,7 @@ export const TripForm = () => {
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripShortDesc" className={styles.formLabel}>Trip Short Description</label>
+                        <div className={styles.sublabel}>One sentence, please!</div>
                         <input 
                             id="tripShortDesc" 
                             className={styles.formInput} 
@@ -157,17 +160,19 @@ export const TripForm = () => {
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripDesc" className={styles.formLabel}>Trip Description</label>
-                        <input 
+                        <div className={styles.sublabel}>Longer description</div>
+                        <textarea 
+                            rows={4}
                             id="confirmtripDescPassword" 
                             className={styles.formInput} 
                             placeholder="Long Description" 
                             onChange={(e) => tripDescRef.current = e.target.value}
                             >
-
-                        </input>
+                        </textarea>
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripImage" className={styles.formLabel}>Image</label>
+                        <div className={styles.sublabel}>Please select a high-quality, <b>horizontal</b> photo. </div>
                         <input 
                             id="tripImage" 
                             type="file" 
