@@ -351,3 +351,27 @@ export async function getEventList(): Promise<Event[]> {
     } as Event)); // Ensure the cast to Event type
     return eventList;
 }
+
+/**
+ * Returns the event 
+ *
+ * @export
+ * @async
+ * @param eventId
+ * @returns eventData
+ */
+export async function getEvent(eventId: string) {
+    try {
+        const docRef = doc(db, "events", eventId);
+        const eventDoc = await getDoc(docRef);
+
+        if (eventDoc.exists()) {
+            const eventData = eventDoc.data() as Event;
+            return eventData;
+        } else {
+            console.log("Event does not exist.")
+        }
+    } catch (error) {
+        console.error("Error getting event information: ", error);
+    }
+}
