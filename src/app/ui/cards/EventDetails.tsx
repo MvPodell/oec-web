@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from "react";
-import styles from "@/app/ui/trips/trips.module.scss";
+import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Event } from "@/app/dashboard/page";
@@ -30,7 +30,7 @@ export const EventDetails: React.FC = () => {
 
 
     return (
-        <div className={styles.tripDetailsContainer}>
+        <div className={styles.cardDetailsContainer}>
             <div className={styles.backButtonContainer}>
                 <div className={styles.cardButtonContainer}>
                     <Link
@@ -43,7 +43,7 @@ export const EventDetails: React.FC = () => {
             </div>
             {currentEvent && (
                 <div className={styles.card}>
-                    <Image priority className={styles.tripDetailsImage} src={currentEvent.imageURL} alt="Joshua Tree" width="800" height="200" />
+                    <Image priority className={styles.cardDetailsImage} src={currentEvent.imageURL} alt="Joshua Tree" width="800" height="200" />
                     <div className={styles.cardContent}>
                         <div className={styles.cardHeader}>
                             <div className={styles.cardHeaderText}>

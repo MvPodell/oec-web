@@ -1,12 +1,12 @@
 'use client';
 import React, { useState, useEffect } from "react";
-import styles from "@/app/ui/trips/trips.module.scss";
+import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Trip } from "@/app/dashboard/trips/page";
 import { checkAndAddUser, isUserMemberOfTrip, removeUserFromTrip, currentTripSize, getTripCapacity, getTrip } from "@/config/firestore";
 import { useSearchParams } from "next/navigation";
-import { TripQueue } from "./TripQueue";
+import { TripQueue } from "../trips/TripQueue";
 import { getAuth } from "firebase/auth";
 
 export const TripDetails: React.FC = () => {
@@ -18,8 +18,6 @@ export const TripDetails: React.FC = () => {
 
     const searchParams = useSearchParams();
     const tripId = searchParams.get("id");
-
-
 
     useEffect(() => {
         fetchTripDetails();
@@ -93,7 +91,7 @@ export const TripDetails: React.FC = () => {
 
 
     return (
-        <div className={styles.tripDetailsContainer}>
+        <div className={styles.cardDetailsContainer}>
             <div className={styles.backButtonContainer}>
                 <div className={styles.cardButtonContainer}>
                     <Link
@@ -106,7 +104,7 @@ export const TripDetails: React.FC = () => {
             </div>
             {currentTrip && (
                 <div className={styles.card}>
-                    <Image priority className={styles.tripDetailsImage} src={currentTrip.imageURL} alt="Joshua Tree" width="800" height="200" />
+                    <Image priority className={styles.cardDetailsImage} src={currentTrip.imageURL} alt="Joshua Tree" width="800" height="200" />
                     <div className={styles.cardContent}>
                         <div className={styles.cardHeader}>
                             <div className={styles.cardHeaderText}>
