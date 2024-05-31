@@ -1,0 +1,104 @@
+@import "/src/styles/variables.module.scss";
+
+.leftBar {
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        color: black;
+        font-family: "Open Sans";
+        flex-grow: 1;
+        margin-bottom: 0.5rem;
+        min-width: 16rem;
+        width: 16rem;
+    }
+    display: none;
+    width: 0;
+}
+
+.leftLogo {
+    position: relative;
+    display: flex;
+    height: 14rem;
+    background-color: $oec-blue;
+    border-radius: 0.375rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoImage {
+    width: 90%;
+    height: auto;
+}
+
+.leftNavItem {
+    background-color: #f9fafb;
+    border-radius: 0.375rem;
+    color: $oec-blue;
+    display: flex;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+
+.leftNavItemFill {
+    @extend .leftNavItem;
+    @media (min-width: 768px) {
+        display: flex;
+        flex-grow: 1;
+        height: auto;
+    }
+    display: none;
+}
+
+.leftNavLink {
+    text-decoration: none;
+}
+
+.logoutButton {
+    background-color: #f9fafb;
+    border: 0;
+    color: $oec-blue;
+    font-size: 1rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    margin-bottom: 0.5rem;
+    overflow-y: scroll;
+
+}
+
+.topBar {
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
+.topBarRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topLogout {
+    display: flex;
+    justify-content: center;
+}
+
+.topLogoutItem {
+    // background-color: #f9fafb;
+    border-radius: 0.375rem;
+    border: 1px solid $oec-blue;
+    color: $oec-blue;
+    display: flex;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+}

@@ -102,6 +102,7 @@ export const EventForm = () => {
                         <label htmlFor="eventDate" className={styles.formLabel}>Event Date</label>
                         <input 
                             id="eventDate" 
+                            type="date"
                             className={styles.formInput} 
                             placeholder="Date" 
                             onChange={(e) => eventDateRef.current = e.target.value}

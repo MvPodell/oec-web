@@ -115,6 +115,7 @@ export const TripForm = () => {
                             id="tripDate" 
                             className={styles.formInput} 
                             placeholder="Date" 
+                            type="date"
                             onChange={(e) => tripDateRef.current = e.target.value}
                             >
 

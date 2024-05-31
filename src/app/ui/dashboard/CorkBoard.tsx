@@ -5,15 +5,19 @@ import Image from "next/image";
 import { StaffButton } from '../trips/StaffButton';
 import { getEventList } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
+import Link from "next/link";
 
 
 export default function CorkBoard() {
     const [events, setEvents] = useState<Event[]>([]);
 
+    const currentDate = new Date();
+
     useEffect(() => {
         const fetchEvents = async () => {
             const eventData = await getEventList();
-            setEvents(eventData);
+            const sortedEvents = eventData.filter(event => new Date(event.date) >= currentDate).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            setEvents(sortedEvents);
         };
         fetchEvents();
     }, []);
@@ -25,30 +29,25 @@ export default function CorkBoard() {
                 <div className={styles.subheader2}>Upcoming at the OEC</div>
             </div>
             <div className={styles.corkBody}>
-                {events.map(event => (
-                    <div className={styles.corkItem}>
-                        <div>{event.date}</div>
-                        <Image 
-                            className={styles.corkImage}
-                            src={event.imageURL || "/images/Pomona.jpeg"}
-                            alt="event image"
-                            width="200"
-                            height="1000"
-                        />
-                    </div>
-                ))}
-                {/* <div className={styles.corkItem}>
-                    <div>August 12, 2024</div>
-                    <Image className={styles.corkImage} src={Gay} alt="gaypril"></Image>
+                <div className={styles.corkEventsContainer}>
+                    {events.map(event => (
+                        <div className={styles.corkItem}>
+                            <div className={styles.corkDate}>{event.date}</div>
+                            <Image
+                                className={styles.corkImage}
+                                src={event.imageURL || "/images/Pomona.jpeg"}
+                                alt="event image"
+                                width="200"
+                                height="1000"
+                            />
+                            <div className={styles.corkButtonContainer}>
+                                <Link className={styles.corkButton} href={`/dashboard`} >
+                                    LEARN MORE
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                <div className={styles.corkItem}>
-                    <div>August 12, 2024</div>
-                    <Image className={styles.corkImage} src={Gay} alt="gaypril"></Image>
-                </div>
-                <div className={styles.corkItem}>
-                    <div>August 12, 2024</div>
-                    <Image className={styles.corkImage} src={Gay} alt="gaypril"></Image>
-                </div> */}
             </div>
         </div>
 

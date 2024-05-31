@@ -1,40 +1,81 @@
 @import "/src/styles/variables.module.scss";
 
 .banner {
+    @media (min-width: 768px) {
+        margin: 2rem 0;
+    }
     display: flex;
     justify-content: center;
-    padding: 2rem 0;
-    margin: 2rem 0;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
     background-color: $muted-blue;
     color: white;
     font-size: 1rem;
 }
 
 .body {
+    @media (min-width: 768px) {
+        
+        padding: 0 3rem 3rem 3rem;
+        flex-grow: 1;
+    }
     display: flex;
     flex-direction: column;
-    padding: 0 3rem 3rem 3rem;
-    flex-grow: 1;
+    padding: 0 1rem;
+    
 }
 
 .bodyContainer {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     overflow-y: auto;
-    margin-left: 16rem;
+    @media (min-width: 768px) {
+        margin-left: 16rem;
+    }
 }
 
 .corkBody {
     background-color: white;
-    // border: 1px dashed black;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 1rem 0;
     width: 100%;
+    padding: 0 auto;
 }
+
+.corkButton {
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    color: $muted-blue;
+    display: flex;
+    font-size: 0.85rem;
+    font-weight: 500;
+    justify-content: center;
+    min-width: 4rem;
+    padding: 0.25rem;
+    line-height: 1.75;
+    text-decoration: none;
+}
+
+.corkButton:hover {
+    background-color: $hover-blue;
+    border-radius: 0.375;
+    transition-duration: 1s;
+}
+
+.corkButtonContainer {
+    margin-top: auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 
 .corkContainer {
     align-items: center;
@@ -42,9 +83,26 @@
     flex-direction: column;
     margin: 1rem 0;
     padding: 1rem 0;
-    // max-width: 40rem;
     width: 99%;
     align-items: center;
+}
+
+.corkDate {
+    margin-bottom: 1rem;
+}
+
+.corkEventsContainer {
+    display: grid;
+    @media (min-width: 1350px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 1349px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
 }
 
 .corkHeader {
@@ -65,15 +123,29 @@
 }
 
 .corkItem {
+    @media (min-width: 768px) {
+        margin: 1rem 2rem;        
+    }
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     align-items: center;
     position: relative;
     overflow: hidden;
-    max-width: 15rem;
-    margin: 0 1rem;
-
+    max-width: 16rem;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid $oec-blue;
+    border-radius: 1rem;
+    color: $oec-blue;
+    font-size: 0.75rem;
+    font-weight: 100;
+    text-decoration: none;
+    box-shadow:
+        0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    
 }
 
 .dashHeader {
@@ -81,14 +153,13 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .dashHours {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .dashBody {
@@ -108,85 +179,12 @@
 
 .homeContainer {
     display: flex;
-    flex-direction: row;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.leftBar {
+    flex-direction: column;
     @media (min-width: 768px) {
-        min-width: 16rem;
-        overflow-y: scroll;
-        margin-bottom: 0.5rem;
+        flex-direction: row;
+        height: 100vh;
+        overflow: hidden;
     }
-
-    display: flex;
-    flex-direction: column;
-    color: black;
-    width: 16rem;
-    font-family: 'Open Sans';
-    flex-grow: 1;
-}
-
-.leftLogo {
-    position: relative;
-    display: flex;
-    height: 14rem;
-    background-color: $oec-blue;
-    border-radius: 0.375rem;
-    color: white;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    align-items: center;
-    justify-content: center;
-    // overflow: hidden;
-}
-
-.logoImage {
-    width: 90%;
-    height: auto;
-}
-
-.leftNavItem {
-    background-color: #F9FAFB;
-    color: $oec-blue;
-    display: flex;
-    border-radius: 0.375rem;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
-
-    &Fill {
-        flex-grow: 1;
-        width: 100%;
-        height: auto;
-        background-color: #F9FAFB;
-        border-radius: 0.375rem;
-        margin-bottom: 0.5rem;
-    }
-}
-
-.leftNavLink {
-    text-decoration: none;
-}
-.logoutButton {
-    background-color: #F9FAFB;
-    border: 0;
-    color: $oec-blue;
-    font-size: 1rem;
-    padding: 0;
-    cursor: pointer;
-
-}
-
-.sideNavContainer {
-    position: fixed;
-    height: 100vh;
-    width: 16rem;
-    /* Adjust based on your design */
-    overflow: hidden;
-    /* Prevent the SideNav from scrolling */
-    display: flex;
-    flex-direction: column;
 }
 
 .subtitle {
@@ -200,9 +198,32 @@
     margin: 1rem;
 }
 
+
 .boldTitle {
     font-size: 7rem;
     font-weight: 800;
     color: $oec-blue;
     line-height: 1;
+}
+
+.sideNavContainer {
+    @media (min-width: 768px) {
+        position: fixed;
+        height: 100vh;
+        width: 16rem;
+        /* Adjust based on your design */
+        overflow: hidden;
+        /* Prevent the SideNav from scrolling */
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    display: none;
+    
+}
+
+.topNavContainer {
+    @media (min-width: 768px) {
+        display: none;
+    }
 }
