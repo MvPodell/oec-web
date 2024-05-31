@@ -1,8 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import styles from "@/app/ui/trips/trips.module.scss";
-import { TripDetails } from "@/app/ui/trips/TripDetails";
-import { Trip } from "@/app/dashboard/trips/page";
+import { TripDetails } from "@/app/ui/cards/TripDetails";
 
 export default function Page() { 
     return (

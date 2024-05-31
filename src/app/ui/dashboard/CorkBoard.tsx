@@ -32,18 +32,22 @@ export default function CorkBoard() {
                 <div className={styles.corkEventsContainer}>
                     {events.map(event => (
                         <div className={styles.corkItem}>
-                            <div className={styles.corkDate}>{event.date}</div>
                             <Image
-                                className={styles.corkImage}
+                                className={styles.corkItemImage}
                                 src={event.imageURL || "/images/Pomona.jpeg"}
                                 alt="event image"
-                                width="200"
-                                height="1000"
+                                width="2000"
+                                height="2000"
                             />
-                            <div className={styles.corkButtonContainer}>
-                                <Link className={styles.corkButton} href={`/dashboard`} >
-                                    LEARN MORE
-                                </Link>
+                            <div className={styles.corkItemBody}>
+                                <div className={styles.corkDate}>{event.date}</div>
+                                <div className={styles.corkTitle}>{event.title}</div>
+                                <div className={styles.corkButtonContainer}>
+                                    <Link className={styles.corkButton} href={`/dashboard/event-details?id=${event.id}`} >
+                                        LEARN MORE
+                                    </Link>
+                                </div>
+
                             </div>
                         </div>
                     ))}

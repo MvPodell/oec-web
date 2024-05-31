@@ -1,6 +1,6 @@
 'use client';
 import React, {useState} from "react";
-import styles from "@/app/ui/trips/trips.module.scss";
+import styles from "@/app/ui/cards/card.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,7 +16,7 @@ interface TripCardProps {
 export const TripCard: React.FC<TripCardProps> = ({id, title, date, shortDescription, imageURL }) => {
 
     return (
-        <div className={styles.tripCardContainer}>
+        <div className={styles.cardDeckContainer}>
             <div className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardInfoContainer}>

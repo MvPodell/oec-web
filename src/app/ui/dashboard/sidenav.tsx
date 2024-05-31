@@ -16,16 +16,14 @@ export default function SideNav() {
         { name: 'About Us', href: '/dashboard/about' },
     ];
 
-    const [loginStatus, setLoginStatus] = useState<"login" | "logout">("login");
     const [currentUser, setCurrentUser] = useState(auth.currentUser);
     const [isOpen, setOpen] = useState(false);
+    const [tab, setTab] = useState<"Home" | "Trips" | "Resources" | "About Us">("Home");
 
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);
-            // setLoginStatus(user ? "logout" : "login")
-            // console.log("login state changed to: ", user ? "logout" : "login")
         });
         return () => unsubscribe();
 
@@ -35,13 +33,15 @@ export default function SideNav() {
         e.preventDefault();
         console.log("attempting to sign out");
         signOut(auth).then(() => {
-            // setLoginStatus("login");
             console.log("user logged out");
         }).catch((error) => {
             console.error("Error signing out: ", error);
         });
-
     }
+
+    const handleTabClick = (tabName: "Home" | "Trips" | "Resources" | "About Us") => {
+        setTab(tabName);
+    };
 
 
     return (
@@ -82,8 +82,9 @@ export default function SideNav() {
                                     key={link.name}
                                     href={link.href}
                                     className={styles.leftNavLink}
+                                    onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
                                 >
-                                    <div className={styles.leftNavItem}>{link.name}</div>
+                                    <div className={tab === link.name ? styles.highlightItem : styles.leftNavItem}>{link.name}</div>
                                 </Link>
                             );
                         })}
@@ -110,8 +111,9 @@ export default function SideNav() {
                             key={link.name}
                             href={link.href}
                             className={styles.leftNavLink}
+                            onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
                         >
-                            <div className={styles.leftNavItem}>{link.name}</div>
+                            <div className={tab === link.name ? styles.highlightItem : styles.leftNavItem}>{link.name}</div>
                         </Link>
                     );
                 })}

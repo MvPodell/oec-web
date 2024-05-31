@@ -112,6 +112,7 @@ export const EventForm = () => {
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="eventId" className={styles.formLabel}>Event ID</label>
+                        <div className={styles.sublabel}>Like a username for your event!</div>
                         <input 
                         id="eventId" 
                         className={styles.formInput} 
@@ -134,17 +135,19 @@ export const EventForm = () => {
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="eventDesc" className={styles.formLabel}>Event Description</label>
-                        <input 
+                        <textarea 
+                            rows={4}
                             id="confirmeventDescPassword" 
                             className={styles.formInput} 
                             placeholder="Long Description" 
                             onChange={(e) => eventDescRef.current = e.target.value}
                             >
 
-                        </input>
+                        </textarea>
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="eventImage" className={styles.formLabel}>Image</label>
+                        <div className={styles.sublabel}>Please select a high-quality, <b>horizontal</b> photo. </div>
                         <input 
                             id="eventImage" 
                             type="file" 
