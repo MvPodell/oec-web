@@ -6,10 +6,8 @@ import Image from "next/image";
 import { Event } from "@/app/dashboard/page";
 import { getEvent } from "@/config/firestore";
 import { useSearchParams } from "next/navigation";
-import { getAuth } from "firebase/auth";
 
 export const EventDetails: React.FC = () => {
-    const auth = getAuth();
     const [currentEvent, setCurrentEvent] = useState<Event | null>(null);
 
     const searchParams = useSearchParams();
@@ -31,7 +29,6 @@ export const EventDetails: React.FC = () => {
 
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
             <div className={styles.cardDetailsContainer}>
                 <div className={styles.backButtonContainer}>
                     <div className={styles.cardButtonContainer}>
@@ -45,7 +42,7 @@ export const EventDetails: React.FC = () => {
                 </div>
                 {currentEvent && (
                     <div className={styles.card}>
-                        <Image priority className={styles.cardDetailsImage} src={currentEvent.imageURL} alt="Joshua Tree" width="800" height="200" />
+                        <Image className={styles.cardDetailsImage} src={currentEvent.imageURL} alt="event poster" width="800" height="200" />
                         <div className={styles.cardContent}>
                             <div className={styles.cardHeader}>
                                 <div className={styles.cardHeaderText}>
@@ -62,6 +59,5 @@ export const EventDetails: React.FC = () => {
                 )}
 
             </div>
-        </Suspense>
     )
 }
