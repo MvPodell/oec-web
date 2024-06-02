@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styles from '@/app/dashboard/dashboard.module.scss';
 import Image from "next/image";
 import { StaffButton } from '../trips/StaffButton';
@@ -11,33 +11,39 @@ import Link from "next/link";
 export default function CorkBoard() {
     const [events, setEvents] = useState<Event[]>([]);
 
-    const currentDate = new Date();
+    const currentDate = useMemo(() => new Date(), []);
 
     useEffect(() => {
         const fetchEvents = async () => {
             const eventData = await getEventList();
-            const sortedEvents = eventData.filter(event => new Date(event.date) >= currentDate).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            const sortedEvents = eventData
+                .filter(event => new Date(event.date) >= currentDate)
+                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
             setEvents(sortedEvents);
         };
         fetchEvents();
-    }, []);
+    }, [ currentDate ]);
 
     return (
         <div className={styles.corkContainer}>
-            <StaffButton label="Add Event" dest="/form/add-event" />
             <div className={styles.corkHeader}>
                 <div className={styles.subheader2}>Upcoming at the OEC</div>
             </div>
             <div className={styles.corkBody}>
+                <StaffButton label="Add Event" dest="/form/add-event" />
                 <div className={styles.corkEventsContainer}>
-                    {events.map(event => (
-                        <div className={styles.corkItem}>
+                    {events.map((event, index) => (
+                        <div className={styles.corkItem} key={event.id}>
                             <Image
                                 className={styles.corkItemImage}
                                 src={event.imageURL || "/images/Pomona.jpeg"}
                                 alt="event image"
-                                width="2000"
-                                height="2000"
+                                width="6400"
+                                height="3600"
+                                priority={index === 0}
+                                loading={index === 0 ? "eager" : "lazy"}
+                            // placeholder="blur"
+
                             />
                             <div className={styles.corkItemBody}>
                                 <div className={styles.corkDate}>{event.date}</div>

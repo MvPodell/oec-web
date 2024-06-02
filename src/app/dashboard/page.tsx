@@ -18,7 +18,7 @@ export default function Page() {
             <div className={styles.dashHeader}>
                 <div className={styles.subtitle}>Welcome to the</div>
                 <div className={styles.boldTitle}>OEC</div>
-                <div className={styles.subtitle2}>Pomona College's Outdoor Education Center</div>
+                <div className={styles.subtitle2}>The Outdoor Education Center of Pomona College</div>
                 <div className={styles.dashHours}>
                     <div>Hours:</div> 
                     <div>M-Th: 2pm-8pm</div>
