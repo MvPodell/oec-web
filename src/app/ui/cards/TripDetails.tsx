@@ -1,10 +1,10 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, Suspense } from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Trip } from "@/app/dashboard/trips/page";
-import { checkAndAddUser, isUserMemberOfTrip, removeUserFromTrip, currentTripSize, getTripCapacity, getTrip } from "@/config/firestore";
+import { checkAndAddUser, removeUserFromTrip, currentTripSize, getTrip } from "@/config/firestore";
 import { useSearchParams } from "next/navigation";
 import { TripQueue } from "../trips/TripQueue";
 import { getAuth } from "firebase/auth";
@@ -15,13 +15,38 @@ export const TripDetails: React.FC = () => {
     const [user, setUser] = useState(auth.currentUser);
     const [tripSize, setTripSize] = useState(0);
     const [currentTrip, setCurrentTrip] = useState<Trip | null>(null);
-
+    const [searchParamsLoaded, setSearchParamsLoaded] = useState(false);
     const searchParams = useSearchParams();
     const tripId = searchParams.get("id");
 
     useEffect(() => {
+        // This useEffect hook will execute once the searchParams are loaded
+        if (searchParams) {
+            setSearchParamsLoaded(true);
+        }
+    }, [searchParams]);
+
+    const fetchTripDetails = useCallback(async () => {
+        const fetchData = async () => {
+
+            if (tripId) {
+                const tripData = await getTrip(tripId);
+                if (tripData) {
+                    setCurrentTrip(tripData);
+                }
+            }
+            if (currentTrip) {
+                const size = await currentTripSize(currentTrip.id);
+                console.log("currently", size, "members on trip");
+                setTripSize(size);
+            }
+        };
+        fetchData()
+    }, [tripId, currentTrip]);
+
+    useEffect(() => {
         fetchTripDetails();
-    }, [tripId]);
+    }, [tripId, fetchTripDetails]);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -29,7 +54,7 @@ export const TripDetails: React.FC = () => {
             console.log("User set in TripDetails")
         });
         return () => unsubscribe();
-        
+
     }, [auth]);
 
     useEffect(() => {
@@ -40,7 +65,7 @@ export const TripDetails: React.FC = () => {
             }
         };
         fetchMemberStatus();
-    }, [user, currentTrip ]);
+    }, [user, currentTrip]);
 
     useEffect(() => {
         const fetchTripSize = async () => {
@@ -51,21 +76,7 @@ export const TripDetails: React.FC = () => {
             }
         };
         fetchTripSize();
-    }, [isMember]);
-
-    const fetchTripDetails = async () => {
-        if (tripId) {
-            const tripData = await getTrip(tripId);
-            if (tripData) {
-                setCurrentTrip(tripData);
-            }
-        }
-        if (currentTrip) {
-            const size = await currentTripSize(currentTrip.id);
-            console.log("currently", size, "members on trip");
-            setTripSize(size);
-        }
-    };
+    }, [isMember, currentTrip]);
 
     const joinTrip = async (e: React.MouseEvent) => {
         e.preventDefault();
@@ -89,51 +100,56 @@ export const TripDetails: React.FC = () => {
         }
     };
 
+    if (!searchParamsLoaded) {
+        return <div>Loading...</div>;
+    }
 
     return (
-        <div className={styles.cardDetailsContainer}>
-            <div className={styles.backButtonContainer}>
-                <div className={styles.cardButtonContainer}>
-                    <Link
-                        key="backArrow"
-                        href={"/dashboard/trips"}
-                        className={styles.cardButton}>
-                        Back to Trips
-                    </Link>
+        <Suspense fallback={<div>Loading...</div>}>
+            <div className={styles.cardDetailsContainer}>
+                <div className={styles.backButtonContainer}>
+                    <div className={styles.cardButtonContainer}>
+                        <Link
+                            key="backArrow"
+                            href={"/dashboard/trips"}
+                            className={styles.cardButton}>
+                            Back to Trips
+                        </Link>
+                    </div>
                 </div>
-            </div>
-            {currentTrip && (
-                <div className={styles.card}>
-                    <Image priority className={styles.cardDetailsImage} src={currentTrip.imageURL} alt="Joshua Tree" width="800" height="200" />
-                    <div className={styles.cardContent}>
-                        <div className={styles.cardHeader}>
-                            <div className={styles.cardHeaderText}>
-                                <div className={styles.cardHeaderTitle}>{currentTrip.title}</div>
-                                <div className={styles.cardHeaderCapacity}>{tripSize} / {currentTrip.capacity} </div>
+                {currentTrip && (
+                    <div className={styles.card}>
+                        <Image priority className={styles.cardDetailsImage} src={currentTrip.imageURL} alt="Joshua Tree" width="800" height="200" />
+                        <div className={styles.cardContent}>
+                            <div className={styles.cardHeader}>
+                                <div className={styles.cardHeaderText}>
+                                    <div className={styles.cardHeaderTitle}>{currentTrip.title}</div>
+                                    <div className={styles.cardHeaderCapacity}>{tripSize} / {currentTrip.capacity} </div>
+                                </div>
+                                <div className={styles.cardButtonContainer}>
+                                    {user && isMember ? (
+                                        <button className={styles.joinButton} onClick={(e) => leaveTrip(e)}>
+                                            LEAVE TRIP
+                                        </button>
+                                    ) : (
+                                        <button className={styles.joinButton} onClick={(e) => joinTrip(e)}>
+                                            JOIN
+                                        </button>
+                                    )}
+                                </div>
                             </div>
-                            <div className={styles.cardButtonContainer}>
-                                {user && isMember ? (
-                                    <button className={styles.joinButton} onClick={(e) => leaveTrip(e)}>
-                                        LEAVE TRIP
-                                    </button>
-                                ) : (
-                                    <button className={styles.joinButton} onClick={(e) => joinTrip(e)}>
-                                        JOIN
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                        <div className={styles.cardDate}>{currentTrip.date}</div>
-                        <div className={styles.cardText}>
-                            {currentTrip.description}
-                            <div className={styles.cardMemberQueue}>
-                                <TripQueue tripMembers={currentTrip.members} />
+                            <div className={styles.cardDate}>{currentTrip.date}</div>
+                            <div className={styles.cardText}>
+                                {currentTrip.description}
+                                <div className={styles.cardMemberQueue}>
+                                    <TripQueue tripMembers={currentTrip.members} />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
 
-        </div>
+            </div>
+        </Suspense>
     )
 }

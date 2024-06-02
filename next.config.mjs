@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['firebasestorage.googleapis.com'],
-      },
+      remotePatterns: [
+        {
+          hostname: 'firebasestorage.googleapis.com',
+        }
+      ],
+    },
+    experimental: {
+      missingSuspenseWithCSRBailout: false,
+    },
 };
 
 export default nextConfig;

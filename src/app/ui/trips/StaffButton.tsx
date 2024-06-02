@@ -34,7 +34,7 @@ export const StaffButton: React.FC<StaffButtonProps> = ({label, dest}) => {
                 }
             } 
         })
-    }, [user]);
+    }, [user, auth]);
 
     return (
         <>
