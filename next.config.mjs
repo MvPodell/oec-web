@@ -1,3 +1,5 @@
+import withPlaiceholder from "@plaiceholder/next";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -10,6 +12,17 @@ const nextConfig = {
     experimental: {
       missingSuspenseWithCSRBailout: false,
     },
+    async redirects() {
+      return [
+        // Basic redirect
+        {
+          source: '/',
+          destination: '/dashboard',
+          permanent: true,
+        },
+        // Wildcard path matching
+      ]
+    },
 };
 
-export default nextConfig;
+export default withPlaiceholder(nextConfig);

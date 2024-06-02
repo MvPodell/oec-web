@@ -6,9 +6,13 @@ import { StaffButton } from '../trips/StaffButton';
 import { getEventList } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
 import Link from "next/link";
+import { getPlaiceholder } from "plaiceholder";
 
+interface CorkBoardProps {
+    blurredImg: string,
+}
 
-export default function CorkBoard() {
+export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
     const [events, setEvents] = useState<Event[]>([]);
 
     const currentDate = useMemo(() => new Date(), []);
@@ -32,7 +36,7 @@ export default function CorkBoard() {
             <div className={styles.corkBody}>
                 <StaffButton label="Add Event" dest="/form/add-event" />
                 <div className={styles.corkEventsContainer}>
-                    {events.map((event, index) => (
+                    {events.map(event => (
                         <div className={styles.corkItem} key={event.id}>
                             <Image
                                 className={styles.corkItemImage}
@@ -40,10 +44,8 @@ export default function CorkBoard() {
                                 alt="event image"
                                 width="6400"
                                 height="3600"
-                                priority={index === 0}
-                                loading={index === 0 ? "eager" : "lazy"}
-                            // placeholder="blur"
-
+                                placeholder="blur"
+                                blurDataURL={blurredImg}
                             />
                             <div className={styles.corkItemBody}>
                                 <div className={styles.corkDate}>{event.date}</div>

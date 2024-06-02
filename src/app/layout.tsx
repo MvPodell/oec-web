@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import { FirebaseAuthProvider, useFirebaseAuth } from "@/config/AuthContext";
-import { fetchMostRecentEventImage } from "@/utils/getEvents";
+import { FirebaseAuthProvider } from "@/config/AuthContext";
 
-
-const inter = Inter({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Outdoor Education Center",
@@ -17,25 +15,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const lcpImageUrl = await fetchMostRecentEventImage();
 
   return (
     <html lang="en">
       <FirebaseAuthProvider >
       <head>
         <link rel="icon" href="/images/icon.ico"></link>
-        {lcpImageUrl && (
-          <link 
-          rel="preload" 
-          as="image" 
-          href={lcpImageUrl}
-          type="image/webp" 
-          fetchPriority="high"
-        />
-        )}
-        
       </head>
-        <body className={inter.className}>{children}</body>
+        <body className={openSans.className}>{children}</body>
       </FirebaseAuthProvider>
     </html>
   );
