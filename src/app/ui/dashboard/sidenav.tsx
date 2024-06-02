@@ -103,6 +103,7 @@ export default function SideNav() {
                         alt="OEC logo"
                         src={Logo}
                         className={styles.logoImage}
+                        priority
                     />
                 </div>
                 {links.map((link) => {
