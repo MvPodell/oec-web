@@ -1,5 +1,6 @@
 'use client';
 import React, {useState, useEffect} from "react";
+import { Button } from "@radix-ui/themes";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { getAuth } from "firebase/auth";
 import { getUserRole } from "@/config/firestore";
@@ -39,11 +40,11 @@ export const StaffButton: React.FC<StaffButtonProps> = ({label, dest}) => {
     return (
         <>
             {isStaff && (
-                <div className={styles.addTripContainer}>
+                <Button variant="outline" color="blue" radius="large">
                     <Link href={`${dest}`} className={styles.addTrip}>
                         {label}
                     </Link>
-                </div>
+                </Button>
 
             )}
         </>

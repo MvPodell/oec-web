@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
+    "@radix-ui/themes": "^3.0.5",
     "@types/firebase": "^3.2.1",
     "firebase": "^10.12.1",
     "hamburger-react": "^2.5.1",

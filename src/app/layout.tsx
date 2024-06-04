@@ -1,9 +1,13 @@
+import "@radix-ui/themes/styles.css";
+import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { FirebaseAuthProvider } from "@/config/AuthContext";
 
-const openSans = Open_Sans({ subsets: ["latin"] });
+
+
+const openSans = Open_Sans({ subsets: ["latin"], variable: '--font-inter', });
 
 export const metadata: Metadata = {
   title: "Outdoor Education Center",
@@ -17,12 +21,19 @@ export default async function RootLayout({
 }>) {
 
   return (
-    <html lang="en">
+    <html lang="en" className={openSans.variable}>
       <FirebaseAuthProvider >
-      <head>
-        <link rel="icon" href="/images/icon.ico"></link>
-      </head>
-        <body className={openSans.className}>{children}</body>
+
+        <head>
+          <link rel="icon" href="/images/icon.ico"></link>
+        </head>
+
+        <body className={openSans.className}>
+          <Theme accentColor="blue" panelBackground="solid" scaling="100%">
+            {children}
+          </Theme>
+        </body>
+
       </FirebaseAuthProvider>
     </html>
   );

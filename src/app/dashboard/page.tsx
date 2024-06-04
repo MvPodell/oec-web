@@ -1,7 +1,9 @@
+import { Heading, Section, Text, Flex } from "@radix-ui/themes"
 import styles from '@/app/dashboard/dashboard.module.scss';
 import {CorkBoard} from '../ui/dashboard/CorkBoard';
 import { getPlaiceholder } from "plaiceholder";
 import { getEventList } from '@/config/firestore';
+
 
 
 export interface Event {
@@ -30,19 +32,19 @@ export default async function Page() {
 
         <div>
             <div className={styles.dashHeader}>
-                <div className={styles.subtitle}>Welcome to the</div>
-                <div className={styles.boldTitle}>OEC</div>
-                <div className={styles.subtitle2}>The Outdoor Education Center of Pomona College</div>
-                <div className={styles.dashHours}>
-                    <div>Hours:</div> 
-                    <div>M-Th: 2pm-8pm</div>
-                    <div>Friday: 10am-1pm</div>
-                    <div>Sat-Sun: CLOSED</div>
-                </div>
+                    <Heading weight="medium" size="7">Welcome to the</Heading>
+                    <Heading weight="bold" size="9" color="blue" trim="normal">OEC</Heading>
+                    <Heading weight="regular" size="5">The Outdoor Education Center of Pomona College</Heading>
+                    <Flex direction="column" align="center">
+                        <Text>Hours:</Text> 
+                        <Text>M-Th: 2pm-8pm</Text>
+                        <Text>Friday: 10am-1pm</Text>
+                        <Text>Sat-Sun: CLOSED</Text>
+                    </Flex>
             </div>
-            <div className={styles.dashBody}>
+            <Section className={styles.dashBody}>
                 {base64 && <CorkBoard blurredImg={base64} />}
-            </div>
+            </Section>
             <div></div>
         </div>
     );
