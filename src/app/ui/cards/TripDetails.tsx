@@ -105,7 +105,6 @@ export const TripDetails: React.FC = () => {
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
             <div className={styles.cardDetailsContainer}>
                 <div className={styles.backButtonContainer}>
                     <div className={styles.cardButtonContainer}>
@@ -150,6 +149,5 @@ export const TripDetails: React.FC = () => {
                 )}
 
             </div>
-        </Suspense>
     )
 }
