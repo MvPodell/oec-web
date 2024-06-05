@@ -1,12 +1,12 @@
 'use client';
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import styles from '@/app/dashboard/dashboard.module.scss';
 import Image from "next/image";
 import { StaffButton } from '../trips/StaffButton';
-import { getEventList } from "@/config/firestore";
+import { fetchSortedEvents } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
 import Link from "next/link";
-import { getPlaiceholder } from "plaiceholder";
+import { DeleteButton } from "../buttons/DeleteButton";
 
 interface CorkBoardProps {
     blurredImg: string,
@@ -17,16 +17,15 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
 
     const currentDate = useMemo(() => new Date(), []);
 
+
+    const loadEvents = useCallback(async () => {
+        const sortedEvents = await fetchSortedEvents(currentDate);
+        setEvents(sortedEvents);
+    }, [currentDate]);
+
     useEffect(() => {
-        const fetchEvents = async () => {
-            const eventData = await getEventList();
-            const sortedEvents = eventData
-                .filter(event => new Date(event.date) >= currentDate)
-                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-            setEvents(sortedEvents);
-        };
-        fetchEvents();
-    }, [ currentDate ]);
+        loadEvents();
+    }, [ loadEvents ]);
 
     return (
         <div className={styles.corkContainer}>
@@ -47,6 +46,9 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
                                 placeholder="blur"
                                 blurDataURL={blurredImg}
                             />
+                            <div className={styles.itemDeleteContainer}>
+                                <DeleteButton eventId={event.id} onDelete={loadEvents} />
+                            </div>
                             <div className={styles.corkItemBody}>
                                 <div className={styles.corkDate}>{event.date}</div>
                                 <div className={styles.corkTitle}>{event.title}</div>

@@ -1,4 +1,4 @@
-import { getDoc, setDoc, doc, updateDoc, arrayUnion, arrayRemove, collection, getDocs } from "firebase/firestore";
+import { getDoc, setDoc, doc, updateDoc, arrayUnion, arrayRemove, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { Trip } from "@/app/dashboard/trips/page";
 import { Profile } from "@/app/form/signup/page";
@@ -373,5 +373,22 @@ export async function getEvent(eventId: string) {
         }
     } catch (error) {
         console.error("Error getting event information: ", error);
+    }
+}
+
+export const fetchSortedEvents = async (currentDate: Date) => {
+    const eventData = await getEventList();
+    const sortedEvents = eventData
+        .filter(event => new Date(event.date) >= currentDate)
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    return sortedEvents;
+};
+
+export async function deleteEvent(eventId: string) {
+    try {
+        await deleteDoc(doc(db, "events", eventId));
+
+    } catch (error) {
+        console.error("Error deleting event: ", error);
     }
 }

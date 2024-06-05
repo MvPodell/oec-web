@@ -204,6 +204,15 @@
     }
 }
 
+.itemDeleteContainer {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
 .subtitle {
     margin: 0;
     font-size: 1.5rem;

@@ -1,0 +1,2346 @@
+// ====================================================== /
+// Natt Nguyen's Radix UI Color System
+// Last updated: 2022.10.21
+//
+// An open-source color system for designing beautiful,
+// accessible websites and apps.
+//
+// Reference: https://www.radix-ui.com/colors
+// ====================================================== /
+
+// ------------------------------------------------------ /
+// Understanding the scale
+// Learn which scale step is the most appropriate for each
+// use case.
+//
+//  ---------------------------------------------------
+//  | Step  | Use Case                                |
+//  ---------------------------------------------------
+//  | 1     | App background                          |
+//  | 2     | Subtle background                       |
+//  | 3     | UI element background                   |
+//  | 4     | Hovered UI element background           |
+//  | 5     | Active / Selected UI element background |
+//  | 6     | Subtle borders and separators           |
+//  | 7     | UI element border and focus rings       |
+//  | 8     | Hovered UI element border               |
+//  | 9     | Solid backgrounds                       |
+//  | 10    | Hovered solid backgrounds               |
+//  | 11    | Low-contrast text                       |
+//  | 12    | High-contrast text                      |
+//  ---------------------------------------------------
+// ------------------------------------------------------ /
+
+// ------------------------------------------------------ /
+// Grays
+//
+// Radix Colors provides 6 gray scales.
+// ------------------------------------------------------ /
+
+// Gray ------------------------------------------------- /
+@mixin gray {
+    --gray1: hsl(0 0% 99%);
+    --gray2: hsl(0 0% 97.3%);
+    --gray3: hsl(0 0% 95.1%);
+    --gray4: hsl(0 0% 93%);
+    --gray5: hsl(0 0% 90.9%);
+    --gray6: hsl(0 0% 88.7%);
+    --gray7: hsl(0 0% 85.8%);
+    --gray8: hsl(0 0% 78%);
+    --gray9: hsl(0 0% 56.1%);
+    --gray10: hsl(0 0% 52.3%);
+    --gray11: hsl(0 0% 43.5%);
+    --gray12: hsl(0 0% 9%);
+  }
+  
+  @mixin grayA {
+    --grayA1: hsl(0 0% 0% / 0.012);
+    --grayA2: hsl(0 0% 0% / 0.027);
+    --grayA3: hsl(0 0% 0% / 0.047);
+    --grayA4: hsl(0 0% 0% / 0.071);
+    --grayA5: hsl(0 0% 0% / 0.09);
+    --grayA6: hsl(0 0% 0% / 0.114);
+    --grayA7: hsl(0 0% 0% / 0.141);
+    --grayA8: hsl(0 0% 0% / 0.22);
+    --grayA9: hsl(0 0% 0% / 0.439);
+    --grayA10: hsl(0 0% 0% / 0.478);
+    --grayA11: hsl(0 0% 0% / 0.565);
+    --grayA12: hsl(0 0% 0% / 0.91);
+  }
+  
+  @mixin grayDark {
+    --grayDark1: hsl(0 0% 8.5%);
+    --grayDark2: hsl(0 0% 11%);
+    --grayDark3: hsl(0 0% 13.6%);
+    --grayDark4: hsl(0 0% 15.8%);
+    --grayDark5: hsl(0 0% 17.9%);
+    --grayDark6: hsl(0 0% 20.5%);
+    --grayDark7: hsl(0 0% 24.3%);
+    --grayDark8: hsl(0 0% 31.2%);
+    --grayDark9: hsl(0 0% 43.9%);
+    --grayDark10: hsl(0 0% 49.4%);
+    --grayDark11: hsl(0 0% 62.8%);
+    --grayDark12: hsl(0 0% 93%);
+  }
+  
+  @mixin grayDarkA {
+    --grayDarkA1: hsl(0 0% 100% / 0);
+    --grayDarkA2: hsl(0 0% 100% / 0.026);
+    --grayDarkA3: hsl(0 0% 100% / 0.056);
+    --grayDarkA4: hsl(0 0% 100% / 0.077);
+    --grayDarkA5: hsl(0 0% 100% / 0.103);
+    --grayDarkA6: hsl(0 0% 100% / 0.129);
+    --grayDarkA7: hsl(0 0% 100% / 0.172);
+    --grayDarkA8: hsl(0 0% 100% / 0.249);
+    --grayDarkA9: hsl(0 0% 100% / 0.386);
+    --grayDarkA10: hsl(0 0% 100% / 0.446);
+    --grayDarkA11: hsl(0 0% 100% / 0.592);
+    --grayDarkA12: hsl(0 0% 100% / 0.923);
+  }
+  
+  @mixin grayAll {
+    @include gray;
+    @include grayA;
+    @include grayDark;
+    @include grayDarkA;
+  }
+  
+  @mixin grayAllLight {
+    @include gray;
+    @include grayA;
+  }
+  
+  @mixin grayAllDark {
+    @include grayDark;
+    @include grayDarkA;
+  }
+  
+  // Mauve ------------------------------------------------ /
+  @mixin mauve {
+    --mauve1: hsl(300 20% 99%);
+    --mauve2: hsl(300 7.7% 97.5%);
+    --mauve3: hsl(294 5.5% 95.3%);
+    --mauve4: hsl(289 4.7% 93.3%);
+    --mauve5: hsl(283 4.4% 91.3%);
+    --mauve6: hsl(278 4.1% 89.1%);
+    --mauve7: hsl(271 3.9% 86.3%);
+    --mauve8: hsl(255 3.7% 78.8%);
+    --mauve9: hsl(252 4% 57.3%);
+    --mauve10: hsl(253 3.5% 53.5%);
+    --mauve11: hsl(252 4% 44.8%);
+    --mauve12: hsl(260 25% 11%);
+  }
+  
+  @mixin mauveA {
+    --mauveA1: hsl(300 89.3% 18.3% / 0.012);
+    --mauveA2: hsl(300 78.1% 9% / 0.028);
+    --mauveA3: hsl(300 99.5% 7.7% / 0.051);
+    --mauveA4: hsl(270 90.5% 6.1% / 0.071);
+    --mauveA5: hsl(270 83% 5.2% / 0.091);
+    --mauveA6: hsl(300 93.5% 3.7% / 0.114);
+    --mauveA7: hsl(270 82.6% 3.3% / 0.142);
+    --mauveA8: hsl(255 95.2% 3.7% / 0.22);
+    --mauveA9: hsl(255 94.8% 3.7% / 0.444);
+    --mauveA10: hsl(253 96.5% 3.8% / 0.483);
+    --mauveA11: hsl(247 97.9% 3.2% / 0.569);
+    --mauveA12: hsl(261 98.7% 3% / 0.918);
+  }
+  
+  @mixin mauveDark {
+    --mauveDark1: hsl(246 6% 9%);
+    --mauveDark2: hsl(240 5.1% 11.6%);
+    --mauveDark3: hsl(241 5% 14.3%);
+    --mauveDark4: hsl(242 4.9% 16.5%);
+    --mauveDark5: hsl(243 4.9% 18.8%);
+    --mauveDark6: hsl(244 4.9% 21.5%);
+    --mauveDark7: hsl(245 4.9% 25.4%);
+    --mauveDark8: hsl(247 4.8% 32.5%);
+    --mauveDark9: hsl(252 4% 45.2%);
+    --mauveDark10: hsl(247 3.4% 50.7%);
+    --mauveDark11: hsl(253 4% 63.7%);
+    --mauveDark12: hsl(256 6% 93.2%);
+  }
+  
+  @mixin mauveDarkA {
+    --mauveDarkA1: hsl(0 0% 0% / 0);
+    --mauveDarkA2: hsl(240 76.7% 91.2% / 0.031);
+    --mauveDarkA3: hsl(240 86% 95.8% / 0.061);
+    --mauveDarkA4: hsl(240 91.8% 94.7% / 0.087);
+    --mauveDarkA5: hsl(240 91.5% 95.8% / 0.113);
+    --mauveDarkA6: hsl(240 92% 93.8% / 0.148);
+    --mauveDarkA7: hsl(240 94.8% 95.3% / 0.191);
+    --mauveDarkA8: hsl(249 98.1% 95.2% / 0.273);
+    --mauveDarkA9: hsl(248 97.6% 96.2% / 0.416);
+    --mauveDarkA10: hsl(248 95.5% 96.6% / 0.477);
+    --mauveDarkA11: hsl(250 98% 98% / 0.615);
+    --mauveDarkA12: hsl(240 93.9% 99.6% / 0.931);
+  }
+  
+  @mixin mauveAll {
+    @include mauve;
+    @include mauveA;
+    @include mauveDark;
+    @include mauveDarkA;
+  }
+  
+  @mixin mauveAllLight {
+    @include mauve;
+    @include mauveA;
+  }
+  
+  @mixin mauveAllDark {
+    @include mauveDark;
+    @include mauveDarkA;
+  }
+  
+  // Slate ------------------------------------------------ /
+  @mixin slate {
+    --slate1: hsl(206 30% 98.8%);
+    --slate2: hsl(210 16.7% 97.6%);
+    --slate3: hsl(209 13.3% 95.3%);
+    --slate4: hsl(209 12.2% 93.2%);
+    --slate5: hsl(208 11.7% 91.1%);
+    --slate6: hsl(208 11.3% 88.9%);
+    --slate7: hsl(207 11.1% 85.9%);
+    --slate8: hsl(205 10.7% 78%);
+    --slate9: hsl(206 6% 56.1%);
+    --slate10: hsl(206 5.8% 52.3%);
+    --slate11: hsl(206 6% 43.5%);
+    --slate12: hsl(206 24% 9%);
+  }
+  
+  @mixin slateA {
+    --slateA1: hsl(210 92.6% 26.5% / 0.016);
+    --slateA2: hsl(210 87.7% 16% / 0.028);
+    --slateA3: hsl(210 98.8% 14.4% / 0.055);
+    --slateA4: hsl(210 94.1% 11.1% / 0.075);
+    --slateA5: hsl(216 91.1% 10.9% / 0.099);
+    --slateA6: hsl(206 96.4% 11.3% / 0.126);
+    --slateA7: hsl(210 99.1% 10.1% / 0.157);
+    --slateA8: hsl(205 96.5% 10% / 0.244);
+    --slateA9: hsl(206 98.8% 5.9% / 0.467);
+    --slateA10: hsl(206 99.6% 5.4% / 0.506);
+    --slateA11: hsl(206 97% 4.8% / 0.593);
+    --slateA12: hsl(202 97% 2.4% / 0.934);
+  }
+  
+  @mixin slateDark {
+    --slateDark1: hsl(200 7% 8.8%);
+    --slateDark2: hsl(195 7.1% 11%);
+    --slateDark3: hsl(197 6.8% 13.6%);
+    --slateDark4: hsl(198 6.6% 15.8%);
+    --slateDark5: hsl(199 6.4% 17.9%);
+    --slateDark6: hsl(201 6.2% 20.5%);
+    --slateDark7: hsl(203 6% 24.3%);
+    --slateDark8: hsl(207 5.6% 31.6%);
+    --slateDark9: hsl(206 6% 43.9%);
+    --slateDark10: hsl(206 5.2% 49.5%);
+    --slateDark11: hsl(206 6% 63%);
+    --slateDark12: hsl(210 6% 93%);
+  }
+  
+  @mixin slateDarkA {
+    --slateDarkA1: hsl(0 0% 0% / 0);
+    --slateDarkA2: hsl(181 98.9% 91.8% / 0.026);
+    --slateDarkA3: hsl(182 86.7% 91.4% / 0.057);
+    --slateDarkA4: hsl(209 86.7% 93.9% / 0.083);
+    --slateDarkA5: hsl(200 90.3% 93.4% / 0.109);
+    --slateDarkA6: hsl(209 95.3% 93.5% / 0.139);
+    --slateDarkA7: hsl(204 98.5% 93.9% / 0.182);
+    --slateDarkA8: hsl(209 94% 94.7% / 0.265);
+    --slateDarkA9: hsl(207 97.3% 94% / 0.412);
+    --slateDarkA10: hsl(209 99.4% 95.2% / 0.472);
+    --slateDarkA11: hsl(208 98.7% 96.8% / 0.615);
+    --slateDarkA12: hsl(211 86.7% 99.6% / 0.927);
+  }
+  
+  @mixin slateAll {
+    @include slate;
+    @include slateA;
+    @include slateDark;
+    @include slateDarkA;
+  }
+  
+  @mixin slateAllLight {
+    @include slate;
+    @include slateA;
+  }
+  
+  @mixin slateAllDark {
+    @include slateDark;
+    @include slateDarkA;
+  }
+  
+  // Sage ------------------------------------------------- /
+  @mixin sage {
+    --sage1: hsl(155 30% 98.8%);
+    --sage2: hsl(150 16.7% 97.6%);
+    --sage3: hsl(151 10.6% 95.2%);
+    --sage4: hsl(151 8.8% 93%);
+    --sage5: hsl(151 7.8% 90.8%);
+    --sage6: hsl(152 7.2% 88.4%);
+    --sage7: hsl(153 6.7% 85.3%);
+    --sage8: hsl(154 6.1% 77.5%);
+    --sage9: hsl(155 3.5% 55.5%);
+    --sage10: hsl(154 2.8% 51.7%);
+    --sage11: hsl(155 3% 43%);
+    --sage12: hsl(155 24% 9%);
+  }
+  
+  @mixin sageA {
+    --sageA1: hsl(150 92.6% 26.5% / 0.016);
+    --sageA2: hsl(150 87.7% 16% / 0.028);
+    --sageA3: hsl(160 98.4% 10.9% / 0.055);
+    --sageA4: hsl(140 92.3% 8.5% / 0.075);
+    --sageA5: hsl(160 86% 6.9% / 0.099);
+    --sageA6: hsl(156 95.1% 8.2% / 0.126);
+    --sageA7: hsl(156 98.6% 6.3% / 0.157);
+    --sageA8: hsl(154 94.6% 6% / 0.24);
+    --sageA9: hsl(154 98.7% 3% / 0.459);
+    --sageA10: hsl(154 93.5% 2.9% / 0.499);
+    --sageA11: hsl(154 95.2% 2.5% / 0.585);
+    --sageA12: hsl(158 97% 2.4% / 0.934);
+  }
+  
+  @mixin sageDark {
+    --sageDark1: hsl(155 7% 8.4%);
+    --sageDark2: hsl(150 7.4% 10.6%);
+    --sageDark3: hsl(150 6.7% 13.1%);
+    --sageDark4: hsl(150 6.4% 15.3%);
+    --sageDark5: hsl(150 6.1% 17.4%);
+    --sageDark6: hsl(150 5.8% 19.9%);
+    --sageDark7: hsl(150 5.5% 23.6%);
+    --sageDark8: hsl(150 5.1% 30.6%);
+    --sageDark9: hsl(155 6% 42.5%);
+    --sageDark10: hsl(153 4.8% 48.2%);
+    --sageDark11: hsl(155 5% 61.8%);
+    --sageDark12: hsl(155 6% 93%);
+  }
+  
+  @mixin sageDarkA {
+    --sageDarkA1: hsl(0 0% 0% / 0);
+    --sageDarkA2: hsl(123 94.4% 91.4% / 0.026);
+    --sageDarkA3: hsl(123 82.9% 91% / 0.057);
+    --sageDarkA4: hsl(124 97.9% 94.5% / 0.082);
+    --sageDarkA5: hsl(125 90% 95.2% / 0.104);
+    --sageDarkA6: hsl(142 95.1% 94.8% / 0.134);
+    --sageDarkA7: hsl(143 92.8% 95.7% / 0.173);
+    --sageDarkA8: hsl(146 94.7% 95.3% / 0.255);
+    --sageDarkA9: hsl(151 98.2% 94.4% / 0.397);
+    --sageDarkA10: hsl(148 99.5% 95.5% / 0.457);
+    --sageDarkA11: hsl(152 95.1% 97.3% / 0.6);
+    --sageDarkA12: hsl(149 93.3% 99.6% / 0.927);
+  }
+  
+  @mixin sageAll {
+    @include sage;
+    @include sageA;
+    @include sageDark;
+    @include sageDarkA;
+  }
+  
+  @mixin sageAllLight {
+    @include sage;
+    @include sageA;
+  }
+  
+  @mixin sageAllDark {
+    @include sageDark;
+    @include sageDarkA;
+  }
+  
+  // Olive ------------------------------------------------ /
+  @mixin olive {
+    --olive1: hsl(110 20% 99%);
+    --olive2: hsl(120 16.7% 97.6%);
+    --olive3: hsl(119 10.1% 95.2%);
+    --olive4: hsl(118 8.1% 93%);
+    --olive5: hsl(117 7.1% 90.8%);
+    --olive6: hsl(115 6.4% 88.5%);
+    --olive7: hsl(114 5.9% 85.4%);
+    --olive8: hsl(110 5.2% 77.3%);
+    --olive9: hsl(110 3.5% 55.5%);
+    --olive10: hsl(111 2.8% 51.7%);
+    --olive11: hsl(110 3% 43%);
+    --olive12: hsl(110 25% 9.5%);
+  }
+  
+  @mixin oliveA {
+    --oliveA1: hsl(120 89.3% 18.3% / 0.012);
+    --oliveA2: hsl(120 87.7% 16% / 0.028);
+    --oliveA3: hsl(120 99.5% 7.7% / 0.051);
+    --oliveA4: hsl(120 92.3% 8.5% / 0.075);
+    --oliveA5: hsl(120 86% 6.9% / 0.099);
+    --oliveA6: hsl(120 94.8% 6.8% / 0.122);
+    --oliveA7: hsl(120 99.3% 5.2% / 0.153);
+    --oliveA8: hsl(110 93.8% 5.2% / 0.24);
+    --oliveA9: hsl(111 98.7% 3% / 0.459);
+    --oliveA10: hsl(111 93.5% 2.9% / 0.499);
+    --oliveA11: hsl(111 95.2% 2.5% / 0.585);
+    --oliveA12: hsl(110 97.6% 2.6% / 0.93);
+  }
+  
+  @mixin oliveDark {
+    --oliveDark1: hsl(110 5% 8.6%);
+    --oliveDark2: hsl(105 7.4% 10.6%);
+    --oliveDark3: hsl(106 6.4% 13.1%);
+    --oliveDark4: hsl(106 5.8% 15.3%);
+    --oliveDark5: hsl(107 5.3% 17.4%);
+    --oliveDark6: hsl(107 4.9% 19.9%);
+    --oliveDark7: hsl(108 4.4% 23.6%);
+    --oliveDark8: hsl(110 3.8% 30.6%);
+    --oliveDark9: hsl(110 6% 42.5%);
+    --oliveDark10: hsl(111 4.8% 48.2%);
+    --oliveDark11: hsl(110 5% 61.8%);
+    --oliveDark12: hsl(110 6% 93%);
+  }
+  
+  @mixin oliveDarkA {
+    --oliveDarkA1: hsl(0 0% 0% / 0);
+    --oliveDarkA2: hsl(91 97% 84% / 0.026);
+    --oliveDarkA3: hsl(101 87.4% 87.7% / 0.057);
+    --oliveDarkA4: hsl(92 91.8% 94.1% / 0.078);
+    --oliveDarkA5: hsl(101 92.6% 93.5% / 0.104);
+    --oliveDarkA6: hsl(102 91.1% 94.6% / 0.13);
+    --oliveDarkA7: hsl(102 92.5% 95.9% / 0.173);
+    --oliveDarkA8: hsl(107 100% 96.5% / 0.25);
+    --oliveDarkA9: hsl(110 98.3% 94.1% / 0.397);
+    --oliveDarkA10: hsl(109 99.6% 95.3% / 0.457);
+    --oliveDarkA11: hsl(113 95.3% 97.2% / 0.6);
+    --oliveDarkA12: hsl(120 93.5% 99.6% / 0.927);
+  }
+  
+  @mixin oliveAll {
+    @include olive;
+    @include oliveA;
+    @include oliveDark;
+    @include oliveDarkA;
+  }
+  
+  @mixin oliveAllLight {
+    @include olive;
+    @include oliveA;
+  }
+  
+  @mixin oliveAllDark {
+    @include oliveDark;
+    @include oliveDarkA;
+  }
+  
+  // Sand ------------------------------------------------- /
+  @mixin sand {
+    --sand1: hsl(50 20% 99%);
+    --sand2: hsl(60 7.7% 97.5%);
+    --sand3: hsl(59 6.5% 95.1%);
+    --sand4: hsl(58 6.1% 92.9%);
+    --sand5: hsl(57 6% 90.7%);
+    --sand6: hsl(56 5.9% 88.4%);
+    --sand7: hsl(55 5.9% 85.2%);
+    --sand8: hsl(51 6% 77.1%);
+    --sand9: hsl(50 2% 55.7%);
+    --sand10: hsl(55 1.7% 51.9%);
+    --sand11: hsl(50 2% 43.1%);
+    --sand12: hsl(50 6% 10%);
+  }
+  
+  @mixin sandA {
+    --sandA1: hsl(60 89.3% 18.3% / 0.012);
+    --sandA2: hsl(60 78.1% 9% / 0.028);
+    --sandA3: hsl(60 99% 3.9% / 0.051);
+    --sandA4: hsl(60 88.9% 5.9% / 0.075);
+    --sandA5: hsl(60 86% 6.9% / 0.099);
+    --sandA6: hsl(60 93.2% 5.2% / 0.122);
+    --sandA7: hsl(60 98.3% 5.1% / 0.157);
+    --sandA8: hsl(51 94.1% 6% / 0.244);
+    --sandA9: hsl(60 99.8% 1.7% / 0.451);
+    --sandA10: hsl(60 90.7% 1.8% / 0.491);
+    --sandA11: hsl(45 93.7% 1.5% / 0.577);
+    --sandA12: hsl(60 98% 0.7% / 0.906);
+  }
+  
+  @mixin sandDark {
+    --sandDark1: hsl(61 2% 8.3%);
+    --sandDark2: hsl(60 3.7% 10.6%);
+    --sandDark3: hsl(58 3.7% 13.1%);
+    --sandDark4: hsl(57 3.6% 15.3%);
+    --sandDark5: hsl(56 3.7% 17.4%);
+    --sandDark6: hsl(55 3.7% 19.9%);
+    --sandDark7: hsl(53 3.7% 23.6%);
+    --sandDark8: hsl(50 3.8% 30.6%);
+    --sandDark9: hsl(50 4% 42.7%);
+    --sandDark10: hsl(52 3.1% 48.3%);
+    --sandDark11: hsl(50 4% 61.8%);
+    --sandDark12: hsl(56 4% 92.8%);
+  }
+  
+  @mixin sandDarkA {
+    --sandDarkA1: hsl(0 0% 0% / 0);
+    --sandDarkA2: hsl(60 89.8% 91.4% / 0.026);
+    --sandDarkA3: hsl(60 95.5% 92.5% / 0.056);
+    --sandDarkA4: hsl(60 75.6% 96.4% / 0.078);
+    --sandDarkA5: hsl(60 81.9% 95.2% / 0.104);
+    --sandDarkA6: hsl(41 87.6% 94.8% / 0.134);
+    --sandDarkA7: hsl(60 95.4% 96.2% / 0.172);
+    --sandDarkA8: hsl(49 93.5% 95.7% / 0.254);
+    --sandDarkA9: hsl(52 97.3% 96.2% / 0.391);
+    --sandDarkA10: hsl(52 97.8% 96.7% / 0.451);
+    --sandDarkA11: hsl(51 97% 97.8% / 0.597);
+    --sandDarkA12: hsl(60 88.7% 99.8% / 0.923);
+  }
+  
+  @mixin sandAll {
+    @include sand;
+    @include sandA;
+    @include sandDark;
+    @include sandDarkA;
+  }
+  
+  @mixin sandAllLight {
+    @include sand;
+    @include sandA;
+  }
+  
+  @mixin sandAllDark {
+    @include sandDark;
+    @include sandDarkA;
+  }
+  
+  // ------------------------------------------------------ /
+  // Colors
+  //
+  // Radix Colors provides 15 color scales, designed for
+  // white foreground text at step `9`.
+  // ------------------------------------------------------ /
+  
+  // Tomato ----------------------------------------------- /
+  @mixin tomato {
+    --tomato1: hsl(10 100% 99.4%);
+    --tomato2: hsl(8 100% 98.4%);
+    --tomato3: hsl(8 100% 96.6%);
+    --tomato4: hsl(8 100% 94.3%);
+    --tomato5: hsl(8 92.8% 91%);
+    --tomato6: hsl(9 84.7% 86.3%);
+    --tomato7: hsl(10 77.3% 79.5%);
+    --tomato8: hsl(10 71.6% 71%);
+    --tomato9: hsl(10 78% 54%);
+    --tomato10: hsl(10 71.5% 50%);
+    --tomato11: hsl(10 82% 43.5%);
+    --tomato12: hsl(10 50% 13.5%);
+  }
+  
+  @mixin tomatoA {
+    --tomatoA1: hsl(0 100% 51% / 0.012);
+    --tomatoA2: hsl(8 100% 51% / 0.032);
+    --tomatoA3: hsl(7 100% 50.2% / 0.067);
+    --tomatoA4: hsl(8 100% 50.1% / 0.114);
+    --tomatoA5: hsl(7 99.5% 47.9% / 0.173);
+    --tomatoA6: hsl(9 99.9% 46.2% / 0.255);
+    --tomatoA7: hsl(10 99.8% 43.6% / 0.365);
+    --tomatoA8: hsl(10 99.5% 41.8% / 0.499);
+    --tomatoA9: hsl(10 99.9% 43.8% / 0.82);
+    --tomatoA10: hsl(10 100% 41.8% / 0.859);
+    --tomatoA11: hsl(10 99.9% 38.8% / 0.922);
+    --tomatoA12: hsl(10 99% 7.4% / 0.934);
+  }
+  
+  @mixin tomatoDark {
+    --tomatoDark1: hsl(10 23% 9.4%);
+    --tomatoDark2: hsl(9 44.8% 11.4%);
+    --tomatoDark3: hsl(8 52% 15.3%);
+    --tomatoDark4: hsl(7 56.3% 18%);
+    --tomatoDark5: hsl(7 60.1% 20.6%);
+    --tomatoDark6: hsl(8 64.8% 24%);
+    --tomatoDark7: hsl(8 71.2% 29.1%);
+    --tomatoDark8: hsl(10 80.2% 35.7%);
+    --tomatoDark9: hsl(10 78% 54%);
+    --tomatoDark10: hsl(10 81.7% 59%);
+    --tomatoDark11: hsl(10 85% 62.8%);
+    --tomatoDark12: hsl(10 89% 96%);
+  }
+  
+  @mixin tomatoDarkA {
+    --tomatoDarkA1: hsl(0 0% 0% / 0);
+    --tomatoDarkA2: hsl(5 100% 49.6% / 0.058);
+    --tomatoDarkA3: hsl(6 99.6% 54.9% / 0.133);
+    --tomatoDarkA4: hsl(6 99.2% 55.4% / 0.191);
+    --tomatoDarkA5: hsl(6 99.5% 55.8% / 0.244);
+    --tomatoDarkA6: hsl(7 99.7% 55.9% / 0.319);
+    --tomatoDarkA7: hsl(8 99.8% 54.8% / 0.434);
+    --tomatoDarkA8: hsl(10 99.8% 53.5% / 0.598);
+    --tomatoDarkA9: hsl(10 100% 59.7% / 0.885);
+    --tomatoDarkA10: hsl(10 100% 63.6% / 0.916);
+    --tomatoDarkA11: hsl(10 99.7% 66.4% / 0.939);
+    --tomatoDarkA12: hsl(12 100% 97.1% / 0.98);
+  }
+  
+  @mixin tomatoAll {
+    @include tomato;
+    @include tomatoA;
+    @include tomatoDark;
+    @include tomatoDarkA;
+  }
+  
+  @mixin tomatoAllLight {
+    @include tomato;
+    @include tomatoA;
+  }
+  
+  @mixin tomatoAllDark {
+    @include tomatoDark;
+    @include tomatoDarkA;
+  }
+  
+  // Red -------------------------------------------------- /
+  @mixin red {
+    --red1: hsl(359 100% 99.4%);
+    --red2: hsl(359 100% 98.6%);
+    --red3: hsl(360 100% 96.8%);
+    --red4: hsl(360 97.9% 94.8%);
+    --red5: hsl(360 90.2% 91.9%);
+    --red6: hsl(360 81.7% 87.8%);
+    --red7: hsl(359 74.2% 81.7%);
+    --red8: hsl(359 69.5% 74.3%);
+    --red9: hsl(358 75% 59%);
+    --red10: hsl(358 69.4% 55.2%);
+    --red11: hsl(358 65% 48.7%);
+    --red12: hsl(354 50% 14.6%);
+  }
+  
+  @mixin redA {
+    --redA1: hsl(0 100% 51% / 0.012);
+    --redA2: hsl(0 100% 51% / 0.032);
+    --redA3: hsl(0 100% 50.2% / 0.063);
+    --redA4: hsl(0 100% 50% / 0.102);
+    --redA5: hsl(0 99.9% 47.5% / 0.153);
+    --redA6: hsl(0 99.5% 44.9% / 0.224);
+    --redA7: hsl(359 99.7% 42.7% / 0.318);
+    --redA8: hsl(359 99.6% 41.1% / 0.436);
+    --redA9: hsl(358 99.9% 42.9% / 0.718);
+    --redA10: hsl(358 99.9% 41% / 0.761);
+    --redA11: hsl(358 99.8% 38.3% / 0.832);
+    --redA12: hsl(355 99.3% 7.9% / 0.926);
+  }
+  
+  @mixin redDark {
+    --redDark1: hsl(353 23% 9.8%);
+    --redDark2: hsl(357 34.4% 12%);
+    --redDark3: hsl(356 43.4% 16.4%);
+    --redDark4: hsl(356 47.6% 19.2%);
+    --redDark5: hsl(356 51.1% 21.9%);
+    --redDark6: hsl(356 55.2% 25.9%);
+    --redDark7: hsl(357 60.2% 31.8%);
+    --redDark8: hsl(358 65% 40.4%);
+    --redDark9: hsl(358 75% 59%);
+    --redDark10: hsl(358 85.3% 64%);
+    --redDark11: hsl(358 100% 69.5%);
+    --redDark12: hsl(351 89% 96%);
+  }
+  
+  @mixin redDarkA {
+    --redDarkA1: hsl(0 0% 0% / 0);
+    --redDarkA2: hsl(5 98.5% 53.8% / 0.045);
+    --redDarkA3: hsl(359 99.1% 61.1% / 0.13);
+    --redDarkA4: hsl(358 98.8% 61% / 0.184);
+    --redDarkA5: hsl(357 99.6% 60.3% / 0.237);
+    --redDarkA6: hsl(358 99.6% 60.3% / 0.322);
+    --redDarkA7: hsl(357 100% 59.5% / 0.442);
+    --redDarkA8: hsl(358 99.8% 59.1% / 0.621);
+    --redDarkA9: hsl(358 100% 65.5% / 0.884);
+    --redDarkA10: hsl(358 100% 67.5% / 0.942);
+    --redDarkA11: hsl(358 100% 69.7% / 0.98);
+    --redDarkA12: hsl(352 100% 97.1% / 0.98);
+  }
+  
+  @mixin redAll {
+    @include red;
+    @include redA;
+    @include redDark;
+    @include redDarkA;
+  }
+  
+  @mixin redAllLight {
+    @include red;
+    @include redA;
+  }
+  
+  @mixin redAllDark {
+    @include redDark;
+    @include redDarkA;
+  }
+  
+  // Crimson ---------------------------------------------- /
+  @mixin crimson {
+    --crimson1: hsl(332 100% 99.4%);
+    --crimson2: hsl(330 100% 98.4%);
+    --crimson3: hsl(331 85.6% 96.6%);
+    --crimson4: hsl(331 78.1% 94.2%);
+    --crimson5: hsl(332 72.1% 91.1%);
+    --crimson6: hsl(333 67% 86.7%);
+    --crimson7: hsl(335 63.5% 80.4%);
+    --crimson8: hsl(336 62.3% 72.9%);
+    --crimson9: hsl(336 80% 57.8%);
+    --crimson10: hsl(336 73.7% 53.5%);
+    --crimson11: hsl(336 75% 47.2%);
+    --crimson12: hsl(340 65% 14.5%);
+  }
+  
+  @mixin crimsonA {
+    --crimsonA1: hsl(340 100% 51% / 0.012);
+    --crimsonA2: hsl(330 100% 51% / 0.032);
+    --crimsonA3: hsl(332 99.1% 47.1% / 0.063);
+    --crimsonA4: hsl(331 99.9% 44.3% / 0.102);
+    --crimsonA5: hsl(333 99.9% 42.3% / 0.153);
+    --crimsonA6: hsl(333 99.5% 40.5% / 0.224);
+    --crimsonA7: hsl(335 99.7% 39.1% / 0.322);
+    --crimsonA8: hsl(336 99.5% 38.5% / 0.44);
+    --crimsonA9: hsl(336 99.9% 44.3% / 0.761);
+    --crimsonA10: hsl(336 100% 42.5% / 0.808);
+    --crimsonA11: hsl(336 99.8% 40.3% / 0.883);
+    --crimsonA12: hsl(340 99% 10% / 0.95);
+  }
+  
+  @mixin crimsonDark {
+    --crimsonDark1: hsl(335 20% 9.6%);
+    --crimsonDark2: hsl(335 32.2% 11.6%);
+    --crimsonDark3: hsl(335 42.5% 16.5%);
+    --crimsonDark4: hsl(335 47.2% 19.3%);
+    --crimsonDark5: hsl(335 50.9% 21.8%);
+    --crimsonDark6: hsl(335 55.7% 25.3%);
+    --crimsonDark7: hsl(336 62.9% 30.8%);
+    --crimsonDark8: hsl(336 74.9% 39%);
+    --crimsonDark9: hsl(336 80% 57.8%);
+    --crimsonDark10: hsl(339 84.1% 62.6%);
+    --crimsonDark11: hsl(341 90% 67.3%);
+    --crimsonDark12: hsl(332 87% 96%);
+  }
+  
+  @mixin crimsonDarkA {
+    --crimsonDarkA1: hsl(0 0% 0% / 0);
+    --crimsonDarkA2: hsl(336 96.8% 53.2% / 0.045);
+    --crimsonDarkA3: hsl(335 98.7% 59.3% / 0.138);
+    --crimsonDarkA4: hsl(336 99.1% 59.9% / 0.191);
+    --crimsonDarkA5: hsl(335 99.4% 59.4% / 0.244);
+    --crimsonDarkA6: hsl(335 99.4% 59.4% / 0.315);
+    --crimsonDarkA7: hsl(336 99.5% 57.8% / 0.439);
+    --crimsonDarkA8: hsl(336 99.9% 55.4% / 0.642);
+    --crimsonDarkA9: hsl(336 99.9% 62.8% / 0.903);
+    --crimsonDarkA10: hsl(339 99.9% 66.3% / 0.934);
+    --crimsonDarkA11: hsl(341 99.9% 69.5% / 0.965);
+    --crimsonDarkA12: hsl(327 100% 97.1% / 0.98);
+  }
+  
+  @mixin crimsonAll {
+    @include crimson;
+    @include crimsonA;
+    @include crimsonDark;
+    @include crimsonDarkA;
+  }
+  
+  @mixin crimsonAllLight {
+    @include crimson;
+    @include crimsonA;
+  }
+  
+  @mixin crimsonAllDark {
+    @include crimsonDark;
+    @include crimsonDarkA;
+  }
+  
+  // Pink ------------------------------------------------- /
+  @mixin pink {
+    --pink1: hsl(322 100% 99.4%);
+    --pink2: hsl(323 100% 98.4%);
+    --pink3: hsl(323 86.3% 96.5%);
+    --pink4: hsl(323 78.7% 94.2%);
+    --pink5: hsl(323 72.2% 91.1%);
+    --pink6: hsl(323 66.3% 86.6%);
+    --pink7: hsl(323 62% 80.1%);
+    --pink8: hsl(323 60.3% 72.4%);
+    --pink9: hsl(322 65% 54.5%);
+    --pink10: hsl(322 63.9% 50.7%);
+    --pink11: hsl(322 75% 46%);
+    --pink12: hsl(320 70% 13.5%);
+  }
+  
+  @mixin pinkA {
+    --pinkA1: hsl(320 100% 51% / 0.012);
+    --pinkA2: hsl(323 100% 51% / 0.032);
+    --pinkA3: hsl(323 98.9% 47.3% / 0.067);
+    --pinkA4: hsl(323 99.9% 44.3% / 0.102);
+    --pinkA5: hsl(324 99.9% 42.3% / 0.153);
+    --pinkA6: hsl(323 99.5% 39.6% / 0.224);
+    --pinkA7: hsl(323 99.7% 38.5% / 0.322);
+    --pinkA8: hsl(323 99.5% 37.7% / 0.444);
+    --pinkA9: hsl(322 99.7% 39.3% / 0.75);
+    --pinkA10: hsl(322 100% 39.1% / 0.808);
+    --pinkA11: hsl(322 99.8% 39% / 0.887);
+    --pinkA12: hsl(321 99.8% 10% / 0.961);
+  }
+  
+  @mixin pinkDark {
+    --pinkDark1: hsl(318 25% 9.6%);
+    --pinkDark2: hsl(319 32.2% 11.6%);
+    --pinkDark3: hsl(319 41% 16%);
+    --pinkDark4: hsl(320 45.4% 18.7%);
+    --pinkDark5: hsl(320 49% 21.1%);
+    --pinkDark6: hsl(321 53.6% 24.4%);
+    --pinkDark7: hsl(321 61.1% 29.7%);
+    --pinkDark8: hsl(322 74.9% 37.5%);
+    --pinkDark9: hsl(322 65% 54.5%);
+    --pinkDark10: hsl(323 72.8% 59.2%);
+    --pinkDark11: hsl(325 90% 66.4%);
+    --pinkDark12: hsl(322 90% 95.8%);
+  }
+  
+  @mixin pinkDarkA {
+    --pinkDarkA1: hsl(0 0% 0% / 0);
+    --pinkDarkA2: hsl(320 98.1% 64.1% / 0.036);
+    --pinkDarkA3: hsl(320 99.1% 63.1% / 0.121);
+    --pinkDarkA4: hsl(320 99.5% 62.7% / 0.17);
+    --pinkDarkA5: hsl(319 99.7% 61.5% / 0.219);
+    --pinkDarkA6: hsl(322 99.4% 60.8% / 0.291);
+    --pinkDarkA7: hsl(321 99.6% 58.7% / 0.407);
+    --pinkDarkA8: hsl(322 99.7% 55.4% / 0.608);
+    --pinkDarkA9: hsl(322 100% 64.6% / 0.817);
+    --pinkDarkA10: hsl(323 100% 66.3% / 0.875);
+    --pinkDarkA11: hsl(325 99.9% 68.6% / 0.96);
+    --pinkDarkA12: hsl(314 100% 96.9% / 0.98);
+  }
+  
+  @mixin pinkAll {
+    @include pink;
+    @include pinkA;
+    @include pinkDark;
+    @include pinkDarkA;
+  }
+  
+  @mixin pinkAllLight {
+    @include pink;
+    @include pinkA;
+  }
+  
+  @mixin pinkAllDark {
+    @include pinkDark;
+    @include pinkDarkA;
+  }
+  
+  // Plum ------------------------------------------------- /
+  @mixin plum {
+    --plum1: hsl(292 90% 99.4%);
+    --plum2: hsl(300 100% 98.6%);
+    --plum3: hsl(299 71.2% 96.4%);
+    --plum4: hsl(299 62% 93.8%);
+    --plum5: hsl(298 56.1% 90.5%);
+    --plum6: hsl(296 51.3% 85.8%);
+    --plum7: hsl(295 48.2% 78.9%);
+    --plum8: hsl(292 47.7% 70.8%);
+    --plum9: hsl(292 45% 51%);
+    --plum10: hsl(292 50.2% 46.9%);
+    --plum11: hsl(292 60% 42.5%);
+    --plum12: hsl(291 66% 14%);
+  }
+  
+  @mixin plumA {
+    --plumA1: hsl(280 100% 51% / 0.012);
+    --plumA2: hsl(300 100% 51% / 0.028);
+    --plumA3: hsl(300 99% 40.9% / 0.063);
+    --plumA4: hsl(300 99.9% 38.5% / 0.102);
+    --plumA5: hsl(298 98.2% 35.9% / 0.15);
+    --plumA6: hsl(297 99.6% 33.7% / 0.216);
+    --plumA7: hsl(295 99.7% 32.6% / 0.314);
+    --plumA8: hsl(292 99.6% 32.4% / 0.432);
+    --plumA9: hsl(292 99.9% 31% / 0.71);
+    --plumA10: hsl(292 99.9% 30.8% / 0.765);
+    --plumA11: hsl(292 99.8% 30.7% / 0.832);
+    --plumA12: hsl(291 99.9% 9.7% / 0.953);
+  }
+  
+  @mixin plumDark {
+    --plumDark1: hsl(301 20% 9.4%);
+    --plumDark2: hsl(300 29.8% 11.2%);
+    --plumDark3: hsl(298 34.4% 15.3%);
+    --plumDark4: hsl(297 36.8% 18.3%);
+    --plumDark5: hsl(296 38.5% 21.1%);
+    --plumDark6: hsl(295 40.4% 24.7%);
+    --plumDark7: hsl(294 42.7% 30.6%);
+    --plumDark8: hsl(292 45.1% 40%);
+    --plumDark9: hsl(292 45% 51%);
+    --plumDark10: hsl(295 50% 55.4%);
+    --plumDark11: hsl(300 60% 62%);
+    --plumDark12: hsl(296 74% 95.7%);
+  }
+  
+  @mixin plumDarkA {
+    --plumDarkA1: hsl(0 0% 0% / 0);
+    --plumDarkA2: hsl(300 96.4% 58.4% / 0.036);
+    --plumDarkA3: hsl(300 99.4% 67.1% / 0.102);
+    --plumDarkA4: hsl(295 99.8% 66.3% / 0.155);
+    --plumDarkA5: hsl(295 99.4% 67.1% / 0.204);
+    --plumDarkA6: hsl(294 99% 67.8% / 0.262);
+    --plumDarkA7: hsl(294 99.9% 67.7% / 0.363);
+    --plumDarkA8: hsl(292 99.8% 67.5% / 0.527);
+    --plumDarkA9: hsl(292 99.9% 69.2% / 0.695);
+    --plumDarkA10: hsl(295 99.9% 70.8% / 0.748);
+    --plumDarkA11: hsl(300 99.8% 72.9% / 0.828);
+    --plumDarkA12: hsl(300 100% 97.1% / 0.98);
+  }
+  
+  @mixin plumAll {
+    @include plum;
+    @include plumA;
+    @include plumDark;
+    @include plumDarkA;
+  }
+  
+  @mixin plumAllLight {
+    @include plum;
+    @include plumA;
+  }
+  
+  @mixin plumAllDark {
+    @include plumDark;
+    @include plumDarkA;
+  }
+  
+  // Purple ----------------------------------------------- /
+  @mixin purple {
+    --purple1: hsl(280 65% 99.4%);
+    --purple2: hsl(276 100% 99%);
+    --purple3: hsl(276 83.1% 97%);
+    --purple4: hsl(275 76.4% 94.7%);
+    --purple5: hsl(275 70.8% 91.8%);
+    --purple6: hsl(274 65.4% 87.8%);
+    --purple7: hsl(273 61% 81.7%);
+    --purple8: hsl(272 60% 73.5%);
+    --purple9: hsl(272 51% 54%);
+    --purple10: hsl(272 46.8% 50.3%);
+    --purple11: hsl(272 50% 45.8%);
+    --purple12: hsl(272 66% 16%);
+  }
+  
+  @mixin purpleA {
+    --purpleA1: hsl(300 94.3% 34.6% / 0.012);
+    --purpleA2: hsl(276 100% 51% / 0.02);
+    --purpleA3: hsl(277 99.6% 46.5% / 0.055);
+    --purpleA4: hsl(274 97.9% 44.3% / 0.095);
+    --purpleA5: hsl(276 98.6% 42% / 0.142);
+    --purpleA6: hsl(275 100% 39.2% / 0.2);
+    --purpleA7: hsl(273 99.2% 38.2% / 0.295);
+    --purpleA8: hsl(272 99.7% 37.6% / 0.424);
+    --purpleA9: hsl(272 99.6% 34% / 0.695);
+    --purpleA10: hsl(272 99.7% 32% / 0.73);
+    --purpleA11: hsl(272 99.8% 29.7% / 0.773);
+    --purpleA12: hsl(272 99.2% 11.3% / 0.946);
+  }
+  
+  @mixin purpleDark {
+    --purpleDark1: hsl(284 20% 9.6%);
+    --purpleDark2: hsl(283 30% 11.8%);
+    --purpleDark3: hsl(281 37.5% 16.5%);
+    --purpleDark4: hsl(280 41.2% 20%);
+    --purpleDark5: hsl(279 43.8% 23.3%);
+    --purpleDark6: hsl(277 46.4% 27.5%);
+    --purpleDark7: hsl(275 49.3% 34.6%);
+    --purpleDark8: hsl(272 52.1% 45.9%);
+    --purpleDark9: hsl(272 51% 54%);
+    --purpleDark10: hsl(273 57.3% 59.1%);
+    --purpleDark11: hsl(275 80% 71%);
+    --purpleDark12: hsl(279 75% 95.7%);
+  }
+  
+  @mixin purpleDarkA {
+    --purpleDarkA1: hsl(0 0% 0% / 0);
+    --purpleDarkA2: hsl(280 96.5% 57.5% / 0.045);
+    --purpleDarkA3: hsl(279 98.7% 62.8% / 0.129);
+    --purpleDarkA4: hsl(279 99.1% 64% / 0.191);
+    --purpleDarkA5: hsl(278 99.8% 64.2% / 0.248);
+    --purpleDarkA6: hsl(276 99.6% 64.6% / 0.328);
+    --purpleDarkA7: hsl(274 99.9% 64.6% / 0.456);
+    --purpleDarkA8: hsl(272 99.7% 64.6% / 0.66);
+    --purpleDarkA9: hsl(272 99.9% 69.1% / 0.748);
+    --purpleDarkA10: hsl(273 100% 71.3% / 0.801);
+    --purpleDarkA11: hsl(275 99.9% 75.3% / 0.934);
+    --purpleDarkA12: hsl(286 100% 97.1% / 0.98);
+  }
+  
+  @mixin purpleAll {
+    @include purple;
+    @include purpleA;
+    @include purpleDark;
+    @include purpleDarkA;
+  }
+  
+  @mixin purpleAllLight {
+    @include purple;
+    @include purpleA;
+  }
+  
+  @mixin purpleAllDark {
+    @include purpleDark;
+    @include purpleDarkA;
+  }
+  
+  // Violet ----------------------------------------------- /
+  @mixin violet {
+    --violet1: hsl(255 65% 99.4%);
+    --violet2: hsl(252 100% 99%);
+    --violet3: hsl(252 96.9% 97.4%);
+    --violet4: hsl(252 91.5% 95.5%);
+    --violet5: hsl(252 85.1% 93%);
+    --violet6: hsl(252 77.8% 89.4%);
+    --violet7: hsl(252 71% 83.7%);
+    --violet8: hsl(252 68.6% 76.3%);
+    --violet9: hsl(252 56% 57.5%);
+    --violet10: hsl(251 48.1% 53.5%);
+    --violet11: hsl(250 43% 48%);
+    --violet12: hsl(254 60% 18.5%);
+  }
+  
+  @mixin violetA {
+    --violetA1: hsl(270 94.3% 34.6% / 0.012);
+    --violetA2: hsl(252 100% 51% / 0.02);
+    --violetA3: hsl(254 100% 50% / 0.051);
+    --violetA4: hsl(251 98.3% 48.2% / 0.087);
+    --violetA5: hsl(252 99% 45.7% / 0.13);
+    --violetA6: hsl(251 99.1% 44% / 0.189);
+    --violetA7: hsl(252 99.5% 41.7% / 0.279);
+    --violetA8: hsl(252 100% 40.7% / 0.4);
+    --violetA9: hsl(252 99.9% 35.8% / 0.663);
+    --violetA10: hsl(251 99.6% 32.5% / 0.691);
+    --violetA11: hsl(250 99.8% 28.4% / 0.726);
+    --violetA12: hsl(254 99.5% 11.9% / 0.926);
+  }
+  
+  @mixin violetDark {
+    --violetDark1: hsl(250 20% 10.2%);
+    --violetDark2: hsl(255 30.3% 12.9%);
+    --violetDark3: hsl(253 37% 18.4%);
+    --violetDark4: hsl(252 40.1% 22.5%);
+    --violetDark5: hsl(252 42.2% 26.2%);
+    --violetDark6: hsl(251 44.3% 31.1%);
+    --violetDark7: hsl(250 46.8% 38.9%);
+    --violetDark8: hsl(250 51.8% 51.2%);
+    --violetDark9: hsl(252 56% 57.5%);
+    --violetDark10: hsl(251 63.2% 63.2%);
+    --violetDark11: hsl(250 95% 76.8%);
+    --violetDark12: hsl(252 87% 96.4%);
+  }
+  
+  @mixin violetDarkA {
+    --violetDarkA1: hsl(0 0% 0% / 0);
+    --violetDarkA2: hsl(258 98.2% 61% / 0.054);
+    --violetDarkA3: hsl(252 98.8% 65.8% / 0.148);
+    --violetDarkA4: hsl(253 99.7% 65.7% / 0.219);
+    --violetDarkA5: hsl(252 99.7% 66.4% / 0.286);
+    --violetDarkA6: hsl(251 99.7% 66.2% / 0.371);
+    --violetDarkA7: hsl(250 99.7% 66.3% / 0.514);
+    --violetDarkA8: hsl(250 99.7% 66.1% / 0.733);
+    --violetDarkA9: hsl(252 99.9% 70.3% / 0.786);
+    --violetDarkA10: hsl(251 99.9% 72.9% / 0.844);
+    --violetDarkA11: hsl(250 100% 77.9% / 0.98);
+    --violetDarkA12: hsl(254 100% 97.5% / 0.98);
+  }
+  
+  @mixin violetAll {
+    @include violet;
+    @include violetA;
+    @include violetDark;
+    @include violetDarkA;
+  }
+  
+  @mixin violetAllLight {
+    @include violet;
+    @include violetA;
+  }
+  
+  @mixin violetAllDark {
+    @include violetDark;
+    @include violetDarkA;
+  }
+  
+  // Indigo ----------------------------------------------- /
+  @mixin indigo {
+    --indigo1: hsl(225 60% 99.4%);
+    --indigo2: hsl(223 100% 98.6%);
+    --indigo3: hsl(223 98.4% 97.1%);
+    --indigo4: hsl(223 92.9% 95%);
+    --indigo5: hsl(224 87.1% 92%);
+    --indigo6: hsl(224 81.9% 87.8%);
+    --indigo7: hsl(225 77.4% 82.1%);
+    --indigo8: hsl(226 75.4% 74.5%);
+    --indigo9: hsl(226 70% 55.5%);
+    --indigo10: hsl(226 58.6% 51.3%);
+    --indigo11: hsl(226 55% 45%);
+    --indigo12: hsl(226 62% 17%);
+  }
+  
+  @mixin indigoA {
+    --indigoA1: hsl(240 92.6% 26.5% / 0.008);
+    --indigoA2: hsl(223 100% 51% / 0.028);
+    --indigoA3: hsl(224 100% 50.1% / 0.059);
+    --indigoA4: hsl(223 98% 48.5% / 0.099);
+    --indigoA5: hsl(225 98.6% 46.4% / 0.15);
+    --indigoA6: hsl(224 99.5% 44.9% / 0.224);
+    --indigoA7: hsl(225 99.7% 43.9% / 0.318);
+    --indigoA8: hsl(226 99.5% 43.1% / 0.448);
+    --indigoA9: hsl(226 100% 41.2% / 0.757);
+    --indigoA10: hsl(226 99.8% 37.1% / 0.773);
+    --indigoA11: hsl(226 99.6% 31.1% / 0.797);
+    --indigoA12: hsl(226 99.3% 11.4% / 0.938);
+  }
+  
+  @mixin indigoDark {
+    --indigoDark1: hsl(229 24% 10%);
+    --indigoDark2: hsl(230 36.4% 12.9%);
+    --indigoDark3: hsl(228 43.3% 17.5%);
+    --indigoDark4: hsl(227 47.2% 21%);
+    --indigoDark5: hsl(227 50% 24.1%);
+    --indigoDark6: hsl(226 52.9% 28.2%);
+    --indigoDark7: hsl(226 56% 34.5%);
+    --indigoDark8: hsl(226 58.2% 44.1%);
+    --indigoDark9: hsl(226 70% 55.5%);
+    --indigoDark10: hsl(227 75.2% 61.6%);
+    --indigoDark11: hsl(228 100% 75.9%);
+    --indigoDark12: hsl(226 83% 96.3%);
+  }
+  
+  @mixin indigoDarkA {
+    --indigoDarkA1: hsl(0 0% 0% / 0);
+    --indigoDarkA2: hsl(234 97.4% 59.9% / 0.059);
+    --indigoDarkA3: hsl(228 99.2% 61.7% / 0.144);
+    --indigoDarkA4: hsl(227 99.7% 62% / 0.211);
+    --indigoDarkA5: hsl(227 99.2% 62.3% / 0.27);
+    --indigoDarkA6: hsl(226 99.9% 62.1% / 0.35);
+    --indigoDarkA7: hsl(226 99.9% 62% / 0.471);
+    --indigoDarkA8: hsl(226 99.9% 62.1% / 0.655);
+    --indigoDarkA9: hsl(226 99.9% 63.6% / 0.848);
+    --indigoDarkA10: hsl(227 99.8% 67.7% / 0.893);
+    --indigoDarkA11: hsl(227 100% 76.3% / 0.98);
+    --indigoDarkA12: hsl(226 100% 97.5% / 0.98);
+  }
+  
+  @mixin indigoAll {
+    @include indigo;
+    @include indigoA;
+    @include indigoDark;
+    @include indigoDarkA;
+  }
+  
+  @mixin indigoAllLight {
+    @include indigo;
+    @include indigoA;
+  }
+  
+  @mixin indigoAllDark {
+    @include indigoDark;
+    @include indigoDarkA;
+  }
+  
+  // Blue ------------------------------------------------- /
+  @mixin blue {
+    --blue1: hsl(206 100% 99.2%);
+    --blue2: hsl(210 100% 98%);
+    --blue3: hsl(209 100% 96.5%);
+    --blue4: hsl(210 98.8% 94%);
+    --blue5: hsl(209 95% 90.1%);
+    --blue6: hsl(209 81.2% 84.5%);
+    --blue7: hsl(208 77.5% 76.9%);
+    --blue8: hsl(206 81.9% 65.3%);
+    --blue9: hsl(206 100% 50%);
+    --blue10: hsl(208 100% 47.3%);
+    --blue11: hsl(211 100% 43.2%);
+    --blue12: hsl(211 100% 15%);
+  }
+  
+  @mixin blueA {
+    --blueA1: hsl(210 100% 51% / 0.016);
+    --blueA2: hsl(210 100% 51% / 0.04);
+    --blueA3: hsl(210 100% 50.3% / 0.071);
+    --blueA4: hsl(210 100% 50.1% / 0.118);
+    --blueA5: hsl(208 99.1% 47.1% / 0.189);
+    --blueA6: hsl(209 99.5% 45.3% / 0.283);
+    --blueA7: hsl(208 99.9% 43.8% / 0.412);
+    --blueA8: hsl(206 99.8% 45.1% / 0.632);
+    --blueA9: hsl(206 100% 50% / 0.98);
+    --blueA10: hsl(208 100% 47.2% / 0.98);
+    --blueA11: hsl(212 100% 43% / 0.98);
+    --blueA12: hsl(213 100% 14.4% / 0.98);
+  }
+  
+  @mixin blueDark {
+    --blueDark1: hsl(212 35% 9.2%);
+    --blueDark2: hsl(216 50% 11.8%);
+    --blueDark3: hsl(214 59.4% 15.3%);
+    --blueDark4: hsl(214 65.8% 17.9%);
+    --blueDark5: hsl(213 71.2% 20.2%);
+    --blueDark6: hsl(212 77.4% 23.1%);
+    --blueDark7: hsl(211 85.1% 27.4%);
+    --blueDark8: hsl(211 89.7% 34.1%);
+    --blueDark9: hsl(206 100% 50%);
+    --blueDark10: hsl(209 100% 60.6%);
+    --blueDark11: hsl(210 100% 66.1%);
+    --blueDark12: hsl(206 98% 95.8%);
+  }
+  
+  @mixin blueDarkA {
+    --blueDarkA1: hsl(0 0% 0% / 0);
+    --blueDarkA2: hsl(221 97.8% 52.4% / 0.059);
+    --blueDarkA3: hsl(215 99.3% 54.2% / 0.135);
+    --blueDarkA4: hsl(215 99.3% 53.8% / 0.198);
+    --blueDarkA5: hsl(213 99.4% 52.8% / 0.252);
+    --blueDarkA6: hsl(212 99.9% 51.7% / 0.323);
+    --blueDarkA7: hsl(211 100% 50.7% / 0.435);
+    --blueDarkA8: hsl(211 99.8% 50.9% / 0.597);
+    --blueDarkA9: hsl(205 100% 50% / 0.98);
+    --blueDarkA10: hsl(208 100% 60.7% / 0.98);
+    --blueDarkA11: hsl(209 100% 66.3% / 0.98);
+    --blueDarkA12: hsl(196 100% 96.8% / 0.98);
+  }
+  
+  @mixin blueAll {
+    @include blue;
+    @include blueA;
+    @include blueDark;
+    @include blueDarkA;
+  }
+  
+  @mixin blueAllLight {
+    @include blue;
+    @include blueA;
+  }
+  
+  @mixin blueAllDark {
+    @include blueDark;
+    @include blueDarkA;
+  }
+  
+  // Cyan ------------------------------------------------- /
+  @mixin cyan {
+    --cyan1: hsl(185 60% 98.7%);
+    --cyan2: hsl(185 73.3% 97.1%);
+    --cyan3: hsl(186 70.2% 94.4%);
+    --cyan4: hsl(186 63.8% 90.6%);
+    --cyan5: hsl(187 58.3% 85.4%);
+    --cyan6: hsl(188 54.6% 78.4%);
+    --cyan7: hsl(189 53.7% 68.7%);
+    --cyan8: hsl(189 60.3% 52.5%);
+    --cyan9: hsl(190 95% 39%);
+    --cyan10: hsl(191 91.2% 36.8%);
+    --cyan11: hsl(192 85% 31%);
+    --cyan12: hsl(192 88% 12.5%);
+  }
+  
+  @mixin cyanA {
+    --cyanA1: hsl(195 95.2% 41.2% / 0.02);
+    --cyanA2: hsl(185 99.9% 42.3% / 0.051);
+    --cyanA3: hsl(186 97.8% 42.2% / 0.095);
+    --cyanA4: hsl(186 99.9% 38.5% / 0.153);
+    --cyanA5: hsl(187 99.3% 36.6% / 0.232);
+    --cyanA6: hsl(188 99.4% 35.4% / 0.334);
+    --cyanA7: hsl(189 99.6% 35% / 0.483);
+    --cyanA8: hsl(189 99.9% 37.6% / 0.761);
+    --cyanA9: hsl(190 100% 37.8% / 0.98);
+    --cyanA10: hsl(191 99.9% 34.6% / 0.969);
+    --cyanA11: hsl(192 100% 27.6% / 0.953);
+    --cyanA12: hsl(192 100% 11% / 0.98);
+  }
+  
+  @mixin cyanDark {
+    --cyanDark1: hsl(192 60% 7.2%);
+    --cyanDark2: hsl(192 71.4% 8.2%);
+    --cyanDark3: hsl(192 75.9% 10.8%);
+    --cyanDark4: hsl(192 79.3% 12.8%);
+    --cyanDark5: hsl(192 82.5% 14.6%);
+    --cyanDark6: hsl(192 86.6% 16.9%);
+    --cyanDark7: hsl(192 92.6% 20.1%);
+    --cyanDark8: hsl(192 100% 24.5%);
+    --cyanDark9: hsl(190 95% 39%);
+    --cyanDark10: hsl(188 100% 40%);
+    --cyanDark11: hsl(186 100% 42.2%);
+    --cyanDark12: hsl(185 73% 93.2%);
+  }
+  
+  @mixin cyanDarkA {
+    --cyanDarkA1: hsl(0 0% 0% / 0);
+    --cyanDarkA2: hsl(196 100% 50% / 0.031);
+    --cyanDarkA3: hsl(192 98% 50.9% / 0.085);
+    --cyanDarkA4: hsl(194 99.6% 51.3% / 0.133);
+    --cyanDarkA5: hsl(192 99.5% 51.3% / 0.173);
+    --cyanDarkA6: hsl(193 99.7% 50.4% / 0.226);
+    --cyanDarkA7: hsl(192 100% 50% / 0.31);
+    --cyanDarkA8: hsl(193 100% 50% / 0.425);
+    --cyanDarkA9: hsl(190 99.8% 50.8% / 0.731);
+    --cyanDarkA10: hsl(188 100% 50% / 0.775);
+    --cyanDarkA11: hsl(186 100% 49.9% / 0.824);
+    --cyanDarkA12: hsl(185 99.8% 95.1% / 0.978);
+  }
+  
+  @mixin cyanAll {
+    @include cyan;
+    @include cyanA;
+    @include cyanDark;
+    @include cyanDarkA;
+  }
+  
+  @mixin cyanAllLight {
+    @include cyan;
+    @include cyanA;
+  }
+  
+  @mixin cyanAllDark {
+    @include cyanDark;
+    @include cyanDarkA;
+  }
+  
+  // Teal ------------------------------------------------- /
+  @mixin teal {
+    --teal1: hsl(165 60% 98.8%);
+    --teal2: hsl(169 64.7% 96.7%);
+    --teal3: hsl(169 59.8% 94%);
+    --teal4: hsl(169 53.1% 90.2%);
+    --teal5: hsl(170 47.1% 85%);
+    --teal6: hsl(170 42.6% 77.9%);
+    --teal7: hsl(170 39.9% 68.1%);
+    --teal8: hsl(172 42.1% 52.5%);
+    --teal9: hsl(173 80% 36%);
+    --teal10: hsl(173 83.4% 32.5%);
+    --teal11: hsl(174 90% 25.2%);
+    --teal12: hsl(170 50% 12.5%);
+  }
+  
+  @mixin tealA {
+    --tealA1: hsl(165 95.2% 41.2% / 0.02);
+    --tealA2: hsl(169 99.5% 39.4% / 0.055);
+    --tealA3: hsl(167 97.6% 38.1% / 0.095);
+    --tealA4: hsl(168 98.1% 34.6% / 0.15);
+    --tealA5: hsl(170 99.4% 32.3% / 0.22);
+    --tealA6: hsl(170 99.7% 30.1% / 0.314);
+    --tealA7: hsl(170 99.3% 28.7% / 0.448);
+    --tealA8: hsl(172 99.8% 29.7% / 0.675);
+    --tealA9: hsl(173 99.8% 31.1% / 0.93);
+    --tealA10: hsl(173 99.7% 28.7% / 0.946);
+    --tealA11: hsl(174 99.8% 23.3% / 0.977);
+    --tealA12: hsl(171 98.8% 6.8% / 0.938);
+  }
+  
+  @mixin tealDark {
+    --tealDark1: hsl(168 48% 6.5%);
+    --tealDark2: hsl(169 77.8% 7.1%);
+    --tealDark3: hsl(170 76.1% 9.2%);
+    --tealDark4: hsl(171 75.8% 11%);
+    --tealDark5: hsl(171 75.7% 12.8%);
+    --tealDark6: hsl(172 75.8% 15.1%);
+    --tealDark7: hsl(172 76.7% 18.6%);
+    --tealDark8: hsl(173 80.2% 23.7%);
+    --tealDark9: hsl(173 80% 36%);
+    --tealDark10: hsl(174 83.9% 38.2%);
+    --tealDark11: hsl(174 90% 40.7%);
+    --tealDark12: hsl(166 73% 93.1%);
+  }
+  
+  @mixin tealDarkA {
+    --tealDarkA1: hsl(0 0% 0% / 0);
+    --tealDarkA2: hsl(171 100% 49.2% / 0.031);
+    --tealDarkA3: hsl(172 100% 49.7% / 0.07);
+    --tealDarkA4: hsl(175 100% 49.7% / 0.105);
+    --tealDarkA5: hsl(174 98.9% 50.1% / 0.14);
+    --tealDarkA6: hsl(174 100% 51.8% / 0.187);
+    --tealDarkA7: hsl(173 99.6% 53.2% / 0.257);
+    --tealDarkA8: hsl(174 99.6% 53.3% / 0.366);
+    --tealDarkA9: hsl(173 99.9% 54.6% / 0.609);
+    --tealDarkA10: hsl(174 99.9% 53.8% / 0.67);
+    --tealDarkA11: hsl(174 100% 52% / 0.748);
+    --tealDarkA12: hsl(166 98.6% 95% / 0.979);
+  }
+  
+  @mixin tealAll {
+    @include teal;
+    @include tealA;
+    @include tealDark;
+    @include tealDarkA;
+  }
+  
+  @mixin tealAllLight {
+    @include teal;
+    @include tealA;
+  }
+  
+  @mixin tealAllDark {
+    @include tealDark;
+    @include tealDarkA;
+  }
+  
+  // Green ------------------------------------------------ /
+  @mixin green {
+    --green1: hsl(136 50% 98.9%);
+    --green2: hsl(138 62.5% 96.9%);
+    --green3: hsl(139 55.2% 94.5%);
+    --green4: hsl(140 48.7% 91%);
+    --green5: hsl(141 43.7% 86%);
+    --green6: hsl(143 40.3% 79%);
+    --green7: hsl(146 38.5% 69%);
+    --green8: hsl(151 40.2% 54.1%);
+    --green9: hsl(151 55% 41.5%);
+    --green10: hsl(152 57.5% 37.6%);
+    --green11: hsl(153 67% 28.5%);
+    --green12: hsl(155 40% 14%);
+  }
+  
+  @mixin greenA {
+    --greenA1: hsl(140 94.9% 38.7% / 0.016);
+    --greenA2: hsl(138 99.9% 38.5% / 0.051);
+    --greenA3: hsl(139 97.7% 36.9% / 0.087);
+    --greenA4: hsl(139 98.5% 32.7% / 0.134);
+    --greenA5: hsl(141 100% 30.4% / 0.2);
+    --greenA6: hsl(142 99% 28.9% / 0.295);
+    --greenA7: hsl(146 99.5% 27.6% / 0.428);
+    --greenA8: hsl(151 99.5% 28.8% / 0.644);
+    --greenA9: hsl(151 99.9% 28% / 0.812);
+    --greenA10: hsl(152 99.6% 25.8% / 0.84);
+    --greenA11: hsl(153 99.9% 21% / 0.906);
+    --greenA12: hsl(155 99.4% 6.2% / 0.918);
+  }
+  
+  @mixin greenDark {
+    --greenDark1: hsl(146 30% 7.4%);
+    --greenDark2: hsl(155 44.2% 8.4%);
+    --greenDark3: hsl(155 46.7% 10.9%);
+    --greenDark4: hsl(154 48.4% 12.9%);
+    --greenDark5: hsl(154 49.7% 14.9%);
+    --greenDark6: hsl(154 50.9% 17.6%);
+    --greenDark7: hsl(153 51.8% 21.8%);
+    --greenDark8: hsl(151 51.7% 28.4%);
+    --greenDark9: hsl(151 55% 41.5%);
+    --greenDark10: hsl(151 49.3% 46.5%);
+    --greenDark11: hsl(151 50% 53.2%);
+    --greenDark12: hsl(137 72% 94%);
+  }
+  
+  @mixin greenDarkA {
+    --greenDarkA1: hsl(0 0% 0% / 0);
+    --greenDarkA2: hsl(169 100% 48.5% / 0.027);
+    --greenDarkA3: hsl(162 98.7% 57.9% / 0.07);
+    --greenDarkA4: hsl(158 98.6% 59.7% / 0.105);
+    --greenDarkA5: hsl(158 98.6% 60.7% / 0.14);
+    --greenDarkA6: hsl(156 99.9% 62% / 0.187);
+    --greenDarkA7: hsl(154 99.5% 63.1% / 0.257);
+    --greenDarkA8: hsl(152 99.7% 64.2% / 0.37);
+    --greenDarkA9: hsl(151 99.7% 63.8% / 0.605);
+    --greenDarkA10: hsl(152 99.9% 66.5% / 0.661);
+    --greenDarkA11: hsl(151 99.7% 69.2% / 0.74);
+    --greenDarkA12: hsl(137 100% 95.8% / 0.98);
+  }
+  
+  @mixin greenAll {
+    @include green;
+    @include greenA;
+    @include greenDark;
+    @include greenDarkA;
+  }
+  
+  @mixin greenAllLight {
+    @include green;
+    @include greenA;
+  }
+  
+  @mixin greenAllDark {
+    @include greenDark;
+    @include greenDarkA;
+  }
+  
+  // Grass ------------------------------------------------ /
+  @mixin grass {
+    --grass1: hsl(116 50% 98.9%);
+    --grass2: hsl(120 60% 97.1%);
+    --grass3: hsl(120 53.6% 94.8%);
+    --grass4: hsl(121 47.5% 91.4%);
+    --grass5: hsl(122 42.6% 86.5%);
+    --grass6: hsl(124 39% 79.7%);
+    --grass7: hsl(126 37.1% 70.2%);
+    --grass8: hsl(131 38.1% 56.3%);
+    --grass9: hsl(131 41% 46.5%);
+    --grass10: hsl(132 43.1% 42.2%);
+    --grass11: hsl(133 50% 32.5%);
+    --grass12: hsl(130 30% 14.9%);
+  }
+  
+  @mixin grassA {
+    --grassA1: hsl(120 94.9% 38.7% / 0.016);
+    --grassA2: hsl(120 94.9% 38.7% / 0.048);
+    --grassA3: hsl(120 98% 35.5% / 0.079);
+    --grassA4: hsl(120 98.7% 31.5% / 0.126);
+    --grassA5: hsl(122 98.5% 29.9% / 0.193);
+    --grassA6: hsl(125 99.2% 27.9% / 0.283);
+    --grassA7: hsl(125 99.9% 27% / 0.408);
+    --grassA8: hsl(131 100% 27.6% / 0.604);
+    --grassA9: hsl(131 99.7% 26.3% / 0.726);
+    --grassA10: hsl(132 99.9% 24% / 0.761);
+    --grassA11: hsl(133 99.5% 19.5% / 0.84);
+    --grassA12: hsl(128 98% 4.9% / 0.895);
+  }
+  
+  @mixin grassDark {
+    --grassDark1: hsl(146 30% 7.4%);
+    --grassDark2: hsl(136 33.3% 8.8%);
+    --grassDark3: hsl(137 36% 11.4%);
+    --grassDark4: hsl(137 37.6% 13.7%);
+    --grassDark5: hsl(136 38.7% 16%);
+    --grassDark6: hsl(135 39.6% 19.1%);
+    --grassDark7: hsl(134 40.3% 23.8%);
+    --grassDark8: hsl(131 40.1% 30.8%);
+    --grassDark9: hsl(131 41% 46.5%);
+    --grassDark10: hsl(131 39% 52.1%);
+    --grassDark11: hsl(131 43% 57.2%);
+    --grassDark12: hsl(137 72% 94%);
+  }
+  
+  @mixin grassDarkA {
+    --grassDarkA1: hsl(0 0% 0% / 0);
+    --grassDarkA2: hsl(107 97.2% 61.9% / 0.022);
+    --grassDarkA3: hsl(128 96.5% 69.8% / 0.066);
+    --grassDarkA4: hsl(130 100% 70.2% / 0.1);
+    --grassDarkA5: hsl(130 98.2% 69.1% / 0.14);
+    --grassDarkA6: hsl(132 99.9% 69.3% / 0.187);
+    --grassDarkA7: hsl(132 99.9% 69.8% / 0.261);
+    --grassDarkA8: hsl(130 99.6% 70.5% / 0.37);
+    --grassDarkA9: hsl(130 99.7% 70.6% / 0.618);
+    --grassDarkA10: hsl(131 100% 73.5% / 0.674);
+    --grassDarkA11: hsl(130 99.7% 75.6% / 0.731);
+    --grassDarkA12: hsl(137 100% 95.8% / 0.98);
+  }
+  
+  @mixin grassAll {
+    @include grass;
+    @include grassA;
+    @include grassDark;
+    @include grassDarkA;
+  }
+  
+  @mixin grassAllLight {
+    @include grass;
+    @include grassA;
+  }
+  
+  @mixin grassAllDark {
+    @include grassDark;
+    @include grassDarkA;
+  }
+  
+  // Orange ----------------------------------------------- /
+  @mixin orange {
+    --orange1: hsl(24 70% 99%);
+    --orange2: hsl(24 83.3% 97.6%);
+    --orange3: hsl(24 100% 95.3%);
+    --orange4: hsl(25 100% 92.2%);
+    --orange5: hsl(25 100% 88.2%);
+    --orange6: hsl(25 100% 82.8%);
+    --orange7: hsl(24 100% 75.3%);
+    --orange8: hsl(24 94.5% 64.3%);
+    --orange9: hsl(24 94% 50%);
+    --orange10: hsl(24 100% 46.5%);
+    --orange11: hsl(24 100% 37%);
+    --orange12: hsl(15 60% 17%);
+  }
+  
+  @mixin orangeA {
+    --orangeA1: hsl(20 94.9% 38.7% / 0.016);
+    --orangeA2: hsl(24 95.8% 46.5% / 0.044);
+    --orangeA3: hsl(25 100% 50.5% / 0.095);
+    --orangeA4: hsl(26 100% 50% / 0.157);
+    --orangeA5: hsl(25 100% 50.1% / 0.236);
+    --orangeA6: hsl(25 100% 50.1% / 0.346);
+    --orangeA7: hsl(24 100% 50.1% / 0.495);
+    --orangeA8: hsl(24 99.7% 48.7% / 0.695);
+    --orangeA9: hsl(24 99.9% 48.4% / 0.969);
+    --orangeA10: hsl(23 100% 46.4% / 0.98);
+    --orangeA11: hsl(23 100% 36.8% / 0.98);
+    --orangeA12: hsl(15 99.4% 11% / 0.934);
+  }
+  
+  @mixin orangeDark {
+    --orangeDark1: hsl(30 70% 7.2%);
+    --orangeDark2: hsl(28 100% 8.4%);
+    --orangeDark3: hsl(26 91.1% 11.6%);
+    --orangeDark4: hsl(25 88.3% 14.1%);
+    --orangeDark5: hsl(24 87.6% 16.6%);
+    --orangeDark6: hsl(24 88.6% 19.8%);
+    --orangeDark7: hsl(24 92.4% 24%);
+    --orangeDark8: hsl(25 100% 29%);
+    --orangeDark9: hsl(24 94% 50%);
+    --orangeDark10: hsl(24 100% 58.5%);
+    --orangeDark11: hsl(24 100% 62.2%);
+    --orangeDark12: hsl(24 97% 93.2%);
+  }
+  
+  @mixin orangeDarkA {
+    --orangeDarkA1: hsl(0 0% 0% / 0);
+    --orangeDarkA2: hsl(13 100% 49.7% / 0.054);
+    --orangeDarkA3: hsl(20 100% 49.7% / 0.117);
+    --orangeDarkA4: hsl(23 100% 49.8% / 0.166);
+    --orangeDarkA5: hsl(23 99.4% 50.1% / 0.215);
+    --orangeDarkA6: hsl(23 99.8% 51.1% / 0.286);
+    --orangeDarkA7: hsl(23 99.7% 50.6% / 0.389);
+    --orangeDarkA8: hsl(24 100% 49.9% / 0.523);
+    --orangeDarkA9: hsl(24 99.9% 51.6% / 0.965);
+    --orangeDarkA10: hsl(25 100% 58.6% / 0.98);
+    --orangeDarkA11: hsl(24 100% 62.4% / 0.98);
+    --orangeDarkA12: hsl(26 100% 94.2% / 0.98);
+  }
+  
+  @mixin orangeAll {
+    @include orange;
+    @include orangeA;
+    @include orangeDark;
+    @include orangeDarkA;
+  }
+  
+  @mixin orangeAllLight {
+    @include orange;
+    @include orangeA;
+  }
+  
+  @mixin orangeAllDark {
+    @include orangeDark;
+    @include orangeDarkA;
+  }
+  
+  // Brown ------------------------------------------------ /
+  @mixin brown {
+    --brown1: hsl(30 40% 99.1%);
+    --brown2: hsl(30 50% 97.6%);
+    --brown3: hsl(30 52.5% 94.6%);
+    --brown4: hsl(30 53% 91.2%);
+    --brown5: hsl(29 52.9% 86.8%);
+    --brown6: hsl(29 52.5% 80.9%);
+    --brown7: hsl(29 51.5% 72.8%);
+    --brown8: hsl(28 50% 63.1%);
+    --brown9: hsl(28 34% 51%);
+    --brown10: hsl(27 31.8% 47.6%);
+    --brown11: hsl(25 30% 41%);
+    --brown12: hsl(20 30% 19%);
+  }
+  
+  @mixin brownA {
+    --brownA1: hsl(30 94.3% 34.6% / 0.012);
+    --brownA2: hsl(30 94.3% 34.6% / 0.036);
+    --brownA3: hsl(30 97.7% 33.9% / 0.083);
+    --brownA4: hsl(31 98.5% 34.2% / 0.134);
+    --brownA5: hsl(29 100% 34.3% / 0.2);
+    --brownA6: hsl(28 99.2% 34.6% / 0.291);
+    --brownA7: hsl(29 99.8% 33.8% / 0.412);
+    --brownA8: hsl(28 100% 33.3% / 0.553);
+    --brownA9: hsl(28 99.9% 25.5% / 0.655);
+    --brownA10: hsl(27 99.7% 22.4% / 0.675);
+    --brownA11: hsl(25 99.8% 17.3% / 0.714);
+    --brownA12: hsl(21 99.4% 6.6% / 0.867);
+  }
+  
+  @mixin brownDark {
+    --brownDark1: hsl(22 15% 8.7%);
+    --brownDark2: hsl(20 28.3% 10.4%);
+    --brownDark3: hsl(20 28% 14%);
+    --brownDark4: hsl(21 28.4% 16.5%);
+    --brownDark5: hsl(22 28.7% 18.9%);
+    --brownDark6: hsl(23 29% 22.3%);
+    --brownDark7: hsl(25 29.5% 27.8%);
+    --brownDark8: hsl(27 30.1% 35.9%);
+    --brownDark9: hsl(28 34% 51%);
+    --brownDark10: hsl(28 41.4% 55.8%);
+    --brownDark11: hsl(28 60% 64.5%);
+    --brownDark12: hsl(30 67% 94%);
+  }
+  
+  @mixin brownDarkA {
+    --brownDarkA1: hsl(0 0% 0% / 0);
+    --brownDarkA2: hsl(22 99.6% 53.6% / 0.035);
+    --brownDarkA3: hsl(18 97.8% 69% / 0.088);
+    --brownDarkA4: hsl(21 98.2% 71% / 0.123);
+    --brownDarkA5: hsl(25 98.4% 72.1% / 0.158);
+    --brownDarkA6: hsl(25 98.7% 73.5% / 0.206);
+    --brownDarkA7: hsl(25 99% 74.6% / 0.289);
+    --brownDarkA8: hsl(28 99.2% 75.3% / 0.407);
+    --brownDarkA9: hsl(28 100% 74.8% / 0.642);
+    --brownDarkA10: hsl(28 99.9% 74.9% / 0.712);
+    --brownDarkA11: hsl(28 99.9% 74.9% / 0.843);
+    --brownDarkA12: hsl(32 98.2% 95.7% / 0.979);
+  }
+  
+  @mixin brownAll {
+    @include brown;
+    @include brownA;
+    @include brownDark;
+    @include brownDarkA;
+  }
+  
+  @mixin brownAllLight {
+    @include brown;
+    @include brownA;
+  }
+  
+  @mixin brownAllDark {
+    @include brownDark;
+    @include brownDarkA;
+  }
+  
+  // ------------------------------------------------------ /
+  // Bright Colors
+  //
+  // Radix Colors provides 5 bright scales, designed for
+  // black foreground text at step `9`.
+  // ------------------------------------------------------ /
+  
+  // Sky -------------------------------------------------- /
+  @mixin sky {
+    --sky1: hsl(193 100% 98.8%);
+    --sky2: hsl(193 100% 97.3%);
+    --sky3: hsl(193 99% 94.7%);
+    --sky4: hsl(193 91.4% 91.4%);
+    --sky5: hsl(194 82% 86.6%);
+    --sky6: hsl(194 74.1% 79.5%);
+    --sky7: hsl(194 72.3% 69.6%);
+    --sky8: hsl(193 77.9% 53.9%);
+    --sky9: hsl(193 98% 70%);
+    --sky10: hsl(193 87% 66.5%);
+    --sky11: hsl(195 100% 31.5%);
+    --sky12: hsl(195 100% 13%);
+  }
+  
+  @mixin skyA {
+    --skyA1: hsl(190 100% 51% / 0.024);
+    --skyA2: hsl(193 100% 50.1% / 0.055);
+    --skyA3: hsl(193 100% 50.1% / 0.106);
+    --skyA4: hsl(194 99.6% 47.7% / 0.165);
+    --skyA5: hsl(194 99.2% 45.4% / 0.244);
+    --skyA6: hsl(194 99.9% 42.3% / 0.357);
+    --skyA7: hsl(194 99.8% 42.2% / 0.526);
+    --skyA8: hsl(193 99.9% 43.8% / 0.82);
+    --skyA9: hsl(193 99.7% 49.4% / 0.593);
+    --skyA10: hsl(193 99.8% 46.6% / 0.628);
+    --skyA11: hsl(196 100% 31.2% / 0.98);
+    --skyA12: hsl(196 100% 12.2% / 0.98);
+  }
+  
+  @mixin skyDark {
+    --skyDark1: hsl(205 45% 8.6%);
+    --skyDark2: hsl(202 71.4% 9.6%);
+    --skyDark3: hsl(201 74.6% 12.2%);
+    --skyDark4: hsl(201 77.4% 14.4%);
+    --skyDark5: hsl(200 80.3% 16.5%);
+    --skyDark6: hsl(200 84.1% 18.9%);
+    --skyDark7: hsl(199 90.2% 22.1%);
+    --skyDark8: hsl(198 100% 26.1%);
+    --skyDark9: hsl(193 98% 70%);
+    --skyDark10: hsl(192 100% 77%);
+    --skyDark11: hsl(192 85% 55.8%);
+    --skyDark12: hsl(198 98% 95.8%);
+  }
+  
+  @mixin skyDarkA {
+    --skyDarkA1: hsl(0 0% 0% / 0);
+    --skyDarkA2: hsl(208 100% 49.8% / 0.045);
+    --skyDarkA3: hsl(201 100% 49.8% / 0.099);
+    --skyDarkA4: hsl(201 100% 50% / 0.148);
+    --skyDarkA5: hsl(200 100% 49.8% / 0.198);
+    --skyDarkA6: hsl(199 100% 49.9% / 0.256);
+    --skyDarkA7: hsl(199 100% 49.9% / 0.337);
+    --skyDarkA8: hsl(199 100% 50% / 0.453);
+    --skyDarkA9: hsl(192 100% 70.8% / 0.98);
+    --skyDarkA10: hsl(190 100% 77.6% / 0.98);
+    --skyDarkA11: hsl(192 99.9% 59.6% / 0.924);
+    --skyDarkA12: hsl(189 100% 96.8% / 0.98);
+  }
+  
+  @mixin skyAll {
+    @include sky;
+    @include skyA;
+    @include skyDark;
+    @include skyDarkA;
+  }
+  
+  @mixin skyAllLight {
+    @include sky;
+    @include skyA;
+  }
+  
+  @mixin skyAllDark {
+    @include skyDark;
+    @include skyDarkA;
+  }
+  
+  // Mint ------------------------------------------------- /
+  @mixin mint {
+    --mint1: hsl(165 80% 98.8%);
+    --mint2: hsl(164 88.2% 96.7%);
+    --mint3: hsl(164 76.6% 93.3%);
+    --mint4: hsl(165 68.8% 89.5%);
+    --mint5: hsl(165 60.6% 84.5%);
+    --mint6: hsl(165 53.5% 76.9%);
+    --mint7: hsl(166 50.7% 66.1%);
+    --mint8: hsl(168 52.8% 51%);
+    --mint9: hsl(167 65% 66%);
+    --mint10: hsl(167 59.3% 63.1%);
+    --mint11: hsl(172 72% 28.5%);
+    --mint12: hsl(172 70% 12%);
+  }
+  
+  @mixin mintA {
+    --mintA1: hsl(168 95.4% 42.8% / 0.024);
+    --mintA2: hsl(164 99.1% 47.1% / 0.063);
+    --mintA3: hsl(164 99.3% 43.5% / 0.118);
+    --mintA4: hsl(164 99.3% 41.3% / 0.177);
+    --mintA5: hsl(165 99% 37.5% / 0.248);
+    --mintA6: hsl(165 100% 35% / 0.353);
+    --mintA7: hsl(166 99.9% 33.5% / 0.51);
+    --mintA8: hsl(168 99.6% 34.6% / 0.75);
+    --mintA9: hsl(167 99.9% 39.5% / 0.561);
+    --mintA10: hsl(167 99.7% 37.4% / 0.589);
+    --mintA11: hsl(172 99.8% 22.4% / 0.922);
+    --mintA12: hsl(172 99.7% 8.8% / 0.965);
+  }
+  
+  @mixin mintDark {
+    --mintDark1: hsl(173 50% 6.6%);
+    --mintDark2: hsl(176 73% 7.3%);
+    --mintDark3: hsl(175 79.3% 8.9%);
+    --mintDark4: hsl(174 84.8% 10.3%);
+    --mintDark5: hsl(174 90.2% 11.9%);
+    --mintDark6: hsl(173 96% 13.8%);
+    --mintDark7: hsl(172 100% 16.8%);
+    --mintDark8: hsl(170 100% 21.4%);
+    --mintDark9: hsl(167 65% 66%);
+    --mintDark10: hsl(163 80% 77%);
+    --mintDark11: hsl(167 70% 48%);
+    --mintDark12: hsl(165 80% 94.8%);
+  }
+  
+  @mixin mintDarkA {
+    --mintDarkA1: hsl(0 0% 0% / 0);
+    --mintDarkA2: hsl(180 100% 49.2% / 0.031);
+    --mintDarkA3: hsl(176 100% 49.7% / 0.07);
+    --mintDarkA4: hsl(173 100% 49.7% / 0.105);
+    --mintDarkA5: hsl(173 100% 49.8% / 0.144);
+    --mintDarkA6: hsl(172 100% 49.8% / 0.192);
+    --mintDarkA7: hsl(171 100% 49.9% / 0.266);
+    --mintDarkA8: hsl(169 100% 49.9% / 0.366);
+    --mintDarkA9: hsl(167 99.8% 75% / 0.87);
+    --mintDarkA10: hsl(163 99.9% 80.7% / 0.948);
+    --mintDarkA11: hsl(167 99.9% 58.7% / 0.796);
+    --mintDarkA12: hsl(169 100% 96.2% / 0.98);
+  }
+  
+  @mixin mintAll {
+    @include mint;
+    @include mintA;
+    @include mintDark;
+    @include mintDarkA;
+  }
+  
+  @mixin mintAllLight {
+    @include mint;
+    @include mintA;
+  }
+  
+  @mixin mintAllDark {
+    @include mintDark;
+    @include mintDarkA;
+  }
+  
+  // Lime ------------------------------------------------- /
+  @mixin lime {
+    --lime1: hsl(85 50% 98.7%);
+    --lime2: hsl(85 66.7% 96.5%);
+    --lime3: hsl(85 76% 92.3%);
+    --lime4: hsl(84 75.3% 87.5%);
+    --lime5: hsl(84 71.5% 81.9%);
+    --lime6: hsl(82 65% 74.6%);
+    --lime7: hsl(79 53.2% 61.8%);
+    --lime8: hsl(76 61.7% 45.1%);
+    --lime9: hsl(81 67% 50%);
+    --lime10: hsl(80 68.3% 46.9%);
+    --lime11: hsl(75 80% 26%);
+    --lime12: hsl(78 70% 11.5%);
+  }
+  
+  @mixin limeA {
+    --limeA1: hsl(80 93.8% 31.4% / 0.02);
+    --limeA2: hsl(85 99.3% 40.2% / 0.059);
+    --limeA3: hsl(84 98.7% 43.2% / 0.138);
+    --limeA4: hsl(84 99.6% 43% / 0.22);
+    --limeA5: hsl(85 99.8% 41.8% / 0.31);
+    --limeA6: hsl(82 99.8% 39.3% / 0.42);
+    --limeA7: hsl(79 99.7% 34.6% / 0.585);
+    --limeA8: hsl(76 99.8% 33.7% / 0.828);
+    --limeA9: hsl(81 99.8% 40.2% / 0.836);
+    --limeA10: hsl(80 100% 37.6% / 0.851);
+    --limeA11: hsl(75 99.5% 22% / 0.95);
+    --limeA12: hsl(78 99.6% 8.4% / 0.965);
+  }
+  
+  @mixin limeDark {
+    --limeDark1: hsl(75 55% 6%);
+    --limeDark2: hsl(74 56.8% 7.3%);
+    --limeDark3: hsl(78 50.2% 9.9%);
+    --limeDark4: hsl(79 50.3% 12.1%);
+    --limeDark5: hsl(79 52.6% 14.2%);
+    --limeDark6: hsl(78 55.7% 16.7%);
+    --limeDark7: hsl(77 59.7% 20.1%);
+    --limeDark8: hsl(75 64.8% 24.5%);
+    --limeDark9: hsl(81 67% 50%);
+    --limeDark10: hsl(75 85% 60%);
+    --limeDark11: hsl(81 70% 43.8%);
+    --limeDark12: hsl(84 79% 92.6%);
+  }
+  
+  @mixin limeDarkA {
+    --limeDarkA1: hsl(0 0% 0% / 0);
+    --limeDarkA2: hsl(75 96.4% 59.6% / 0.022);
+    --limeDarkA3: hsl(88 98% 70.4% / 0.061);
+    --limeDarkA4: hsl(81 97.8% 67.4% / 0.096);
+    --limeDarkA5: hsl(82 98.4% 65.6% / 0.135);
+    --limeDarkA6: hsl(79 99.7% 64.3% / 0.182);
+    --limeDarkA7: hsl(77 99.1% 62.1% / 0.252);
+    --limeDarkA8: hsl(75 100% 60% / 0.342);
+    --limeDarkA9: hsl(81 99.8% 59.7% / 0.819);
+    --limeDarkA10: hsl(75 99.8% 63.7% / 0.936);
+    --limeDarkA11: hsl(81 99.9% 58.7% / 0.719);
+    --limeDarkA12: hsl(83 100% 94.2% / 0.98);
+  }
+  
+  @mixin limeAll {
+    @include lime;
+    @include limeA;
+    @include limeDark;
+    @include limeDarkA;
+  }
+  
+  @mixin limeAllLight {
+    @include lime;
+    @include limeA;
+  }
+  
+  @mixin limeAllDark {
+    @include limeDark;
+    @include limeDarkA;
+  }
+  
+  // Yellow ----------------------------------------------- /
+  @mixin yellow {
+    --yellow1: hsl(60 54% 98.5%);
+    --yellow2: hsl(52 100% 95.5%);
+    --yellow3: hsl(55 100% 90.9%);
+    --yellow4: hsl(54 100% 86.6%);
+    --yellow5: hsl(52 97.9% 82%);
+    --yellow6: hsl(50 89.4% 76.1%);
+    --yellow7: hsl(47 80.4% 68%);
+    --yellow8: hsl(48 100% 46.1%);
+    --yellow9: hsl(53 92% 50%);
+    --yellow10: hsl(50 100% 48.5%);
+    --yellow11: hsl(42 100% 29%);
+    --yellow12: hsl(40 55% 13.5%);
+  }
+  
+  @mixin yellowA {
+    --yellowA1: hsl(60 94.3% 34.6% / 0.024);
+    --yellowA2: hsl(52 100% 50.4% / 0.091);
+    --yellowA3: hsl(55 100% 50.2% / 0.181);
+    --yellowA4: hsl(54 100% 50.1% / 0.267);
+    --yellowA5: hsl(52 99.9% 49.5% / 0.357);
+    --yellowA6: hsl(50 100% 47.4% / 0.451);
+    --yellowA7: hsl(47 99.8% 44.6% / 0.577);
+    --yellowA8: hsl(48 100% 46% / 0.98);
+    --yellowA9: hsl(53 100% 48% / 0.961);
+    --yellowA10: hsl(50 100% 48.4% / 0.98);
+    --yellowA11: hsl(42 100% 28.6% / 0.98);
+    --yellowA12: hsl(41 98.9% 8% / 0.942);
+  }
+  
+  @mixin yellowDark {
+    --yellowDark1: hsl(45 100% 5.5%);
+    --yellowDark2: hsl(46 100% 6.7%);
+    --yellowDark3: hsl(45 100% 8.7%);
+    --yellowDark4: hsl(45 100% 10.4%);
+    --yellowDark5: hsl(47 100% 12.1%);
+    --yellowDark6: hsl(49 100% 14.3%);
+    --yellowDark7: hsl(49 90.3% 18.4%);
+    --yellowDark8: hsl(50 100% 22%);
+    --yellowDark9: hsl(53 92% 50%);
+    --yellowDark10: hsl(54 100% 68%);
+    --yellowDark11: hsl(48 100% 47%);
+    --yellowDark12: hsl(53 100% 91%);
+  }
+  
+  @mixin yellowDarkA {
+    --yellowDarkA1: hsl(0 0% 0% / 0);
+    --yellowDarkA2: hsl(49 100% 49.1% / 0.027);
+    --yellowDarkA3: hsl(45 100% 49.7% / 0.071);
+    --yellowDarkA4: hsl(46 100% 49.7% / 0.111);
+    --yellowDarkA5: hsl(47 100% 49.9% / 0.15);
+    --yellowDarkA6: hsl(51 100% 49.8% / 0.199);
+    --yellowDarkA7: hsl(51 99.8% 53.6% / 0.269);
+    --yellowDarkA8: hsl(51 100% 49.9% / 0.371);
+    --yellowDarkA9: hsl(53 100% 52% / 0.956);
+    --yellowDarkA10: hsl(56 100% 68.4% / 0.98);
+    --yellowDarkA11: hsl(48 100% 50% / 0.934);
+    --yellowDarkA12: hsl(60 100% 91.8% / 0.98);
+  }
+  
+  @mixin yellowAll {
+    @include yellow;
+    @include yellowA;
+    @include yellowDark;
+    @include yellowDarkA;
+  }
+  
+  @mixin yellowAllLight {
+    @include yellow;
+    @include yellowA;
+  }
+  
+  @mixin yellowAllDark {
+    @include yellowDark;
+    @include yellowDarkA;
+  }
+  
+  // Amber ------------------------------------------------ /
+  @mixin amber {
+    --amber1: hsl(39 70% 99%);
+    --amber2: hsl(40 100% 96.5%);
+    --amber3: hsl(44 100% 91.7%);
+    --amber4: hsl(43 100% 86.8%);
+    --amber5: hsl(42 100% 81.8%);
+    --amber6: hsl(38 99.7% 76.3%);
+    --amber7: hsl(36 86.1% 67.1%);
+    --amber8: hsl(35 85.2% 55.1%);
+    --amber9: hsl(39 100% 57%);
+    --amber10: hsl(35 100% 55.5%);
+    --amber11: hsl(30 100% 34%);
+    --amber12: hsl(20 80% 17%);
+  }
+  
+  @mixin amberA {
+    --amberA1: hsl(40 94.9% 38.7% / 0.016);
+    --amberA2: hsl(40 100% 50.3% / 0.071);
+    --amberA3: hsl(44 100% 50.1% / 0.165);
+    --amberA4: hsl(43 100% 50% / 0.263);
+    --amberA5: hsl(42 100% 50% / 0.365);
+    --amberA6: hsl(38 100% 50.1% / 0.475);
+    --amberA7: hsl(36 99.9% 46.2% / 0.612);
+    --amberA8: hsl(35 99.8% 46% / 0.832);
+    --amberA9: hsl(39 100% 50% / 0.859);
+    --amberA10: hsl(35 100% 50% / 0.891);
+    --amberA11: hsl(29 100% 33.6% / 0.98);
+    --amberA12: hsl(20 99.8% 14.1% / 0.965);
+  }
+  
+  @mixin amberDark {
+    --amberDark1: hsl(36 100% 6.1%);
+    --amberDark2: hsl(35 100% 7.6%);
+    --amberDark3: hsl(32 100% 10.2%);
+    --amberDark4: hsl(32 100% 12.4%);
+    --amberDark5: hsl(33 100% 14.6%);
+    --amberDark6: hsl(35 100% 17.1%);
+    --amberDark7: hsl(35 91% 21.6%);
+    --amberDark8: hsl(36 100% 25.5%);
+    --amberDark9: hsl(39 100% 57%);
+    --amberDark10: hsl(43 100% 64%);
+    --amberDark11: hsl(39 90% 49.8%);
+    --amberDark12: hsl(39 97% 93.2%);
+  }
+  
+  @mixin amberDarkA {
+    --amberDarkA1: hsl(0 0% 0% / 0);
+    --amberDarkA2: hsl(31 100% 49.7% / 0.036);
+    --amberDarkA3: hsl(27 100% 49.9% / 0.094);
+    --amberDarkA4: hsl(29 100% 50% / 0.143);
+    --amberDarkA5: hsl(31 100% 50% / 0.192);
+    --amberDarkA6: hsl(35 100% 50% / 0.25);
+    --amberDarkA7: hsl(34 99.6% 52.9% / 0.331);
+    --amberDarkA8: hsl(36 100% 50% / 0.442);
+    --amberDarkA9: hsl(40 100% 57.2% / 0.98);
+    --amberDarkA10: hsl(44 100% 64.2% / 0.98);
+    --amberDarkA11: hsl(39 99.9% 52.7% / 0.938);
+    --amberDarkA12: hsl(45 100% 94.2% / 0.98);
+  }
+  
+  @mixin amberAll {
+    @include amber;
+    @include amberA;
+    @include amberDark;
+    @include amberDarkA;
+  }
+  
+  @mixin amberAllLight {
+    @include amber;
+    @include amberA;
+  }
+  
+  @mixin amberAllDark {
+    @include amberDark;
+    @include amberDarkA;
+  }
+  
+  // ------------------------------------------------------ /
+  // Metals
+  //
+  // Radix Colors provides 2 metal scales.
+  // ------------------------------------------------------ /
+  
+  // Gold ------------------------------------------------- /
+  @mixin gold {
+    --gold1: hsl(50 20% 99.1%);
+    --gold2: hsl(47 52.9% 96.7%);
+    --gold3: hsl(46 38.2% 93.7%);
+    --gold4: hsl(44 32.7% 90.1%);
+    --gold5: hsl(43 29.9% 85.7%);
+    --gold6: hsl(41 28.3% 79.8%);
+    --gold7: hsl(39 27.6% 71.9%);
+    --gold8: hsl(36 27.2% 61.8%);
+    --gold9: hsl(36 20% 49.5%);
+    --gold10: hsl(36 19.8% 45.7%);
+    --gold11: hsl(36 20% 39%);
+    --gold12: hsl(36 16% 20%);
+  }
+  
+  @mixin goldA {
+    --goldA1: hsl(60 89.3% 18.3% / 0.012);
+    --goldA2: hsl(47 99.9% 34.6% / 0.051);
+    --goldA3: hsl(45 97% 27.9% / 0.087);
+    --goldA4: hsl(46 98% 25.4% / 0.134);
+    --goldA5: hsl(43 98.4% 22.6% / 0.185);
+    --goldA6: hsl(41 99.7% 22% / 0.259);
+    --goldA7: hsl(38 99.8% 21.5% / 0.357);
+    --goldA8: hsl(36 99.3% 21.5% / 0.487);
+    --goldA9: hsl(36 99.9% 16.2% / 0.604);
+    --goldA10: hsl(36 99.2% 14.6% / 0.636);
+    --goldA11: hsl(35 99.1% 11.2% / 0.687);
+    --goldA12: hsl(38 98% 3.8% / 0.832);
+  }
+  
+  @mixin goldDark {
+    --goldDark1: hsl(44 9% 8.3%);
+    --goldDark2: hsl(43 14.3% 9.6%);
+    --goldDark3: hsl(42 15.5% 13%);
+    --goldDark4: hsl(41 16.4% 15.6%);
+    --goldDark5: hsl(41 16.9% 17.8%);
+    --goldDark6: hsl(40 17.6% 20.8%);
+    --goldDark7: hsl(38 18.5% 26.4%);
+    --goldDark8: hsl(36 19.6% 35.1%);
+    --goldDark9: hsl(36 20% 49.5%);
+    --goldDark10: hsl(36 22.3% 54.5%);
+    --goldDark11: hsl(35 30% 64%);
+    --goldDark12: hsl(49 52% 93.8%);
+  }
+  
+  @mixin goldDarkA {
+    --goldDarkA1: hsl(0 0% 0% / 0);
+    --goldDarkA2: hsl(40 93.7% 70.6% / 0.022);
+    --goldDarkA3: hsl(40 97.5% 80.6% / 0.065);
+    --goldDarkA4: hsl(40 95.9% 80.8% / 0.1);
+    --goldDarkA5: hsl(38 97.3% 82.1% / 0.13);
+    --goldDarkA6: hsl(39 97.2% 82.5% / 0.169);
+    --goldDarkA7: hsl(37 99.3% 82.4% / 0.246);
+    --goldDarkA8: hsl(35 98.7% 82.2% / 0.363);
+    --goldDarkA9: hsl(36 99.7% 82.8% / 0.552);
+    --goldDarkA10: hsl(35 99.2% 83.7% / 0.613);
+    --goldDarkA11: hsl(35 99.3% 85.3% / 0.725);
+    --goldDarkA12: hsl(49 98.6% 96.7% / 0.966);
+  }
+  
+  @mixin goldAll {
+    @include gold;
+    @include goldA;
+    @include goldDark;
+    @include goldDarkA;
+  }
+  
+  @mixin goldAllLight {
+    @include gold;
+    @include goldA;
+  }
+  
+  @mixin goldAllDark {
+    @include goldDark;
+    @include goldDarkA;
+  }
+  
+  // Bronze ----------------------------------------------- /
+  @mixin bronze {
+    --bronze1: hsl(15 30% 99.1%);
+    --bronze2: hsl(17 63.6% 97.8%);
+    --bronze3: hsl(17 42.1% 95.2%);
+    --bronze4: hsl(17 35.2% 92.1%);
+    --bronze5: hsl(17 31.5% 88.2%);
+    --bronze6: hsl(17 29% 83%);
+    --bronze7: hsl(17 26.9% 75.6%);
+    --bronze8: hsl(17 25.1% 66.5%);
+    --bronze9: hsl(17 20% 54%);
+    --bronze10: hsl(17 18.1% 50.1%);
+    --bronze11: hsl(15 20% 43.1%);
+    --bronze12: hsl(12 22% 21.5%);
+  }
+  
+  @mixin bronzeA {
+    --bronzeA1: hsl(0 89.3% 18.3% / 0.012);
+    --bronzeA2: hsl(17 95.1% 40.1% / 0.036);
+    --bronzeA3: hsl(18 98.3% 29.8% / 0.067);
+    --bronzeA4: hsl(17 99.6% 26% / 0.106);
+    --bronzeA5: hsl(19 99.6% 23.8% / 0.157);
+    --bronzeA6: hsl(17 99.2% 22.5% / 0.22);
+    --bronzeA7: hsl(18 99.7% 21.6% / 0.31);
+    --bronzeA8: hsl(17 99.5% 20.2% / 0.42);
+    --bronzeA9: hsl(18 99.9% 16.7% / 0.553);
+    --bronzeA10: hsl(17 99.2% 15.4% / 0.589);
+    --bronzeA11: hsl(15 99.9% 13.2% / 0.655);
+    --bronzeA12: hsl(12 98.7% 5.7% / 0.832);
+  }
+  
+  @mixin bronzeDark {
+    --bronzeDark1: hsl(17 10% 8.8%);
+    --bronzeDark2: hsl(15 14.8% 10.6%);
+    --bronzeDark3: hsl(15 16.3% 14.3%);
+    --bronzeDark4: hsl(16 17.1% 17.2%);
+    --bronzeDark5: hsl(16 17.6% 19.6%);
+    --bronzeDark6: hsl(16 18.1% 22.9%);
+    --bronzeDark7: hsl(17 18.8% 28.8%);
+    --bronzeDark8: hsl(17 19.6% 38%);
+    --bronzeDark9: hsl(17 20% 54%);
+    --bronzeDark10: hsl(18 24% 59%);
+    --bronzeDark11: hsl(18 35% 68.5%);
+    --bronzeDark12: hsl(18 57% 94.1%);
+  }
+  
+  @mixin bronzeDarkA {
+    --bronzeDarkA1: hsl(0 0% 0% / 0);
+    --bronzeDarkA2: hsl(20 88.2% 74.2% / 0.027);
+    --bronzeDarkA3: hsl(10 99.4% 83% / 0.074);
+    --bronzeDarkA4: hsl(18 96% 81.1% / 0.114);
+    --bronzeDarkA5: hsl(18 99.4% 81.7% / 0.148);
+    --bronzeDarkA6: hsl(15 98.1% 82.4% / 0.192);
+    --bronzeDarkA7: hsl(16 99.2% 82.9% / 0.27);
+    --bronzeDarkA8: hsl(18 99.5% 82.6% / 0.396);
+    --bronzeDarkA9: hsl(18 99.3% 85% / 0.592);
+    --bronzeDarkA10: hsl(18 99.6% 85.2% / 0.657);
+    --bronzeDarkA11: hsl(17 99.9% 86.1% / 0.774);
+    --bronzeDarkA12: hsl(20 99.8% 96.4% / 0.974);
+  }
+  
+  @mixin bronzeAll {
+    @include bronze;
+    @include bronzeA;
+    @include bronzeDark;
+    @include bronzeDarkA;
+  }
+  
+  @mixin bronzeAllLight {
+    @include bronze;
+    @include bronzeA;
+  }
+  
+  @mixin bronzeAllDark {
+    @include bronzeDark;
+    @include bronzeDarkA;
+  }
+  
+  // ------------------------------------------------------ /
+  // Overlays
+  //
+  // The black and white scales are designed for overlays.
+  // These scales don’t change across themes.
+  // ------------------------------------------------------ /
+  
+  // blackA ----------------------------------------------- /
+  @mixin blackA {
+    --blackA1: hsl(0 0% 0% / 0.012);
+    --blackA2: hsl(0 0% 0% / 0.027);
+    --blackA3: hsl(0 0% 0% / 0.047);
+    --blackA4: hsl(0 0% 0% / 0.071);
+    --blackA5: hsl(0 0% 0% / 0.09);
+    --blackA6: hsl(0 0% 0% / 0.114);
+    --blackA7: hsl(0 0% 0% / 0.141);
+    --blackA8: hsl(0 0% 0% / 0.22);
+    --blackA9: hsl(0 0% 0% / 0.439);
+    --blackA10: hsl(0 0% 0% / 0.478);
+    --blackA11: hsl(0 0% 0% / 0.565);
+    --blackA12: hsl(0 0% 0% / 0.91);
+  }
+  
+  // whiteA ----------------------------------------------- /
+  @mixin whiteA {
+    --whiteA1: hsl(0 0% 100% / 0);
+    --whiteA2: hsl(0 0% 100% / 0.013);
+    --whiteA3: hsl(0 0% 100% / 0.034);
+    --whiteA4: hsl(0 0% 100% / 0.056);
+    --whiteA5: hsl(0 0% 100% / 0.086);
+    --whiteA6: hsl(0 0% 100% / 0.124);
+    --whiteA7: hsl(0 0% 100% / 0.176);
+    --whiteA8: hsl(0 0% 100% / 0.249);
+    --whiteA9: hsl(0 0% 100% / 0.386);
+    --whiteA10: hsl(0 0% 100% / 0.446);
+    --whiteA11: hsl(0 0% 100% / 0.592);
+    --whiteA12: hsl(0 0% 100% / 0.923);
+  }
+  
+  @mixin colors {
+    // ---------------------------------------------------- /
+    // Grays
+    //
+    // Radix Colors provides 6 gray scales.
+    // ---------------------------------------------------- /
+    @include gray;
+    @include mauve;
+    @include slate;
+    @include sage;
+    @include olive;
+    @include sand;
+  
+    // ---------------------------------------------------- /
+    // Colors
+    //
+    // Radix Colors provides 15 color scales, designed for
+    // white foreground text at step `9`.
+    // ---------------------------------------------------- /
+    @include tomato;
+    @include red;
+    @include crimson;
+    @include pink;
+    @include plum;
+    @include purple;
+    @include violet;
+    @include indigo;
+    @include blue;
+    @include cyan;
+    @include teal;
+    @include green;
+    @include grass;
+    @include orange;
+    @include brown;
+  
+    // ---------------------------------------------------- /
+    // Bright Colors
+    //
+    // Radix Colors provides 5 bright scales, designed for
+    // black foreground text at step `9`.
+    // ---------------------------------------------------- /
+    @include sky;
+    @include mint;
+    @include lime;
+    @include yellow;
+    @include amber;
+  
+    // ---------------------------------------------------- /
+    // Metals
+    //
+    // Radix Colors provides 2 metal scales.
+    // ---------------------------------------------------- /
+    @include gold;
+    @include bronze;
+  
+    // ---------------------------------------------------- /
+    // Overlays
+    //
+    // The black and white scales are designed for overlays.
+    // These scales don’t change across themes.
+    // ---------------------------------------------------- /
+    @include blackA;
+    @include whiteA;
+  }
