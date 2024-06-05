@@ -4,6 +4,7 @@ import { Pencil1Icon, Cross1Icon } from "@radix-ui/react-icons";
 import styles from "@/app/ui/buttons/buttons.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { EditEventForm } from "../forms/EditEventForm";
+import { getEvent } from "@/config/firestore";
 
 interface EditButtonProps {
   eventId: string;
@@ -36,7 +37,7 @@ export const EditButton: React.FC<EditButtonProps> = ({eventId, isStaff}) => {
               event.
             </AlertDialog.Description>
 
-            <EditEventForm setOpen={setOpen} />
+            <EditEventForm eventId={eventId} setOpen={setOpen} />
             {/* <form
             onSubmit={(event) => {
               wait().then(() => setOpen(false));
