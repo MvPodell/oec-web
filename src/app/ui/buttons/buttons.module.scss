@@ -1,119 +1,123 @@
 @import "/src/styles/variables.module.scss";
 
-.itemDelete {
-    align-items: center;
-    background-color: white;
-    color: $oec-blue;
-    border: 1px solid $oec-blue;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    display: flex;
-    height: 2rem;
-    justify-content: center;
-    padding: 0.5rem;
-    width: 2rem;
+.staffButton {
+  align-items: center;
+  background-color: white;
+  color: $oec-blue;
+  border: 1px solid $oec-blue;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  width: 2rem;
 }
 
-.itemDelete:active {
-    background-color: $oec-blue;
-    color: white;
+.staffButton:active {
+  background-color: $oec-blue;
+  color: white;
 }
 
-.itemDelete:hover {
-    background-color: $highlight-blue;
+.staffButton:hover {
+  background-color: $highlight-blue;
 }
-
 
 .AlertDialogOverlay {
-    background-color: var(--black-a9);
-    position: fixed;
-    inset: 0;
-    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .AlertDialogContent {
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
-    position: fixed;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    width: 90vw;
-    max-width: 500px;
-    max-height: 85vh;
-    padding: 25px;
-    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .AlertDialogContent:focus {
-    outline: none;
-  }
-  
-  .AlertDialogTitle {
-    margin: 0;
-    color: $mauve12;
-    font-size: 17px;
-    font-weight: 500;
-  }
-  
-  .AlertDialogDescription {
-    margin-bottom: 20px;
-    color: $mauve11;
-    font-size: 15px;
-    line-height: 1.5;
-  }
+  background-color: var(--black-a9);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .ButtonRed {
-    background-color: $red4;
-    border-radius: 0.375rem;
-    color: $red11;
-    padding: 0.5rem;
-    
+.AlertDialogContent {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 500px;
+  max-height: 85vh;
+  padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.AlertDialogContent:focus {
+  outline: none;
+}
 
-  }
-  .ButtonRed:hover {
-    background-color: $red5;
-    border-radius: 0.375rem;
-    padding: 0.5rem;
+.AlertDialogTitle {
+  margin: 0;
+  color: $blue11;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
 
-  }
-  .ButtonRed:focus {
-    box-shadow: 0 0 0 2px $red7;
-    border-radius: 0.375rem;
-    padding: 0.5rem;
+.AlertDialogDescription {
+  margin-bottom: 20px;
+  color: $mauve11;
+  font-size: 15px;
+  line-height: 1.5;
+}
 
-  }
-  .ButtonMauve {
-    background-color: $mauve2;
-    border-radius: 0.375rem;
-    box-shadow: 0 0 0 2px $mauve4;
+.ButtonRed {
+  background-color: $red4;
+  border-radius: 0.375rem;
+  color: $red11;
+  padding: 0.5rem;
+}
+.ButtonRed:hover {
+  background-color: $red5;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+.ButtonRed:focus {
+  box-shadow: 0 0 0 2px $red7;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+.ButtonMauve {
+  background-color: $mauve2;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 0 2px $mauve4;
 
-    color: $mauve11;
-    padding: 0.5rem;
-  }
-  .ButtonMauve:hover {
-    background-color: $mauve5;
-    border-radius: 0.375rem;
-    padding: 0.5rem;
+  color: $mauve11;
+  padding: 0.5rem;
+}
+.ButtonMauve:hover {
+  background-color: $mauve5;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
 
+@keyframes overlayShow {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
-  @keyframes overlayShow {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
   }
-  
-  @keyframes contentShow {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -48%) scale(0.96);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
+}
+
+.formCancel {
+  padding: 1rem 0;
+}
+
+.formWrapper {
+  padding: 0 1rem 1rem 1rem;
+}

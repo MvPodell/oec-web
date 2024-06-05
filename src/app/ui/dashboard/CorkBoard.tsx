@@ -3,17 +3,23 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import styles from '@/app/dashboard/dashboard.module.scss';
 import Image from "next/image";
 import { StaffButton } from '../trips/StaffButton';
-import { fetchSortedEvents } from "@/config/firestore";
+import { fetchSortedEvents, getUserRole } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
 import Link from "next/link";
 import { DeleteButton } from "../buttons/DeleteButton";
+import { EditButton } from "../buttons/EditButton";
+import { getAuth } from "firebase/auth";
 
 interface CorkBoardProps {
     blurredImg: string,
 }
 
 export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
+    const auth = getAuth();
+
     const [events, setEvents] = useState<Event[]>([]);
+    const [user, setUser] = useState(auth.currentUser);
+    const [isStaff, setIsStaff] = useState<boolean>(false);
 
     const currentDate = useMemo(() => new Date(), []);
 
@@ -27,13 +33,34 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
         loadEvents();
     }, [ loadEvents ]);
 
+    useEffect(() => {
+        if (!auth) return;
+        
+        return auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                setUser(null);
+                setIsStaff(false);
+            }
+            if (user) {
+                setUser(user);
+
+                const userRole = await getUserRole(user.uid);
+                if ( userRole && userRole === "staff") {
+                    setIsStaff(true);
+                } else {
+                    setIsStaff(false);
+                }
+            } 
+        })
+    }, [user, auth]);
+
     return (
         <div className={styles.corkContainer}>
             <div className={styles.corkHeader}>
                 <div className={styles.subheader2}>Upcoming at the OEC</div>
             </div>
             <div className={styles.corkBody}>
-                <StaffButton label="Add Event" dest="/form/add-event" />
+                <StaffButton label="Add Event" dest="/form/add-event" isStaff={isStaff}/>
                 <div className={styles.corkEventsContainer}>
                     {events.map(event => (
                         <div className={styles.corkItem} key={event.id}>
@@ -46,8 +73,9 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
                                 placeholder="blur"
                                 blurDataURL={blurredImg}
                             />
-                            <div className={styles.itemDeleteContainer}>
-                                <DeleteButton eventId={event.id} onDelete={loadEvents} />
+                            <div className={styles.buttonContainer}>
+                                <EditButton eventId={event.id} isStaff={isStaff}/>
+                                <DeleteButton eventId={event.id} onDelete={loadEvents} isStaff={isStaff}/>
                             </div>
                             <div className={styles.corkItemBody}>
                                 <div className={styles.corkDate}>{event.date}</div>
