@@ -1,10 +1,32 @@
 @import "/src/styles/variables.module.scss";
 
+.addButton {
+  text-decoration: none;
+  border-radius: 0.375rem;
+  border: 2px solid $slate3;
+  color: $muted-blue;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}
+
+.addButton:hover {
+  background-color: $hover-blue;
+  transition-duration: 1s;
+}
+
+.addButtonContainer {
+  padding: 0.2rem 1rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  text-decoration: none;
+}
+
 .staffButton {
   align-items: center;
-  background-color: white;
+  background-color: $slate1;
   color: $oec-blue;
-  border: 1px solid $oec-blue;
+  border: 2px solid $slate5;
   border-radius: 0.375rem;
   cursor: pointer;
   display: flex;
@@ -22,6 +44,8 @@
 
 .staffButton:hover {
   background-color: $highlight-blue;
+  border: 2px solid $highlight-blue;
+  transition: 1s;
 }
 
 .AlertDialogOverlay {

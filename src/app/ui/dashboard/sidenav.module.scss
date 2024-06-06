@@ -44,7 +44,7 @@
 }
 
 .leftNavItem {
-    background-color: #f9fafb;
+    background-color: $slate2;
     border-radius: 0.375rem;
     color: $oec-blue;
     display: flex;
@@ -67,7 +67,7 @@
 }
 
 .logoutButton {
-    background-color: #f9fafb;
+    background-color: $slate2;
     border: 0;
     color: $oec-blue;
     font-size: 1rem;
@@ -104,7 +104,6 @@
 }
 
 .topLogoutItem {
-    // background-color: #f9fafb;
     border-radius: 0.375rem;
     border: 1px solid $oec-blue;
     color: $oec-blue;

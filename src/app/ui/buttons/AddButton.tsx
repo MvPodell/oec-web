@@ -1,16 +1,16 @@
 'use client';
 import React, {useEffect, useState} from "react";
-import styles from "@/app/ui/forms/forms.module.scss";
+import styles from "@/app/ui/buttons/buttons.module.scss";
 import Link from "next/link";
 import { getAuth } from "firebase/auth";
 import { getUserRole } from "@/config/firestore";
 
-interface StaffButtonProps {
+interface AddButtonProps {
     label: string;
     dest: string;
 }
 
-export const StaffButton: React.FC<StaffButtonProps> = ({label, dest}) => {
+export const AddButton: React.FC<AddButtonProps> = ({label, dest}) => {
     const auth = getAuth();
     const [user, setUser] = useState(auth.currentUser);
     const [isStaff, setIsStaff] = useState<boolean>(false);
@@ -39,8 +39,8 @@ export const StaffButton: React.FC<StaffButtonProps> = ({label, dest}) => {
     return (
         <>
             {isStaff && (
-                <div className={styles.addTripContainer}>
-                    <Link href={`${dest}`} className={styles.addTrip}>
+                <div className={styles.addButtonContainer}>
+                    <Link href={`${dest}`} className={styles.addButton}>
                         {label}
                     </Link>
                 </div>

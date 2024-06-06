@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import styles from '@/app/dashboard/dashboard.module.scss';
 import Image from "next/image";
-import { StaffButton } from '../trips/StaffButton';
+import { AddButton } from '../buttons/AddButton';
 import { fetchSortedEvents, getUserRole } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
 import Link from "next/link";
@@ -60,7 +60,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
                 <div className={styles.subheader2}>Upcoming at the OEC</div>
             </div>
             <div className={styles.corkBody}>
-                <StaffButton label="Add Event" dest="/form/add-event" />
+                <AddButton label="ADD EVENT" dest="/form/add-event" />
                 <div className={styles.corkEventsContainer}>
                     {events.map(event => (
                         <div className={styles.corkItem} key={event.id}>

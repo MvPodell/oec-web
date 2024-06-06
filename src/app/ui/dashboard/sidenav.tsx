@@ -6,19 +6,21 @@ import Image from 'next/image';
 import Logo from '@/app/ui/dashboard/OECtemplogo.png';
 import { getAuth, signOut } from 'firebase/auth';
 import { Squash as Hamburger } from "hamburger-react";
+import { usePathname } from 'next/navigation';
 
 export default function SideNav() {
     const auth = getAuth();
+    const path = usePathname();
     const links = [
-        { name: 'Home', href: '/dashboard' },
-        { name: 'Trips', href: '/dashboard/trips' },
-        { name: 'Resources', href: '/dashboard/resources' },
-        { name: 'About Us', href: '/dashboard/about' },
+        { name: 'Home', key:'', href: '/dashboard' },
+        { name: 'Trips', key:'trips', href: '/dashboard/trips' },
+        { name: 'Resources', key:'resources', href: '/dashboard/resources' },
+        { name: 'About Us', key:'about', href: '/dashboard/about' },
     ];
 
     const [currentUser, setCurrentUser] = useState(auth.currentUser);
     const [isOpen, setOpen] = useState(false);
-    const [tab, setTab] = useState<"Home" | "Trips" | "Resources" | "About Us">("Home");
+    const [tab, setTab] = useState("");
 
 
     useEffect(() => {
@@ -39,10 +41,25 @@ export default function SideNav() {
         });
     }
 
-    const handleTabClick = (tabName: "Home" | "Trips" | "Resources" | "About Us") => {
-        setTab(tabName);
-    };
+    useEffect(() => {
+        const currTab = path.split('/');
+        if (currTab && currTab.length > 3) {
+            if (currTab[3].includes("trip-details")) {
+                setTab("trips");
+            }
+        } else if (currTab && currTab.length == 3) {
+            if (currTab[2].includes("event-details")) {
+                setTab("");
+            } else {
+                setTab(currTab[2]);
+            }
+            
+            
+        } else {
+            setTab("")
+        }
 
+    }, [path])
 
     return (
         <div className={styles.navBar}>
@@ -82,9 +99,9 @@ export default function SideNav() {
                                     key={link.name}
                                     href={link.href}
                                     className={styles.leftNavLink}
-                                    onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
+                                    // onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
                                 >
-                                    <div className={tab === link.name ? styles.highlightItem : styles.leftNavItem}>{link.name}</div>
+                                    <div className={tab === link.key ? styles.highlightItem : styles.leftNavItem}>{link.name}</div>
                                 </Link>
                             );
                         })}
@@ -112,9 +129,9 @@ export default function SideNav() {
                             key={link.name}
                             href={link.href}
                             className={styles.leftNavLink}
-                            onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
+                            // onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
                         >
-                            <div className={tab === link.name ? styles.highlightItem : styles.leftNavItem}>{link.name}</div>
+                            <div className={tab === link.key ? styles.highlightItem : styles.leftNavItem}>{link.name}</div>
                         </Link>
                     );
                 })}
