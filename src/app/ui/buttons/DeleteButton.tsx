@@ -3,26 +3,38 @@ import React from "react";
 import styles from "@/app/ui/buttons/buttons.module.scss";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { deleteEvent } from "@/config/firestore";
+import { deleteEvent, deleteTrip } from "@/config/firestore";
 
 interface DeleteButtonProps {
-  eventId: string;
+  deleteType: "event" | "trip";
+  id: string;
   onDelete: () => void;
   isStaff: boolean;
 }
 
 export const DeleteButton: React.FC<DeleteButtonProps> = ({
-  eventId,
+  deleteType,
+  id,
   onDelete,
   isStaff,
 }) => {
-  const handleDelete = async () => {
+  const handleDeleteEvent = async () => {
     try {
-      await deleteEvent(eventId).then(() => console.log("event deleted!"));
+      await deleteEvent(id).then(() => console.log("event deleted!"));
       onDelete();
       // TODO: make sure image is also deleted from firebase storage
     } catch (error) {
       console.error("Error deleting event: ", error);
+    }
+  };
+
+  const handleDeleteTrip = async () => {
+    try {
+      await deleteTrip(id).then(() => console.log("trip deleted!"));
+      onDelete();
+      // TODO: make sure image is also deleted from firebase storage
+    } catch (error) {
+      console.error("Error deleting trip: ", error);
     }
   };
 
@@ -44,8 +56,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
               <AlertDialog.Description
                 className={styles.AlertDialogDescription}
               >
-                This action cannot be undone. This will permanently this event
-                and remove its data from our servers.
+                This action cannot be undone. This will permanently this {deleteType} and remove its data from our servers.
               </AlertDialog.Description>
               <div
                 style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}
@@ -54,8 +65,8 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
                   <button className={styles.ButtonMauve}>Cancel</button>
                 </AlertDialog.Cancel>
                 <AlertDialog.Action asChild>
-                  <button className={styles.ButtonRed} onClick={handleDelete}>
-                    Yes, delete event
+                  <button className={styles.ButtonRed} onClick={deleteType==="event" ? handleDeleteEvent : handleDeleteTrip}>
+                    Yes, delete {deleteType}
                   </button>
                 </AlertDialog.Action>
               </div>

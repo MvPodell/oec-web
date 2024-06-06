@@ -74,8 +74,8 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
                                 blurDataURL={blurredImg}
                             />
                             <div className={styles.buttonContainer}>
-                                <EditButton editType="event" id={event.id} isStaff={isStaff}/>
-                                <DeleteButton eventId={event.id} onDelete={loadEvents} isStaff={isStaff}/>
+                                <EditButton editType="event" id={event.id} isStaff={isStaff} onEdit={loadEvents} />
+                                <DeleteButton deleteType="event" id={event.id} onDelete={loadEvents} isStaff={isStaff}/>
                             </div>
                             <div className={styles.corkItemBody}>
                                 <div className={styles.corkDate}>{event.date}</div>

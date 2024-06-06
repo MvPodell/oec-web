@@ -15,6 +15,7 @@ interface TripCardProps {
   shortDescription: string;
   imageURL: string;
   index: number;
+  fetchTrips: () => void;
 }
 
 export const TripCard: React.FC<TripCardProps> = ({
@@ -24,31 +25,32 @@ export const TripCard: React.FC<TripCardProps> = ({
   shortDescription,
   imageURL,
   index,
+  fetchTrips,
 }) => {
-    const auth = getAuth();
-    const [user, setUser] = useState(auth.currentUser);
-    const [isStaff, setIsStaff] = useState(false);
+  const auth = getAuth();
+  const [user, setUser] = useState(auth.currentUser);
+  const [isStaff, setIsStaff] = useState(false);
 
-    useEffect(() => {
-        if (!auth) return;
-        
-        return auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                setUser(null);
-                setIsStaff(false);
-            }
-            if (user) {
-                setUser(user);
+  useEffect(() => {
+    if (!auth) return;
 
-                const userRole = await getUserRole(user.uid);
-                if ( userRole && userRole === "staff") {
-                    setIsStaff(true);
-                } else {
-                    setIsStaff(false);
-                }
-            } 
-        })
-    }, [user, auth]);
+    return auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        setUser(null);
+        setIsStaff(false);
+      }
+      if (user) {
+        setUser(user);
+
+        const userRole = await getUserRole(user.uid);
+        if (userRole && userRole === "staff") {
+          setIsStaff(true);
+        } else {
+          setIsStaff(false);
+        }
+      }
+    });
+  }, [user, auth]);
 
   return (
     <div className={styles.cardDeckContainer}>
@@ -91,10 +93,11 @@ export const TripCard: React.FC<TripCardProps> = ({
             />
           )}
           <div className={styles.buttonContainer}>
-            <EditButton editType="trip" id={id} isStaff={isStaff} />
+            <EditButton editType="trip" id={id} isStaff={isStaff} onEdit={fetchTrips} />
             <DeleteButton
-              eventId={id}
-              onDelete={() => console.log("trip deleted")}
+              deleteType="trip"
+              id={id}
+              onDelete={fetchTrips}
               isStaff={isStaff}
             />
           </div>

@@ -113,7 +113,6 @@ export async function updateTrip(
   tripDescription: string,
   tripId: string,
   imageURL: string,
-  tripMembers: string[],
   tripShortDesc: string,
   tripTitle: string
 ) {
@@ -136,13 +135,13 @@ export async function updateTrip(
     }
 
     const existingTrip = docSnap.data();
+    const tripMembers = existingTrip.members || [];
 
     const isDifferent =
       existingTrip.capacity !== tripCapacity || 
       existingTrip.date !== tripDate ||
       existingTrip.description !== tripDescription ||
       existingTrip.imageURL !== imageURL ||
-      existingTrip.members !== tripMembers || 
       existingTrip.shortDescription !== tripShortDesc || 
       existingTrip.title !== tripTitle;
 
@@ -153,6 +152,7 @@ export async function updateTrip(
         description: tripDescription,
         id: tripId,
         imageURL: imageURL,
+        key: tripId,
         members: tripMembers,
         shortDescription: tripShortDesc,
         title: tripTitle,
@@ -538,5 +538,13 @@ export async function deleteEvent(eventId: string) {
     await deleteDoc(doc(db, "events", eventId));
   } catch (error) {
     console.error("Error deleting event: ", error);
+  }
+}
+
+export async function deleteTrip(tripId: string) {
+  try {
+    await deleteDoc(doc(db, "trips", tripId));
+  } catch (error) {
+    console.error("Error deleting trip: ", error);
   }
 }

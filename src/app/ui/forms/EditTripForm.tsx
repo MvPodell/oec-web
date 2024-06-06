@@ -10,11 +10,13 @@ import { Trip } from "@/app/dashboard/trips/page";
 interface EditTripFormProps {
   tripId: string;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onEdit: () => void;
 }
 
 export const EditTripForm: React.FC<EditTripFormProps> = ({
   tripId,
   setOpen,
+  onEdit,
 }) => {
   const [tripData, setTripData] = useState<Trip>({
     date: "",
@@ -129,11 +131,11 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             descriptionInputRef.current?.value || "",
             tripData.id,
             imageUrl || tripData.imageURL,
-            tripData.members,
             shortDescInputRef.current?.value || "",
             titleInputRef.current?.value || "",
         );
         setOpen(false);
+        onEdit();
     } catch (error) {
         console.error("Error adding event to firestore: ", error)
     }

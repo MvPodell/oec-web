@@ -11,11 +11,13 @@ import { storage } from "@/config/firebaseConfig";
 interface EditEventFormProps {
   eventId: string;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onEdit: () => void;
 }
 
 export const EditEventForm: React.FC<EditEventFormProps> = ({
   eventId,
   setOpen,
+  onEdit,
 }) => {
   const [eventData, setEventData] = useState<Event>({
     date: "",
@@ -40,8 +42,6 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
   const imageInputRef = useRef<HTMLInputElement>(null);
   const locationInputRef = useRef<HTMLInputElement>(null);
   const titleInputRef = useRef<HTMLInputElement>(null);
-
-
 
   const fetchEvent = useCallback(async () => {
     const fetchEventData = async () => {
@@ -79,14 +79,15 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
     eventData.description,
   ]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
 
     setUpdatedEvent((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,29 +106,29 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
     const file = imageInputRef.current?.files?.[0];
     let imageUrl = "";
     if (file) {
-        const storageRef = ref(storage, `/images/events/${file.name}`);
-        await uploadBytes(storageRef, file).then(data => {
-            console.log(data, "imgs");
-        });
-        console.log("image uploaded!");
-        imageUrl = await getDownloadURL(storageRef);
+      const storageRef = ref(storage, `/images/events/${file.name}`);
+      await uploadBytes(storageRef, file).then((data) => {
+        console.log(data, "imgs");
+      });
+      console.log("image uploaded!");
+      imageUrl = await getDownloadURL(storageRef);
     }
 
     try {
-        await updateEvent(
-            dateInputRef.current?.value || "",
-            descriptionInputRef.current?.value || "",
-            eventData.id,
-            imageUrl || eventData.imageURL,
-            locationInputRef.current?.value || "",
-            titleInputRef.current?.value || "",
-        );
-        setOpen(false);
+      await updateEvent(
+        dateInputRef.current?.value || "",
+        descriptionInputRef.current?.value || "",
+        eventData.id,
+        imageUrl || eventData.imageURL,
+        locationInputRef.current?.value || "",
+        titleInputRef.current?.value || ""
+      );
+      setOpen(false);
+      onEdit();
     } catch (error) {
-        console.error("Error adding event to firestore: ", error)
+      console.error("Error adding event to firestore: ", error);
     }
-    
-}
+  };
 
   return (
     <Form.Root className={styles.FormRoot}>
@@ -142,7 +143,13 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
           <Form.Label className={styles.FormLabel}>Event Title</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={titleInputRef} className={styles.Input} type="text" required onChange={handleChange}/>
+          <input
+            ref={titleInputRef}
+            className={styles.Input}
+            type="text"
+            required
+            onChange={handleChange}
+          />
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="date">
@@ -156,7 +163,13 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
           <Form.Label className={styles.FormLabel}>Date</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={dateInputRef} className={styles.Input} type="date" required onChange={handleChange}/>
+          <input
+            ref={dateInputRef}
+            className={styles.Input}
+            type="date"
+            required
+            onChange={handleChange}
+          />
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="date">
@@ -170,7 +183,13 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
           <Form.Label className={styles.FormLabel}>Location</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={locationInputRef} className={styles.Input} type="text" required onChange={handleChange}/>
+          <input
+            ref={locationInputRef}
+            className={styles.Input}
+            type="text"
+            required
+            onChange={handleChange}
+          />
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="description">
@@ -184,7 +203,12 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
           <Form.Label className={styles.FormLabel}>Description</Form.Label>
         </div>
         <Form.Control asChild>
-          <textarea ref={descriptionInputRef} className={styles.Textarea} required onChange={handleChange}/>
+          <textarea
+            ref={descriptionInputRef}
+            className={styles.Textarea}
+            required
+            onChange={handleChange}
+          />
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="image">
@@ -198,14 +222,17 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
           <Form.Label className={styles.FormLabel}>Image</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={imageInputRef} className={styles.Input} type="file" required onChange={handleFileChange} />
+          <input
+            ref={imageInputRef}
+            className={styles.Input}
+            type="file"
+            required
+            onChange={handleFileChange}
+          />
         </Form.Control>
       </Form.Field>
       <Form.Submit asChild>
-        <button
-          className={styles.ButtonBlue}
-          onClick={handleSubmit}
-        >
+        <button className={styles.ButtonBlue} onClick={handleSubmit}>
           Submit edits
         </button>
       </Form.Submit>

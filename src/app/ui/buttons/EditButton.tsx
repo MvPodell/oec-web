@@ -11,12 +11,14 @@ interface EditButtonProps {
   editType: "event" | "trip";
   id: string;
   isStaff: boolean;
+  onEdit: () => void;
 }
 
 export const EditButton: React.FC<EditButtonProps> = ({
   editType,
   id,
   isStaff,
+  onEdit,
 }) => {
   const [open, setOpen] = React.useState(false);
 
@@ -43,8 +45,8 @@ export const EditButton: React.FC<EditButtonProps> = ({
                   This action cannot be undone. This will permanently edit this {editType}.
                 </AlertDialog.Description>
 
-                {editType==="event" && (<EditEventForm eventId={id} setOpen={setOpen} />)}
-                {editType==="trip" && (<EditTripForm tripId={id} setOpen={setOpen} />)}
+                {editType==="event" && (<EditEventForm eventId={id} setOpen={setOpen} onEdit={onEdit}/>)}
+                {editType==="trip" && (<EditTripForm tripId={id} setOpen={setOpen} onEdit={onEdit} />)}
               </div>
             </AlertDialog.Content>
           </AlertDialog.Portal>
