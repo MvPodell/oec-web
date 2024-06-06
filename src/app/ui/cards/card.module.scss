@@ -6,6 +6,15 @@
     justify-content: left;
 }
 
+.buttonContainer {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -20,6 +29,7 @@
 .cardContainer {
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .cardButton {

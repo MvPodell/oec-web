@@ -60,7 +60,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
                 <div className={styles.subheader2}>Upcoming at the OEC</div>
             </div>
             <div className={styles.corkBody}>
-                <StaffButton label="Add Event" dest="/form/add-event" isStaff={isStaff}/>
+                <StaffButton label="Add Event" dest="/form/add-event" />
                 <div className={styles.corkEventsContainer}>
                     {events.map(event => (
                         <div className={styles.corkItem} key={event.id}>
@@ -74,7 +74,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ( { blurredImg }) => {
                                 blurDataURL={blurredImg}
                             />
                             <div className={styles.buttonContainer}>
-                                <EditButton eventId={event.id} isStaff={isStaff}/>
+                                <EditButton editType="event" id={event.id} isStaff={isStaff}/>
                                 <DeleteButton eventId={event.id} onDelete={loadEvents} isStaff={isStaff}/>
                             </div>
                             <div className={styles.corkItemBody}>

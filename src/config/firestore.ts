@@ -107,6 +107,66 @@ export async function addTripToFirestore(
   }
 }
 
+export async function updateTrip(
+  tripCapacity: string,
+  tripDate: string,
+  tripDescription: string,
+  tripId: string,
+  imageURL: string,
+  tripMembers: string[],
+  tripShortDesc: string,
+  tripTitle: string
+) {
+  try {
+    const docRef = doc(db, "trips", tripId);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      console.log("No such trip!");
+      addTripToFirestore(
+        tripCapacity,
+        tripDate,
+        tripDescription,
+        tripId,
+        imageURL,
+        tripShortDesc,
+        tripTitle,
+      );
+      return;
+    }
+
+    const existingTrip = docSnap.data();
+
+    const isDifferent =
+      existingTrip.capacity !== tripCapacity || 
+      existingTrip.date !== tripDate ||
+      existingTrip.description !== tripDescription ||
+      existingTrip.imageURL !== imageURL ||
+      existingTrip.members !== tripMembers || 
+      existingTrip.shortDescription !== tripShortDesc || 
+      existingTrip.title !== tripTitle;
+
+    if (isDifferent) {
+      await setDoc(docRef, {
+        capacity: tripCapacity,
+        date: tripDate,
+        description: tripDescription,
+        id: tripId,
+        imageURL: imageURL,
+        members: tripMembers,
+        shortDescription: tripShortDesc,
+        title: tripTitle,
+      });
+      console.log("Trip document updated for trip: ", tripId);
+    } else {
+      console.log("No changes detected, trip not updated.");
+    }
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    throw error;
+  }
+}
+
 export async function addEventToFirestore(
   eventDate: string,
   eventDescription: string,
