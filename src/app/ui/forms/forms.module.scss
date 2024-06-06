@@ -1,135 +1,191 @@
 @import "/src/styles/variables.module.scss";
 
-
-.addTrip {
-    text-decoration: none;
-}
-
-.addTripContainer {
-    padding: 0.2rem 1rem;
-    border: 1px solid $oec-blue;
-    border-radius: 1rem;
-    color: $oec-blue;
-    font-size: 0.75rem;
-    font-weight: 100;
-    text-decoration: none;
-    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-}
-
-
 .formBackButton {
-    margin-top: 1rem;
-    padding: 0.2rem 1rem;
-    border: 1px solid $oec-blue;
-    border-radius: 1rem;
-    color: $oec-blue;
-    font-size: 0.75rem;
-    font-weight: 100;
-    text-decoration: none;
+  margin-top: 1rem;
+  padding: 0.2rem 1rem;
+  border: 1px solid $oec-blue;
+  border-radius: 1rem;
+  color: $oec-blue;
+  font-size: 0.75rem;
+  font-weight: 100;
+  text-decoration: none;
 }
 
 .formHeader {
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    margin-top: 2rem;
-    color: $oec-blue;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: $oec-blue;
 }
 
 .formHeaderContainer {
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
 }
 
 .formInputContainer {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formInput {
-    display: flex;
-    padding: 1rem 0.75rem;
-    border-radius: 0.375rem;
-    border: 1px #dee2e6 solid;
-    width: 100%;
-    box-sizing: border-box;
-    min-width: 19rem;
+  display: flex;
+  padding: 1rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px #dee2e6 solid;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 19rem;
 }
 
 .formLabel {
-    padding: 0 0.75rem;
-    overflow: hidden;
-    text-align: start;
-    white-space: no-wrap;
-    text-overflow: ellipsis;
+  padding: 0 0.75rem;
+  overflow: hidden;
+  text-align: start;
+  white-space: no-wrap;
+  text-overflow: ellipsis;
 }
 
 .formSubmit {
-    border: 3px $oec-blue;
-    border-radius: 0.375rem;
-    background-color: $oec-blue;
-    color: white;
-    padding: 1rem;
-    width: 100%;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+  border: 3px $oec-blue;
+  border-radius: 0.375rem;
+  background-color: $oec-blue;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .formSubmitContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .formShell {
-    display: flex;
-    justify-content: center;
-    font-family: "Open Sans";
+  display: flex;
+  justify-content: center;
+  font-family: "Open Sans";
 }
 
 .formFieldsContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .loginField {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .formFields {
+  box-sizing: border-box;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    // padding: 1rem 0;
+    margin: 1rem 0;
     box-sizing: border-box;
-    @media (min-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        max-width: 80%;
-        // padding: 1rem 0;
-        margin: 1rem 0;
-        box-sizing: border-box;
-        
-
-    }
+  }
 }
 
-.formModule{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid $oec-blue;
-    max-width: 40%;
-    padding: 2rem;
-    border-radius: 1rem;
-    min-width: 23rem;
+.formModule {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid $oec-blue;
+  max-width: 40%;
+  padding: 2rem;
+  border-radius: 1rem;
+  min-width: 23rem;
 
-    // max-height: 25rem;
-    // position: relative;
+  // max-height: 25rem;
+  // position: relative;
 }
 
 .sublabel {
-    font-size: 0.8rem;
-    color: grey;
-    margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: grey;
+  margin: 0.5rem 0;
 }
+
+// Radix styling
+
+.ButtonBlue {
+  background-color: $blue4;
+  border-radius: 0.375rem;
+  color: $blue11;
+  padding: 0.5rem;
+}
+.ButtonBlue:hover {
+  background-color: $blue5;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+.ButtonBlue:focus {
+  box-shadow: 0 0 0 2px $blue7;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.FormField {
+  display: grid;
+  margin-bottom: 0.8rem;
+  width: 100%;
+}
+
+.FormLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2rem;
+  color: black;
+}
+
+.FormMessage {
+  font-size: 0.9rem;
+  color: black;
+  opacity: 0.8;
+}
+
+.FormRoot {
+    width: 100%;
+  }
+
+.Input, .Textarea {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 15px;
+  color: black;
+  box-shadow: 0 0 0 1px $blue1;
+  border: 1px $blue6 solid;
+  box-sizing: border-box;
+}
+
+.Input:hover, .Textarea:hover  {
+    box-shadow: 0 0 0 1px $blue1;
+}
+
+.Input:focus, .Textarea:focus {
+  box-shadow: 0 0 0 1px $blue1;
+}
+
+.Input {
+    padding: 0 10px;
+    height: 35px;
+    line-height: 1;
+  }
+  
+  .Textarea {
+    resize: none;
+    padding: 10px;
+  }
 

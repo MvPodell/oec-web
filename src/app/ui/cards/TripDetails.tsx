@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useCallback, Suspense } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,38 +15,27 @@ export const TripDetails: React.FC = () => {
     const [user, setUser] = useState(auth.currentUser);
     const [tripSize, setTripSize] = useState(0);
     const [currentTrip, setCurrentTrip] = useState<Trip | null>(null);
-    const [searchParamsLoaded, setSearchParamsLoaded] = useState(false);
     const searchParams = useSearchParams();
     const tripId = searchParams.get("id");
 
-    useEffect(() => {
-        // This useEffect hook will execute once the searchParams are loaded
-        if (searchParams) {
-            setSearchParamsLoaded(true);
-        }
-    }, [searchParams]);
-
     const fetchTripDetails = useCallback(async () => {
-        const fetchData = async () => {
-
-            if (tripId) {
+        if (tripId) {
                 const tripData = await getTrip(tripId);
                 if (tripData) {
                     setCurrentTrip(tripData);
+                    const size = await currentTripSize(tripData.id);
+                    setTripSize(size);
+                    if (user) {
+                        setIsMember(tripData.members.includes(user.uid));
+                    }
                 }
             }
-            if (currentTrip) {
-                const size = await currentTripSize(currentTrip.id);
-                console.log("currently", size, "members on trip");
-                setTripSize(size);
-            }
-        };
-        fetchData()
-    }, [tripId, currentTrip]);
+
+    }, [tripId, user]);
 
     useEffect(() => {
         fetchTripDetails();
-    }, [tripId, fetchTripDetails]);
+    }, [fetchTripDetails]);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -56,27 +45,6 @@ export const TripDetails: React.FC = () => {
         return () => unsubscribe();
 
     }, [auth]);
-
-    useEffect(() => {
-        const fetchMemberStatus = async () => {
-            if (user && currentTrip) {
-                const member = currentTrip.members.includes(user.uid);
-                setIsMember(member);
-            }
-        };
-        fetchMemberStatus();
-    }, [user, currentTrip]);
-
-    useEffect(() => {
-        const fetchTripSize = async () => {
-            if (currentTrip) {
-                const size = await currentTripSize(currentTrip.id);
-                console.log("currently", size, "members on trip");
-                setTripSize(size);
-            }
-        };
-        fetchTripSize();
-    }, [isMember, currentTrip]);
 
     const joinTrip = async (e: React.MouseEvent) => {
         e.preventDefault();
@@ -100,7 +68,7 @@ export const TripDetails: React.FC = () => {
         }
     };
 
-    if (!searchParamsLoaded) {
+    if (!tripId) {
         return <div>Loading...</div>;
     }
 

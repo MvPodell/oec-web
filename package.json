@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-alert-dialog": "^1.0.5",
+    "@radix-ui/react-form": "^0.0.3",
+    "@radix-ui/react-icons": "^1.3.0",
     "@types/firebase": "^3.2.1",
     "firebase": "^10.12.1",
     "hamburger-react": "^2.5.1",
