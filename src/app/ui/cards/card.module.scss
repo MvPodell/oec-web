@@ -153,9 +153,10 @@
 .corkBody {
   background-color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  align-content: center;
+  align-items: center;
   padding: 1rem 0;
   width: 100%;
   padding: 0 auto;
@@ -165,14 +166,16 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin: 2rem 0;
   width: 99%;
   align-items: center;
 }
 
 .corkHeader {
-  background-color: $muted-blue;
-  color: white;
+  // background-color: $muted-blue;
+  color: $oec-blue;
+  font-weight: 800;
+  font-size: 2rem;
   display: flex;
   margin-top: 1rem;
   padding: 1rem 0;

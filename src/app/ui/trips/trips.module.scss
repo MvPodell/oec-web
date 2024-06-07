@@ -38,6 +38,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 1rem;
 }
 
 .emptyTripWarning {
@@ -61,8 +62,10 @@
 }
 
 .sectionHeader {
-    background-color: $muted-blue;
-    color: white;
+    // background-color: $muted-blue;
+    color: $oec-blue;
+    font-weight: 800;
+    font-size: 2rem;
     display: flex;
     margin-top: 1rem;
     padding: 1rem 0;
