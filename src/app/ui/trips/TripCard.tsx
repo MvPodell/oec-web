@@ -67,7 +67,7 @@ export const TripCard: React.FC<TripCardProps> = ({
                 className={styles.cardButton}
                 href={`/dashboard/trips/trip-details?id=${id}`}
               >
-                LEARN MORE
+                SEE TRIP DETAILS
               </Link>
             </div>
           </div>

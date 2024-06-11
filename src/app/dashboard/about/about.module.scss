@@ -1,0 +1,22 @@
+@import "/src/styles/variables.module.scss";
+
+.aboutHeader {
+    // background-color: $muted-blue;
+    color: $oec-blue;
+    font-weight: 800;
+    font-size: 2rem;
+    display: flex;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .aboutModule {
+    display: grid;
+    
+  }
+
+  .aboutP {
+    padding: 1rem 0;
+  }

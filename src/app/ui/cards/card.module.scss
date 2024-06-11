@@ -149,3 +149,42 @@
 .cardMemberQueue {
   margin: 1rem 0;
 }
+
+.corkBody {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  width: 100%;
+  padding: 0 auto;
+}
+
+.corkContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  width: 99%;
+  align-items: center;
+}
+
+.corkHeader {
+  // background-color: $muted-blue;
+  color: $oec-blue;
+  font-weight: 800;
+  font-size: 2rem;
+  display: flex;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.subtitle2 {
+  font-size: 1rem;
+  margin: 1rem;
+  text-align: center;
+}
