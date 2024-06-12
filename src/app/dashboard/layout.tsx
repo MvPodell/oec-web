@@ -11,9 +11,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <SideNav />
       </div>
       <div className={styles.bodyContainer}>
-        <div className={styles.banner}>
+        {/* <div className={styles.banner}>
           We are closed for the summer! See you in the fall!
-        </div>
+        </div> */}
 
         <div className={styles.body}>{children}</div>
       </div>

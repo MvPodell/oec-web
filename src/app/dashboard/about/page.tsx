@@ -4,8 +4,8 @@ import styles from "@/app/dashboard/about/about.module.scss";
 export default function Page() {
   return (
     <div>
-      <div>
-        <div className={styles.aboutHeader}>About the OEC</div>
+      <div className={styles.aboutContainer}>
+        <div className={styles.aboutHeaderOEC}>About the OEC</div>
         <div className={styles.aboutP}>
           The Outdoor Education Center of Pomona College is one of the premier
           outdoor education programs in the country. We provide hands-on

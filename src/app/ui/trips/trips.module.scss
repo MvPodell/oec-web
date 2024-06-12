@@ -31,7 +31,12 @@
     flex-direction: column;
     margin-bottom: 4rem;
     width: 100%;
+}
 
+.currentTripsSection {
+    background-color: $muted-blue;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
 }
 
 .deckContainer {
@@ -71,4 +76,10 @@
     padding: 1rem 0;
     width: 100%;
     justify-content: center;
+}
+
+.sectionHeaderCurrent {
+    @extend .sectionHeader;
+    color: white;
+    
 }

@@ -1,7 +1,14 @@
 @import "/src/styles/variables.module.scss";
 
+
+.aboutContainer {
+  background-color: $muted-blue;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 0 7rem 2rem 7rem;
+}
 .aboutHeader {
-    // background-color: $muted-blue;
     color: $oec-blue;
     font-weight: 800;
     font-size: 2rem;
@@ -11,6 +18,11 @@
     width: 100%;
     justify-content: center;
   }
+
+.aboutHeaderOEC {
+  @extend .aboutHeader;
+  color: white;
+}
 
   .aboutModule {
     display: grid;

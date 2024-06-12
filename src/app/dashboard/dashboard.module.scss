@@ -15,12 +15,11 @@
 
 .body {
   @media (min-width: 768px) {
-    padding: 0 3rem 3rem 3rem;
+    // padding: 3rem;
     flex-grow: 1;
   }
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
 }
 
 .bodyContainer {
@@ -29,25 +28,8 @@
   flex-grow: 1;
   overflow-y: auto;
   @media (min-width: 768px) {
-    margin-left: 16rem;
+    // margin-left: 16rem;
   }
-}
-
-.dashHeader {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.dashHours {
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  display: none;
 }
 
 .dashBody {
@@ -55,6 +37,36 @@
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  width: 100%;
+}
+
+.dashContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  // padding: 1rem;
+}
+
+.dashHeader {
+  align-items: center;
+  background-color: $muted-blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.dashHours {
+  @media (min-width: 768px) {
+    color: $highlight-blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  display: none;
 }
 
 .dashPanel {
@@ -69,20 +81,22 @@
   display: flex;
   flex-direction: column;
   @media (min-width: 768px) {
-    flex-direction: row;
-    height: 100vh;
+    // flex-direction: row;
+    // height: 100vh;
     overflow: hidden;
   }
 }
 
 .subtitle {
+  color: $highlight-blue;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 3rem;
   line-height: 1;
 }
 
 .subtitle2 {
-  font-size: 1rem;
+  color: $highlight-blue;
+  font-size: 2rem;
   margin: 1rem;
   text-align: center;
 }
@@ -90,20 +104,20 @@
 .boldTitle {
   font-size: 7rem;
   font-weight: 800;
-  color: $oec-blue;
+  color: white;
   line-height: 1;
 }
 
 .sideNavContainer {
   @media (min-width: 768px) {
-    position: fixed;
-    height: 100vh;
-    width: 16rem;
+    // position: fixed;
+    // height: 100vh;
+    // width: 16rem;
     /* Adjust based on your design */
     overflow: hidden;
     /* Prevent the SideNav from scrolling */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
   }
   display: none;

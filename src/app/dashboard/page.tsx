@@ -29,7 +29,7 @@ export default async function Page() {
 
   return (
     <div>
-      <div className={styles.dashBody}>
+      <div className={styles.dashContainer}>
         <div className={styles.dashHeader}>
           <div className={styles.subtitle}>Welcome to the</div>
           <div className={styles.boldTitle}>OEC</div>
@@ -43,7 +43,10 @@ export default async function Page() {
             <div>Sat-Sun: CLOSED</div>
           </div>
         </div>
+        <div className={styles.dashBody}>
         {base64 && <CorkBoard blurredImg={base64} />}
+        </div>
+        
       </div>
       <div></div>
     </div>

@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <div className={styles.tripsContainer}>
       <div className={styles.currentTripsSection}>
-        <div className={styles.sectionHeader}>Current Trips</div>
+        <div className={styles.sectionHeaderCurrent}>Current Trips</div>
         <div className={styles.deckContainer}>
           <AddButton label="ADD TRIP" dest="/form/add-trip" />
           <TripList kind="present" />
