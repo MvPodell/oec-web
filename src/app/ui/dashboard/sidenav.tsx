@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import styles from "@/app/ui/dashboard/sidenav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/app/ui/dashboard/OECtemplogo.png";
+// import Logo from "@/app/ui/dashboard/OECtemplogo.png";
+import Logo from "../../../../public/images/OECTempLogoBlue.png";
 import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
 import { usePathname } from "next/navigation";
@@ -12,15 +13,15 @@ export default function SideNav() {
   const auth = getAuth();
   const path = usePathname();
   const links = [
-    { name: "Home", key: "", href: "/dashboard" },
-    { name: "Trips", key: "trips", href: "/dashboard/trips" },
-    { name: "Resources", key: "resources", href: "/dashboard/resources" },
-    { name: "About Us", key: "about", href: "/dashboard/about" },
+    { name: "HOME", key: "", href: "/dashboard" },
+    { name: "TRIPS", key: "trips", href: "/dashboard/trips" },
+    { name: "RESOURCES", key: "resources", href: "/dashboard/resources" },
+    { name: "ABOUT", key: "about", href: "/dashboard/about" },
   ];
 
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
   const [isOpen, setOpen] = useState(false);
-  const [tab, setTab] = useState("");
+//   const [tab, setTab] = useState("");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -41,22 +42,22 @@ export default function SideNav() {
       });
   };
 
-  useEffect(() => {
-    const currTab = path.split("/");
-    if (currTab && currTab.length > 3) {
-      if (currTab[3].includes("trip-details")) {
-        setTab("trips");
-      }
-    } else if (currTab && currTab.length == 3) {
-      if (currTab[2].includes("event-details")) {
-        setTab("");
-      } else {
-        setTab(currTab[2]);
-      }
-    } else {
-      setTab("");
-    }
-  }, [path]);
+//   useEffect(() => {
+//     const currTab = path.split("/");
+//     if (currTab && currTab.length > 3) {
+//       if (currTab[3].includes("trip-details")) {
+//         setTab("trips");
+//       }
+//     } else if (currTab && currTab.length == 3) {
+//       if (currTab[2].includes("event-details")) {
+//         setTab("");
+//       } else {
+//         setTab(currTab[2]);
+//       }
+//     } else {
+//       setTab("");
+//     }
+//   }, [path]);
 
   return (
     <div className={styles.navBar}>
@@ -77,7 +78,7 @@ export default function SideNav() {
                     className={styles.logoutButton}
                     onClick={logoutUser}
                   >
-                    <b>Logout</b>
+                    <b>LOGOUT</b>
                   </button>
                 </div>
               </div>
@@ -89,7 +90,7 @@ export default function SideNav() {
                   className={styles.deskNavLink}
                 >
                   <div className={styles.topLogoutItem}>
-                    <b>Login</b>
+                    <b>LOGIN</b>
                   </div>
                 </Link>
               </div>
@@ -103,14 +104,9 @@ export default function SideNav() {
                   key={link.name}
                   href={link.href}
                   className={styles.deskNavLink}
-                  // onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
                 >
                   <div
-                    className={
-                      tab === link.key
-                        ? styles.highlightItem
-                        : styles.deskNavItem
-                    }
+                    className={styles.deskNavItem}
                   >
                     {link.name}
                   </div>
@@ -119,7 +115,7 @@ export default function SideNav() {
             })}
             <div className={styles.deskNavItemFill}>
               {/* remove later */}
-              {currentUser ? `Welcome ${currentUser.email}` : ""}
+              {currentUser ? `Welcome ${currentUser.uid}` : ""}
             </div>
           </div>
         )}
@@ -140,12 +136,9 @@ export default function SideNav() {
                 key={link.name}
                 href={link.href}
                 className={styles.deskNavLink}
-                // onClick={() => handleTabClick(link.name as "Home" | "Trips" | "Resources" | "About Us")}
               >
                 <div
-                  className={
-                    tab === link.key ? styles.highlightItem : styles.deskNavItem
-                  }
+                  className={styles.deskNavItem}
                 >
                   {link.name}
                 </div>
@@ -155,7 +148,7 @@ export default function SideNav() {
         </div>
         <div className={styles.deskNavItemFill}>
           {/* remove later */}
-          {currentUser ? `Welcome ${currentUser.email}` : ""}
+          {currentUser ? `Welcome ${currentUser.displayName}` : ""}
         </div>
         {currentUser ? (
           <div className={styles.deskLogout}>
@@ -164,7 +157,7 @@ export default function SideNav() {
               className={styles.logoutButton}
               onClick={logoutUser}
             >
-              <b>Logout</b>
+              <b>LOGOUT</b>
             </button>
           </div>
         ) : (
@@ -174,7 +167,7 @@ export default function SideNav() {
               href={"/form/login"}
               className={styles.deskNavLink}
             >
-              <b className={styles.loginButton}>Login</b>
+              <b className={styles.loginButton}>LOGIN</b>
             </Link>
           </div>
         )}

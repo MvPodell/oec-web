@@ -1,12 +1,15 @@
 @import "/src/styles/variables.module.scss";
 
 .deskLinks {
+  @media (min-width: 1024px) {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+  }
   align-items: center;
   display: flex;
   flex-direction: row;
   flex-grow: 1;
   height: 6rem;
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  padding: 0.5rem;
   justify-content: flex-start;
 }
 
@@ -32,10 +35,11 @@
 
 .deskBar {
   @media (min-width: 768px) {
+    align-items: center;
     box-sizing: border-box;
+    color: black;
     display: flex;
     flex-direction: row;
-    color: black;
     flex-grow: 1;
     height: 7rem;
     width: 100%;
@@ -46,16 +50,12 @@
 }
 
 .deskLogo {
-  position: relative;
+  align-items: center;
+  border-radius: 0.375rem;
+  color: white;
   display: flex;
   height: 5rem;
   width: 5rem;
-  background-color: $oec-blue;
-  border-radius: 0.375rem;
-  color: white;
-  padding: 0.5rem;
-  align-items: center;
-  justify-content: center;
 }
 
 .deskLogout {
@@ -71,10 +71,16 @@
 }
 
 .deskNavItem {
-  @media (min-width: 768px) {
-    font-size: 1.5rem;
+  @media (min-width: 1024px) {
+    font-size: 1.2rem;
+    font-weight: 600;
     padding: 1rem;
     margin: 0 0.5rem;
+  }
+  @media (min-width: 768px) {
+    margin: 0 0.1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
   }
   border-radius: 0.375rem;
   color: $oec-blue;
@@ -91,9 +97,10 @@
 
 .deskNavItemFill {
   @extend .deskNavItem;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: flex;
     font-size: 1rem;
+    font-weight: 400;
     flex-grow: 1;
     width: auto;
     height: 6rem;
