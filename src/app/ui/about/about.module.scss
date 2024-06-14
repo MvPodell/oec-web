@@ -1,12 +1,62 @@
-.staffDeck {
+@import "/src/styles/variables.module.scss";
+
+.aboutContainer {
+  background-color: $muted-blue;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 0 7rem 2rem 7rem;
+}
+.aboutHeader {
+  color: $oec-blue;
+  font-weight: 800;
+  font-size: 2rem;
+  display: flex;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.aboutHeaderOEC {
+  @extend .aboutHeader;
+  color: white;
+}
+
+.aboutModule {
+  display: grid;
+}
+
+.aboutP {
+  padding: 1rem 0;
+}
+
+.aboutSubheader {
+    color: $muted-blue;
+    font-weight: 500;
+    font-size: 1.5rem;
     display: flex;
-    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    width: 100%;
     justify-content: center;
+  }
+
+.staffDeck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .staffDivider {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0
-
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }
+
+.staffSectionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

@@ -130,7 +130,7 @@ export async function updateTrip(
         tripId,
         imageURL,
         tripShortDesc,
-        tripTitle,
+        tripTitle
       );
       return;
     }
@@ -139,11 +139,11 @@ export async function updateTrip(
     const tripMembers = existingTrip.members || [];
 
     const isDifferent =
-      existingTrip.capacity !== tripCapacity || 
+      existingTrip.capacity !== tripCapacity ||
       existingTrip.date !== tripDate ||
       existingTrip.description !== tripDescription ||
       existingTrip.imageURL !== imageURL ||
-      existingTrip.shortDescription !== tripShortDesc || 
+      existingTrip.shortDescription !== tripShortDesc ||
       existingTrip.title !== tripTitle;
 
     if (isDifferent) {
@@ -202,10 +202,10 @@ export async function addStaffToFirestore(
   staffHireDate: string,
   staffHopes: string,
   staffGraduated: string,
-  imageURL: string,
+  imageURL: string
 ) {
   try {
-    const docRef = doc(db, "events", staffId);
+    const docRef = doc(db, "staff", staffId);
     await setDoc(docRef, {
       key: staffId,
       name: staffName,
@@ -215,9 +215,8 @@ export async function addStaffToFirestore(
       hopes: staffHopes,
       graduated: staffGraduated,
       imageURL: imageURL,
-
     });
-    console.log("New trip document created for event: ", staffId);
+    console.log("New staff document created for event: ", staffId);
   } catch (error) {
     console.error("Error adding document: ", error);
     throw error;
@@ -286,7 +285,7 @@ export async function updateStaff(
   staffHireDate: string,
   staffHopes: string,
   staffGraduated: string,
-  staffImageURL: string,
+  staffImageURL: string
 ) {
   try {
     const docRef = doc(db, "staff", staffId);
@@ -302,7 +301,7 @@ export async function updateStaff(
         staffHireDate,
         staffHopes,
         staffGraduated,
-        staffImageURL,
+        staffImageURL
       );
       return;
     }
