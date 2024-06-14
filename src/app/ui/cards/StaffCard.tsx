@@ -70,7 +70,6 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
               />
             )}
             
-            <div className={styles.buttonContainer}>
               <div className={styles.buttonContainer}>
                 <EditButton
                   editType="staff"
@@ -84,7 +83,6 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
                   onDelete={fetchStaff}
                   isStaff={isStaff}
                 />
-              </div>
             </div>
           </div>
         </div>

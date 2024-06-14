@@ -41,15 +41,16 @@ export const StaffSection = () => {
 
   return (
     <div className={styles.staffSectionContainer}>
-      <div className={styles.aboutHeader}>Meet the Staff</div>
-      <AddButton label="Add Staff" dest="/form/add-staff"/>
+      <div className={styles.aboutHeader}>Manager</div>
       <StaffDeck members={managerList} role="Manager" fetchStaff={fetchStaff}/>
-      <div className={styles.staffDivider}>_________</div>
+      <div className={styles.aboutHeader}>Meet the Staff</div>
       <StaffDeck members={staffList} role="Staff" fetchStaff={fetchStaff}/>
       <div className={styles.aboutHeader}>Staff Graveyard</div>
       <div className={styles.aboutSubheader}>Gone, but not forgotten</div>
-
       <StaffDeck members={graduatedList} role="Staff" fetchStaff={fetchStaff} />
+      <div className={styles.staffButtonContainer}>
+        <AddButton label="Add Personnel" dest="/form/add-staff"/>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,14 @@
 @import "/src/styles/variables.module.scss";
 
 .aboutContainer {
-  background-color: $muted-blue;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: 0 7rem 2rem 7rem;
+    @media (min-width: 768px) {
+        padding: 0 7rem 2rem 7rem;
+    }
+    align-content: center;
+    background-color: $muted-blue;
+    display: flex;
+    flex-direction: column;
+  
 }
 .aboutHeader {
   color: $oec-blue;
@@ -40,6 +43,13 @@
     width: 100%;
     justify-content: center;
   }
+
+.staffButtonContainer {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
 
 .staffDeck {
   display: flex;
