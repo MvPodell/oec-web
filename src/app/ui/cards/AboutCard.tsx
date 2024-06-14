@@ -6,7 +6,7 @@ export const AboutCard = () => {
   return (
     <div className={styles.cardDeckContainer}>
       <div className={styles.card}>
-        <div className={styles.cardContainer}>
+        <div className={styles.cardContent}>
           <div className={styles.cardInfoContainer}>
             <Image
               priority
@@ -16,7 +16,7 @@ export const AboutCard = () => {
               width="800"
               height="200"
             />
-            <div className={styles.cardContent}>
+            <div className={styles.cardInfo}>
               <div className={styles.cardHeaderAbout}>
                 The Outdoor Education Center of Pomona College is one of the
                 premier outdoor education programs in the country.

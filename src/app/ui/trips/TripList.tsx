@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { getTripList } from "@/config/firestore";
-import { TripCard } from "@/app/ui/trips/TripCard";
+import { TripCard } from "@/app/ui/cards/TripCard";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 

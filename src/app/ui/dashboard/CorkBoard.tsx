@@ -64,9 +64,9 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ blurredImg }) => {
         {events.map((event) => (
           <div className={styles.cardDeckContainer} key={event.id}>
             <div className={styles.card}>
-              <div className={styles.cardContainer}>
+              <div className={styles.cardContent}>
                 <div className={styles.cardInfoContainer}>
-                  <div className={styles.cardContent}>
+                  <div className={styles.cardInfo}>
                     <div className={styles.cardHeader}>{event.title}</div>
                     <div className={styles.cardDate}>{event.date}</div>
                   </div>

@@ -55,9 +55,9 @@ export const TripCard: React.FC<TripCardProps> = ({
   return (
     <div className={styles.cardDeckContainer}>
       <div className={styles.card}>
-        <div className={styles.cardContainer}>
+        <div className={styles.cardContent}>
           <div className={styles.cardInfoContainer}>
-            <div className={styles.cardContent}>
+            <div className={styles.cardInfo}>
               <div className={styles.cardHeader}>{title}</div>
               <div className={styles.cardDate}>{date}</div>
               <div className={styles.cardText}>{shortDescription}</div>

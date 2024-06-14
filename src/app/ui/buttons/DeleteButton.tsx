@@ -6,7 +6,7 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { deleteEvent, deleteTrip } from "@/config/firestore";
 
 interface DeleteButtonProps {
-  deleteType: "event" | "trip";
+  deleteType: "event" | "trip" | "staff";
   id: string;
   onDelete: () => void;
   isStaff: boolean;
@@ -37,6 +37,8 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
       console.error("Error deleting trip: ", error);
     }
   };
+
+  
 
   return (
     <>

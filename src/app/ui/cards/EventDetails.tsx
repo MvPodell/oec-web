@@ -43,7 +43,7 @@ export const EventDetails: React.FC = () => {
                 {currentEvent && (
                     <div className={styles.card}>
                         <Image className={styles.cardDetailsImage} src={currentEvent.imageURL} alt="event poster" width="800" height="200" />
-                        <div className={styles.cardContent}>
+                        <div className={styles.cardInfo}>
                             <div className={styles.cardHeader}>
                                 <div className={styles.cardHeaderText}>
                                     <div className={styles.cardHeaderTitle}>{currentEvent.title}</div>

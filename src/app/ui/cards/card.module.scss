@@ -30,7 +30,13 @@
   align-items: center;
 }
 
-.cardContainer {
+.cardStaff {
+  @extend .card;
+  max-width: 28rem;
+  height: auto;
+}
+
+.cardContent {
   @media (min-width: 768px) {
     flex-direction: row;
   }
@@ -72,7 +78,7 @@
   flex-direction: row;
 }
 
-.cardContent {
+.cardInfo {
   padding: 1rem;
 }
 
@@ -99,6 +105,14 @@
   height: auto;
 }
 
+.cardStaffImage {
+  display: flex;
+  flex-grow: 1;
+  width: 50%;
+  height: auto;
+
+}
+
 .cardHeader {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -110,6 +124,12 @@
 .cardHeaderAbout {
   @extend .cardHeader;
   color: $oec-blue;
+}
+
+.cardHeaderStaff {
+  @extend .cardHeader;
+  color: $oec-blue;
+  justify-content: center;
 }
 
 .cardHeaderText {
@@ -145,7 +165,7 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   flex-grow: 1;
   justify-content: space-between;
 }
