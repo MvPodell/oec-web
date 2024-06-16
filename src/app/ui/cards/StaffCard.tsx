@@ -13,10 +13,16 @@ interface StaffCardProps {
   fetchStaff: () => void;
 }
 
+function calcYears(hireDate: Date, currentDate: Date) {
+  return 
+}
+
 export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
   const auth = getAuth();
   const [user, setUser] = useState(auth.currentUser);
   const [isStaff, setIsStaff] = useState(false);
+  const currentDate = new Date();
+
 
   useEffect(() => {
     if (!auth) return;
@@ -44,21 +50,26 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
       <div className={styles.cardDeckContainer}>
         <div className={styles.cardStaff}>
           <div className={styles.cardContent}>
-            <div className={styles.cardInfoContainer}>
+            <div className={styles.cardInfoContainerStaff}>
               <div className={styles.cardInfo}>
                 <div className={styles.cardHeaderStaff}>{person.name}</div>
-                <div className={styles.cardTextAbout}>Role: {person.role}</div>
-                <div className={styles.cardTextAbout}>
-                  Hometown: {person.hometown}
+                <div className={styles.cardTextAboutQ}>Role</div>
+                <div className={styles.cardTextAboutA}>{person.role}</div>
+                <div className={styles.cardTextAboutQ}>
+                  Hometown
                 </div>
-                <div className={styles.cardTextAbout}>
-                  Years at OEC: {person.hireDate}
+                <div className={styles.cardTextAboutA}>{person.hometown}</div>
+                <div className={styles.cardTextAboutQ}>
+                  Years at OEC
                 </div>
-                <div className={styles.cardTextAbout}>
-                  Hopes and Dreams: {person.hopes}
+                <div className={styles.cardTextAboutA}>{person.hireDate}</div>
+                <div className={styles.cardTextAboutQ}>
+                  Hopes and Dreams
                 </div>
+                <div className={styles.cardTextAboutA}>{person.hopes}</div>
               </div>
             </div>
+            <div className={styles.cardStaffImageContainer}>
             {person.imageURL && (
                 <Image
                 priority
@@ -69,6 +80,7 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
                 height="200"
               />
             )}
+            </div>
             
               <div className={styles.buttonContainer}>
                 <EditButton

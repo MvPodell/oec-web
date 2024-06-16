@@ -28,16 +28,6 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     graduated: "",
     imageURL: "",
   });
-  const [updatedStaff, setUpdatedStaff] = useState<Member>({
-    name: "",
-    id: "",
-    role: "Staff",
-    hometown: "",
-    hireDate: "",
-    hopes: "",
-    graduated: "",
-    imageURL: "",
-  });
   const nameInputRef = useRef<HTMLInputElement>(null);
   const roleInputRef = useRef<HTMLInputElement>(null);
   const hometownInputRef = useRef<HTMLInputElement>(null);
@@ -49,6 +39,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
   const fetchStaff = useCallback(async () => {
     const fetchStaffData = async () => {
       if (staffId) {
+        console.log("fetch staff data for staff member: ", staffId);
         const data = await getStaff(staffId);
         if (data) {
           setStaffData(data);
@@ -56,7 +47,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
       }
     };
     fetchStaffData();
-    console.log(staffData);
+    console.log("staff data fetched! ", staffData);
   }, [staffId]);
 
   useEffect(() => {
@@ -91,26 +82,17 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     staffData.graduated,
   ]);
 
-  const handleChange = (
-    Staff: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = Staff.target;
+  // const handleChange = (
+  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = event.target;
 
-    setUpdatedStaff((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  //   setUpdatedStaff((prevState) => ({
+  //     ...prevState,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const handleFileChange = (Staff: React.ChangeEvent<HTMLInputElement>) => {
-    const file = Staff.target.files ? Staff.target.files[0] : null;
-    if (file) {
-      setUpdatedStaff((prevState) => ({
-        ...prevState,
-        imageURL: URL.createObjectURL(file),
-      }));
-    }
-  };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -119,24 +101,22 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     let imageUrl = "";
     if (file) {
       const storageRef = ref(storage, `/images/staff/${file.name}`);
-      await uploadBytes(storageRef, file).then((data) => {
-        console.log(data, "imgs");
-      });
+      await uploadBytes(storageRef, file);
       console.log("image uploaded!");
       imageUrl = await getDownloadURL(storageRef);
-      console.log("imageURL: ", imageUrl);
     }
 
     try {
+      // console.log("staffId in editstaffform: ", staffId);
       await updateStaff(
         nameInputRef.current?.value || "",
-        staffData.id,
+        staffId,
         roleInputRef.current?.value || "",
         hometownInputRef.current?.value || "",
         hireInputRef.current?.value || "",
         hopesInputRef.current?.value || "",
         gradInputRef.current?.value || "",
-        imageUrl,
+        imageUrl || staffData.imageURL
       );
       setOpen(false);
       onEdit();
@@ -163,7 +143,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             className={styles.Input}
             type="text"
             required
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </Form.Control>
       </Form.Field>
@@ -183,7 +163,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             className={styles.Input}
             type="text"
             required
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </Form.Control>
       </Form.Field>
@@ -203,7 +183,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             className={styles.Input}
             type="text"
             required
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </Form.Control>
       </Form.Field>
@@ -215,15 +195,15 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Hire Date</Form.Label>
+          <Form.Label className={styles.FormLabel}>Tenure Range</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={hireInputRef}
             className={styles.Textarea}
-            type="date"
+            type="text"
             required
-            onChange={handleChange}
+            // onChange={handleChange}
           />
         </Form.Control>
       </Form.Field>
@@ -243,7 +223,6 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             className={styles.Input}
             type="text"
             required
-            onChange={handleFileChange}
           />
         </Form.Control>
       </Form.Field>
@@ -255,7 +234,9 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Graduation status (true/false)</Form.Label>
+          <Form.Label className={styles.FormLabel}>
+            Graduation status (true/false)
+          </Form.Label>
         </div>
         <Form.Control asChild>
           <input
@@ -263,7 +244,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             className={styles.Input}
             type="text"
             required
-            onChange={handleFileChange}
+            // onChange={handleChange}
           />
         </Form.Control>
       </Form.Field>
@@ -278,7 +259,13 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
           <Form.Label className={styles.FormLabel}>Image</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={imageInputRef} className={styles.Input} type="file" required onChange={handleFileChange} />
+          <input
+            ref={imageInputRef}
+            className={styles.Input}
+            type="file"
+            required
+            // onChange={handleFileChange}
+          />
         </Form.Control>
       </Form.Field>
       <Form.Submit asChild>

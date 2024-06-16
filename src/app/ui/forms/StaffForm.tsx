@@ -152,12 +152,12 @@ export const StaffForm = () => {
           </div>
           <div className={styles.formInputContainer}>
             <label htmlFor="staffHireDate" className={styles.formLabel}>
-              Date Hired
+              Tenure range
             </label>
             <input
               id="staffHireDate"
               className={styles.formInput}
-              type="date"
+              type="text"
               onChange={handleChange}
               ref={staffHireDateRef}
             ></input>

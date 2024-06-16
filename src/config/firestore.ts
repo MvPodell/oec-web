@@ -100,6 +100,7 @@ export async function addTripToFirestore(
       imageURL: imageURL,
       shortDescription: tripShortDescription,
       title: tripTitle,
+      members: [],
     });
     console.log("New trip document created for trip:", tripId);
   } catch (error) {
@@ -328,7 +329,7 @@ export async function updateStaff(
         graduated: staffGraduated,
         imageURL: staffImageURL,
       });
-      console.log("Event document updated for staff: ", staffId);
+      // console.log("Event document updated for staff: ", staffId);
     } else {
       console.log("No changes detected, staff not updated.");
     }
