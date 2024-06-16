@@ -13,6 +13,10 @@ export const TripList: React.FC<TripType> = ({ kind }) => {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [pastTrips, setPastTrips] = useState<Trip[]>([]);
   const currentDate = useMemo(() => new Date(), []);
+  const [grave, setGrave] = useState({
+    open: false,
+    label: "View past trips",
+  });
 
   const fetchTrips = useCallback(async () => {
     const tripData = await getTripList();
@@ -32,33 +36,51 @@ export const TripList: React.FC<TripType> = ({ kind }) => {
 
   return (
     <div className={styles.tripListContainer}>
-      {trips && kind === "present"
-        ? trips.map((trip, index) => (
-            <TripCard
-              key={trip.id}
-              id={trip.id}
-              title={trip.title}
-              date={trip.date}
-              shortDescription={trip.shortDescription}
-              imageURL={trip.imageURL || "/images/Pomona.jpeg"}
-              index={index}
-              fetchTrips={fetchTrips}
-            />
-          ))
-        : pastTrips.map((past, index) => (
-            <TripCard
-              key={past.id}
-              id={past.id}
-              title={past.title}
-              date={past.date}
-              shortDescription={past.shortDescription}
-              imageURL={past.imageURL || "/images/Pomona.jpeg"}
-              index={index}
-              fetchTrips={fetchTrips}
-            />
-          ))}
+      {trips &&
+        kind === "present" &&
+        trips.map((trip, index) => (
+          <TripCard
+            key={trip.id}
+            id={trip.id}
+            title={trip.title}
+            date={trip.date}
+            shortDescription={trip.shortDescription}
+            imageURL={trip.imageURL || "/images/Pomona.jpeg"}
+            index={index}
+            fetchTrips={fetchTrips}
+          />
+        ))}
+      {trips &&
+        kind == "past" &&
+        grave.open &&
+        pastTrips.map((past, index) => (
+          <TripCard
+            key={past.id}
+            id={past.id}
+            title={past.title}
+            date={past.date}
+            shortDescription={past.shortDescription}
+            imageURL={past.imageURL || "/images/Pomona.jpeg"}
+            index={index}
+            fetchTrips={fetchTrips}
+          />
+        ))}
       {kind === "present" && trips.length === 0 && (
         <div className={styles.emptyTripWarning}>No current trips!</div>
+      )}
+      {kind === "past" && (
+        <div className={styles.graveButtonContainer}>
+        <button
+          className={styles.graveButton}
+          onClick={() =>
+            grave.open
+              ? setGrave({ open: false, label: "View past trips" })
+              : setGrave({ open: true, label: "Close" })
+          }
+        >
+          {grave.label}
+        </button>
+        </div>
       )}
     </div>
   );
