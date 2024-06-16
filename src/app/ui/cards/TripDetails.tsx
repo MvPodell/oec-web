@@ -75,14 +75,12 @@ export const TripDetails: React.FC = () => {
     return (
             <div className={styles.cardDetailsContainer}>
                 <div className={styles.backButtonContainer}>
-                    <div className={styles.cardButtonContainer}>
                         <Link
                             key="backArrow"
                             href={"/dashboard/trips"}
-                            className={styles.cardButton}>
+                            className={styles.backButton}>
                             Back to Trips
                         </Link>
-                    </div>
                 </div>
                 {currentTrip && (
                     <div className={styles.card}>

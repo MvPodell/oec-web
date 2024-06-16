@@ -31,14 +31,12 @@ export const EventDetails: React.FC = () => {
     return (
             <div className={styles.cardDetailsContainer}>
                 <div className={styles.backButtonContainer}>
-                    <div className={styles.cardButtonContainer}>
                         <Link
                             key="backArrow"
                             href={"/dashboard"}
-                            className={styles.cardButton}>
+                            className={styles.backButton}>
                             Back to Dashboard
                         </Link>
-                    </div>
                 </div>
                 {currentEvent && (
                     <div className={styles.card}>

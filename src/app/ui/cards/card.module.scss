@@ -2,8 +2,14 @@
 
 .backButtonContainer {
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: left;
+}
+
+.backButton {
+  @extend .cardButton;
+  padding: 0;
+  margin: 0.5rem 0;
 }
 
 .buttonContainer {
@@ -70,7 +76,8 @@
 }
 
 .cardButton:hover,
-.joinButton:hover {
+.joinButton:hover,
+.backButton:hover {
   background-color: $hover-blue;
   border-radius: 0.375;
   transition-duration: 1s;
