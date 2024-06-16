@@ -33,10 +33,14 @@ export const TripQueue: React.FC<TripQueueProps> = ({ tripMembers }) => {
         }
     }, [tripMembers]);
     
-    const signedUpUsers = users.filter(user => members.includes(user.id));
+    const signedUpUsersMap = new Map(users.map(user => [user.id, user]));
+    const signedUpUsers: Profile[] = members
+        .map(memberId => signedUpUsersMap.get(memberId))
+        .filter((user): user is Profile => user !== undefined);
 
     return (
         <div>
+            <b>Signed up:</b>
             { signedUpUsers.length > 0 ? (
                 <ol>
                 {signedUpUsers.map(user => (
@@ -44,10 +48,8 @@ export const TripQueue: React.FC<TripQueueProps> = ({ tripMembers }) => {
                 ))}
                 </ol>
             ) : (
-                <p>Empty</p>
+                <p>No one has signed up for this trip!</p>
             )}
-            
-            
         </div>
     );
 };
