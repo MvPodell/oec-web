@@ -4,6 +4,7 @@ import { StaffDeck } from "./StaffDeck";
 import { getStaffList } from "@/config/firestore";
 import styles from "@/app/ui/about/about.module.scss";
 import { AddButton } from "../buttons/AddButton";
+import { useAuth } from "@/config/AuthContext";
 
 export interface Member {
   name: string;
@@ -24,6 +25,7 @@ export const StaffSection = () => {
     open: false,
     label: "Pay your respects",
   });
+  const {isStaff} = useAuth();
   const currentDate = useMemo(() => new Date(), []);
 
   const fetchStaff = useCallback(async () => {
@@ -51,9 +53,11 @@ export const StaffSection = () => {
       <div className={styles.aboutHeader}>Manager</div>
       <StaffDeck members={managerList} role="Manager" fetchStaff={fetchStaff} />
       <div className={styles.aboutHeader}>Meet the Staff</div>
-      <div className={styles.staffButtonContainer}>
+      {isStaff && (
+        <div className={styles.staffButtonContainer}>
         <AddButton label="Add Personnel" dest="/form/add-staff" />
       </div>
+      )}
       <StaffDeck members={staffList} role="Staff" fetchStaff={fetchStaff} />
       <div className={styles.aboutHeader}>Staff Graveyard</div>
       <div className={styles.aboutSubheader}>Gone, but not forgotten</div>

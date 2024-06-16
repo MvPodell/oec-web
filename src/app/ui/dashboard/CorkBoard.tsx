@@ -3,23 +3,20 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Image from "next/image";
 import { AddButton } from "../buttons/AddButton";
-import { fetchSortedEvents, getUserRole } from "@/config/firestore";
+import { fetchSortedEvents } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
 import Link from "next/link";
 import { DeleteButton } from "../buttons/DeleteButton";
 import { EditButton } from "../buttons/EditButton";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "@/config/AuthContext";
 
 interface CorkBoardProps {
   blurredImg: string;
 }
 
 export const CorkBoard: React.FC<CorkBoardProps> = ({ blurredImg }) => {
-  const auth = getAuth();
-
   const [events, setEvents] = useState<Event[]>([]);
-  const [user, setUser] = useState(auth.currentUser);
-  const [isStaff, setIsStaff] = useState<boolean>(false);
+  const { isStaff } = useAuth();
 
   const currentDate = useMemo(() => new Date(), []);
 
@@ -32,26 +29,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ blurredImg }) => {
     loadEvents();
   }, [loadEvents]);
 
-  useEffect(() => {
-    if (!auth) return;
 
-    return auth.onAuthStateChanged(async (user) => {
-      if (!user) {
-        setUser(null);
-        setIsStaff(false);
-      }
-      if (user) {
-        setUser(user);
-
-        const userRole = await getUserRole(user.uid);
-        if (userRole && userRole === "staff") {
-          setIsStaff(true);
-        } else {
-          setIsStaff(false);
-        }
-      }
-    });
-  }, [user, auth]);
 
   return (
     <div className={styles.corkContainer}>

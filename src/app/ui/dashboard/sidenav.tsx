@@ -1,34 +1,24 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "@/app/ui/dashboard/sidenav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-// import Logo from "@/app/ui/dashboard/OECtemplogo.png";
 import Logo from "../../../../public/images/OECTempLogoBlue.png";
 import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
-import { usePathname } from "next/navigation";
+import { useAuth } from "@/config/AuthContext";
 
 export default function SideNav() {
-  const auth = getAuth();
-  const path = usePathname();
   const links = [
     { name: "HOME", key: "", href: "/dashboard" },
     { name: "TRIPS", key: "trips", href: "/dashboard/trips" },
     { name: "RESOURCES", key: "resources", href: "/dashboard/resources" },
     { name: "ABOUT", key: "about", href: "/dashboard/about" },
   ];
+  const auth = getAuth();
+  const { user } = useAuth()
 
-  const [currentUser, setCurrentUser] = useState(auth.currentUser);
   const [isOpen, setOpen] = useState(false);
-//   const [tab, setTab] = useState("");
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-    });
-    return () => unsubscribe();
-  }, [auth]);
 
   const logoutUser = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -42,23 +32,6 @@ export default function SideNav() {
       });
   };
 
-//   useEffect(() => {
-//     const currTab = path.split("/");
-//     if (currTab && currTab.length > 3) {
-//       if (currTab[3].includes("trip-details")) {
-//         setTab("trips");
-//       }
-//     } else if (currTab && currTab.length == 3) {
-//       if (currTab[2].includes("event-details")) {
-//         setTab("");
-//       } else {
-//         setTab(currTab[2]);
-//       }
-//     } else {
-//       setTab("");
-//     }
-//   }, [path]);
-
   return (
     <div className={styles.navBar}>
       <div className={styles.topBar}>
@@ -70,7 +43,7 @@ export default function SideNav() {
             color="#0057b8"
           />
           {isOpen &&
-            (currentUser ? (
+            (user ? (
               <div className={styles.topLogout}>
                 <div className={styles.topLogoutItem}>
                   <button
@@ -115,7 +88,7 @@ export default function SideNav() {
             })}
             <div className={styles.deskNavItemFill}>
               {/* remove later */}
-              {currentUser ? `Welcome ${currentUser.uid}` : ""}
+              {user ? `Welcome ${user.email}` : ""}
             </div>
           </div>
         )}
@@ -148,9 +121,9 @@ export default function SideNav() {
         </div>
         <div className={styles.deskNavItemFill}>
           {/* remove later */}
-          {currentUser ? `Welcome ${currentUser.displayName}` : ""}
+          {user ? `Welcome ${user.email}` : ""}
         </div>
-        {currentUser ? (
+        {user ? (
           <div className={styles.deskLogout}>
             <button
               key="logout"

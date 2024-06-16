@@ -1,12 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { EditButton } from "../buttons/EditButton";
 import { DeleteButton } from "../buttons/DeleteButton";
-import { getAuth } from "firebase/auth";
-import { getUserRole } from "@/config/firestore";
+import { useAuth } from "@/config/AuthContext";
 
 interface TripCardProps {
   id: string;
@@ -27,30 +26,8 @@ export const TripCard: React.FC<TripCardProps> = ({
   index,
   fetchTrips,
 }) => {
-  const auth = getAuth();
-  const [user, setUser] = useState(auth.currentUser);
-  const [isStaff, setIsStaff] = useState(false);
 
-  useEffect(() => {
-    if (!auth) return;
-
-    return auth.onAuthStateChanged(async (user) => {
-      if (!user) {
-        setUser(null);
-        setIsStaff(false);
-      }
-      if (user) {
-        setUser(user);
-
-        const userRole = await getUserRole(user.uid);
-        if (userRole && userRole === "staff") {
-          setIsStaff(true);
-        } else {
-          setIsStaff(false);
-        }
-      }
-    });
-  }, [user, auth]);
+  const { isStaff } = useAuth();
 
   return (
     <div className={styles.cardDeckContainer}>
