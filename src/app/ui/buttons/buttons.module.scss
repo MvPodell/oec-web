@@ -2,6 +2,7 @@
 
 .addButton {
   text-decoration: none;
+  background-color: white;
   border-radius: 0.375rem;
   border: 2px solid $slate3;
   color: $muted-blue;
@@ -16,11 +17,8 @@
 }
 
 .addButtonContainer {
-  padding: 0.2rem 1rem;
-  // margin: 1rem 0 0 0;
-  background-color: white;
-  border-radius: 0.375rem;
   text-decoration: none;
+  margin-bottom: 0.5rem;
 }
 
 .staffButton {
@@ -34,7 +32,7 @@
   height: 2rem;
   justify-content: center;
   margin: 0 0.5rem;
-  padding: 0.5rem;
+  padding: 0.25rem;
   width: 2rem;
 }
 

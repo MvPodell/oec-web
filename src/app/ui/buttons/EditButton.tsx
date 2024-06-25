@@ -5,10 +5,10 @@ import styles from "@/app/ui/buttons/buttons.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { EditEventForm } from "../forms/EditEventForm";
 import { EditTripForm } from "../forms/EditTripForm";
-import { getEvent } from "@/config/firestore";
+import { EditStaffForm } from "../forms/EditStaffForm";
 
 interface EditButtonProps {
-  editType: "event" | "trip";
+  editType: "event" | "trip" | "staff";
   id: string;
   isStaff: boolean;
   onEdit: () => void;
@@ -37,7 +37,7 @@ export const EditButton: React.FC<EditButtonProps> = ({
                   <Cross1Icon className={styles.formCancel} />
                 </AlertDialog.Cancel>
                 <AlertDialog.Title className={styles.AlertDialogTitle}>
-                  {editType==="event" ? "Edit Event" : "Edit Trip"}
+                  {`Edit ${editType}`}
                 </AlertDialog.Title>
                 <AlertDialog.Description
                   className={styles.AlertDialogDescription}
@@ -47,6 +47,7 @@ export const EditButton: React.FC<EditButtonProps> = ({
 
                 {editType==="event" && (<EditEventForm eventId={id} setOpen={setOpen} onEdit={onEdit}/>)}
                 {editType==="trip" && (<EditTripForm tripId={id} setOpen={setOpen} onEdit={onEdit} />)}
+                {editType==="staff" && (<EditStaffForm staffId={id} setOpen={setOpen} onEdit={onEdit} />)}
               </div>
             </AlertDialog.Content>
           </AlertDialog.Portal>

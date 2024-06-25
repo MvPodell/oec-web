@@ -75,19 +75,17 @@ export const TripDetails: React.FC = () => {
     return (
             <div className={styles.cardDetailsContainer}>
                 <div className={styles.backButtonContainer}>
-                    <div className={styles.cardButtonContainer}>
                         <Link
                             key="backArrow"
                             href={"/dashboard/trips"}
-                            className={styles.cardButton}>
+                            className={styles.backButton}>
                             Back to Trips
                         </Link>
-                    </div>
                 </div>
                 {currentTrip && (
                     <div className={styles.card}>
                         <Image priority className={styles.cardDetailsImage} src={currentTrip.imageURL} alt="Joshua Tree" width="800" height="200" />
-                        <div className={styles.cardContent}>
+                        <div className={styles.cardInfo}>
                             <div className={styles.cardHeader}>
                                 <div className={styles.cardHeaderText}>
                                     <div className={styles.cardHeaderTitle}>{currentTrip.title}</div>

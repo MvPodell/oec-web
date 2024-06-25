@@ -1,43 +1,52 @@
 'use client';
 
-import React from "react";
+import React, {useEffect, useState, useContext, createContext } from "react";
 import { auth } from "./firebaseConfig";
 import {  User } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { getUserRole } from "./firestore";
 
 export type oecUser = User | null;
-type ContextState = { user: oecUser };
-const FirebaseAuthContext = React.createContext<ContextState | undefined>(undefined);
+interface AuthContextState {
+  user: oecUser;
+  isStaff: boolean;
+}
+const AuthContext = createContext<AuthContextState>({user: null, isStaff: false});
 
-const FirebaseAuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
-  const [user, setUser] = React.useState<User | null>(null);
-  const value = { user };
+const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isStaff, setIsStaff] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            setUser(user);
+            const userRole = await getUserRole(user.uid);
+            setIsStaff(userRole === "staff");
+        } else {
+            setUser(null);
+            setIsStaff(false);
+        }
+    });
+
+    return () => unsubscribe();
+}, [user, auth]);
+
+  useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(setUser);
     return unsubscribe;
   }, []);
 
   return (
-    <FirebaseAuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, isStaff }}>
       {children}
-    </FirebaseAuthContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
-function useFirebaseAuth(): oecUser {
-  const context = React.useContext(FirebaseAuthContext);
-  if (context === undefined) {
-    throw new Error(
-      "useFirebaseAuth must be used within a FirebaseAuthProvider"
-    );
-  }
-  console.log("useFirebaseAuth context:", context);
-  return context.user;
+const useAuth = () => {
+  return useContext(AuthContext);
 };
 
-function UserName() {
-  const user: oecUser = useFirebaseAuth();
-  return <div>{user?.displayName || "unauthenticated"}</div>;
-}
-
-export { FirebaseAuthProvider, useFirebaseAuth, UserName };
+export { AuthProvider, useAuth };

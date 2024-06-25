@@ -2,8 +2,14 @@
 
 .backButtonContainer {
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: left;
+}
+
+.backButton {
+  @extend .cardButton;
+  padding: 0;
+  margin: 0.5rem 0;
 }
 
 .buttonContainer {
@@ -16,20 +22,36 @@
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 48rem;
+  @media (min-width: 768px) {
+    max-width: 48rem;
+  }
   border: 1px solid $oec-blue;
   border-radius: 0.375rem;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  width: 90%;
+  align-items: center;
 }
 
-.cardContainer {
+.cardStaff {
+  @extend .card;
+  @media (min-width: 768px) {
+    max-width: 30rem;
+  }
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cardContent {
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  display: flex;
+  flex-direction: column;
   position: relative;
 }
 
@@ -54,7 +76,8 @@
 }
 
 .cardButton:hover,
-.joinButton:hover {
+.joinButton:hover,
+.backButton:hover {
   background-color: $hover-blue;
   border-radius: 0.375;
   transition-duration: 1s;
@@ -66,17 +89,41 @@
   flex-direction: row;
 }
 
-.cardContent {
+.cardInfo {
+  box-sizing: border-box;
   padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.cardInfoContainer {
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.cardInfoContainerStaff {
+  @media (min-width: 768px) {
+    width: 70%;
+  }
 }
 
 .cardDate {
-  color: grey;
+  color: $muted-blue;
   margin-bottom: 1rem;
 }
 
 .cardDeckContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin: 1rem 0;
+  // width: 50%;
 }
 
 .cardDetailsContainer {
@@ -90,6 +137,23 @@
   height: auto;
 }
 
+.cardStaffImage {
+  @media (min-width: 768px) {
+    height: 100%;
+    object-fit: cover;
+  }
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  height: auto;
+}
+
+.cardStaffImageContainer {
+  display: flex;
+  height: 20rem;
+  max-width: 55%;
+}
+
 .cardHeader {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -97,6 +161,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+}
+.cardHeaderAbout {
+  @extend .cardHeader;
+  color: $oec-blue;
+}
+
+.cardHeaderStaff {
+  @extend .cardHeader;
+  color: $oec-blue;
+  justify-content: center;
+  text-align: center;
 }
 
 .cardHeaderText {
@@ -116,9 +191,11 @@
 }
 
 .cardImage {
-  // width: 100%;
+  @media (min-width: 768px) {
+    max-width: 70%;
+  }
   height: auto;
-  max-width: 70%;
+  width: 100%;
   box-sizing: border-box;
   object-fit: contain;
   overflow-x: hidden;
@@ -126,13 +203,7 @@
   flex-grow: 1;
 }
 
-.cardInfoContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex-grow: 1;
-  justify-content: space-between;
-}
+
 
 .cardMedia {
   width: 100%;
@@ -144,6 +215,18 @@
 .cardText {
   font-size: 0.8rem;
   color: grey;
+}
+
+.cardTextAboutQ {
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+
+.cardTextAboutA {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: black;
 }
 
 .cardMemberQueue {
@@ -178,7 +261,7 @@
   font-size: 2rem;
   display: flex;
   margin-top: 1rem;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
   width: 100%;
   justify-content: center;
 }

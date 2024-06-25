@@ -29,7 +29,7 @@ export const TripForm = () => {
         shortDescription: "",
         title: "",
     });
-
+    
     // const [tripTitle, setTripTitle] = useState("");
     // const [tripDate, setTripDate] = useState("");
     // const [tripId, setTripId] = useState("");

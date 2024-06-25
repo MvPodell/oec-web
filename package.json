@@ -17,7 +17,7 @@
     "@types/firebase": "^3.2.1",
     "firebase": "^10.12.1",
     "hamburger-react": "^2.5.1",
-    "next": "14.2.3",
+    "next": "^14.2.4",
     "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
