@@ -127,17 +127,20 @@
 
 .sideNavContainer {
   @media (min-width: 768px) {
-    // position: fixed;
-    // height: 100vh;
-    // width: 16rem;
-    /* Adjust based on your design */
     overflow: hidden;
-    /* Prevent the SideNav from scrolling */
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    border-bottom: 1px solid $oec-blue;
+    
   }
   display: none;
+}
+
+.sideNavContainer::after {
+  @media (min-width: 768px) {
+    box-shadow: 0px 1px 8px 1px rgba(121, 131, 154, 0.2);
+  }
 }
 
 .topNavContainer {
