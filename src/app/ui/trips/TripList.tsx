@@ -1,31 +1,38 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { getTripList } from "@/config/firestore";
+import { fetchSortedAffairs } from "@/config/firestore";
 import { TripCard } from "@/app/ui/cards/TripCard";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
+import { ImgAndPlaceholder } from "@/utils/interfaces";
+import { AddButton } from "../buttons/AddButton";
+import { useAuth } from "@/config/AuthContext";
+import dynamic from "next/dynamic";
 
-interface TripType {
+interface TripListProps {
   kind: "past" | "present";
+  imageArray: ImgAndPlaceholder[];
 }
 
-export const TripList: React.FC<TripType> = ({ kind }) => {
+export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
+  const { isStaff } = useAuth();
   const [trips, setTrips] = useState<Trip[]>([]);
   const [pastTrips, setPastTrips] = useState<Trip[]>([]);
   const currentDate = useMemo(() => new Date(), []);
-  const [grave, setGrave] = useState({
+  const [pastGrave, setPastGrave] = useState({
     open: false,
     label: "View past trips",
   });
+  const [currGrave, setCurrGrave] = useState({
+    open: false,
+    label: "View more trips",
+  });
 
   const fetchTrips = useCallback(async () => {
-    const tripData = await getTripList();
-    const currentTrips = tripData
-      .filter((trip) => new Date(trip.date) >= currentDate)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    const prevTrips = tripData
-      .filter((trip) => new Date(trip.date) < currentDate)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    const [currentTrips, prevTrips] = (await fetchSortedAffairs(
+      currentDate,
+      "trips"
+    )) as [Trip[], Trip[]];
     setTrips(currentTrips);
     setPastTrips(prevTrips);
   }, [currentDate]);
@@ -35,53 +42,71 @@ export const TripList: React.FC<TripType> = ({ kind }) => {
   }, [fetchTrips]);
 
   return (
+    <>
+    {kind === "present" && isStaff && (<AddButton label="ADD TRIP" dest="/form/add-trip" />)}
     <div className={styles.tripListContainer}>
       {trips &&
         kind === "present" &&
-        trips.map((trip, index) => (
-          <TripCard
-            key={trip.id}
-            id={trip.id}
-            title={trip.title}
-            date={trip.date}
-            shortDescription={trip.shortDescription}
-            imageURL={trip.imageURL || "/images/Pomona.jpeg"}
-            index={index}
-            fetchTrips={fetchTrips}
-          />
-        ))}
+        trips
+          .slice(0, currGrave.open ? trips.length : 2)
+          .map((trip, index) => (
+            <TripCard
+              key={trip.id}
+              id={trip.id}
+              index={index}
+              title={trip.title}
+              date={trip.date}
+              shortDescription={trip.shortDescription}
+              imageURL={imageArray[index].src}
+              blurURL={imageArray[index].placeholder}
+              fetchTrips={fetchTrips}
+            />
+          ))}
       {trips &&
         kind == "past" &&
-        grave.open &&
+        pastGrave.open &&
         pastTrips.map((past, index) => (
           <TripCard
             key={past.id}
             id={past.id}
+            index={index}
             title={past.title}
             date={past.date}
             shortDescription={past.shortDescription}
-            imageURL={past.imageURL || "/images/Pomona.jpeg"}
-            index={index}
+            imageURL={imageArray[index].src}
+            blurURL={imageArray[index].placeholder}
             fetchTrips={fetchTrips}
           />
         ))}
       {kind === "present" && trips.length === 0 && (
         <div className={styles.emptyTripWarning}>No current trips!</div>
       )}
-      {kind === "past" && (
-        <div className={styles.graveButtonContainer}>
-        <button
-          className={styles.graveButton}
-          onClick={() =>
-            grave.open
-              ? setGrave({ open: false, label: "View past trips" })
-              : setGrave({ open: true, label: "Close" })
-          }
-        >
-          {grave.label}
-        </button>
-        </div>
-      )}
+      <div className={styles.graveButtonContainer}>
+        {kind === "present" && trips.length > 2 ? (
+          <button
+            className={styles.graveButton}
+            onClick={() =>
+              currGrave.open
+                ? setCurrGrave({ open: false, label: "View more trips" })
+                : setCurrGrave({ open: true, label: "Close" })
+            }
+          >
+            {currGrave.label}
+          </button>
+        ) : (
+          <button
+            className={styles.graveButton}
+            onClick={() =>
+              pastGrave.open
+                ? setPastGrave({ open: false, label: "View past trips" })
+                : setPastGrave({ open: true, label: "Close" })
+            }
+          >
+            {pastGrave.label}
+          </button>
+        )}
+      </div>
     </div>
+    </>
   );
 };

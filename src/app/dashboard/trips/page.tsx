@@ -2,6 +2,9 @@ import React from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { TripList } from "@/app/ui/trips/TripList";
 import { AddButton } from "@/app/ui/buttons/AddButton";
+import { fetchSortedAffairs } from "@/config/firestore";
+import { getPlaceholderImage } from "@/utils/ImageOpti";
+import { useAuth } from "@/config/AuthContext";
 
 export interface Trip {
   capacity: string;
@@ -15,20 +18,49 @@ export interface Trip {
   title: string;
 }
 
-export default function Page() {
+export  default async function Page() {
+  const currentDate = new Date();
+  const [currentTrips, prevTrips] = await fetchSortedAffairs(currentDate, "trips") as [Trip[], Trip[]];
+  
+  const currSortedImages = currentTrips
+    .filter((trip) => new Date(trip.date) >= currentDate)
+    .sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+
+  const prevSortedImages = prevTrips
+    .filter((trip) => new Date(trip.date) < currentDate)
+    .sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+
+  const currImageArray = await Promise.all(
+    currSortedImages.map(async (trip) => {
+      const imageWithPlaceholder = await getPlaceholderImage(trip.imageURL)
+      return imageWithPlaceholder
+    }),
+  )
+
+  const prevImageArray = await Promise.all(
+    prevSortedImages.map(async (trip) => {
+      const imageWithPlaceholder = await getPlaceholderImage(trip.imageURL)
+      return imageWithPlaceholder
+    }),
+  )
+
+
   return (
     <div className={styles.tripsContainer}>
       <div className={styles.currentTripsSection}>
         <div className={styles.sectionHeaderCurrent}>Current Trips</div>
         <div className={styles.deckContainer}>
-          <AddButton label="ADD TRIP" dest="/form/add-trip" />
-          <TripList kind="present" />
+          <TripList kind="present" imageArray={currImageArray} />
         </div>
       </div>
       <div className={styles.pastTripsSection}>
         <div className={styles.sectionHeader}>Past Trips</div>
         <div className={styles.deckContainer}>
-          <TripList kind="past" />
+          <TripList kind="past" imageArray={prevImageArray}/>
         </div>
       </div>
     </div>

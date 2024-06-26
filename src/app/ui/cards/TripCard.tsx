@@ -14,19 +14,20 @@ interface TripCardProps {
   shortDescription: string;
   imageURL: string;
   index: number;
+  blurURL: string;
   fetchTrips: () => void;
 }
 
 export const TripCard: React.FC<TripCardProps> = ({
   id,
+  index,
   title,
   date,
   shortDescription,
   imageURL,
-  index,
+  blurURL,
   fetchTrips,
 }) => {
-
   const { isStaff } = useAuth();
 
   return (
@@ -48,36 +49,30 @@ export const TripCard: React.FC<TripCardProps> = ({
               </Link>
             </div>
           </div>
-          {imageURL ? (
-            <Image
-              src={imageURL}
-              width="800"
-              height="200"
-              alt={title}
-              className={styles.cardImage}
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
-          ) : (
-            <Image
-              src={imageURL}
-              width="800"
-              height="200"
-              alt={title}
-              className={styles.cardImage}
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
+          <Image
+            src={imageURL}
+            blurDataURL={blurURL}
+            placeholder="blur"
+            width="1200"
+            height="630"
+            alt={title}
+            className={styles.cardImage}
+            priority={index === 0}
+          />
+          {isStaff && (
+            <div className={styles.buttonContainer}>
+              <EditButton
+                editType="trip"
+                id={id}
+                onEdit={fetchTrips}
+              />
+              <DeleteButton
+                deleteType="trip"
+                id={id}
+                onDelete={fetchTrips}
+              />
+            </div>
           )}
-          <div className={styles.buttonContainer}>
-            <EditButton editType="trip" id={id} isStaff={isStaff} onEdit={fetchTrips} />
-            <DeleteButton
-              deleteType="trip"
-              id={id}
-              onDelete={fetchTrips}
-              isStaff={isStaff}
-            />
-          </div>
         </div>
       </div>
     </div>
