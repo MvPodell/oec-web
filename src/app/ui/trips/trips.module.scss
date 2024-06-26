@@ -38,6 +38,8 @@
   background-color: $muted-blue;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
+  min-height: 46rem;
+
 }
 
 .deckContainer {
@@ -49,7 +51,10 @@
 
 .emptyTripWarning {
   margin-top: 1rem;
+  margin-bottom: 38rem;
   color: $oec-blue;
+  display: flex;
+  align-items: flex-start;
 }
 
 .graveButton {
@@ -70,7 +75,10 @@
 }
 
 .graveButtonContainer {
+  align-items: flex-end;
+  display: flex;
   padding: 1rem;
+
 }
 
 .tripsContainer {
@@ -85,6 +93,7 @@
   flex-direction: column;
   width: 99%;
   align-items: center;
+
 }
 
 .sectionHeader {
