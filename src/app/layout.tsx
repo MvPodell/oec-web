@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Alegreya_Sans, Open_Sans } from "next/font/google";
+import { AR_One_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/config/AuthContext";
 
-const alegreyaSans = Alegreya_Sans({
+const AROneSans = AR_One_Sans({
   style: "normal",
-  weight: ["100", "300", "400", "500", "700", "800"],
   subsets: ["latin"],
 });
-const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Outdoor Education Center",
@@ -26,7 +24,7 @@ export default async function RootLayout({
           <head>
             <link rel="icon" href="/images/icon.ico"></link>
           </head>
-          <body className={alegreyaSans.className}>{children}</body>
+          <body className={AROneSans.className}>{children}</body>
       </AuthProvider>
     </html>
   );

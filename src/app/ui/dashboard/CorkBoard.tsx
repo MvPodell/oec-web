@@ -3,26 +3,27 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Image from "next/image";
 import { AddButton } from "../buttons/AddButton";
-import { fetchSortedEvents } from "@/config/firestore";
+import { fetchSortedAffairs } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
 import Link from "next/link";
 import { DeleteButton } from "../buttons/DeleteButton";
 import { EditButton } from "../buttons/EditButton";
 import { useAuth } from "@/config/AuthContext";
+import { ImgAndPlaceholder } from "@/utils/interfaces";
 
 interface CorkBoardProps {
-  blurredImg: string;
+  imageArray: ImgAndPlaceholder[];
 }
 
-export const CorkBoard: React.FC<CorkBoardProps> = ({ blurredImg }) => {
+export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const { isStaff } = useAuth();
 
   const currentDate = useMemo(() => new Date(), []);
 
   const loadEvents = useCallback(async () => {
-    const sortedEvents = await fetchSortedEvents(currentDate);
-    setEvents(sortedEvents);
+    const [currEvents, _] = await fetchSortedAffairs(currentDate, "events") as [Event[], Event[]];
+    setEvents(currEvents);
   }, [currentDate]);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ blurredImg }) => {
       <div className={styles.corkBody}>
         <AddButton label="ADD EVENT" dest="/form/add-event" />
 
-        {events.map((event) => (
+        {events.map((event, index) => (
           <div className={styles.cardDeckContainer} key={event.id}>
             <div className={styles.card}>
               <div className={styles.cardContent}>
@@ -59,27 +60,28 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ blurredImg }) => {
                 </div>
                 <Image
                   className={styles.cardImage}
-                  src={event.imageURL || "/images/Pomona.jpeg"}
+                  src={imageArray[index].src}
                   alt="event image"
-                  width="6400"
-                  height="3600"
+                  width="630"
+                  height="1200"
                   placeholder="blur"
-                  blurDataURL={blurredImg}
+                  blurDataURL={imageArray[index].placeholder}
                 />
-                <div className={styles.buttonContainer}>
+                {isStaff && (
+                  <div className={styles.buttonContainer}>
                   <EditButton
                     editType="event"
                     id={event.id}
-                    isStaff={isStaff}
                     onEdit={loadEvents}
                   />
                   <DeleteButton
                     deleteType="event"
                     id={event.id}
                     onDelete={loadEvents}
-                    isStaff={isStaff}
                   />
                 </div>
+                )}
+                
               </div>
             </div>
           </div>

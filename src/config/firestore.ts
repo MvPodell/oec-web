@@ -581,6 +581,23 @@ export async function getTripList(): Promise<Trip[]> {
   return tripList;
 }
 
+/**
+ *
+ * Gets a sorted list of all upcoming trips/events and a sorted list of all prev trips/events
+ *
+ * @returns currAffairs and prevAffairs
+ */
+export const fetchSortedAffairs = async (currentDate: Date, kind: "events" | "trips"): Promise<[Trip[], Trip[]] | [Event[], Event[]]> => {
+  const affairData = kind === "events" ? await getEventList() : await getTripList();
+  const currAffairs = affairData
+    .filter((affair) => new Date(affair.date) >= currentDate)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    const prevAffairs = affairData
+    .filter((affair) => new Date(affair.date) < currentDate)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  return [currAffairs, prevAffairs] as [Trip[], Trip[]] | [Event[], Event[]];
+}
+
 export async function getEventList(): Promise<Event[]> {
   const eventsCollection = await getDocs(collection(db, "events"));
   const eventList = eventsCollection.docs.map(
@@ -653,13 +670,13 @@ export async function getStaff(staffId: string) {
   }
 }
 
-export const fetchSortedEvents = async (currentDate: Date) => {
-  const eventData = await getEventList();
-  const sortedEvents = eventData
-    .filter((event) => new Date(event.date) >= currentDate)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  return sortedEvents;
-};
+// export const fetchSortedEvents = async (currentDate: Date) => {
+//   const eventData = await getEventList();
+//   const sortedEvents = eventData
+//     .filter((event) => new Date(event.date) >= currentDate)
+//     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+//   return sortedEvents;
+// };
 
 export async function deleteEvent(eventId: string) {
   try {

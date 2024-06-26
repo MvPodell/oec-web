@@ -13,7 +13,7 @@ interface StaffCardProps {
 }
 
 function calcYears(hireDate: Date, currentDate: Date) {
-  return 
+  return;
 }
 
 export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
@@ -29,47 +29,40 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
                 <div className={styles.cardHeaderStaff}>{person.name}</div>
                 <div className={styles.cardTextAboutQ}>Role</div>
                 <div className={styles.cardTextAboutA}>{person.role}</div>
-                <div className={styles.cardTextAboutQ}>
-                  Hometown
-                </div>
+                <div className={styles.cardTextAboutQ}>Hometown</div>
                 <div className={styles.cardTextAboutA}>{person.hometown}</div>
-                <div className={styles.cardTextAboutQ}>
-                  Years at OEC
-                </div>
+                <div className={styles.cardTextAboutQ}>Years at OEC</div>
                 <div className={styles.cardTextAboutA}>{person.hireDate}</div>
-                <div className={styles.cardTextAboutQ}>
-                  Hopes and Dreams
-                </div>
+                <div className={styles.cardTextAboutQ}>Hopes and Dreams</div>
                 <div className={styles.cardTextAboutA}>{person.hopes}</div>
               </div>
             </div>
             <div className={styles.cardStaffImageContainer}>
-            {person.imageURL && (
+              {person.imageURL && (
                 <Image
-                priority
-                className={styles.cardStaffImage}
-                src={person.imageURL}
-                alt="Temp"
-                width="800"
-                height="200"
-              />
-            )}
+                  priority
+                  className={styles.cardStaffImage}
+                  src={person.imageURL}
+                  alt="Temp"
+                  width="800"
+                  height="200"
+                />
+              )}
             </div>
-            
+            {isStaff && (
               <div className={styles.buttonContainer}>
                 <EditButton
                   editType="staff"
                   id={person.id}
-                  isStaff={isStaff}
                   onEdit={fetchStaff}
                 />
                 <DeleteButton
                   deleteType="staff"
                   id={person.id}
                   onDelete={fetchStaff}
-                  isStaff={isStaff}
                 />
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

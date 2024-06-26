@@ -2,6 +2,7 @@ import styles from "@/app/dashboard/dashboard.module.scss";
 import { CorkBoard } from "../ui/dashboard/CorkBoard";
 import { getPlaiceholder } from "plaiceholder";
 import { getEventList } from "@/config/firestore";
+import { getPlaceholderImage } from '@/utils/ImageOpti'
 
 export interface Event {
   date: string;
@@ -16,16 +17,19 @@ export interface Event {
 export default async function Page() {
   const currentDate = new Date();
   const eventData = await getEventList();
-  const firstEventImageURL = eventData
+  
+  const sortedImages = eventData
     .filter((event) => new Date(event.date) >= currentDate)
     .sort(
       (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-    )[0].imageURL;
-  const buffer = await fetch(firstEventImageURL).then(async (res) => {
-    return Buffer.from(await res.arrayBuffer());
-  });
+    );
 
-  const { base64 } = await getPlaiceholder(buffer);
+  const imagesArray = await Promise.all(
+    sortedImages.map(async (event) => {
+      const imageWithPlaceholder = await getPlaceholderImage(event.imageURL)
+      return imageWithPlaceholder
+    }),
+  )
 
   return (
     <div>
@@ -46,7 +50,7 @@ export default async function Page() {
           </div>
         </div>
         <div className={styles.dashBody}>
-          {base64 && <CorkBoard blurredImg={base64} />}
+          <CorkBoard imageArray={imagesArray} />
         </div>
       </div>
       <div></div>

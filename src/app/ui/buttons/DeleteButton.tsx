@@ -9,14 +9,12 @@ interface DeleteButtonProps {
   deleteType: "event" | "trip" | "staff";
   id: string;
   onDelete: () => void;
-  isStaff: boolean;
 }
 
 export const DeleteButton: React.FC<DeleteButtonProps> = ({
   deleteType,
   id,
   onDelete,
-  isStaff,
 }) => {
   const handleDeleteEvent = async () => {
     try {
@@ -42,7 +40,6 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 
   return (
     <>
-      {isStaff && (
         <AlertDialog.Root>
           <AlertDialog.Trigger asChild>
             <button className={styles.staffButton}>
@@ -75,7 +72,6 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
             </AlertDialog.Content>
           </AlertDialog.Portal>
         </AlertDialog.Root>
-      )}
     </>
   );
 };

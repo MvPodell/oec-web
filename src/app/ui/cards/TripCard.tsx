@@ -3,9 +3,10 @@ import React from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { EditButton } from "../buttons/EditButton";
+// import { EditButton } from "../buttons/EditButton";
 import { DeleteButton } from "../buttons/DeleteButton";
 import { useAuth } from "@/config/AuthContext";
+import dynamic from "next/dynamic";
 
 interface TripCardProps {
   id: string;
@@ -14,19 +15,24 @@ interface TripCardProps {
   shortDescription: string;
   imageURL: string;
   index: number;
+  blurURL: string;
   fetchTrips: () => void;
 }
 
+const DynamicEditButton = dynamic(() => import("@/app/ui/buttons/EditButton").then(mod => mod.EditButton));
+const DynamicDeleteButton = dynamic(() => import("@/app/ui/buttons/DeleteButton").then(mod => mod.DeleteButton));
+
+
 export const TripCard: React.FC<TripCardProps> = ({
   id,
+  index,
   title,
   date,
   shortDescription,
   imageURL,
-  index,
+  blurURL,
   fetchTrips,
 }) => {
-
   const { isStaff } = useAuth();
 
   return (
@@ -48,36 +54,30 @@ export const TripCard: React.FC<TripCardProps> = ({
               </Link>
             </div>
           </div>
-          {imageURL ? (
-            <Image
-              src={imageURL}
-              width="800"
-              height="200"
-              alt={title}
-              className={styles.cardImage}
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
-          ) : (
-            <Image
-              src={imageURL}
-              width="800"
-              height="200"
-              alt={title}
-              className={styles.cardImage}
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
+          <Image
+            src={imageURL}
+            blurDataURL={blurURL}
+            placeholder="blur"
+            width="1200"
+            height="630"
+            alt={title}
+            className={styles.cardImage}
+            priority={index === 0}
+          />
+          {isStaff && (
+            <div className={styles.buttonContainer}>
+              <DynamicEditButton
+                editType="trip"
+                id={id}
+                onEdit={fetchTrips}
+              />
+              <DynamicDeleteButton
+                deleteType="trip"
+                id={id}
+                onDelete={fetchTrips}
+              />
+            </div>
           )}
-          <div className={styles.buttonContainer}>
-            <EditButton editType="trip" id={id} isStaff={isStaff} onEdit={fetchTrips} />
-            <DeleteButton
-              deleteType="trip"
-              id={id}
-              onDelete={fetchTrips}
-              isStaff={isStaff}
-            />
-          </div>
         </div>
       </div>
     </div>
