@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { TripList } from "@/app/ui/trips/TripList";
-import { AddButton } from "@/app/ui/buttons/AddButton";
 import { fetchSortedAffairs } from "@/config/firestore";
 import { getPlaceholderImage } from "@/utils/ImageOpti";
-import { useAuth } from "@/config/AuthContext";
 
 export interface Trip {
   capacity: string;

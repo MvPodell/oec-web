@@ -3,9 +3,10 @@ import React from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { EditButton } from "../buttons/EditButton";
+// import { EditButton } from "../buttons/EditButton";
 import { DeleteButton } from "../buttons/DeleteButton";
 import { useAuth } from "@/config/AuthContext";
+import dynamic from "next/dynamic";
 
 interface TripCardProps {
   id: string;
@@ -17,6 +18,10 @@ interface TripCardProps {
   blurURL: string;
   fetchTrips: () => void;
 }
+
+const DynamicEditButton = dynamic(() => import("@/app/ui/buttons/EditButton").then(mod => mod.EditButton));
+const DynamicDeleteButton = dynamic(() => import("@/app/ui/buttons/DeleteButton").then(mod => mod.DeleteButton));
+
 
 export const TripCard: React.FC<TripCardProps> = ({
   id,
@@ -61,12 +66,12 @@ export const TripCard: React.FC<TripCardProps> = ({
           />
           {isStaff && (
             <div className={styles.buttonContainer}>
-              <EditButton
+              <DynamicEditButton
                 editType="trip"
                 id={id}
                 onEdit={fetchTrips}
               />
-              <DeleteButton
+              <DynamicDeleteButton
                 deleteType="trip"
                 id={id}
                 onDelete={fetchTrips}

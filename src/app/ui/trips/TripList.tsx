@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { fetchSortedAffairs } from "@/config/firestore";
-import { TripCard } from "@/app/ui/cards/TripCard";
+// import { TripCard } from "@/app/ui/cards/TripCard";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
-import { AddButton } from "../buttons/AddButton";
+// import { AddButton } from "../buttons/AddButton";
 import { useAuth } from "@/config/AuthContext";
 import dynamic from "next/dynamic";
 
@@ -13,6 +13,10 @@ interface TripListProps {
   kind: "past" | "present";
   imageArray: ImgAndPlaceholder[];
 }
+
+const DynamicTripCard = dynamic(() => import("@/app/ui/cards/TripCard").then(mod => mod.TripCard));
+
+const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
 
 export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
   const { isStaff } = useAuth();
@@ -43,14 +47,14 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
 
   return (
     <>
-    {kind === "present" && isStaff && (<AddButton label="ADD TRIP" dest="/form/add-trip" />)}
+    {kind === "present" && isStaff && (<DynamicAddButton label="ADD TRIP" dest="/form/add-trip" />)}
     <div className={styles.tripListContainer}>
       {trips &&
         kind === "present" &&
         trips
           .slice(0, currGrave.open ? trips.length : 2)
           .map((trip, index) => (
-            <TripCard
+            <DynamicTripCard
               key={trip.id}
               id={trip.id}
               index={index}
@@ -66,7 +70,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
         kind == "past" &&
         pastGrave.open &&
         pastTrips.map((past, index) => (
-          <TripCard
+          <DynamicTripCard
             key={past.id}
             id={past.id}
             index={index}
