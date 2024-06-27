@@ -30,22 +30,13 @@ export const TripForm = () => {
         title: "",
     });
     
-    // const [tripTitle, setTripTitle] = useState("");
-    // const [tripDate, setTripDate] = useState("");
-    // const [tripId, setTripId] = useState("");
-    // const [tripCapacity, setTripCapacity] = useState("");
-    // const [tripShortDesc, setTripShortDesc] = useState("");
-    // const [tripDesc, setTripDesc] = useState("");
-    // const [tripImage, setTripImage] = useState("");
-    
     const tripTitleRef = useRef<HTMLInputElement>(null);
     const tripDateRef = useRef("");
-    const tripIdRef = useRef("");
     const tripCapacityRef = useRef("");
     const tripShortDescRef = useRef("");
     const tripDescRef = useRef("");
     const tripImageRef = useRef<HTMLInputElement>(null);
-    
+    const tripId = Math.random().toString(16);
 
 
     const [notice, setNotice] = useState("");
@@ -58,7 +49,7 @@ export const TripForm = () => {
         let imageUrl = "";
         console.log("image: ", file);
         if (file) {
-            const storageRef = ref(storage, `/images/${file.name}`);
+            const storageRef = ref(storage, `/images/trips/${file.name}`);
             await uploadBytes(storageRef, file).then(data => {
                 console.log(data, "imgs");
             });
@@ -71,7 +62,7 @@ export const TripForm = () => {
                 tripCapacityRef.current,
                 tripDateRef.current,
                 tripDescRef.current,
-                tripIdRef.current,
+                tripId,
                 imageUrl,
                 tripShortDescRef.current,
                 tripTitleRef.current?.value || "",
@@ -121,7 +112,7 @@ export const TripForm = () => {
 
                             </input>
                     </div>
-                    <div className={styles.formInputContainer}>
+                    {/* <div className={styles.formInputContainer}>
                         <label htmlFor="tripId" className={styles.formLabel}>Trip ID</label>
                         <div className={styles.sublabel}>Like a username for your trip!</div>
                         <input 
@@ -132,7 +123,7 @@ export const TripForm = () => {
                         >
 
                         </input>
-                    </div>
+                    </div> */}
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripCapacity" className={styles.formLabel}>Trip Capacity</label>
                         <div className={styles.sublabel}>How many people can you bring?</div>

@@ -25,7 +25,7 @@ import { Member } from "@/app/ui/about/StaffSection";
  * @param email
  * @param userId
  */
-export async function addDocToFirestore(
+export async function addUserToFirestore(
   username: string,
   firstName: string,
   lastName: string,

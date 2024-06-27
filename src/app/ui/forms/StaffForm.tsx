@@ -31,13 +31,14 @@ export const StaffForm = () => {
   });
 
   const staffNameRef = useRef<HTMLInputElement>(null);
-  const staffIdRef = useRef<HTMLInputElement>(null);
   const staffRoleRef = useRef<HTMLInputElement>(null);
   const staffHometownRef = useRef<HTMLInputElement>(null);
   const staffHireDateRef = useRef<HTMLInputElement>(null);
   const staffHopesRef = useRef<HTMLInputElement>(null);
   const staffGraduatedRef = useRef<HTMLInputElement>(null);
   const staffImageRef = useRef<HTMLInputElement>(null);
+  const staffId = Math.random().toString(16);
+
 
   const [notice, setNotice] = useState("");
   const router = useRouter();
@@ -69,7 +70,7 @@ export const StaffForm = () => {
     try {
       await addStaffToFirestore(
         staffNameRef.current?.value || "",
-        staffIdRef.current?.value || "",
+        staffId,
         staffRoleRef.current?.value || "",
         staffHometownRef.current?.value || "",
         staffHireDateRef.current?.value || "",
@@ -110,20 +111,6 @@ export const StaffForm = () => {
               className={styles.formInput}
               placeholder="Name"
               ref={staffNameRef}
-            ></input>
-          </div>
-          <div className={styles.formInputContainer}>
-            <label htmlFor="tripDate" className={styles.formLabel}>
-              Id
-            </label>
-            <div className={styles.sublabel}>Like a username!</div>
-            <input
-              id="staffId"
-              className={styles.formInput}
-              placeholder="Id"
-              type="text"
-              onChange={handleChange}
-              ref={staffIdRef}
             ></input>
           </div>
           <div className={styles.formInputContainer}>

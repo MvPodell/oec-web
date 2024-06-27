@@ -3,26 +3,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebaseConfig";
-import { addDocToFirestore } from "@/config/firestore";
+import { addUserToFirestore } from "@/config/firestore";
 import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 
 
-interface SignUpFormProps {
-    firstName: string,
-    lastName: string,
-    username: string,
-    email: string,
-}
-
 export const SignUpForm = () => {
-    const [userDetails, setUserDetails] = useState<SignUpFormProps>({
-        firstName: "",
-        lastName: "",
-        username: "",
-        email: ""
-    });
-
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
@@ -32,30 +18,16 @@ export const SignUpForm = () => {
     const [notice, setNotice] = useState("");
     const router = useRouter();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setUserDetails({
-            ...userDetails,
-            [name]: value
-        });
-    };
-
     const signupWithUsernameAndPassword = async (e: React.MouseEvent) => {
         e.preventDefault();
 
         if (password === confirmPassword) {
             try {
                 try {
-                    const userDetails: SignUpFormProps = {
-                        firstName,
-                        lastName,
-                        username,
-                        email
-                      };
                     const credential = await createUserWithEmailAndPassword(auth, email, password);
                     const uid = credential.user.uid;
                     // console.log("inputs inside try: ", username, credential.user.uid);
-                    await addDocToFirestore(username, firstName, lastName, email, uid);
+                    await addUserToFirestore(username, firstName, lastName, email, uid);
                     router.push('/dashboard');
                 } catch (error) {
                     setNotice("issue adding username")
