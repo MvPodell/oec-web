@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Pencil1Icon, Cross1Icon } from "@radix-ui/react-icons";
-import styles from "@/app/ui/buttons/buttons.module.scss";
+import styles from "@/app/ui/buttons/editButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { EditEventForm } from "../forms/EditEventForm";
 import { EditTripForm } from "../forms/EditTripForm";

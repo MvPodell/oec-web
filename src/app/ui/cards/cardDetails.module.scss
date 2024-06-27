@@ -1,0 +1,56 @@
+@import "/src/styles/variables.module.scss";
+@import "/src/app/ui/cards/card.module.scss";
+
+
+.backButton {
+  @extend .cardButton;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.backButton:hover {
+  @extend .cardButton, :hover;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.backButtonContainer {
+  display: flex;
+  width: 90%;
+  justify-content: left;
+}
+
+.cardDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardHeaderCapacity {
+  @extend .cardHeader;
+  font-size: 1rem;
+  color: grey;
+}
+
+.cardHeaderText {
+  @extend .cardHeader;
+  justify-content: left;
+}
+
+.cardHeaderTitle {
+  @extend .cardHeader;
+  margin-right: 1rem;
+}
+
+.cardMemberQueue {
+  margin: 1rem 0;
+}
+
+.joinButton {
+  @extend .cardButton;
+  margin-right: 0;
+}
+
+.joinButton:hover {
+  @extend .cardButton, :hover;
+}

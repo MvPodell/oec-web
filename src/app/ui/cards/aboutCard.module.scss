@@ -1,0 +1,24 @@
+@import "/src/styles/variables.module.scss";
+@import "/src/app/ui/cards/card.module.scss";
+
+.aboutCardContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.aboutCardHeader {
+    @extend .cardHeader;
+    color: $oec-blue;
+  }
+
+  .aboutCardTextQ {
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+  }
+  
+  .aboutCardTextA {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: black;
+  }

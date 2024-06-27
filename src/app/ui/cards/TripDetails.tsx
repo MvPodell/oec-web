@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useCallback } from "react";
-import styles from "@/app/ui/cards/card.module.scss";
+import styles from "@/app/ui/cards/cardDetails.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Trip } from "@/app/dashboard/trips/page";
