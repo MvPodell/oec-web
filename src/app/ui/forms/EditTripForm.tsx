@@ -116,7 +116,7 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
     const file = imageInputRef.current?.files?.[0];
     let imageUrl = "";
     if (file) {
-        const storageRef = ref(storage, `/images/events/${file.name}`);
+        const storageRef = ref(storage, `/images/trips/${file.name}`);
         await uploadBytes(storageRef, file).then(data => {
             console.log(data, "imgs");
         });

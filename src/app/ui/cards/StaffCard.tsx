@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "@/app/ui/cards/card.module.scss";
+import styles from "@/app/ui/cards/staffCard.module.scss";
 import Image from "next/image";
 import { Member } from "../about/StaffSection";
 import { EditButton } from "../buttons/EditButton";
@@ -12,29 +12,23 @@ interface StaffCardProps {
   fetchStaff: () => void;
 }
 
-function calcYears(hireDate: Date, currentDate: Date) {
-  return;
-}
-
 export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
-  const currentDate = new Date();
   const { isStaff } = useAuth();
   return (
     <>
-      <div className={styles.cardDeckContainer}>
         <div className={styles.cardStaff}>
           <div className={styles.cardContent}>
             <div className={styles.cardInfoContainerStaff}>
               <div className={styles.cardInfo}>
                 <div className={styles.cardHeaderStaff}>{person.name}</div>
-                <div className={styles.cardTextAboutQ}>Role</div>
-                <div className={styles.cardTextAboutA}>{person.role}</div>
-                <div className={styles.cardTextAboutQ}>Hometown</div>
-                <div className={styles.cardTextAboutA}>{person.hometown}</div>
-                <div className={styles.cardTextAboutQ}>Years at OEC</div>
-                <div className={styles.cardTextAboutA}>{person.hireDate}</div>
-                <div className={styles.cardTextAboutQ}>Hopes and Dreams</div>
-                <div className={styles.cardTextAboutA}>{person.hopes}</div>
+                <div className={styles.aboutCardTextQ}>Role</div>
+                <div className={styles.aboutCardTextA}>{person.role}</div>
+                <div className={styles.aboutCardTextQ}>Hometown</div>
+                <div className={styles.aboutCardTextA}>{person.hometown}</div>
+                <div className={styles.aboutCardTextQ}>Years at OEC</div>
+                <div className={styles.aboutCardTextA}>{person.hireDate}</div>
+                <div className={styles.aboutCardTextQ}>Hopes and Dreams</div>
+                <div className={styles.aboutCardTextA}>{person.hopes}</div>
               </div>
             </div>
             <div className={styles.cardStaffImageContainer}>
@@ -65,7 +59,6 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
             )}
           </div>
         </div>
-      </div>
     </>
   );
 };

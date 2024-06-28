@@ -3,8 +3,6 @@ import React from "react";
 import styles from "@/app/ui/cards/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-// import { EditButton } from "../buttons/EditButton";
-import { DeleteButton } from "../buttons/DeleteButton";
 import { useAuth } from "@/config/AuthContext";
 import dynamic from "next/dynamic";
 
@@ -36,7 +34,6 @@ export const TripCard: React.FC<TripCardProps> = ({
   const { isStaff } = useAuth();
 
   return (
-    <div className={styles.cardDeckContainer}>
       <div className={styles.card}>
         <div className={styles.cardContent}>
           <div className={styles.cardInfoContainer}>
@@ -80,6 +77,5 @@ export const TripCard: React.FC<TripCardProps> = ({
           )}
         </div>
       </div>
-    </div>
   );
 };

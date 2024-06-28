@@ -1,0 +1,59 @@
+@import "/src/styles/variables.module.scss";
+
+@import "/src/app/ui/buttons/editButton.module.scss";
+
+.profileButtonContainer {
+    border: 1px solid $highlight-blue;
+    border-radius: 2rem;
+    display: flex;
+    padding: 0.8rem 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.profileButtonContainer:hover {
+    background-color: $highlight-blue;
+    color: $oec-blue;
+}
+
+.ProfileDialogContent {
+    @extend .AlertDialogContent;
+    @media (min-width: 768px) {
+        top: 50%;
+        left: 50%;
+        width: 18rem;
+    }
+}
+
+.profileLabel {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 2rem;
+    color: black;
+}
+
+.profileEditButton {
+    display: flex;
+    align-self: center;
+    background-color: $blue4;
+    border-radius: 0.375rem;
+    color: $blue11;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  .profileEditButton:hover {
+    background-color: $blue5;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+  }
+  .profileEditButton:focus {
+    box-shadow: 0 0 0 2px $blue6;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+  }
+
+  .profileFormWrapper {
+    @extend .formWrapper;
+    display: flex;
+    flex-direction: column;
+  }

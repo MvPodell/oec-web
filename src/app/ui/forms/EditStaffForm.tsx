@@ -82,18 +82,6 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     staffData.graduated,
   ]);
 
-  // const handleChange = (
-  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   const { name, value } = event.target;
-
-  //   setUpdatedStaff((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-
-
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 

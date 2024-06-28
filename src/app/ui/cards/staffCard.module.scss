@@ -1,0 +1,50 @@
+@import "/src/app/ui/cards/card.module.scss";
+@import "/src/app/ui/cards/aboutCard.module.scss";
+
+.cardStaff {
+    @extend .card;
+    @media (min-width: 768px) {
+      width: 27.5rem;
+      // max-width: 30rem;
+      margin: 1rem;
+    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 22.5rem;
+  }
+
+.cardInfoContainerStaff {
+    @media (min-width: 768px) {
+      width: 70%;
+    }
+  }
+
+  .cardStaffImage {
+    @media (min-width: 768px) {
+      height: 100%;
+      object-fit: cover;
+    }
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: auto;
+  }
+
+
+  .cardStaffImageContainer {
+    @media (min-width: 768px) {
+      max-width: 55%;
+      height: 20rem;
+    }
+    display: flex;
+  }
+
+  .cardHeaderStaff {
+    @extend .cardHeader;
+    color: $oec-blue;
+    justify-content: center;
+    text-align: center;
+  }
+
+  

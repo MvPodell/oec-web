@@ -1,12 +1,11 @@
 'use client';
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { addEventToFirestore } from "@/config/firestore";
 import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
-
 
 
 export interface EventFormProps {
@@ -19,26 +18,13 @@ export interface EventFormProps {
 };
 
 export const EventForm = () => {
-    const [eventDetails, seteventDetails] = useState<EventFormProps>({
-        date: "",
-        description: "",
-        id: "",
-        imageURL: "",
-        location: "",
-        title: "",
-    });
-
-    
     const eventTitleRef = useRef<HTMLInputElement>(null);
     const eventDateRef = useRef("");
-    const eventIdRef = useRef("");
     const eventLocationRef = useRef("");
     const eventDescRef = useRef("");
     const eventImageRef = useRef<HTMLInputElement>(null);
-    
+    const eventId = Math.random().toString(16);
 
-
-    const [notice, setNotice] = useState("");
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,7 +46,7 @@ export const EventForm = () => {
             await addEventToFirestore(
                 eventDateRef.current,
                 eventDescRef.current,
-                eventIdRef.current,
+                eventId,
                 imageUrl,
                 eventLocationRef.current,
                 eventTitleRef.current?.value || "",
@@ -84,11 +70,6 @@ export const EventForm = () => {
             </div>
             <div className={styles.formFieldsContainer}>
                 <form className={styles.formFields} onSubmit={handleSubmit}>
-                    {"" !== notice &&
-                        <div className="alert alert-warning" role="alert">
-                            {notice}
-                        </div>
-                    }
                     <div className={styles.formInputContainer}>
                         <label htmlFor="eventTitle" className={styles.formLabel}> Event Title</label>
                         <input 
@@ -109,18 +90,6 @@ export const EventForm = () => {
                             >
 
                             </input>
-                    </div>
-                    <div className={styles.formInputContainer}>
-                        <label htmlFor="eventId" className={styles.formLabel}>Event ID</label>
-                        <div className={styles.sublabel}>Like a username for your event!</div>
-                        <input 
-                        id="eventId" 
-                        className={styles.formInput} 
-                        placeholder="ID" 
-                        onChange={(e) => eventIdRef.current = e.target.value}
-                        >
-
-                        </input>
                     </div>
                     <div className={styles.formInputContainer}>
                         <label htmlFor="eventLocation" className={styles.formLabel}>Event Location</label>
