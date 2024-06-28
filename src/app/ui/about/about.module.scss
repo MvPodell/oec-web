@@ -51,6 +51,9 @@
 }
 
 .staffDeck {
+  @media (min-width: 975px) {
+    width: 60rem;
+  }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

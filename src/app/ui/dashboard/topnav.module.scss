@@ -43,7 +43,7 @@
 }
 
 .deskBar {
-  @media (min-width: 768px) {
+  @media (min-width: 885px) {
     align-items: center;
     box-sizing: border-box;
     color: black;
@@ -59,12 +59,16 @@
 }
 
 .deskLogo {
-  align-items: center;
-  border-radius: 0.375rem;
-  color: white;
-  display: flex;
-  height: 5rem;
-  width: 5rem;
+  @media (min-width: 885px) {
+    align-items: center;
+    border-radius: 0.375rem;
+    color: white;
+    display: flex;
+    height: 5rem;
+    width: 5rem;
+  }
+  display: none;
+  
 }
 
 .deskLogout {
@@ -106,7 +110,7 @@
 
 .deskNavItemFill {
   @extend .deskNavItem;
-  @media (min-width: 1024px) {
+  @media (min-width: 1240px) {
     display: flex;
     font-size: 1rem;
     font-weight: 400;
@@ -160,7 +164,7 @@
 }
 
 .mobileBar {
-  @media (min-width: 768px) {
+  @media (min-width: 885px) {
     display: none;
   }
 }

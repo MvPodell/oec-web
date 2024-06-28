@@ -24,7 +24,6 @@ export const EventCard: React.FC<EventCardProps> = ({
   const { isStaff } = useAuth();
 
   return (
-    <div className={styles.cardDeckContainer} key={event.id}>
       <div className={styles.card}>
         <div className={styles.cardContent}>
           <div className={styles.cardInfoContainer}>
@@ -62,6 +61,5 @@ export const EventCard: React.FC<EventCardProps> = ({
           )}
         </div>
       </div>
-    </div>
   );
 };

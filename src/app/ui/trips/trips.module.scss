@@ -26,6 +26,13 @@
   flex-direction: row;
 }
 
+.cardDeck {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+}
+
 .currentTripsSection,
 .pastTripsSection {
   display: flex;
