@@ -4,11 +4,11 @@ import React, {useEffect, useState, useContext, createContext } from "react";
 import { auth } from "./firebaseConfig";
 import {  User } from "firebase/auth";
 import { getAuth } from "firebase/auth";
-import { getUserRole } from "./firestore";
+import { getUserData } from "./firestore";
+import { oecUser } from "@/app/ui/profile/Profile";
 
-export type oecUser = User | null;
 interface AuthContextState {
-  user: oecUser;
+  user: User | null;
   isStaff: boolean;
 }
 const AuthContext = createContext<AuthContextState>({user: null, isStaff: false});
@@ -22,8 +22,8 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
         if (user) {
             setUser(user);
-            const userRole = await getUserRole(user.uid);
-            setIsStaff(userRole === "staff");
+            const userData = await getUserData(user.uid) as oecUser;
+            setIsStaff(userData.role === "staff");
         } else {
             setUser(null);
             setIsStaff(false);

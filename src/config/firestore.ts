@@ -14,6 +14,7 @@ import { Trip } from "@/app/dashboard/trips/page";
 import { Profile } from "@/app/form/signup/page";
 import { Event } from "@/app/dashboard/page";
 import { Member } from "@/app/ui/about/StaffSection";
+import { oecUser } from "@/app/ui/profile/Profile";
 
 /**
  *
@@ -49,27 +50,26 @@ export async function addUserToFirestore(
 }
 
 /**
- * Returns the user's role
+ * Returns the user's data
  *
  * @export
  * @async
  * @param userId - user's id
- * @returns userRole - user's role
+ * @returns oecUser object - { email, firstName, lastName, role, username }
  */
-export async function getUserRole(userId: string) {
+export async function getUserData(userId: string) {
   try {
     const docRef = doc(db, "users", userId);
     const userDoc = await getDoc(docRef);
 
     if (userDoc.exists()) {
       const userData = userDoc.data();
-      const userRole: string = userData.role;
-      return userRole;
+      return userData as oecUser;
     } else {
       console.log("User does not exist!");
     }
   } catch (error) {
-    console.error("Error getting user's role: ", error);
+    console.error("Error getting user's data: ", error);
   }
 }
 
@@ -335,6 +335,56 @@ export async function updateStaff(
     }
   } catch (error) {
     console.error("Error updating document: ", error);
+    throw error;
+  }
+}
+
+export async function updateUser(
+  firstName: string,
+  lastName: string,
+  userId: string,
+  email: string,
+  role: string,
+  username: string,
+) {
+  try {
+    const docRef = doc(db, "users", userId);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      console.log("No such user!");
+      addUserToFirestore(
+        email,
+        firstName,
+        lastName,
+        role,
+        username,
+      );
+      return;
+    }
+
+    const existingUser = docSnap.data();
+
+    const isDifferent =
+      existingUser.firstName !== firstName ||
+      existingUser.lastName !== lastName ||
+      existingUser.email !== email ||
+      existingUser.role !== role ||
+      existingUser.username !== username;
+
+    if (isDifferent) {
+      await setDoc(docRef, {
+        firstName: firstName,
+        lastName: lastName,
+        role: role,
+        username: username,
+        email: email,
+      });
+    } else {
+      console.log("No changes detected, user not updated.");
+    }
+  } catch (error) {
+    console.error("Error updating user document: ", error);
     throw error;
   }
 }
