@@ -48,7 +48,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     };
     fetchStaffData();
     console.log("staff data fetched! ", staffData);
-  }, [staffId]);
+  }, [staffId, staffData]);
 
   useEffect(() => {
     fetchStaff();

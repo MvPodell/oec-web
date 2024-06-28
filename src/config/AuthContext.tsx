@@ -31,7 +31,7 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
     });
 
     return () => unsubscribe();
-}, [user, auth]);
+}, [user]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(setUser);
