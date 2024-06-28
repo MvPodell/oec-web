@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import styles from "@/app/ui/dashboard/sidenav.module.scss";
+import styles from "@/app/ui/dashboard/topnav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/images/OECTempLogoBlue.png";
 import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
 import { useAuth } from "@/config/AuthContext";
+import { Profile } from "../profile/Profile";
 
-export default function SideNav() {
+export default function TopNav() {
   const links = [
     { name: "HOME", key: "", href: "/dashboard" },
     { name: "TRIPS", key: "trips", href: "/dashboard/trips" },
@@ -34,8 +35,8 @@ export default function SideNav() {
 
   return (
     <div className={styles.navBar}>
-      <div className={styles.topBar}>
-        <div className={styles.topBarRow}>
+      <div className={styles.mobileBar}>
+        <div className={styles.mobileBarRow}>
           <Hamburger
             toggled={isOpen}
             size={20}
@@ -44,8 +45,8 @@ export default function SideNav() {
           />
           {isOpen &&
             (user ? (
-              <div className={styles.topLogout}>
-                <div className={styles.topLogoutItem}>
+              <div className={styles.mobileLogout}>
+                <div className={styles.mobileLogoutItem}>
                   <button
                     key="logout"
                     className={styles.logoutButton}
@@ -56,13 +57,13 @@ export default function SideNav() {
                 </div>
               </div>
             ) : (
-              <div className={styles.topLogout}>
+              <div className={styles.mobileLogout}>
                 <Link
                   key="login"
                   href={"/form/login"}
                   className={styles.deskNavLink}
                 >
-                  <div className={styles.topLogoutItem}>
+                  <div className={styles.mobileLogoutItem}>
                     <b>LOGIN</b>
                   </div>
                 </Link>
@@ -125,6 +126,9 @@ export default function SideNav() {
         </div>
         {user ? (
           <div className={styles.deskLogout}>
+            <div className={styles.buttonContainer}>
+              <Profile />
+            </div>
             <button
               key="logout"
               className={styles.logoutButton}
@@ -132,6 +136,7 @@ export default function SideNav() {
             >
               <b>LOGOUT</b>
             </button>
+            
           </div>
         ) : (
           <div className={styles.deskLogout}>

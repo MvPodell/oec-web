@@ -1,5 +1,14 @@
 @import "/src/styles/variables.module.scss";
 
+.profileButtonContainer {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .deskLinks {
   @media (min-width: 1024px) {
     padding: 0.5rem 0.5rem 0.5rem 2rem;
@@ -147,28 +156,28 @@
   width: 100%;
   flex-grow: 1;
   margin-bottom: 0.5rem;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 
-.topBar {
+.mobileBar {
   @media (min-width: 768px) {
     display: none;
   }
 }
 
-.topBarRow {
+.mobileBarRow {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.topLogout {
+.mobileLogout {
   display: flex;
   justify-content: center;
 }
 
-.topLogoutItem {
+.mobileLogoutItem {
   border-radius: 0.375rem;
   background-color: $slate2;
   color: $oec-blue;
