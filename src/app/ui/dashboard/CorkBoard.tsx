@@ -42,6 +42,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
 
         {events.map((event, index) => (
           <EventCard
+            key={event.id}
             event={event}
             index={index}
             imageArray={imageArray}
