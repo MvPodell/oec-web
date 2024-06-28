@@ -1,5 +1,11 @@
 @import "/src/styles/variables.module.scss";
 
+.cardDeck {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+}
 
 .corkBody {
     background-color: white;

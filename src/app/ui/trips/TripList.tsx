@@ -1,11 +1,9 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { fetchSortedAffairs } from "@/config/firestore";
-// import { TripCard } from "@/app/ui/cards/TripCard";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
-// import { AddButton } from "../buttons/AddButton";
 import { useAuth } from "@/config/AuthContext";
 import dynamic from "next/dynamic";
 
@@ -49,6 +47,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
     <>
     {kind === "present" && isStaff && (<DynamicAddButton label="ADD TRIP" dest="/form/add-trip" />)}
     <div className={styles.tripListContainer}>
+      <div className={styles.cardDeck}>
       {trips &&
         kind === "present" &&
         trips
@@ -66,6 +65,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
               fetchTrips={fetchTrips}
             />
           ))}
+          </div>
       {trips &&
         kind == "past" &&
         pastGrave.open &&

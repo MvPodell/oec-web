@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import styles from "@/app/ui/dashboard/corkboard.module.scss";
-import { AddButton } from "../buttons/AddButton";
 import { EventCard } from "../cards/EventCard";
 import { fetchSortedAffairs } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
@@ -39,16 +38,17 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
       </div>
       <div className={styles.corkBody}>
         <DynamicAddButton label="ADD EVENT" dest="/form/add-event" />
-
-        {events.map((event, index) => (
-          <EventCard
-            key={event.id}
-            event={event}
-            index={index}
-            imageArray={imageArray}
-            loadEvents={loadEvents}
-          />
-        ))}
+        <div className={styles.cardDeck}>
+          {events.map((event, index) => (
+            <EventCard
+              key={event.id}
+              event={event}
+              index={index}
+              imageArray={imageArray}
+              loadEvents={loadEvents}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
