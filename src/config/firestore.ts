@@ -11,7 +11,6 @@ import {
 } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { Trip } from "@/app/dashboard/trips/page";
-import { Profile } from "@/app/form/signup/page";
 import { Event } from "@/app/dashboard/page";
 import { Member } from "@/app/ui/about/StaffSection";
 import { oecUser } from "@/app/ui/profile/Profile";
@@ -395,14 +394,14 @@ export async function updateUser(
  *
  * @returns userList - list of user Profiles
  */
-export async function getUsers(): Promise<Profile[]> {
+export async function getUsers(): Promise<oecUser[]> {
   const userCollection = await getDocs(collection(db, "users"));
   const userList = userCollection.docs.map(
     (doc) =>
       ({
         id: doc.id,
         ...doc.data(),
-      } as Profile)
+      } as oecUser)
   );
   return userList;
 }

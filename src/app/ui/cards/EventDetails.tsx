@@ -43,7 +43,7 @@ export const EventDetails: React.FC = () => {
           />
           <div className={styles.cardInfo}>
             <div className={styles.cardHeader}>
-              <div className={styles.cardHeaderText}>
+              <div className={styles.cardHeaderLeft}>
                 <div className={styles.cardHeaderTitle}>
                   {currentEvent.title}
                 </div>

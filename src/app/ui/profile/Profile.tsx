@@ -7,6 +7,7 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { EditUserForm } from "../forms/EditUserForm";
 
 export interface oecUser {
+  id: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -17,6 +18,7 @@ export interface oecUser {
 export const Profile = () => {
   const [editMode, setEditMode] = useState(false);
   const [userData, setUserData] = useState<oecUser>({
+    id: "",
     email: "",
     firstName: "",
     lastName: "",

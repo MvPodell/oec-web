@@ -32,7 +32,7 @@
   color: grey;
 }
 
-.cardHeaderText {
+.cardHeaderLeft {
   @extend .cardHeader;
   justify-content: left;
 }
