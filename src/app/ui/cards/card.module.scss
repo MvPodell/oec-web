@@ -11,7 +11,7 @@
 }
 
 .card {
-  @media (min-width: 885px) {
+  @media (min-width: 768px) {
     max-width: 48rem;
     width: 100%;
   }
@@ -86,15 +86,13 @@
 
 .cardImage {
   @media (min-width: 768px) {
-    max-width: 70%;
+    width: 23.5rem;
+
   }
   height: auto;
   width: 100%;
-  // box-sizing: border-box;
-  // object-fit: cover;
   overflow-x: hidden;
   display: flex;
-  flex-grow: 1;
 }
 
 .cardInfo {
@@ -106,9 +104,6 @@
 }
 
 .cardInfoContainer {
-  @media (min-width: 768px) {
-    width: 70%;
-  }
   background-color: white;
   display: flex;
   flex-direction: column;
