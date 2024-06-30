@@ -1,17 +1,18 @@
 import React from "react";
 import styles from "@/app/ui/trips/tripEmails.module.scss";
 import { oecUser } from "../profile/Profile";
+import { Trip } from "@/app/dashboard/trips/page";
 
 interface TripEmailsProps {
     signedUpUsers: oecUser[];
-    capacity: number;
+    trip: Trip;
 }
 
-export const TripEmails: React.FC<TripEmailsProps> = ({signedUpUsers, capacity }) => {
-    const confirmedUsers = signedUpUsers.slice(0, capacity);
-    const waitListUsers = signedUpUsers.slice(capacity, signedUpUsers.length);
+export const TripEmails: React.FC<TripEmailsProps> = ({signedUpUsers, trip }) => {
+    const confirmedUsers = signedUpUsers.filter((user) => trip.confirmed.includes(user.id) )
+    const waitlistUsers = signedUpUsers.filter((user) => !trip.confirmed.includes(user.id) )
     const confirmedEmails: string = confirmedUsers.map((user) => user.email).join(', ');
-    
+    const waitlistEmails: string = waitlistUsers.map((user) => user.email).join(', ');
 
   return (
     <div className={styles.emailContainer}>
@@ -25,7 +26,7 @@ export const TripEmails: React.FC<TripEmailsProps> = ({signedUpUsers, capacity }
       </div>
       <div className={styles.emailBlock}>
         <div>Waitlist members</div>
-        <textarea>Hello</textarea>
+        <textarea defaultValue={waitlistEmails}></textarea>
       </div>
     </div>
   );

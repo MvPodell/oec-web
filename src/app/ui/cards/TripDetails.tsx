@@ -137,7 +137,7 @@ export const TripDetails: React.FC = () => {
                   <div className={styles.cardHeaderButtons}>
                     <EmailButton
                       signedUpUsers={signedUpUsers}
-                      capacity={Number(trip.capacity)}
+                      trip={trip}
                     />
                     <ConfirmButton
                       signedUpUsers={signedUpUsers}

@@ -5,14 +5,15 @@ import styles from "@/app/ui/buttons/editButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { TripEmails } from "../trips/TripEmails";
 import { oecUser } from "../profile/Profile";
+import { Trip } from "@/app/dashboard/trips/page";
 
 interface EmailButtonProps {
   signedUpUsers: oecUser[];
-  capacity: number;
+  trip: Trip;
 }
 
 export const EmailButton: React.FC<EmailButtonProps> = ({
- signedUpUsers, capacity
+ signedUpUsers, trip
 }) => {
   const [open, setOpen] = React.useState(false);
 
@@ -38,7 +39,7 @@ export const EmailButton: React.FC<EmailButtonProps> = ({
                 Copy the list of emails needed.
               </AlertDialog.Description>
 
-                <TripEmails signedUpUsers={signedUpUsers} capacity={capacity} />
+                <TripEmails signedUpUsers={signedUpUsers} trip={trip} />
               
             </div>
           </AlertDialog.Content>
