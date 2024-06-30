@@ -168,6 +168,32 @@ export async function updateTrip(
   }
 }
 
+export async function updateTripConfirmed(
+  tripId: string,
+  tripConfirmed: string[]
+) {
+  try {
+    const docRef = doc(db, "trips", tripId);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      console.log("No such trip!");
+      return;
+    }
+
+    const existingTrip = docSnap.data();
+
+    await setDoc(docRef, {
+      ...existingTrip,
+      confirmed: tripConfirmed,
+    });
+    console.log("Confirmations updated for trip: ", tripId);
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    throw error;
+  }
+}
+
 export async function addEventToFirestore(
   eventDate: string,
   eventDescription: string,
@@ -479,112 +505,6 @@ export async function removeUserFromTrip(tripId: string, userId: string) {
     }
   } catch (error) {
     console.error("Error removing user from trip: ", error);
-  }
-}
-
-/**
- *
- * Returns if the user is signed up for the trip.
- *
- * @param tripId
- * @param userId
- * @returns
- */
-export async function isUserMemberOfTrip(
-  tripId: string,
-  userId: string
-): Promise<boolean> {
-  try {
-    const docRef = doc(db, "trips", tripId);
-    const tripDoc = await getDoc(docRef);
-
-    if (tripDoc.exists()) {
-      const tripData = tripDoc.data();
-      const tripMembers = tripData.members || [];
-      return tripMembers.includes(userId);
-    } else {
-      console.log("Trip does not exist.");
-      return false;
-    }
-  } catch (error) {
-    console.error("Error checking if user is a member of trip: ", error);
-    return false;
-  }
-}
-
-/**
- *
- * Returns if the trip is full.
- *
- * @param tripId
- * @returns
- */
-export async function isTripAtCapacity(tripId: string): Promise<boolean> {
-  try {
-    const docRef = doc(db, "trips", tripId);
-    const tripDoc = await getDoc(docRef);
-
-    if (tripDoc.exists()) {
-      const tripData = tripDoc.data();
-      const tripCapacity = tripData.capacity;
-      const tripMembers = tripData.members || [];
-      return tripMembers.length === tripCapacity;
-    } else {
-      console.log("Trip does not exist.");
-      return false;
-    }
-  } catch (error) {
-    console.error("Error checking trip capacity: ", error);
-    return false;
-  }
-}
-
-/**
- *
- * Returns the number of members signed up for the trip.
- *
- * @param tripId
- * @returns
- */
-export async function currentTripSize(tripId: string) {
-  try {
-    const docRef = doc(db, "trips", tripId);
-    const tripDoc = await getDoc(docRef);
-
-    if (tripDoc.exists()) {
-      const tripData = tripDoc.data();
-      const tripMembers = tripData.members || [];
-      return tripMembers.length;
-    } else {
-      console.log("Trip does not exist.");
-    }
-  } catch (error) {
-    console.error("Error checking trip size: ", error);
-  }
-}
-
-/**
- * Returns the capacity of the trip
- *
- * @export
- * @async
- * @param tripId
- * @returns tripCapacity
- */
-export async function getTripCapacity(tripId: string) {
-  try {
-    const docRef = doc(db, "trips", tripId);
-    const tripDoc = await getDoc(docRef);
-
-    if (tripDoc.exists()) {
-      const tripData = tripDoc.data();
-      const tripCapcity = tripData.capacity;
-      return tripCapcity;
-    } else {
-      console.log("Trip does not exist.");
-    }
-  } catch (error) {
-    console.error("Error checking trip capacity: ", error);
   }
 }
 

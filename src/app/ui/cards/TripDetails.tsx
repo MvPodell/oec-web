@@ -7,7 +7,6 @@ import { Trip } from "@/app/dashboard/trips/page";
 import {
   checkAndAddUser,
   removeUserFromTrip,
-  currentTripSize,
   getTrip,
   getUsers,
 } from "@/config/firestore";
@@ -17,13 +16,17 @@ import { getAuth } from "firebase/auth";
 import { useAuth } from "@/config/AuthContext";
 import { EmailButton } from "../buttons/EmailButton";
 import { oecUser } from "../profile/Profile";
+import { ConfirmButton } from "../buttons/ConfirmButton";
+
 export const TripDetails: React.FC = () => {
   const auth = getAuth();
   const { isStaff } = useAuth();
   const [isMember, setIsMember] = useState(false);
   const [user, setUser] = useState(auth.currentUser);
-  const [tripSize, setTripSize] = useState(0);
-  const [currentTrip, setCurrentTrip] = useState<Trip | null>(null);
+  const [trip, setTrip] = useState<Trip | null>();
+  const [members, setMembers] = useState<string[]>([]);
+  const [users, setUsers] = useState<oecUser[]>([]);
+
   const searchParams = useSearchParams();
   const tripId = searchParams.get("id");
 
@@ -31,9 +34,7 @@ export const TripDetails: React.FC = () => {
     if (tripId) {
       const tripData = await getTrip(tripId);
       if (tripData) {
-        setCurrentTrip(tripData);
-        const size = await currentTripSize(tripData.id);
-        setTripSize(size);
+        setTrip(tripData);
         if (user) {
           setIsMember(tripData.members.includes(user.uid));
         }
@@ -48,15 +49,14 @@ export const TripDetails: React.FC = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
-      console.log("User set in TripDetails");
     });
     return () => unsubscribe();
   }, [auth]);
 
   const joinTrip = async (e: React.MouseEvent) => {
     e.preventDefault();
-    if (user && currentTrip) {
-      await checkAndAddUser(currentTrip.id, user.uid);
+    if (user && trip) {
+      await checkAndAddUser(trip.id, user.uid);
       setIsMember(true);
       fetchTripDetails();
     } else {
@@ -66,8 +66,8 @@ export const TripDetails: React.FC = () => {
 
   const leaveTrip = async (e: React.MouseEvent) => {
     e.preventDefault();
-    if (user && currentTrip) {
-      await removeUserFromTrip(currentTrip.id, user.uid);
+    if (user && trip) {
+      await removeUserFromTrip(trip.id, user.uid);
       setIsMember(false);
       fetchTripDetails();
     } else {
@@ -75,8 +75,6 @@ export const TripDetails: React.FC = () => {
     }
   };
 
-  const [members, setMembers] = useState<string[]>([]);
-    const [users, setUsers] = useState<oecUser[]>([]);
 
     useEffect(()=> {
         const fetchUsers = async () => {
@@ -93,10 +91,10 @@ export const TripDetails: React.FC = () => {
     
 
     useEffect(() => {
-        if (currentTrip && currentTrip.members) {
-            setMembers(currentTrip.members);
+        if (trip && trip.members) {
+            setMembers(trip.members);
         }
-    }, [currentTrip]);
+    }, [trip]);
     
     const signedUpUsersMap = new Map(users.map(user => [user.id, user]));
     const signedUpUsers: oecUser[] = members
@@ -118,12 +116,12 @@ export const TripDetails: React.FC = () => {
           Back to Trips
         </Link>
       </div>
-      {currentTrip && (
+      {trip && (
         <div className={styles.card}>
           <Image
             priority
             className={styles.cardDetailsImage}
-            src={currentTrip.imageURL}
+            src={trip.imageURL}
             alt="Joshua Tree"
             width="800"
             height="200"
@@ -131,17 +129,21 @@ export const TripDetails: React.FC = () => {
           <div className={styles.cardInfo}>
             <div className={styles.cardHeader}>
               <div className={styles.cardHeaderLeft}>
-                <div className={styles.cardHeaderTitle}>
-                  {currentTrip.title}
-                </div>
+                <div className={styles.cardHeaderTitle}>{trip.title}</div>
                 <div className={styles.cardHeaderCapacity}>
-                  {tripSize} / {currentTrip.capacity}{" "}
+                  {trip.members.length} / {trip.capacity}{" "}
                 </div>
                 {isStaff && (
-                  <EmailButton
-                    signedUpUsers={signedUpUsers}
-                    capacity={Number(currentTrip.capacity)}
-                  />
+                  <div className={styles.cardHeaderButtons}>
+                    <EmailButton
+                      signedUpUsers={signedUpUsers}
+                      capacity={Number(trip.capacity)}
+                    />
+                    <ConfirmButton
+                      signedUpUsers={signedUpUsers}
+                      trip={trip}
+                    />
+                  </div>
                 )}
               </div>
               <div className={styles.cardButtonContainer}>
@@ -162,11 +164,11 @@ export const TripDetails: React.FC = () => {
                 )}
               </div>
             </div>
-            <div className={styles.cardDate}>{currentTrip.date}</div>
+            <div className={styles.cardDate}>{trip.date}</div>
             <div className={styles.cardText}>
-              {currentTrip.description}
+              {trip.description}
               <div className={styles.cardMemberQueue}>
-                <TripQueue signedUpUsers={signedUpUsers} />
+                <TripQueue trip={trip} signedUpUsers={signedUpUsers} />
               </div>
             </div>
           </div>

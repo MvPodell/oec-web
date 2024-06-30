@@ -26,6 +26,12 @@
   align-items: center;
 }
 
+.cardHeaderButtons {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0.5rem;
+}
+
 .cardHeaderCapacity {
   @extend .cardHeader;
   font-size: 1rem;

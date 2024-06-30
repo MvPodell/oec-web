@@ -6,6 +6,7 @@ import { getPlaceholderImage } from "@/utils/ImageOpti";
 
 export interface Trip {
   capacity: string;
+  confirmed: string[];
   date: string;
   description: string;
   id: string;
