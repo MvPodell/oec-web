@@ -1,0 +1,12 @@
+.emailContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
+}
+
+.emailBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+}

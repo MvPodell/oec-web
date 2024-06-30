@@ -1,6 +1,5 @@
 import styles from "@/app/dashboard/dashboard.module.scss";
 import { CorkBoard } from "../ui/dashboard/CorkBoard";
-import { getPlaiceholder } from "plaiceholder";
 import { getEventList } from "@/config/firestore";
 import { getPlaceholderImage } from '@/utils/ImageOpti'
 
