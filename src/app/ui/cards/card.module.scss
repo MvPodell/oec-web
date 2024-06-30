@@ -11,7 +11,7 @@
 }
 
 .card {
-  @media (min-width: 768px) {
+  @media (min-width: 885px) {
     max-width: 48rem;
     width: 100%;
   }
@@ -98,6 +98,7 @@
 }
 
 .cardInfo {
+  background-color: white;
   box-sizing: border-box;
   padding: 1rem;
   width: 100%;
