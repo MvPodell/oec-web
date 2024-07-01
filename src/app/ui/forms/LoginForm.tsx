@@ -78,9 +78,8 @@ export const LoginForm = () => {
                         <div className={styles.formSubmitContainer}>
                             <button type="submit" className={styles.formSubmit} onClick={(e) => loginWithUsernameAndPassword(e)}>Submit</button>
                         </div>
-                        <div className="">
-                            <span>Need to sign up for an account? <Link href="/form/signup">Click here.</Link></span>
-                        </div>
+                            <span>Need to sign up? <Link href="/form/signup">Click here.</Link></span>
+                        <div>Forgot your password? <Link href="/form/password-reset">Click here.</Link></div>
                     </form>
                 </div>
             </div>

@@ -25,3 +25,15 @@
   border: 2px solid $highlight-blue;
   transition: 1s;
 }
+
+.resetButton {
+  align-items: center;
+  color: blue;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  margin: 0 0.5rem;
+  text-decoration: underline;
+}
