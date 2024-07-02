@@ -37,12 +37,16 @@ export default function TopNav() {
     <div className={styles.navBar}>
       <div className={styles.mobileBar}>
         <div className={styles.mobileBarRow}>
-          <Hamburger
-            toggled={isOpen}
-            size={20}
-            toggle={setOpen}
-            color="#0057b8"
-          />
+          <div className={styles.hamburgerContainer}>
+            <Hamburger
+              toggled={isOpen}
+              size={20}
+              toggle={setOpen}
+              color="#0057b8"
+            />
+          </div>
+          {!isOpen && <Image src="/images/OECTempLogoBlue.png" width="50" height="50" alt="mobile logo" className={styles.mobileLogo} />}
+
           {isOpen &&
             (user ? (
               <div className={styles.mobileLogout}>
