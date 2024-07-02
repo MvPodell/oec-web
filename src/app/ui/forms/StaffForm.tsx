@@ -14,7 +14,7 @@ export interface StaffFormProps {
   Hometown: string;
   hireDate: string;
   hopes: string;
-  graduated: string;
+  graduated: boolean;
   imageURL: string;
 }
 
@@ -26,12 +26,12 @@ export const StaffForm = () => {
     Hometown: "",
     hireDate: "",
     hopes: "",
-    graduated: "",
+    graduated: false,
     imageURL: "",
   });
 
   const staffNameRef = useRef<HTMLInputElement>(null);
-  const staffRoleRef = useRef<HTMLInputElement>(null);
+  const staffRoleRef = useRef<HTMLSelectElement>(null);
   const staffHometownRef = useRef<HTMLInputElement>(null);
   const staffHireDateRef = useRef<HTMLInputElement>(null);
   const staffHopesRef = useRef<HTMLInputElement>(null);
@@ -44,14 +44,23 @@ export const StaffForm = () => {
   const router = useRouter();
 
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
 
-    setStaff((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    if (type == "checkbox") {
+      const checked = (event.target as HTMLInputElement).checked;
+      setStaff((prevState) => ({
+        ...prevState,
+        [name]: checked,
+      }));
+    } else {
+      setStaff((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+    
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,7 +84,7 @@ export const StaffForm = () => {
         staffHometownRef.current?.value || "",
         staffHireDateRef.current?.value || "",
         staffHopesRef.current?.value || "",
-        staffGraduatedRef.current?.value || "",
+        staffGraduatedRef.current?.checked || false,
         imageUrl
       );
       console.log("Added staff to firestore!");
@@ -117,13 +126,15 @@ export const StaffForm = () => {
             <label htmlFor="staffRole" className={styles.formLabel}>
               Role
             </label>
-            <input
+            <select
               id="staffRole"
               className={styles.formInput}
-              placeholder="Staff or Manager"
               onChange={handleChange}
               ref={staffRoleRef}
-            ></input>
+            >
+              <option value="Staff">Staff</option>
+              <option value="Manager">Manager</option>
+            </select>
           </div>
           <div className={styles.formInputContainer}>
             <label htmlFor="staffHometown" className={styles.formLabel}>
@@ -139,13 +150,14 @@ export const StaffForm = () => {
           </div>
           <div className={styles.formInputContainer}>
             <label htmlFor="staffHireDate" className={styles.formLabel}>
-              Tenure range
+              Tenure
             </label>
             <input
               id="staffHireDate"
               className={styles.formInput}
               type="text"
               onChange={handleChange}
+              placeholder="ex. Fall 2021 - Present"
               ref={staffHireDateRef}
             ></input>
           </div>
@@ -156,7 +168,7 @@ export const StaffForm = () => {
             <input
               id="staffGrad"
               className={styles.formInput}
-              type="text"
+              type="checkbox"
               onChange={handleChange}
               ref={staffGraduatedRef}
             ></input>
