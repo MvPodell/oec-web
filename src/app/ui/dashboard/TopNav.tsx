@@ -82,6 +82,7 @@ export default function TopNav() {
                   key={link.name}
                   href={link.href}
                   className={styles.deskNavLink}
+                  prefetch={link.name === "TRIPS"}
                 >
                   <div
                     className={styles.deskNavItem}
