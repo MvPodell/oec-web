@@ -4,40 +4,39 @@
 .cardStaff {
     @extend .card;
     @media (min-width: 768px) {
-      width: 27.5rem;
-      // max-width: 30rem;
+      height: 19rem;
       margin: 1rem;
+      width: 27.5rem;
     }
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 0.5rem;
     width: 22.5rem;
   }
 
-.cardInfoContainerStaff {
-    @media (min-width: 768px) {
-      width: 70%;
-    }
+  .staffCardContent {
+    @extend .cardContent;
+    height: 100%;
   }
 
-  .cardStaffImage {
+  .staffCardImage {
     @media (min-width: 768px) {
-      height: 100%;
       object-fit: cover;
+      height: 100%;
     }
     display: flex;
-    flex-grow: 1;
     width: 100%;
+    overflow-x: hidden;
     height: auto;
   }
 
-
-  .cardStaffImageContainer {
+  .staffCardImageContainer {
     @media (min-width: 768px) {
-      max-width: 55%;
-      height: 20rem;
+      width: 13.75rem;
+      height: auto;
     }
-    display: flex;
+    
   }
 
   .cardHeaderStaff {
@@ -45,6 +44,13 @@
     color: $oec-blue;
     justify-content: center;
     text-align: center;
+  }
+
+  .cardInfoContainerStaff {
+    @extend .cardInfoContainer;
+    @media (min-width: 768px) {
+      width: 13.75rem;
+    }
   }
 
   

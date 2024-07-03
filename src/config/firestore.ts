@@ -227,7 +227,7 @@ export async function addStaffToFirestore(
   staffHometown: string,
   staffHireDate: string,
   staffHopes: string,
-  staffGraduated: string,
+  staffGraduated: boolean,
   imageURL: string
 ) {
   try {
@@ -310,7 +310,7 @@ export async function updateStaff(
   staffHometown: string,
   staffHireDate: string,
   staffHopes: string,
-  staffGraduated: string,
+  staffGraduated: boolean,
   staffImageURL: string
 ) {
   try {

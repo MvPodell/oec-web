@@ -2,6 +2,10 @@
 @import "/src/app/ui/cards/card.module.scss";
 
 .aboutCardContainer {
+  @media (min-width: 885px) {
+    width: 100%;
+    margin: 1rem;
+  }
   display: flex;
   justify-content: center;
 }

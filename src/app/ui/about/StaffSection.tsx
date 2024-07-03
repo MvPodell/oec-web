@@ -13,7 +13,7 @@ export interface Member {
   hometown: string;
   hireDate: string;
   hopes: string;
-  graduated: string;
+  graduated: boolean;
   imageURL: string;
 }
 
@@ -31,13 +31,13 @@ export const StaffSection = () => {
   const fetchStaff = useCallback(async () => {
     const staffData = await getStaffList();
     const staffRoster = staffData.filter(
-      (staff) => staff.role == "Staff" && staff.graduated == "false"
+      (staff) => staff.role == "Staff" && staff.graduated == false
     );
     const managerRoster = staffData.filter(
       (manager) => manager.role == "Manager"
     );
     const gradRoster = staffData.filter(
-      (staff) => staff.role == "Staff" && staff.graduated == "true"
+      (staff) => staff.role == "Staff" && staff.graduated == true
     );
     setStaffList(staffRoster);
     setManagerList(managerRoster);

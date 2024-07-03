@@ -17,7 +17,7 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
   return (
     <>
         <div className={styles.cardStaff}>
-          <div className={styles.cardContent}>
+          <div className={styles.staffCardContent}>
             <div className={styles.cardInfoContainerStaff}>
               <div className={styles.cardInfo}>
                 <div className={styles.cardHeaderStaff}>{person.name}</div>
@@ -31,17 +31,15 @@ export const StaffCard: React.FC<StaffCardProps> = ({ person, fetchStaff }) => {
                 <div className={styles.aboutCardTextA}>{person.hopes}</div>
               </div>
             </div>
-            <div className={styles.cardStaffImageContainer}>
-              {person.imageURL && (
+            <div className={styles.staffCardImageContainer}>
                 <Image
                   priority
-                  className={styles.cardStaffImage}
-                  src={person.imageURL}
+                  className={styles.staffCardImage}
+                  src={person.imageURL || "/images/Cecil.webp"}
                   alt="Temp"
                   width="800"
                   height="200"
                 />
-              )}
             </div>
             {isStaff && (
               <div className={styles.buttonContainer}>

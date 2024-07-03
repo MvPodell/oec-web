@@ -25,7 +25,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     hometown: "",
     hireDate: "",
     hopes: "",
-    graduated: "",
+    graduated: false,
     imageURL: "",
   });
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -58,9 +58,6 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
     if (nameInputRef.current) {
       nameInputRef.current.value = staffData.name || "";
     }
-    if (roleInputRef.current) {
-      roleInputRef.current.value = staffData.role || "";
-    }
     if (hometownInputRef.current) {
       hometownInputRef.current.value = staffData.hometown || "";
     }
@@ -71,7 +68,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
       hopesInputRef.current.value = staffData.hopes || "";
     }
     if (gradInputRef.current) {
-      gradInputRef.current.value = staffData.graduated || "";
+      gradInputRef.current.checked = staffData.graduated || false;
     }
   }, [
     staffData.name,
@@ -99,11 +96,11 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
       await updateStaff(
         nameInputRef.current?.value || "",
         staffId,
-        roleInputRef.current?.value || "",
+        staffData.role,
         hometownInputRef.current?.value || "",
         hireInputRef.current?.value || "",
         hopesInputRef.current?.value || "",
-        gradInputRef.current?.value || "",
+        gradInputRef.current?.checked || false,
         imageUrl || staffData.imageURL
       );
       setOpen(false);
@@ -128,26 +125,6 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
         <Form.Control asChild>
           <input
             ref={nameInputRef}
-            className={styles.Input}
-            type="text"
-            required
-            // onChange={handleChange}
-          />
-        </Form.Control>
-      </Form.Field>
-      <Form.Field className={styles.FormField} name="role">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-          }}
-        >
-          <Form.Label className={styles.FormLabel}>Role</Form.Label>
-        </div>
-        <Form.Control asChild>
-          <input
-            ref={roleInputRef}
             className={styles.Input}
             type="text"
             required
@@ -230,9 +207,8 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
           <input
             ref={gradInputRef}
             className={styles.Input}
-            type="text"
+            type="checkbox"
             required
-            // onChange={handleChange}
           />
         </Form.Control>
       </Form.Field>

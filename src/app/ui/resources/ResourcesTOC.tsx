@@ -1,7 +1,8 @@
 import React from "react";
+import styles from "@/app/ui/resources/resources.module.scss"
 
 export const ResourcesTOC = () => {
     return (
-        <div>Table of Contents</div>
+        <div className={styles.resourcesContainer}>This page is under construction!</div>
     )
 }
