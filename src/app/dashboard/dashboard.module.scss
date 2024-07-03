@@ -41,28 +41,29 @@
 
 .dashHeader {
   @media (min-width: 768px) {
-    background-image: url("/images/baldy.jpeg");
+    margin: 0 7rem;
   }
+  display: flex;
+  // margin: 0 1rem;
+}
+
+.dashHeaderCard {
   align-items: center;
   background-color: $muted-blue;
   background-position: 100% 30%;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 2rem 0;
+  padding: 0 0 2rem 0;
   width: 100%;
   border-radius: 0 0 0.375rem 0.375rem;
 }
 
 .dashHeaderText {
-  @media (min-width: 768px) {
-    background-color: rgba(0, 0, 0, 0.332);
-    box-shadow: 0 0 10rem 11rem rgba(0, 0, 0, 0.332);
-  }
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 3rem 0 1rem 0;
+  padding: 0 0 1rem 0;
   
 }
 
@@ -102,7 +103,7 @@
 }
 
 .subtitle2 {
-  color: $highlight-blue;
+  color: white;
   font-size: 2rem;
   margin: 1rem;
   text-align: center;

@@ -14,6 +14,7 @@ import { Trip } from "@/app/dashboard/trips/page";
 import { Event } from "@/app/dashboard/page";
 import { Member } from "@/app/ui/about/StaffSection";
 import { oecUser } from "@/app/ui/profile/Profile";
+import { CarouselObj } from "@/app/ui/dashboard/carousel/Carousel";
 
 /**
  *
@@ -661,4 +662,25 @@ export async function deleteTrip(tripId: string) {
   } catch (error) {
     console.error("Error deleting trip: ", error);
   }
+}
+
+export async function addCarouselImage(imageURL: string) {
+  try {
+    const docRef = doc(db, "carousel", "currentImages");
+    await updateDoc(docRef, {
+      imageArray: arrayUnion(imageURL),
+    });
+  } catch (error) {
+    console.error("Error adding imageURL to carousel document: ", error);
+    throw error;
+  }
+}
+
+export async function getCarouselImages(): Promise<CarouselObj> {
+    const docRef = doc(db, "carousel", "currentImages");
+    const carouselDoc = await getDoc(docRef);
+
+    const carouselData = carouselDoc.data() as CarouselObj;
+    return carouselData;
+
 }
