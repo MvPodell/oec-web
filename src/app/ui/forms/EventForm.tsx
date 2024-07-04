@@ -8,16 +8,12 @@ import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 
 
-export interface EventFormProps {
-    date: string;
-    description: string;
-    id: string;
-    imageURL: string;
-    location: string;
-    title: string;
-};
+interface EventFormProps {
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 
-export const EventForm = () => {
+}
+
+export const EventForm: React.FC<EventFormProps> = ({setOpen}) => {
     const eventTitleRef = useRef<HTMLInputElement>(null);
     const eventDateRef = useRef("");
     const eventLocationRef = useRef("");
@@ -51,6 +47,7 @@ export const EventForm = () => {
                 eventLocationRef.current,
                 eventTitleRef.current?.value || "",
             );
+            setOpen(false);
             console.log("Added event to firestore!");
             router.push('/dashboard');
         } catch (error) {
@@ -61,9 +58,9 @@ export const EventForm = () => {
     return (
         <div className={styles.formModule}>
             <div className={styles.formHeaderContainer}>
-                <div className={styles.formBackContainer}>
+                {/* <div className={styles.formBackContainer}>
                     <Link className={styles.formBackButton} href="/dashboard">Back to Dashboard</Link>
-                </div>
+                </div> */}
                 <div className={styles.formHeader}>
                     Create an event
                 </div>

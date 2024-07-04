@@ -7,7 +7,7 @@ import { storage } from "@/config/firebaseConfig";
 import { addStaffToFirestore } from "@/config/firestore";
 import Link from "next/link";
 
-export interface StaffFormProps {
+export interface oecStaff {
   name: string;
   id: string;
   role: string;
@@ -18,8 +18,13 @@ export interface StaffFormProps {
   imageURL: string;
 }
 
-export const StaffForm = () => {
-  const [staff, setStaff] = useState<StaffFormProps>({
+interface StaffFormProps {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
+}
+
+export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
+  const [staff, setStaff] = useState<oecStaff>({
     name: "",
     id: "",
     role: "",
@@ -87,6 +92,7 @@ export const StaffForm = () => {
         staffGraduatedRef.current?.checked || false,
         imageUrl
       );
+      setOpen(false);
       console.log("Added staff to firestore!");
       router.push("/dashboard/about");
     } catch (error) {
@@ -97,11 +103,11 @@ export const StaffForm = () => {
   return (
     <div className={styles.formModule}>
       <div className={styles.formHeaderContainer}>
-        <div className={styles.formBackContainer}>
+        {/* <div className={styles.formBackContainer}>
           <Link className={styles.formBackButton} href="/dashboard">
             Back to Dashboard
           </Link>
-        </div>
+        </div> */}
         <div className={styles.formHeader}>New Staff Profile</div>
       </div>
       <div className={styles.formFieldsContainer}>

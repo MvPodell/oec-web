@@ -6,26 +6,25 @@ import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
+import { Trip } from "@/app/dashboard/trips/page";
 
 
 
 export interface TripFormProps {
-    capacity: string;
-    date: string;
-    description: string;
-    id: string;
-    imageURL: string;
-    shortDescription: string;
-    title: string;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
 };
 
-export const TripForm = () => {
-    const [tripDetails, setTripDetails] = useState<TripFormProps>({
+export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
+    const [tripDetails, setTripDetails] = useState<Trip>({
         capacity: "",
+        confirmed: [],
         date: "",
         description: "",
         id: "",
         imageURL: "",
+        key: "",
+        members: [],
         shortDescription: "",
         title: "",
     });
@@ -77,9 +76,9 @@ export const TripForm = () => {
     return (
         <div className={styles.formModule}>
             <div className={styles.formHeaderContainer}>
-                <div className={styles.formBackContainer}>
+                {/* <div className={styles.formBackContainer}>
                     <Link className={styles.formBackButton} href="/dashboard">Back to Dashboard</Link>
-                </div>
+                </div> */}
                 <div className={styles.formHeader}>
                     Create a trip
                 </div>
