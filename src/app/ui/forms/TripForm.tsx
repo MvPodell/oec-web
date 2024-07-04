@@ -1,34 +1,17 @@
 'use client';
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { addTripToFirestore } from "@/config/firestore";
 import styles from "@/app/ui/forms/forms.module.scss";
-import Link from "next/link";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 
-
-
 export interface TripFormProps {
-    capacity: string;
-    date: string;
-    description: string;
-    id: string;
-    imageURL: string;
-    shortDescription: string;
-    title: string;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
 };
 
-export const TripForm = () => {
-    const [tripDetails, setTripDetails] = useState<TripFormProps>({
-        capacity: "",
-        date: "",
-        description: "",
-        id: "",
-        imageURL: "",
-        shortDescription: "",
-        title: "",
-    });
+export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
     
     const tripTitleRef = useRef<HTMLInputElement>(null);
     const tripDateRef = useRef("");
@@ -38,8 +21,6 @@ export const TripForm = () => {
     const tripImageRef = useRef<HTMLInputElement>(null);
     const tripId = Math.random().toString(16);
 
-
-    const [notice, setNotice] = useState("");
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,6 +48,7 @@ export const TripForm = () => {
                 tripShortDescRef.current,
                 tripTitleRef.current?.value || "",
             );
+            setOpen(false);
             console.log("Added trip to firestore!");
             router.push('/dashboard/trips');
         } catch (error) {
@@ -77,20 +59,12 @@ export const TripForm = () => {
     return (
         <div className={styles.formModule}>
             <div className={styles.formHeaderContainer}>
-                <div className={styles.formBackContainer}>
-                    <Link className={styles.formBackButton} href="/dashboard">Back to Dashboard</Link>
-                </div>
                 <div className={styles.formHeader}>
                     Create a trip
                 </div>
             </div>
             <div className={styles.formFieldsContainer}>
                 <form className={styles.formFields} onSubmit={handleSubmit}>
-                    {"" !== notice &&
-                        <div className="alert alert-warning" role="alert">
-                            {notice}
-                        </div>
-                    }
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripTitle" className={styles.formLabel}> Trip Title</label>
                         <input 
@@ -112,18 +86,6 @@ export const TripForm = () => {
 
                             </input>
                     </div>
-                    {/* <div className={styles.formInputContainer}>
-                        <label htmlFor="tripId" className={styles.formLabel}>Trip ID</label>
-                        <div className={styles.sublabel}>Like a username for your trip!</div>
-                        <input 
-                        id="tripId" 
-                        className={styles.formInput} 
-                        placeholder="ID" 
-                        onChange={(e) => tripIdRef.current = e.target.value}
-                        >
-
-                        </input>
-                    </div> */}
                     <div className={styles.formInputContainer}>
                         <label htmlFor="tripCapacity" className={styles.formLabel}>Trip Capacity</label>
                         <div className={styles.sublabel}>How many people can you bring?</div>
@@ -175,7 +137,7 @@ export const TripForm = () => {
                         </input>
                     </div>
                     <div className={styles.formSubmitContainer}>
-                        <button type="submit" className={styles.formSubmit} >Submit</button>
+                        <button type="submit" className={styles.ButtonBlue} >Submit</button>
                     </div>
                 </form>
             </div>

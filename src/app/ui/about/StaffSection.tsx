@@ -53,11 +53,11 @@ export const StaffSection = () => {
       <div className={styles.aboutHeader}>Manager</div>
       <StaffDeck members={managerList} role="Manager" fetchStaff={fetchStaff} />
       <div className={styles.aboutHeader}>Meet the Staff</div>
-      {isStaff && (
+      {/* {isStaff && (
         <div className={styles.staffButtonContainer}>
         <AddButton label="Add Personnel" dest="/form/add-staff" />
-      </div>
-      )}
+      </div> */}
+      {/* )} */}
       <StaffDeck members={staffList} role="Staff" fetchStaff={fetchStaff} />
       <div className={styles.aboutHeader}>Staff Graveyard</div>
       <div className={styles.aboutSubheader}>Gone, but not forgotten</div>

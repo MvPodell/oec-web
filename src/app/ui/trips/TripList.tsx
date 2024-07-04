@@ -14,7 +14,7 @@ interface TripListProps {
 
 const DynamicTripCard = dynamic(() => import("@/app/ui/cards/TripCard").then(mod => mod.TripCard));
 
-const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
+// const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
 
 export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
   const { isStaff } = useAuth();
@@ -45,7 +45,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
 
   return (
     <>
-    {kind === "present" && isStaff && (<DynamicAddButton label="ADD TRIP" dest="/form/add-trip" />)}
+    {/* {kind === "present" && isStaff && (<DynamicAddButton label="ADD TRIP" dest="/form/add-trip" />)} */}
     <div className={styles.tripListContainer}>
       <div className={styles.cardDeck}>
       {trips &&
@@ -65,7 +65,8 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
               fetchTrips={fetchTrips}
             />
           ))}
-          </div>
+      </div>
+      <div className={styles.cardDeck}>
       {trips &&
         kind == "past" &&
         pastGrave.open &&
@@ -82,6 +83,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
             fetchTrips={fetchTrips}
           />
         ))}
+        </div>
       {kind === "present" && trips.length === 0 && (
         <div className={styles.emptyTripWarning}>No current trips!</div>
       )}

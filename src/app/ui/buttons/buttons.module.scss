@@ -26,14 +26,22 @@
   transition: 1s;
 }
 
-.resetButton {
-  align-items: center;
-  color: blue;
-  border-radius: 0.375rem;
-  cursor: pointer;
+.adminButton {
   display: flex;
-  height: 2rem;
-  justify-content: center;
-  margin: 0 0.5rem;
-  text-decoration: underline;
+  align-self: center;
+  background-color: $blue4;
+  border-radius: 0.375rem;
+  color: $blue11;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.adminButton:hover {
+  background-color: $blue5;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+.adminButton:focus {
+  box-shadow: 0 0 0 2px $blue6;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
 }

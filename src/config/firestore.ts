@@ -664,6 +664,14 @@ export async function deleteTrip(tripId: string) {
   }
 }
 
+export async function deleteStaff(staffId: string) {
+  try {
+    await deleteDoc(doc(db, "staff", staffId));
+  } catch (error) {
+    console.error("error deleting staff from firestore: ", error);
+  }
+}
+
 export async function addCarouselImage(imageURL: string) {
   try {
     const docRef = doc(db, "carousel", "currentImages");

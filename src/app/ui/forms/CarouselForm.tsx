@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import * as Form from "@radix-ui/react-form";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { addCarouselImage } from "@/config/firestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
@@ -8,13 +7,9 @@ import { storage } from "@/config/firebaseConfig";
 
 interface CarouselFormProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-//   onEdit: () => void;
 }
 
-export const CarouselForm: React.FC<CarouselFormProps> = ({
-  setOpen,
-//   onEdit,
-}) => {
+export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,9 +27,7 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({
     }
 
     try {
-      await addCarouselImage(
-        imageUrl,
-      );
+      await addCarouselImage(imageUrl);
       setOpen(false);
     } catch (error) {
       console.error("Error adding carousel image to firestore: ", error);
@@ -42,31 +35,27 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({
   };
 
   return (
-    <Form.Root className={styles.FormRoot}>
-      <Form.Field className={styles.FormField} name="image">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-          }}
-        >
-          <Form.Label className={styles.FormLabel}>Image</Form.Label>
+    <form className={styles.FormRoot}>
+      <div className={styles.formHeaderContainer}>
+        <div className={styles.formHeader}>Add Image to Carousel</div>
+      </div>
+      <div className={styles.formFieldsContainer}>
+        <div className={styles.formFields}>
+          <div className={styles.formInputContainer}>
+            <input
+              ref={imageInputRef}
+              className={styles.formInput}
+              type="file"
+              required
+            />
+          </div>
         </div>
-        <Form.Control asChild>
-          <input
-            ref={imageInputRef}
-            className={styles.Input}
-            type="file"
-            required
-          />
-        </Form.Control>
-      </Form.Field>
-      <Form.Submit asChild>
+      </div>
+      <div className={styles.formSubmitContainer}>
         <button className={styles.ButtonBlue} onClick={handleSubmit}>
           Submit image
         </button>
-      </Form.Submit>
-    </Form.Root>
+      </div>
+    </form>
   );
 };

@@ -1,19 +1,18 @@
 "use client";
 import React from "react";
-import { Pencil1Icon, Cross1Icon } from "@radix-ui/react-icons";
+import { Cross1Icon } from "@radix-ui/react-icons";
 import styles from "@/app/ui/buttons/editButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { CarouselForm } from '../forms/CarouselForm';
+import { AdminTabs } from "../footer/AdminTabs";
 
-export const CarouselButton: React.FC = ({
-}) => {
+export const AdminPanelButton: React.FC = ({}) => {
   const [open, setOpen] = React.useState(false);
 
   return (
     <>
       <AlertDialog.Root open={open} onOpenChange={setOpen}>
-        <AlertDialog.Trigger className={styles.staffButton}>
-          <Pencil1Icon />
+        <AlertDialog.Trigger className={styles.adminButton}>
+          Admin Panel
         </AlertDialog.Trigger>
         <AlertDialog.Portal>
           <AlertDialog.Overlay className={styles.AlertDialogOverlay} />
@@ -23,15 +22,9 @@ export const CarouselButton: React.FC = ({
                 <Cross1Icon className={styles.formCancel} />
               </AlertDialog.Cancel>
               <AlertDialog.Title className={styles.AlertDialogTitle}>
-                {`Edit`}
+                Admin Panel
               </AlertDialog.Title>
-              <AlertDialog.Description
-                className={styles.AlertDialogDescription}
-              >
-                Add images to carousel.
-              </AlertDialog.Description>
-
-                <CarouselForm setOpen={setOpen} />
+              <AdminTabs setOpen={setOpen} />
             </div>
           </AlertDialog.Content>
         </AlertDialog.Portal>

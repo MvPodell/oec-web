@@ -29,12 +29,11 @@ export const Profile = () => {
 
   const handleEdit = () => {
     setEditMode(true);
-    console.log(editMode);
+    // console.log(editMode);
   };
 
   const handleCancel = () => {
     setEditMode(false);
-    console.log("EditMode after cancel", editMode)
   }
 
   const fetchUser = useCallback(async () => {

@@ -4,14 +4,14 @@ import styles from "@/app/ui/dashboard/corkboard.module.scss";
 import { EventCard } from "../cards/EventCard";
 import { fetchSortedAffairs } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
 
 interface CorkBoardProps {
   imageArray: ImgAndPlaceholder[];
 }
 
-const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
+// const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
 
 
 export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
@@ -37,7 +37,7 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
         <div className={styles.subheader2}>Upcoming at the OEC</div>
       </div>
       <div className={styles.corkBody}>
-        <DynamicAddButton label="ADD EVENT" dest="/form/add-event" />
+        {/* <DynamicAddButton label="ADD EVENT" dest="/form/add-event" /> */}
         <div className={styles.cardDeck}>
           {events.map((event, index) => (
             <EventCard

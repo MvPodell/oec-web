@@ -35,7 +35,7 @@ export default async function Page() {
   const carouselImages = await Promise.all(
     carouselData.imageArray.map(async (url) => {
       const imageWithPlaceholder = await getPlaceholderImage(url);
-      console.log("getting carousel images");
+      // console.log("getting carousel images");
       return imageWithPlaceholder;
     })
   );
