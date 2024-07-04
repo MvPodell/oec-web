@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import * as Form from "@radix-ui/react-form";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { addCarouselImage } from "@/config/firestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
@@ -8,12 +7,10 @@ import { storage } from "@/config/firebaseConfig";
 
 interface CarouselFormProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-//   onEdit: () => void;
 }
 
 export const CarouselForm: React.FC<CarouselFormProps> = ({
   setOpen,
-//   onEdit,
 }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
 
@@ -42,8 +39,8 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({
   };
 
   return (
-    <Form.Root className={styles.FormRoot}>
-      <Form.Field className={styles.FormField} name="image">
+    <form className={styles.FormRoot}>
+      <div className={styles.FormField}>
         <div
           style={{
             display: "flex",
@@ -51,22 +48,18 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Image</Form.Label>
+          <label className={styles.FormLabel}>Image</label>
         </div>
-        <Form.Control asChild>
           <input
             ref={imageInputRef}
             className={styles.Input}
             type="file"
             required
           />
-        </Form.Control>
-      </Form.Field>
-      <Form.Submit asChild>
-        <button className={styles.ButtonBlue} onClick={handleSubmit}>
-          Submit image
-        </button>
-      </Form.Submit>
-    </Form.Root>
+      </div>
+      <button className={styles.ButtonBlue} onClick={handleSubmit}>
+        Submit image
+      </button>
+    </form>
   );
 };

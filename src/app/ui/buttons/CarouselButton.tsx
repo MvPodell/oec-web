@@ -3,7 +3,7 @@ import React from "react";
 import { Pencil1Icon, Cross1Icon } from "@radix-ui/react-icons";
 import styles from "@/app/ui/buttons/editButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { CarouselForm } from '../forms/CarouselImageForm';
+import { CarouselForm } from '../forms/CarouselForm';
 
 export const CarouselButton: React.FC = ({
 }) => {

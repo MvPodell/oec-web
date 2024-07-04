@@ -5,7 +5,7 @@ import styles from "@/app/ui/footer/adminTabs.module.scss";
 import { EventForm } from "../forms/EventForm";
 import { StaffForm } from "../forms/StaffForm";
 import { TripForm } from "../forms/TripForm";
-import { CarouselForm } from "../forms/CarouselImageForm";
+import { CarouselForm } from "../forms/CarouselForm";
 
 type adminTabsProps = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
