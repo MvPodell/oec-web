@@ -9,9 +9,7 @@ interface CarouselFormProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const CarouselForm: React.FC<CarouselFormProps> = ({
-  setOpen,
-}) => {
+export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,9 +27,7 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({
     }
 
     try {
-      await addCarouselImage(
-        imageUrl,
-      );
+      await addCarouselImage(imageUrl);
       setOpen(false);
     } catch (error) {
       console.error("Error adding carousel image to firestore: ", error);
@@ -40,26 +36,26 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({
 
   return (
     <form className={styles.FormRoot}>
-      <div className={styles.FormField}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-          }}
-        >
-          <label className={styles.FormLabel}>Image</label>
-        </div>
-          <input
-            ref={imageInputRef}
-            className={styles.Input}
-            type="file"
-            required
-          />
+      <div className={styles.formHeaderContainer}>
+        <div className={styles.formHeader}>Add Image to Carousel</div>
       </div>
-      <button className={styles.ButtonBlue} onClick={handleSubmit}>
-        Submit image
-      </button>
+      <div className={styles.formFieldsContainer}>
+        <div className={styles.formFields}>
+          <div className={styles.formInputContainer}>
+            <input
+              ref={imageInputRef}
+              className={styles.formInput}
+              type="file"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div className={styles.formSubmitContainer}>
+        <button className={styles.ButtonBlue} onClick={handleSubmit}>
+          Submit image
+        </button>
+      </div>
     </form>
   );
 };

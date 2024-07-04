@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { useRouter } from "next/navigation";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 import { addStaffToFirestore } from "@/config/firestore";
-import Link from "next/link";
 
 export interface oecStaff {
   name: string;
@@ -24,16 +23,16 @@ interface StaffFormProps {
 }
 
 export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
-  const [staff, setStaff] = useState<oecStaff>({
-    name: "",
-    id: "",
-    role: "",
-    Hometown: "",
-    hireDate: "",
-    hopes: "",
-    graduated: false,
-    imageURL: "",
-  });
+  // const [staff, setStaff] = useState<oecStaff>({
+  //   name: "",
+  //   id: "",
+  //   role: "",
+  //   Hometown: "",
+  //   hireDate: "",
+  //   hopes: "",
+  //   graduated: false,
+  //   imageURL: "",
+  // });
 
   const staffNameRef = useRef<HTMLInputElement>(null);
   const staffRoleRef = useRef<HTMLSelectElement>(null);
@@ -44,29 +43,7 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
   const staffImageRef = useRef<HTMLInputElement>(null);
   const staffId = Math.random().toString(16);
 
-
-  const [notice, setNotice] = useState("");
   const router = useRouter();
-
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value, type } = event.target;
-
-    if (type == "checkbox") {
-      const checked = (event.target as HTMLInputElement).checked;
-      setStaff((prevState) => ({
-        ...prevState,
-        [name]: checked,
-      }));
-    } else {
-      setStaff((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
-    
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,20 +80,10 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
   return (
     <div className={styles.formModule}>
       <div className={styles.formHeaderContainer}>
-        {/* <div className={styles.formBackContainer}>
-          <Link className={styles.formBackButton} href="/dashboard">
-            Back to Dashboard
-          </Link>
-        </div> */}
         <div className={styles.formHeader}>New Staff Profile</div>
       </div>
       <div className={styles.formFieldsContainer}>
         <form className={styles.formFields} onSubmit={handleSubmit}>
-          {"" !== notice && (
-            <div className="alert alert-warning" role="alert">
-              {notice}
-            </div>
-          )}
           <div className={styles.formInputContainer}>
             <label htmlFor="staffName" className={styles.formLabel}>
               Name
@@ -135,7 +102,6 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
             <select
               id="staffRole"
               className={styles.formInput}
-              onChange={handleChange}
               ref={staffRoleRef}
             >
               <option value="Staff">Staff</option>
@@ -150,7 +116,6 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
               id="staffHometown"
               className={styles.formInput}
               placeholder="Hometown"
-              onChange={handleChange}
               ref={staffHometownRef}
             ></input>
           </div>
@@ -162,7 +127,6 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
               id="staffHireDate"
               className={styles.formInput}
               type="text"
-              onChange={handleChange}
               placeholder="ex. Fall 2021 - Present"
               ref={staffHireDateRef}
             ></input>
@@ -175,7 +139,6 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
               id="staffGrad"
               className={styles.formInput}
               type="checkbox"
-              onChange={handleChange}
               ref={staffGraduatedRef}
             ></input>
           </div>
@@ -188,7 +151,6 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
               id="staffHopes"
               className={styles.formInput}
               placeholder="Hopes and dreams"
-              onChange={handleChange}
               ref={staffHopesRef}
             ></input>
           </div>
@@ -208,7 +170,7 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
             ></input>
           </div>
           <div className={styles.formSubmitContainer}>
-            <button type="submit" className={styles.formSubmit}>
+            <button type="submit" className={styles.ButtonBlue}>
               Submit
             </button>
           </div>
