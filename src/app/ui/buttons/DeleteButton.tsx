@@ -3,7 +3,7 @@ import React from "react";
 import styles from "@/app/ui/buttons/editButton.module.scss";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { deleteEvent, deleteTrip } from "@/config/firestore";
+import { deleteEvent, deleteTrip, deleteStaff } from "@/config/firestore";
 
 interface DeleteButtonProps {
   deleteType: "event" | "trip" | "staff";
@@ -36,6 +36,27 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
     }
   };
 
+  const handleDeleteStaff = async () => {
+    try {
+      await deleteStaff(id).then(() => console.log("staff deleted"));
+      onDelete();
+    } catch (error) {
+      console.error("error deleting staff: ", error);
+    }
+  }
+
+  const handleDelete = async () => {
+    switch (deleteType) {
+      case "event":
+        handleDeleteEvent()
+      case "trip":
+        handleDeleteTrip()
+      case "staff":
+        handleDeleteStaff()
+    }
+
+  }
+
   
 
   return (
@@ -64,7 +85,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
                   <button className={styles.ButtonMauve}>Cancel</button>
                 </AlertDialog.Cancel>
                 <AlertDialog.Action asChild>
-                  <button className={styles.ButtonRed} onClick={deleteType==="event" ? handleDeleteEvent : handleDeleteTrip}>
+                  <button className={styles.ButtonRed} onClick={handleDelete}>
                     Yes, delete {deleteType}
                   </button>
                 </AlertDialog.Action>
