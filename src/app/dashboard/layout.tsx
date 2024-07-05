@@ -1,4 +1,3 @@
-import { Footer } from "../ui/footer/Footer";
 import TopNav from "../ui/dashboard/TopNav";
 import styles from "@/app/dashboard/dashboard.module.scss";
 import dynamic from "next/dynamic";
