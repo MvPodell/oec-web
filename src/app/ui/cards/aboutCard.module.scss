@@ -3,7 +3,7 @@
 
 .aboutCardContainer {
   @media (min-width: 885px) {
-    width: 100%;
+    width: 60%;
     margin: 1rem;
   }
   display: flex;
@@ -13,6 +13,11 @@
 .aboutCardHeader {
     @extend .cardHeader;
     color: $oec-blue;
+  }
+
+  .aboutCardImage {
+    width: 100%;
+    height: auto;
   }
 
   .aboutCardTextQ {

@@ -117,7 +117,7 @@ export const TripDetails: React.FC = () => {
         </Link>
       </div>
       {trip && (
-        <div className={styles.card}>
+        <div className={styles.cardDetails}>
           <Image
             priority
             className={styles.cardDetailsImage}

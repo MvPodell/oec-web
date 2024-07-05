@@ -9,7 +9,6 @@
   color: white;
   padding: 0 0.5rem;
   margin: 0.5rem 0;
-  
 }
 
 .backButton:hover {
@@ -24,15 +23,21 @@
   justify-content: left;
 }
 
+.cardDetails {
+  @extend .card;
+  max-width: 48rem;
+}
+
 .cardDetailsContainer {
-  @media (min-width: 885px) {
-    height: 50rem;
-  }
   background-color: $muted-blue;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+}
+
+.cardDetailsImage {
+  width: 100%;
+  height: auto;
 }
 
 .cardHeaderButtons {
@@ -49,12 +54,22 @@
 
 .cardHeaderLeft {
   @extend .cardHeader;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  display: flex;
+  flex-direction: column;
   justify-content: left;
+  margin: 0;
 }
 
 .cardHeaderTitle {
   @extend .cardHeader;
-  margin-right: 1rem;
+  @media (min-width: 768px) {
+    margin-right: 1rem;
+  }
+  margin: 0 0 0.5rem 0;
+  
 }
 
 .cardMemberQueue {
