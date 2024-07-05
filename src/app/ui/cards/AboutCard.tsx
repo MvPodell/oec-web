@@ -10,7 +10,7 @@ export const AboutCard = () => {
           <div className={styles.cardInfoContainer}>
             <Image
               priority
-              className={styles.cardDetailsImage}
+              className={styles.aboutCardImage}
               src={"/images/Pomona.jpeg"}
               alt="Temp"
               width="800"

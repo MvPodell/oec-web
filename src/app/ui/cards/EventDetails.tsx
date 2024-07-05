@@ -33,7 +33,7 @@ export const EventDetails: React.FC = () => {
         </Link>
       </div>
       {currentEvent && (
-        <div className={styles.card}>
+        <div className={styles.cardDetails}>
           <Image
             className={styles.cardDetailsImage}
             src={currentEvent.imageURL}
