@@ -43,10 +43,10 @@ export const SignUpForm = () => {
 
 
     return (
-        <div className={styles.formModule}>
+        <div className={styles.loginModule}>
             <div className={styles.formHeaderContainer}>
                 <div className={styles.formBackContainer}>
-                    <Link className={styles.formBackButton} href="/form/login">Back to Login</Link>
+                    <Link className={styles.formBackButton} href="/form/login">Back</Link>
                 </div>
                 <div className={styles.formHeader}>
                     Sign Up
@@ -84,7 +84,7 @@ export const SignUpForm = () => {
                         <input id="confirmPassword" type="password" className={styles.formInput} placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></input>
                     </div>
                     <div className={styles.formSubmitContainer}>
-                        <button type="submit" className={styles.formSubmit} onClick={(e) => signupWithUsernameAndPassword(e)}>Submit</button>
+                        <button type="submit" className={styles.ButtonBlue} onClick={(e) => signupWithUsernameAndPassword(e)}>Submit</button>
                     </div>
                 </form>
             </div>

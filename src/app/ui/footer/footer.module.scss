@@ -15,8 +15,21 @@
     width: 100%;
 }
 
+.footerContent {
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    padding: 1rem 0;
+}
+
 .footerText {
     color: white;
-    margin: 0 0.5rem;
+    margin: 0 1rem;
     font-size: 0.8rem;
+}
+
+.githubIcon {
+    margin: 0 1rem;
+    color: white;
 }

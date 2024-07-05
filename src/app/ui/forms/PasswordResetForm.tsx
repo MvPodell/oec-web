@@ -22,11 +22,11 @@ export const PasswordResetForm = () => {
   };
 
   return (
-    <div className={styles.formModule}>
+    <div className={styles.loginModule}>
       <div className={styles.formHeaderContainer}>
         <div className={styles.formBackContainer}>
-          <Link className={styles.formBackButton} href="/dashboard">
-            Back to dashboard
+          <Link className={styles.formBackButton} href="/form/login">
+            Back
           </Link>
         </div>
         <div className={styles.formHeader}>Password Reset</div>
@@ -51,7 +51,7 @@ export const PasswordResetForm = () => {
             <div className={styles.formSubmitContainer}>
               <button
                 type="submit"
-                className={styles.formSubmit}
+                className={styles.ButtonBlue}
                 onClick={handleReset}
               >
                 Submit
