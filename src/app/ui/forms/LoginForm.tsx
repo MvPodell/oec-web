@@ -26,10 +26,10 @@ export const LoginForm = () => {
     };
 
     return (
-        <div className={styles.formModule}>
+        <div className={styles.loginModule}>
                 <div className={styles.formHeaderContainer}>
                     <div className={styles.formBackContainer}>
-                        <Link className={styles.formBackButton} href="/dashboard">Back to dashboard</Link>
+                        <Link className={styles.formBackButton} href="/dashboard">Back</Link>
                     </div>
                     <div className={styles.formHeader}>
                         Login
@@ -76,7 +76,7 @@ export const LoginForm = () => {
                             ></input>
                         </div>
                         <div className={styles.formSubmitContainer}>
-                            <button type="submit" className={styles.formSubmit} onClick={(e) => loginWithUsernameAndPassword(e)}>Submit</button>
+                            <button type="submit" className={styles.ButtonBlue} onClick={(e) => loginWithUsernameAndPassword(e)}>Submit</button>
                         </div>
                             <span>Need to sign up? <Link href="/form/signup">Click here.</Link></span>
                         <div>Forgot your password? <Link href="/form/password-reset">Click here.</Link></div>
