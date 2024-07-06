@@ -14,7 +14,7 @@ import { Trip } from "@/app/dashboard/trips/page";
 import { Event } from "@/app/dashboard/page";
 import { Member } from "@/app/ui/about/StaffSection";
 import { oecUser } from "@/app/ui/profile/Profile";
-import { CarouselObj } from "@/app/ui/dashboard/carousel/Carousel";
+import { CarouselImage, CarouselObj } from "@/app/ui/dashboard/carousel/Carousel";
 
 /**
  *
@@ -371,7 +371,7 @@ export async function updateUser(
   userId: string,
   email: string,
   role: string,
-  username: string,
+  username: string
 ) {
   try {
     const docRef = doc(db, "users", userId);
@@ -379,13 +379,7 @@ export async function updateUser(
 
     if (!docSnap.exists()) {
       console.log("No such user!");
-      addUserToFirestore(
-        email,
-        firstName,
-        lastName,
-        role,
-        username,
-      );
+      addUserToFirestore(email, firstName, lastName, role, username);
       return;
     }
 
@@ -557,16 +551,20 @@ export async function getTripList(): Promise<Trip[]> {
  *
  * @returns currAffairs and prevAffairs
  */
-export const fetchSortedAffairs = async (currentDate: Date, kind: "events" | "trips"): Promise<[Trip[], Trip[]] | [Event[], Event[]]> => {
-  const affairData = kind === "events" ? await getEventList() : await getTripList();
+export const fetchSortedAffairs = async (
+  currentDate: Date,
+  kind: "events" | "trips"
+): Promise<[Trip[], Trip[]] | [Event[], Event[]]> => {
+  const affairData =
+    kind === "events" ? await getEventList() : await getTripList();
   const currAffairs = affairData
     .filter((affair) => new Date(affair.date) >= currentDate)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    const prevAffairs = affairData
+  const prevAffairs = affairData
     .filter((affair) => new Date(affair.date) < currentDate)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   return [currAffairs, prevAffairs] as [Trip[], Trip[]] | [Event[], Event[]];
-}
+};
 
 export async function getEventList(): Promise<Event[]> {
   const eventsCollection = await getDocs(collection(db, "events"));
@@ -672,23 +670,47 @@ export async function deleteStaff(staffId: string) {
   }
 }
 
-export async function addCarouselImage(imageURL: string) {
+export async function addCarouselImage(imageObj: CarouselImage,) {
   try {
-    const docRef = doc(db, "carousel", "currentImages");
+    const docRef = doc(db, "carousel", "carouselList");
     await updateDoc(docRef, {
-      imageArray: arrayUnion(imageURL),
+      imageArray: arrayUnion(imageObj),
     });
   } catch (error) {
-    console.error("Error adding imageURL to carousel document: ", error);
+      console.error("Error adding imageURL to carousel document: ", error);
     throw error;
   }
 }
 
-export async function getCarouselImages(): Promise<CarouselObj> {
-    const docRef = doc(db, "carousel", "currentImages");
-    const carouselDoc = await getDoc(docRef);
+export async function getCarouselData(): Promise<CarouselObj> {
+  const docRef = doc(db, "carousel", "carouselList");
+  const carouselDoc = await getDoc(docRef);
+  const carouselData = carouselDoc.data();
+  const carouselList = carouselData as CarouselObj;
+  return carouselList;
 
-    const carouselData = carouselDoc.data() as CarouselObj;
-    return carouselData;
+}
 
+export async function updateCarouselVisibility(updatedCarouselList: CarouselImage[]) {
+  try {
+    const docRef = doc(db, "carousel", "carouselList");
+    const carouselList = await getDoc(docRef);
+
+    if (!carouselList.exists()) {
+      console.log("No such carousel image!");
+      return;
+    }
+
+    const existingCarousel = carouselList.data() as CarouselObj;
+
+    if (existingCarousel.imageArray !== updatedCarouselList) {
+      await updateDoc(docRef, {
+        imageArray: updatedCarouselList,
+      });
+    }
+    
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    throw error;
+  }
 }

@@ -11,6 +11,7 @@ interface CarouselFormProps {
 
 export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,8 +28,15 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
     }
 
     try {
-      await addCarouselImage(imageUrl);
-      setOpen(false);
+      if (file) {
+        await addCarouselImage({
+          imageUrl: imageUrl,
+          imageName: nameInputRef.current?.value || file.name,
+          visible: true,
+        });
+        setOpen(false);
+      }
+      
     } catch (error) {
       console.error("Error adding carousel image to firestore: ", error);
     }
@@ -41,7 +49,18 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
       </div>
       <div className={styles.formFieldsContainer}>
         <div className={styles.formFields}>
+        <div className={styles.formInputContainer}>
+          <label>Descriptive File Name</label>
+            <input
+              ref={nameInputRef}
+              className={styles.formInput}
+              type="text"
+              placeholder="ex. GrandCanyon2024.jpeg"
+              required
+            />
+          </div>
           <div className={styles.formInputContainer}>
+            <label>Image</label>
             <input
               ref={imageInputRef}
               className={styles.formInput}

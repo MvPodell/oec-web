@@ -1,6 +1,6 @@
 import styles from "@/app/dashboard/dashboard.module.scss";
 import { CorkBoard } from "../ui/dashboard/CorkBoard";
-import { getCarouselImages, getEventList } from "@/config/firestore";
+import { getCarouselData, getEventList } from "@/config/firestore";
 import { getPlaceholderImage } from "@/utils/ImageOpti";
 import Carousel from "../ui/dashboard/carousel/Carousel";
 import { EmblaOptionsType } from "embla-carousel";
@@ -20,7 +20,7 @@ const OPTIONS: EmblaOptionsType = { loop: true };
 export default async function Page() {
   const currentDate = new Date();
   const eventData = await getEventList();
-  const carouselData = await getCarouselImages();
+  const carousel = await getCarouselData();
 
   const sortedImages = eventData
     .filter((event) => new Date(event.date) >= currentDate)
@@ -32,12 +32,14 @@ export default async function Page() {
       return imageWithPlaceholder;
     })
   );
+
   const carouselImages = await Promise.all(
-    carouselData.imageArray.map(async (url) => {
-      const imageWithPlaceholder = await getPlaceholderImage(url);
-      // console.log("getting carousel images");
-      return imageWithPlaceholder;
-    })
+    carousel.imageArray.filter((img) => img.visible === true).map(async (carouselImage) => {
+        const imageWithPlaceholder = await getPlaceholderImage(
+          carouselImage.imageUrl
+        );
+        return imageWithPlaceholder;
+      })
   );
 
   return (
@@ -45,7 +47,11 @@ export default async function Page() {
       <div className={styles.dashContainer}>
         <div className={styles.dashHeader}>
           <div className={styles.dashHeaderCard}>
-            <Carousel slides={carouselImages} options={OPTIONS} />
+            <Carousel
+              slides={carouselImages}
+              carouselData={carousel}
+              options={OPTIONS}
+            />
             <div className={styles.dashHeaderText}>
               <div className={styles.subtitle2}>
                 The Outdoor Education Center of Pomona College

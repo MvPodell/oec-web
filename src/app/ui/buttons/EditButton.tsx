@@ -6,17 +6,21 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { EditEventForm } from "../forms/EditEventForm";
 import { EditTripForm } from "../forms/EditTripForm";
 import { EditStaffForm } from "../forms/EditStaffForm";
+import { EditCarouselForm } from "../forms/EditCarouselForm";
+import { CarouselObj } from "../dashboard/carousel/Carousel";
 
 interface EditButtonProps {
-  editType: "event" | "trip" | "staff";
-  id: string;
+  editType: "event" | "trip" | "staff" | "carousel";
+  id?: string;
   onEdit: () => void;
+  carousel?: CarouselObj;
 }
 
 export const EditButton: React.FC<EditButtonProps> = ({
   editType,
   id,
   onEdit,
+  carousel
 }) => {
   const [open, setOpen] = React.useState(false);
 
@@ -43,14 +47,17 @@ export const EditButton: React.FC<EditButtonProps> = ({
                 {editType}.
               </AlertDialog.Description>
 
-              {editType === "event" && (
+              {editType === "event" && id && (
                 <EditEventForm eventId={id} setOpen={setOpen} onEdit={onEdit} />
               )}
-              {editType === "trip" && (
+              {editType === "trip" && id && (
                 <EditTripForm tripId={id} setOpen={setOpen} onEdit={onEdit} />
               )}
-              {editType === "staff" && (
+              {editType === "staff" && id && (
                 <EditStaffForm staffId={id} setOpen={setOpen} onEdit={onEdit} />
+              )}
+              {editType === "carousel" && carousel && (
+                <EditCarouselForm carousel={carousel} setOpen={setOpen} onEdit={onEdit} />
               )}
             </div>
           </AlertDialog.Content>
