@@ -1,14 +1,13 @@
 "use client";
-import React, {useState, useEffect, useCallback} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import {
   DotButton,
   useDotButton,
 } from "@/app/ui/dashboard/carousel/CarouselDotButton";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from 'embla-carousel-autoplay'
+import Autoplay from "embla-carousel-autoplay";
 import styles from "@/app/ui/dashboard/carousel/carousel.module.scss";
-import { CarouselButton } from "../../buttons/CarouselButton";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
 import Image from "next/image";
 import classNames from "classnames";
@@ -17,9 +16,9 @@ import { getCarouselData } from "@/config/firestore";
 import { EditButton } from "../../buttons/EditButton";
 
 export interface CarouselImage {
-  imageName: string,
-  imageUrl: string,
-  visible: boolean,
+  imageName: string;
+  imageUrl: string;
+  visible: boolean;
 }
 
 export interface CarouselObj {
@@ -36,7 +35,8 @@ const Carousel: React.FC<PropType> = (props) => {
   const { slides, carouselData, options } = props;
   const { isStaff } = useAuth();
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({ playOnInit: true, delay: 5000 })]);
+    Autoplay({ playOnInit: true, delay: 5000 }),
+  ]);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
@@ -48,9 +48,8 @@ const Carousel: React.FC<PropType> = (props) => {
     if (carouselData) {
       setCarousel(carouselData);
     } else {
-      console.log("issue getting carousel list")
+      console.log("issue getting carousel list");
     }
-    
   }, []);
 
   useEffect(() => {
@@ -59,10 +58,9 @@ const Carousel: React.FC<PropType> = (props) => {
 
   return (
     <section className={styles.embla}>
-      
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
-        <div className={styles.embla__slide} key="local-image">
+          <div className={styles.embla__slide} key="local-image">
             <Image
               src="/images/oec4.jpg" // static image
               alt="Local carousel image"
@@ -71,7 +69,7 @@ const Carousel: React.FC<PropType> = (props) => {
               className={styles.carouselImage}
               priority
             />
-            </div>
+          </div>
           {slides.map((image, index) => (
             <div className={styles.embla__slide} key={index}>
               <Image
@@ -83,14 +81,18 @@ const Carousel: React.FC<PropType> = (props) => {
                 className={styles.carouselImage}
                 priority
               />
-              {isStaff && (
-                <div className={styles.buttonContainer}>
-                  <EditButton editType="carousel" onEdit={fetchCarousel} carousel={carousel}/>
-                </div>
-              )}
             </div>
           ))}
         </div>
+        {isStaff && (
+          <div className={styles.buttonContainer}>
+            <EditButton
+              editType="carousel"
+              onEdit={fetchCarousel}
+              carousel={carousel}
+            />
+          </div>
+        )}
       </div>
 
       <div className={styles.embla__controls}>
@@ -107,7 +109,6 @@ const Carousel: React.FC<PropType> = (props) => {
           ))}
         </div>
       </div>
-      {/* <CarouselButton /> */}
     </section>
   );
 };

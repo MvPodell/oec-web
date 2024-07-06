@@ -43,8 +43,10 @@ export const EditButton: React.FC<EditButtonProps> = ({
               <AlertDialog.Description
                 className={styles.AlertDialogDescription}
               >
-                This action cannot be undone. This will permanently edit this{" "}
-                {editType}.
+                {editType != "carousel" && (
+                  `This action cannot be undone. This will permanently edit this ${editType}.` 
+                )}
+                
               </AlertDialog.Description>
 
               {editType === "event" && id && (
