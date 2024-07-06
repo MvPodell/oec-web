@@ -1,17 +1,16 @@
 .carouselImage {
-  @media (min-width: 786px) {
+  @media (min-width: 885px) {
     object-fit: cover;
-    max-height: 40rem;
+    height: 40rem;
   }
   height: 100%;;
   width: 100%;
   overflow-x: hidden;
   display: flex;
-  // border-radius: 0.375rem;
 }
 
 .embla {
-  @media (min-width: 768px) {
+  @media (min-width: 885px) {
     --slide-spacing: 0;
     width: 100%;
   }
@@ -22,7 +21,6 @@
 }
 .embla__viewport {
   overflow: hidden;
-  // border-radius: 0.375rem;
 }
 .embla__container {
   backface-visibility: hidden;

@@ -4,15 +4,11 @@ import styles from "@/app/ui/dashboard/corkboard.module.scss";
 import { EventCard } from "../cards/EventCard";
 import { fetchSortedAffairs } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
-// import dynamic from "next/dynamic";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
 
 interface CorkBoardProps {
   imageArray: ImgAndPlaceholder[];
 }
-
-// const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
-
 
 export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
   const [events, setEvents] = useState<Event[]>([]);

@@ -2,7 +2,6 @@
 
 .body {
   @media (min-width: 768px) {
-    // padding: 3rem;
     flex-grow: 1;
   }
   display: flex;
@@ -11,9 +10,6 @@
 }
 
 .bodyContainer {
-  @media (min-width: 768px) {
-    // margin-left: 16rem;
-  }
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -35,16 +31,14 @@
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  // padding: 1rem;
   z-index: 1;
 }
 
 .dashHeader {
-  @media (min-width: 768px) {
+  @media (min-width: 885px) {
     margin: 0 7rem;
   }
   display: flex;
-  // margin: 0 1rem;
 }
 
 .dashHeaderCard {
@@ -89,8 +83,6 @@
   display: flex;
   flex-direction: column;
   @media (min-width: 768px) {
-    // flex-direction: row;
-    // height: 100vh;
     overflow: hidden;
   }
 }
@@ -118,7 +110,6 @@
 
 .deskNavContainer {
   @media (min-width: 768px) {
-    // overflow: hidden;
     display: flex;
     flex-direction: row;
     flex-grow: 1;
