@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebaseConfig";
-import { addUserToFirestore } from "@/config/firestore";
+import { addUserToFirestore } from "@/config/firestore/firestore";
 import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 

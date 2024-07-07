@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { addTripToFirestore } from "@/config/firestore";
+import { addTripToFirestore } from "@/config/firestore/tripFirestore";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";

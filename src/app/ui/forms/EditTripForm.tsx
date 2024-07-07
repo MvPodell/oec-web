@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import * as Form from "@radix-ui/react-form";
 import styles from "@/app/ui/forms/forms.module.scss";
-import { getTrip, updateTrip } from "@/config/firestore";
+import { getTrip, updateTrip } from "@/config/firestore/tripFirestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 import { Trip } from "@/app/dashboard/trips/page";

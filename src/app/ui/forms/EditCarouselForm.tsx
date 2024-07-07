@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "@/app/ui/trips/tripConfirm.module.scss";
+import styles from "@/app/ui/forms/checkboxForm.module.scss";
 import {
   updateCarouselVisibility,
-} from "@/config/firestore";
+} from "@/config/firestore/carouselFirestore";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { CarouselObj } from "../dashboard/carousel/Carousel";
 
@@ -48,7 +48,7 @@ console.log("currCarouselList", currCarouselList);
           >
             {carousel.imageArray.map((imageObj, index) => (
               <div className={styles.queueSpot} key={index}>
-                <TrashIcon />
+                <TrashIcon className={styles.trash} />
                 <input
                   type="checkbox"
                   defaultChecked={carousel.imageArray[index].visible}

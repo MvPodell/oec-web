@@ -4,7 +4,7 @@ import styles from "@/app/ui/cards/cardDetails.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Event } from "@/app/dashboard/page";
-import { getEvent } from "@/config/firestore";
+import { getEvent } from "@/config/firestore/eventFirestore";
 import { useSearchParams } from "next/navigation";
 
 export const EventDetails: React.FC = () => {

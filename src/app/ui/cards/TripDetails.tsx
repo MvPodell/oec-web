@@ -5,11 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Trip } from "@/app/dashboard/trips/page";
 import {
+  getUsers,
+} from "@/config/firestore/firestore";
+import {
   checkAndAddUser,
   removeUserFromTrip,
   getTrip,
-  getUsers,
-} from "@/config/firestore";
+} from "@/config/firestore/tripFirestore";
 import { useSearchParams } from "next/navigation";
 import { TripQueue } from "../trips/TripQueue";
 import { getAuth } from "firebase/auth";

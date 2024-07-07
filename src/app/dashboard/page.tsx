@@ -1,6 +1,8 @@
 import styles from "@/app/dashboard/dashboard.module.scss";
 import { CorkBoard } from "../ui/dashboard/CorkBoard";
-import { getCarouselData, getEventList } from "@/config/firestore";
+import { getCarouselData } from "@/config/firestore/carouselFirestore";
+import { getEventList } from "@/config/firestore/eventFirestore";
+
 import { getPlaceholderImage } from "@/utils/ImageOpti";
 import Carousel from "../ui/dashboard/carousel/Carousel";
 import { EmblaOptionsType } from "embla-carousel";

@@ -3,7 +3,9 @@ import React from "react";
 import styles from "@/app/ui/buttons/editButton.module.scss";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { deleteEvent, deleteTrip, deleteStaff } from "@/config/firestore";
+import { deleteTrip } from "@/config/firestore/tripFirestore";
+import { deleteEvent } from "@/config/firestore/eventFirestore";
+import { deleteStaff } from "@/config/firestore/staffFirestore";
 
 interface DeleteButtonProps {
   deleteType: "event" | "trip" | "staff";

@@ -12,7 +12,7 @@ import { ImgAndPlaceholder } from "@/utils/interfaces";
 import Image from "next/image";
 import classNames from "classnames";
 import { useAuth } from "@/config/AuthContext";
-import { getCarouselData } from "@/config/firestore";
+import { getCarouselData } from "@/config/firestore/carouselFirestore";
 import { EditButton } from "../../buttons/EditButton";
 
 export interface CarouselImage {

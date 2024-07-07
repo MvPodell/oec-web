@@ -4,7 +4,7 @@ import * as Form from "@radix-ui/react-form";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { oecUser } from "../profile/Profile";
 import { getAuth } from "firebase/auth";
-import { updateUser } from "@/config/firestore";
+import { updateUser } from "@/config/firestore/firestore";
 
 interface EditUserFormProps {
   userData: oecUser;

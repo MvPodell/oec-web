@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import styles from "@/app/ui/forms/forms.module.scss";
-import { addCarouselImage } from "@/config/firestore";
+import { addCarouselImage } from "@/config/firestore/carouselFirestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 

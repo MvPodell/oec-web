@@ -2,9 +2,8 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import * as Form from "@radix-ui/react-form";
 import styles from "@/app/ui/forms/forms.module.scss";
-import { getEvent } from "@/config/firestore";
 import { Event } from "@/app/dashboard/page";
-import { updateEvent } from "@/config/firestore";
+import { getEvent, updateEvent } from "@/config/firestore/eventFirestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 

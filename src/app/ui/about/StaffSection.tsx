@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
 import { StaffDeck } from "./StaffDeck";
-import { getStaffList } from "@/config/firestore";
+import { getStaffList } from "@/config/firestore/staffFirestore";
 import styles from "@/app/ui/about/about.module.scss";
 
 export interface Member {
