@@ -33,6 +33,7 @@ export async function addTripToFirestore(
     await setDoc(docRef, {
       key: tripId,
       capacity: tripCapacity,
+      confirmed: [],
       date: tripDate,
       description: tripDescription,
       id: tripId,
@@ -77,6 +78,7 @@ export async function updateTrip(
 
     const existingTrip = docSnap.data();
     const tripMembers = existingTrip.members || [];
+    const tripConfirmed = existingTrip.confirmed || [];
 
     const isDifferent =
       existingTrip.capacity !== tripCapacity ||
@@ -89,6 +91,7 @@ export async function updateTrip(
     if (isDifferent) {
       await setDoc(docRef, {
         capacity: tripCapacity,
+        confirmed: tripConfirmed,
         date: tripDate,
         description: tripDescription,
         id: tripId,
@@ -199,6 +202,7 @@ export async function removeUserFromTrip(tripId: string, userId: string) {
 
     if (tripDoc.exists()) {
       await updateDoc(docRef, {
+        confirmed: arrayRemove(userId),
         members: arrayRemove(userId),
       });
       console.log("User removed from the trip.");
