@@ -206,7 +206,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
         <Form.Control asChild>
           <input
             ref={gradInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="checkbox"
             required
           />
