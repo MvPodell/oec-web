@@ -46,6 +46,9 @@ export const EditButton: React.FC<EditButtonProps> = ({
                 {editType != "carousel" && (
                   `This action cannot be undone. This will permanently edit this ${editType}.` 
                 )}
+                {editType === "carousel" && (
+                  `Use checkboxes to set visibility of images in carousel.`
+                )}
                 
               </AlertDialog.Description>
 
