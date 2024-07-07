@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { getUserData } from "@/config/firestore";
+import { getUserData } from "@/config/firestore/firestore";
 import styles from "@/app/ui/profile/profile.module.scss";
 import { Cross1Icon, PersonIcon } from "@radix-ui/react-icons";
 import { useAuth } from "@/config/AuthContext";

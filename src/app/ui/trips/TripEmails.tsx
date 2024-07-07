@@ -18,7 +18,7 @@ export const TripEmails: React.FC<TripEmailsProps> = ({signedUpUsers, trip }) =>
     <div className={styles.emailContainer}>
       <div className={styles.emailBlock}>
         <div>Drivers</div>
-        <textarea>Hello</textarea>
+        <textarea defaultValue="Functionality in progress"></textarea>
       </div>
       <div className={styles.emailBlock}>
         <div>Confirmed members</div>

@@ -4,7 +4,7 @@ import React, {useEffect, useState, useContext, createContext } from "react";
 import { auth } from "./firebaseConfig";
 import {  User } from "firebase/auth";
 import { getAuth } from "firebase/auth";
-import { getUserData } from "./firestore";
+import { getUserData } from "./firestore/firestore";
 import { oecUser } from "@/app/ui/profile/Profile";
 
 interface AuthContextState {

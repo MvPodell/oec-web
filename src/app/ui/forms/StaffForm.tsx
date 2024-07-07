@@ -4,7 +4,7 @@ import styles from "@/app/ui/forms/forms.module.scss";
 import { useRouter } from "next/navigation";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
-import { addStaffToFirestore } from "@/config/firestore";
+import { addStaffToFirestore } from "@/config/firestore/staffFirestore";
 
 export interface oecStaff {
   name: string;

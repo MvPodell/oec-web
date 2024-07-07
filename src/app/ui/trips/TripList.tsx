@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { fetchSortedAffairs } from "@/config/firestore";
+import { fetchSortedAffairs } from "@/config/firestore/firestore";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 import { ImgAndPlaceholder } from "@/utils/interfaces";

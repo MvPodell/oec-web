@@ -1,4 +1,6 @@
 @import "/src/app/ui/buttons/buttons.module.scss";
+@import "/src/styles/variables.module.scss";
+
 
   .confirmList {
     padding: 0;
@@ -30,4 +32,15 @@
     font-size: 0.8rem;
     margin-top: 0.5rem;
     color: grey;
+  }
+
+  .trash {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  .trash:hover {
+    color: $red9;
+    cursor: pointer;
   }

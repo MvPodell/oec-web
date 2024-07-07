@@ -1,7 +1,7 @@
 import React, {useState } from "react";
-import styles from "@/app/ui/trips/tripConfirm.module.scss";
+import styles from "@/app/ui/forms/checkboxForm.module.scss";
 import { oecUser } from "../profile/Profile";
-import { updateTripConfirmed } from "@/config/firestore";
+import { updateTripConfirmed } from "@/config/firestore/tripFirestore";
 import { Trip } from "@/app/dashboard/trips/page";
 
 interface TripConfirmProps {

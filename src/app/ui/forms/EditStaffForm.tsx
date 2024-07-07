@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import * as Form from "@radix-ui/react-form";
 import styles from "@/app/ui/forms/forms.module.scss";
 import { Member } from "../about/StaffSection";
-import { getStaff, updateStaff } from "@/config/firestore";
+import { getStaff, updateStaff } from "@/config/firestore/staffFirestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/config/firebaseConfig";
 
@@ -206,7 +206,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
         <Form.Control asChild>
           <input
             ref={gradInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="checkbox"
             required
           />

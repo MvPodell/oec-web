@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { TripList } from "@/app/ui/trips/TripList";
-import { fetchSortedAffairs } from "@/config/firestore";
+import { fetchSortedAffairs } from "@/config/firestore/firestore";
 import { getPlaceholderImage } from "@/utils/ImageOpti";
 
 export interface Trip {
