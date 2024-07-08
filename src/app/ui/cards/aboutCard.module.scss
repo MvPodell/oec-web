@@ -2,8 +2,8 @@
 @import "/src/app/ui/cards/card.module.scss";
 
 .aboutCardContainer {
-  @media (min-width: 885px) {
-    width: 60%;
+  @media (min-width: 768px) {
+    width: 40rem;
     margin: 1rem;
   }
   display: flex;
