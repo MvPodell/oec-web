@@ -62,7 +62,7 @@ const Carousel: React.FC<PropType> = (props) => {
         <div className={styles.embla__container}>
           <div className={styles.embla__slide} key="local-image">
             <Image
-              src="/images/oec4.jpg" // static image
+              src="/images/oec5.webp" // static image
               alt="Local carousel image"
               width="1200"
               height="630"
