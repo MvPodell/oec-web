@@ -11,7 +11,7 @@ export interface oecUser {
   email: string;
   firstName: string;
   lastName: string;
-  role: "student" | "staff";
+  role: "student" | "staff" | "recruiter";
   username: string;
 }
 
