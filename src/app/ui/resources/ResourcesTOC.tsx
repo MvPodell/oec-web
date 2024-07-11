@@ -21,7 +21,7 @@ export const ResourcesTOC = () => {
         >
           <div className={styles.dropBody}>
             <div>
-              The OEC keeps a stock of gear and supplies for free checkout by 5C students and staff. Stop by the center in Dialynas Hall to see what's in stock and to learn more about what we have to offer!
+              The OEC keeps a stock of gear and supplies for free checkout by 5C students and staff. Stop by the center in Dialynas Hall to see what&apos;s in stock and to learn more about what we have to offer!
             </div>
           </div>
         </DropDown>
