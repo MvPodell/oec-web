@@ -10,12 +10,14 @@ import { oecUser } from "@/app/ui/profile/Profile";
 interface AuthContextState {
   user: User | null;
   isStaff: boolean;
+  isRecruiter: boolean;
 }
-const AuthContext = createContext<AuthContextState>({user: null, isStaff: false});
+const AuthContext = createContext<AuthContextState>({user: null, isStaff: false, isRecruiter: false});
 
 const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isStaff, setIsStaff] = useState(false);
+  const [isRecruiter, setIsRecruiter] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -24,9 +26,11 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
             setUser(user);
             const userData = await getUserData(user.uid) as oecUser;
             setIsStaff(userData.role === "staff");
+            setIsRecruiter(userData.role === "recruiter");
         } else {
             setUser(null);
             setIsStaff(false);
+            setIsRecruiter(false);
         }
     });
 
@@ -39,7 +43,7 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isStaff }}>
+    <AuthContext.Provider value={{ user, isStaff, isRecruiter }}>
       {children}
     </AuthContext.Provider>
   );
