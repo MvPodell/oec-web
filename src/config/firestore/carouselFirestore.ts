@@ -53,7 +53,7 @@ export async function addCarouselImage(imageObj: CarouselImage,) {
     }
   }
 
-  export async function deleteCarouselImage(index: number, name: string) {
+  export async function deleteCarouselImage(name: string) {
     try {
       const storage = getStorage();
       const imgRef = ref(storage, `images/carousel/${name}`);

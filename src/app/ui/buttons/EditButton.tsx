@@ -8,6 +8,8 @@ import { EditTripForm } from "../forms/EditTripForm";
 import { EditStaffForm } from "../forms/EditStaffForm";
 import { EditCarouselForm } from "../forms/EditCarouselForm";
 import { CarouselObj } from "../dashboard/carousel/Carousel";
+import { TrashIcon, EyeOpenIcon } from "@radix-ui/react-icons";
+
 
 interface EditButtonProps {
   editType: "event" | "trip" | "staff" | "carousel";
@@ -47,7 +49,8 @@ export const EditButton: React.FC<EditButtonProps> = ({
                   `This action cannot be undone. This will permanently edit this ${editType}.` 
                 )}
                 {editType === "carousel" && (
-                  `Use checkboxes to set visibility of images in carousel.`
+                  <div>Use <TrashIcon /> column to select which images to permanently delete. Use <EyeOpenIcon /> column to select which images to set as visible.</div>
+                  
                 )}
                 
               </AlertDialog.Description>
