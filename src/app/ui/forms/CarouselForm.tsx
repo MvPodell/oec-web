@@ -9,6 +9,18 @@ interface CarouselFormProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+function getFileType(file: File) {
+  const fileTypeRegex = /([^/]+)$/;
+  let fileType = "";
+  if (file.type) {
+    const match = fileTypeRegex.exec(file.type)
+    if (match) {
+      fileType = match[0];
+    }
+  }
+  return fileType;
+}
+
 export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null)
@@ -17,21 +29,20 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
     e.preventDefault();
 
     const file = imageInputRef.current?.files?.[0];
-    let imageUrl = "";
-    if (file) {
-      const storageRef = ref(storage, `/images/carousel/${file.name}`);
-      await uploadBytes(storageRef, file).then((data) => {
-        console.log(data, "imgs");
-      });
-      console.log("image uploaded!");
-      imageUrl = await getDownloadURL(storageRef);
-    }
-
+    
     try {
       if (file) {
+        const fileType = getFileType(file);
+        const imageName = `${nameInputRef.current?.value}.${fileType}` || file.name;
+        let imageUrl = "";
+        const storageRef = ref(storage, `/images/carousel/${imageName}`);
+        await uploadBytes(storageRef, file);
+        console.log("image uploaded!");
+        imageUrl = await getDownloadURL(storageRef);
+        
         await addCarouselImage({
           imageUrl: imageUrl,
-          imageName: nameInputRef.current?.value || file.name,
+          imageName: imageName,
           visible: true,
         });
         setOpen(false);

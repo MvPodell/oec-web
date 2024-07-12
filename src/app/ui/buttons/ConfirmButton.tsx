@@ -34,7 +34,7 @@ export const ConfirmButton: React.FC<ConfirmButtonProps> = ({
                 <Cross1Icon className={styles.formCancel} />
               </AlertDialog.Cancel>
               <AlertDialog.Title className={styles.AlertDialogTitle}>
-                Interested Students
+                Confirm Students
               </AlertDialog.Title>
               <AlertDialog.Description
                 className={styles.AlertDialogDescription}

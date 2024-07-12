@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "@/app/ui/forms/checkboxForm.module.scss";
 import {
+  deleteCarouselImage,
   updateCarouselVisibility,
 } from "@/config/firestore/carouselFirestore";
 import { TrashIcon } from "@radix-ui/react-icons";
@@ -37,6 +38,19 @@ console.log("currCarouselList", currCarouselList);
     setCurrCarouselList(tempCarouselList);
   };
 
+  const handleDelete = async (event: React.MouseEvent<SVGElement, MouseEvent>, index: number, name: string ) => {
+    event.preventDefault();
+    try {
+      await deleteCarouselImage(index, name);
+      const tempCarouselList = currCarouselList;
+      tempCarouselList.splice(index, 1);
+      setCurrCarouselList(tempCarouselList);
+
+    } catch (error) {
+      console.error("Error deleting carousel image in firestore: ", error)
+    }
+  }
+
   return (
     <div>
       {carousel.imageArray.length > 0 && (
@@ -48,7 +62,7 @@ console.log("currCarouselList", currCarouselList);
           >
             {carousel.imageArray.map((imageObj, index) => (
               <div className={styles.queueSpot} key={index}>
-                <TrashIcon className={styles.trash} />
+                <TrashIcon className={styles.trash} onClick={(event) => handleDelete(event, index, carousel.imageArray[index].imageName)} />
                 <input
                   type="checkbox"
                   defaultChecked={carousel.imageArray[index].visible}

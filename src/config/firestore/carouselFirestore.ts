@@ -6,6 +6,7 @@ import {
   } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { CarouselImage, CarouselObj } from "@/app/ui/dashboard/carousel/Carousel";
+import { deleteObject, getStorage, ref } from "firebase/storage";
 
 export async function addCarouselImage(imageObj: CarouselImage,) {
     try {
@@ -49,5 +50,19 @@ export async function addCarouselImage(imageObj: CarouselImage,) {
     } catch (error) {
       console.error("Error updating document: ", error);
       throw error;
+    }
+  }
+
+  export async function deleteCarouselImage(index: number, name: string) {
+    try {
+      const storage = getStorage();
+      const imgRef = ref(storage, `images/carousel/${name}`);
+      deleteObject(imgRef).then(() => {
+        console.log(`Image ${name} deleted successfully`);
+      }).catch((error) => {
+        console.error(`Image ${name} not deleted: `, error);
+      })
+    } catch (error) {
+      console.error("error deleting staff from firestore: ", error);
     }
   }
