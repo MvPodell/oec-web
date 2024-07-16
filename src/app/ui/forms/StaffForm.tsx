@@ -23,17 +23,6 @@ interface StaffFormProps {
 }
 
 export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
-  // const [staff, setStaff] = useState<oecStaff>({
-  //   name: "",
-  //   id: "",
-  //   role: "",
-  //   Hometown: "",
-  //   hireDate: "",
-  //   hopes: "",
-  //   graduated: false,
-  //   imageURL: "",
-  // });
-
   const staffNameRef = useRef<HTMLInputElement>(null);
   const staffRoleRef = useRef<HTMLSelectElement>(null);
   const staffHometownRef = useRef<HTMLInputElement>(null);
@@ -45,7 +34,7 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
 
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const file = staffImageRef.current?.files?.[0];
@@ -83,7 +72,7 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
         <div className={styles.formHeader}>New Staff Profile</div>
       </div>
       <div className={styles.formFieldsContainer}>
-        <form className={styles.formFields} onSubmit={handleSubmit}>
+        <form className={styles.formFields}>
           <div className={styles.formInputContainer}>
             <label htmlFor="staffName" className={styles.formLabel}>
               Name
@@ -159,7 +148,7 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
               Image
             </label>
             <div className={styles.sublabel}>
-              Please select a high-quality, <b>portrait</b> orientation photo.{" "}
+              Please select a high-quality, <b>portrait</b> orientation photo.
             </div>
             <input
               id="staffImage"
@@ -169,13 +158,13 @@ export const StaffForm: React.FC<StaffFormProps> = ({setOpen}) => {
               ref={staffImageRef}
             ></input>
           </div>
-          <div className={styles.formSubmitContainer}>
-            <button type="submit" className={styles.ButtonBlue}>
+        </form>
+      </div>
+      <div className={styles.formSubmitContainer}>
+            <button type="submit" className={styles.ButtonBlue} onClick={handleSubmit}>
               Submit
             </button>
           </div>
-        </form>
-      </div>
     </div>
   );
 };
