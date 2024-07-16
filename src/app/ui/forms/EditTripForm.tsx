@@ -154,10 +154,10 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Trip Title</Form.Label>
+          <Form.Label className={styles.formLabel}>Trip Title</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={titleInputRef} className={styles.Input} type="text" required onChange={handleChange}/>
+          <input ref={titleInputRef} className={styles.formInput} type="text" required onChange={handleChange}/>
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="date">
@@ -168,10 +168,10 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Date</Form.Label>
+          <Form.Label className={styles.formLabel}>Date</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={dateInputRef} className={styles.Input} type="date" required onChange={handleChange}/>
+          <input ref={dateInputRef} className={styles.formInput} type="date" required onChange={handleChange}/>
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="capacity">
@@ -182,10 +182,10 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Capacity</Form.Label>
+          <Form.Label className={styles.formLabel}>Capacity</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={capacityInputRef} className={styles.Input} type="text" required onChange={handleChange}/>
+          <input ref={capacityInputRef} className={styles.formInput} type="text" required onChange={handleChange}/>
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="short description">
@@ -196,10 +196,10 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Short Description</Form.Label>
+          <Form.Label className={styles.formLabel}>Short Description</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={shortDescInputRef} className={styles.Input} type="text" required onChange={handleChange}/>
+          <input ref={shortDescInputRef} className={styles.formInput} type="text" required onChange={handleChange}/>
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="description">
@@ -210,10 +210,10 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Description</Form.Label>
+          <Form.Label className={styles.formLabel}>Description</Form.Label>
         </div>
         <Form.Control asChild>
-          <textarea ref={descriptionInputRef} className={styles.Textarea} required onChange={handleChange}/>
+          <textarea ref={descriptionInputRef} className={styles.formTextArea} required onChange={handleChange}/>
         </Form.Control>
       </Form.Field>
       <Form.Field className={styles.FormField} name="image">
@@ -224,10 +224,10 @@ export const EditTripForm: React.FC<EditTripFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Image</Form.Label>
+          <Form.Label className={styles.formLabel}>Image</Form.Label>
         </div>
         <Form.Control asChild>
-          <input ref={imageInputRef} className={styles.Input} type="file" required onChange={handleFileChange} />
+          <input ref={imageInputRef} className={styles.formInput} type="file" required onChange={handleFileChange} />
         </Form.Control>
       </Form.Field>
       <Form.Submit asChild>

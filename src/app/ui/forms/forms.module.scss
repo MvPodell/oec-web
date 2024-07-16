@@ -1,12 +1,5 @@
 @import "/src/styles/variables.module.scss";
 
-.formTitle {
-  margin: 0;
-  color: $blue11;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
 .formBackButton {
   border-radius: 0.375rem;
   background-color: $slate2;
@@ -24,11 +17,14 @@
 }
 
 .formHeader {
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
   display: flex;
+  font-size: 1.75rem;
   justify-content: center;
   text-align: center;
-  font-size: 2rem;
-  margin-top: 2rem;
+  margin: 2rem 0 1rem 0;
   color: $oec-blue;
 }
 
@@ -38,18 +34,25 @@
 }
 
 .formInputContainer {
-  margin-bottom: 1rem;
+  align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-.formInput {
+.formInput, .formTextArea {
+  @media (min-width: 768px){
+    width: 21rem;
+  }
   display: flex;
+  font-family: unset;
   padding: 1rem 0.75rem;
   border-radius: 0.375rem;
   border: 1px #dee2e6 solid;
-  width: 100%;
+  width: 17rem;
   box-sizing: border-box;
 }
 
@@ -59,17 +62,8 @@
   text-align: start;
   white-space: no-wrap;
   text-overflow: ellipsis;
-}
-
-.formSubmit {
-  border: 3px $oec-blue;
-  border-radius: 0.375rem;
-  background-color: $oec-blue;
-  color: white;
-  padding: 1rem;
-  width: 100%;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-size: 1rem;
+  line-height: 2rem;
 }
 
 .formSubmitContainer {
@@ -87,10 +81,6 @@
 .formFieldsContainer {
   display: flex;
   justify-content: center;
-}
-
-.loginField {
-  margin-bottom: 1rem;
 }
 
 .formFields {
@@ -112,9 +102,13 @@
 }
 
 .sublabel {
-  font-size: 0.8rem;
   color: grey;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  justify-content: center;
   margin: 0.5rem 0;
+  width: 100%;
 }
 
 // Radix styling
@@ -137,55 +131,29 @@
 }
 
 .FormField {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 0.8rem;
   width: 100%;
 }
 
-.FormLabel {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 2rem;
-  color: black;
-}
-
 .FormRoot {
-  padding: 0 1rem;
+  align-items: center;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
   width: 100%;
   }
 
-.Input, .Textarea {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  font-size: 15px;
-  color: black;
-  box-shadow: 0 0 0 1px $blue1;
-  border: 1px $blue6 solid;
-  box-sizing: border-box;
-}
-
-.Input:hover, .Textarea:hover  {
+.formInput:hover, .formTextArea:hover  {
     box-shadow: 0 0 0 1px $blue1;
 }
 
-.Input:focus, .Textarea:focus {
+.formInput:focus, .formTextArea:focus {
   box-shadow: 0 0 0 1px $blue1;
 }
-
-.Input {
-    padding: 0 10px;
-    height: 35px;
-    line-height: 1;
-  }
-  
-  .Textarea {
-    resize: none;
-    padding: 10px;
-  }
 
   .profileSubmitContainer {
     display: flex;

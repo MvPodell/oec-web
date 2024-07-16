@@ -61,7 +61,6 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
         <form className={styles.formFields} >
           <div className={styles.formInputContainer}>
             <label htmlFor="eventTitle" className={styles.formLabel}>
-              {" "}
               Event Title
             </label>
             <input
@@ -80,7 +79,7 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
               type="date"
               className={styles.formInput}
               placeholder="Date"
-              onChange={(e) => (eventDateRef.current = e.target.value)}
+            //   onChange={(e) => (eventDateRef.current = e.target.value)}
             ></input>
           </div>
           <div className={styles.formInputContainer}>
@@ -91,7 +90,7 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
               id="eventLocation"
               className={styles.formInput}
               placeholder="Location"
-              onChange={(e) => (eventLocationRef.current = e.target.value)}
+            //   onChange={(e) => (eventLocationRef.current = e.target.value)}
             ></input>
           </div>
           <div className={styles.formInputContainer}>

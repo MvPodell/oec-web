@@ -139,12 +139,12 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Event Title</Form.Label>
+          <Form.Label className={styles.formLabel}>Event Title</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={titleInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
             onChange={handleChange}
@@ -159,12 +159,12 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Date</Form.Label>
+          <Form.Label className={styles.formLabel}>Date</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={dateInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="date"
             required
             onChange={handleChange}
@@ -179,12 +179,12 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Location</Form.Label>
+          <Form.Label className={styles.formLabel}>Location</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={locationInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
             onChange={handleChange}
@@ -199,12 +199,12 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Description</Form.Label>
+          <Form.Label className={styles.formLabel}>Description</Form.Label>
         </div>
         <Form.Control asChild>
           <textarea
             ref={descriptionInputRef}
-            className={styles.Textarea}
+            className={styles.formTextArea}
             required
             onChange={handleChange}
           />
@@ -218,12 +218,12 @@ export const EditEventForm: React.FC<EditEventFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Image</Form.Label>
+          <Form.Label className={styles.formLabel}>Image</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={imageInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="file"
             required
             onChange={handleFileChange}

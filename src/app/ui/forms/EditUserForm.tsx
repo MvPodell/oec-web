@@ -67,12 +67,12 @@ export const EditUserForm: React.FC<EditUserFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>First Name</Form.Label>
+          <Form.Label className={styles.formLabel}>First Name</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={firstInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
           />
@@ -86,12 +86,12 @@ export const EditUserForm: React.FC<EditUserFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Last Name</Form.Label>
+          <Form.Label className={styles.formLabel}>Last Name</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={lastInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
           />
@@ -105,12 +105,12 @@ export const EditUserForm: React.FC<EditUserFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Email</Form.Label>
+          <Form.Label className={styles.formLabel}>Email</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={emailInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
           />
