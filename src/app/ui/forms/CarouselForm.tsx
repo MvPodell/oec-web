@@ -13,7 +13,7 @@ function getFileType(file: File) {
   const fileTypeRegex = /([^/]+)$/;
   let fileType = "";
   if (file.type) {
-    const match = fileTypeRegex.exec(file.type)
+    const match = fileTypeRegex.exec(file.type);
     if (match) {
       fileType = match[0];
     }
@@ -23,23 +23,24 @@ function getFileType(file: File) {
 
 export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
-  const nameInputRef = useRef<HTMLInputElement>(null)
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const file = imageInputRef.current?.files?.[0];
-    
+
     try {
       if (file) {
         const fileType = getFileType(file);
-        const imageName = `${nameInputRef.current?.value}.${fileType}` || file.name;
+        const imageName =
+          `${nameInputRef.current?.value}.${fileType}` || file.name;
         let imageUrl = "";
         const storageRef = ref(storage, `/images/carousel/${imageName}`);
         await uploadBytes(storageRef, file);
         console.log("image uploaded!");
         imageUrl = await getDownloadURL(storageRef);
-        
+
         await addCarouselImage({
           imageUrl: imageUrl,
           imageName: imageName,
@@ -47,21 +48,20 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
         });
         setOpen(false);
       }
-      
     } catch (error) {
       console.error("Error adding carousel image to firestore: ", error);
     }
   };
 
   return (
-    <form className={styles.FormRoot}>
+    <div className={styles.formModule}>
       <div className={styles.formHeaderContainer}>
         <div className={styles.formHeader}>Add Image to Carousel</div>
       </div>
       <div className={styles.formFieldsContainer}>
-        <div className={styles.formFields}>
-        <div className={styles.formInputContainer}>
-          <label>Descriptive File Name</label>
+        <form className={styles.formFields}>
+          <div className={styles.formInputContainer}>
+            <label>Descriptive File Name</label>
             <input
               ref={nameInputRef}
               className={styles.formInput}
@@ -79,13 +79,13 @@ export const CarouselForm: React.FC<CarouselFormProps> = ({ setOpen }) => {
               required
             />
           </div>
-        </div>
+        </form>
       </div>
       <div className={styles.formSubmitContainer}>
-        <button className={styles.ButtonBlue} onClick={handleSubmit}>
+        <button type="submit" className={styles.ButtonBlue} onClick={handleSubmit}>
           Submit image
         </button>
       </div>
-    </form>
+    </div>
   );
 };
