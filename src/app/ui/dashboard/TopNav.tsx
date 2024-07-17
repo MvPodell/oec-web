@@ -46,9 +46,8 @@ export default function TopNav() {
             />
           </div>
           {!isOpen && <Image src="/images/OECTempLogoBlue.png" width="50" height="50" alt="mobile logo" className={styles.mobileLogo} />}
-
           {isOpen &&
-            (user ? (
+            (userData ? (
               <div className={styles.mobileLogout}>
                 <div className={styles.mobileLogoutItem}>
                   <button
@@ -75,7 +74,7 @@ export default function TopNav() {
             ))}
         </div>
         {isOpen && (
-          <div>
+          <div className={styles.linkAccordion}>
             {links.map((link) => {
               return (
                 <Link
@@ -92,10 +91,6 @@ export default function TopNav() {
                 </Link>
               );
             })}
-            <div className={styles.deskNavItemFill}>
-              {/* remove later */}
-              {user ? `Welcome ${user.email}` : ""}
-            </div>
           </div>
         )}
       </div>
@@ -126,13 +121,12 @@ export default function TopNav() {
           })}
         </div>
         <div className={styles.deskNavItemFill}>
-          {/* remove later */}
-          {user ? `Welcome ${user.email}` : ""}
+          {userData ? `Welcome ${userData.email}` : ""}
         </div>
-        {user ? (
+        {userData ? (
           <div className={styles.deskLogout}>
             <div className={styles.buttonContainer}>
-              <Profile />
+              <Profile userData={userData}/>
             </div>
             <button
               key="logout"
