@@ -64,7 +64,7 @@ export default function TopNav() {
               <div className={styles.mobileLogout}>
                 <Link
                   key="login"
-                  href={"/form/login"}
+                  href={"/account/login"}
                   className={styles.deskNavLink}
                 >
                   <div className={styles.mobileLogoutItem}>
@@ -147,7 +147,7 @@ export default function TopNav() {
           <div className={styles.deskLogout}>
             <Link
               key="login"
-              href={"/form/login"}
+              href={"/account/login"}
               className={styles.deskNavLink}
             >
               <b className={styles.loginButton}>LOGIN</b>

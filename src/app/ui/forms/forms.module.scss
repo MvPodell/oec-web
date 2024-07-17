@@ -160,14 +160,13 @@
     justify-content: center;
   }
 
-  .loginModule {
-    @media (min-width: 768px) {
-      min-width: 23rem;
-      
-    }
-    @extend .formModule;
-    width: 20rem;
-    padding: 2rem;
-    position: relative;
-    width: unset;
+.loginModule {
+  @extend .formModule;
+  @media (min-width: 768px) {
+    min-width: 23rem;
+    padding: 0 2rem 2rem 2rem;
+  }
+  height: auto;
+  padding: 0 0 4rem 0;
+  position: relative;
 }

@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 export const PasswordResetForm = () => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-
+  const router = useRouter();
   const auth = getAuth();
   const handleReset = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ export const PasswordResetForm = () => {
       .then(() => {
         console.log("Password reset email sent!");
         setSent(true);
+        router.push("/dashboard");
       })
       .catch((error) => {
         console.error("Problem sending password reset email", error);
@@ -25,7 +27,7 @@ export const PasswordResetForm = () => {
     <div className={styles.loginModule}>
       <div className={styles.formHeaderContainer}>
         <div className={styles.formBackContainer}>
-          <Link className={styles.formBackButton} href="/form/login">
+          <Link className={styles.formBackButton} href="/account/login">
             Back
           </Link>
         </div>

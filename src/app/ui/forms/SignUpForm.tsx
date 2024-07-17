@@ -26,7 +26,6 @@ export const SignUpForm = () => {
                 try {
                     const credential = await createUserWithEmailAndPassword(auth, email, password);
                     const uid = credential.user.uid;
-                    // console.log("inputs inside try: ", username, credential.user.uid);
                     await addUserToFirestore(username, firstName, lastName, email, uid);
                     router.push('/dashboard');
                 } catch (error) {
@@ -46,7 +45,7 @@ export const SignUpForm = () => {
         <div className={styles.loginModule}>
             <div className={styles.formHeaderContainer}>
                 <div className={styles.formBackContainer}>
-                    <Link className={styles.formBackButton} href="/form/login">Back</Link>
+                    <Link className={styles.formBackButton} href="/account/login">Back</Link>
                 </div>
                 <div className={styles.formHeader}>
                     Sign Up
@@ -84,7 +83,7 @@ export const SignUpForm = () => {
                         <input id="confirmPassword" type="password" className={styles.formInput} placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></input>
                     </div>
                     <div className={styles.formSubmitContainer}>
-                        <button type="submit" className={styles.ButtonBlue} onClick={(e) => signupWithUsernameAndPassword(e)}>Submit</button>
+                        <button type="submit" className={styles.ButtonBlue} onClick={(e) => signupWithUsernameAndPassword(e)}>Sign Up</button>
                     </div>
                 </form>
             </div>
