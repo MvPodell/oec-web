@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Cross1Icon } from "@radix-ui/react-icons";
-import styles from "@/app/ui/buttons/editButton.module.scss";
+import styles from "@/app/ui/buttons/dialogButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { AdminTabs } from "../footer/AdminTabs";
 

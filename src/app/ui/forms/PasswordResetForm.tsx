@@ -4,6 +4,7 @@ import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export const PasswordResetForm = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +29,7 @@ export const PasswordResetForm = () => {
       <div className={styles.formHeaderContainer}>
         <div className={styles.formBackContainer}>
           <Link className={styles.formBackButton} href="/account/login">
-            Back
+            <ArrowLeftIcon />
           </Link>
         </div>
         <div className={styles.formHeader}>Password Reset</div>

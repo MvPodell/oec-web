@@ -6,6 +6,7 @@ import { auth } from "@/config/firebaseConfig";
 import { addUserToFirestore } from "@/config/firestore/firestore";
 import styles from "@/app/ui/forms/forms.module.scss";
 import Link from "next/link";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 
 export const SignUpForm = () => {
@@ -45,7 +46,7 @@ export const SignUpForm = () => {
         <div className={styles.loginModule}>
             <div className={styles.formHeaderContainer}>
                 <div className={styles.formBackContainer}>
-                    <Link className={styles.formBackButton} href="/account/login">Back</Link>
+                    <Link className={styles.formBackButton} href="/account/login"><ArrowLeftIcon /></Link>
                 </div>
                 <div className={styles.formHeader}>
                     Sign Up

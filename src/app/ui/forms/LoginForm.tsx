@@ -28,9 +28,6 @@ export const LoginForm = () => {
     return (
         <div className={styles.loginModule}>
                 <div className={styles.formHeaderContainer}>
-                    <div className={styles.formBackContainer}>
-                        <Link className={styles.formBackButton} href="/dashboard">Back</Link>
-                    </div>
                     <div className={styles.formHeader}>
                         Login
                     </div>
