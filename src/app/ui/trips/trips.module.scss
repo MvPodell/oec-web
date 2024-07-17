@@ -27,7 +27,7 @@
 }
 
 .cardDeck {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     width: 40rem;
   }
   align-items: center;

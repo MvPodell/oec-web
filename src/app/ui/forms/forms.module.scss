@@ -17,8 +17,9 @@
 }
 
 .formHeader {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     font-size: 2rem;
+    margin-top: 1rem;
   }
   display: flex;
   font-size: 1.75rem;
@@ -44,7 +45,7 @@
 }
 
 .formInput, .formTextArea {
-  @media (min-width: 768px){
+  @media (min-width: $desktop){
     width: 21rem;
   }
   display: flex;
@@ -84,7 +85,7 @@
 }
 
 .formFields {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     margin: 1rem 0;
   }
   box-sizing: border-box;
@@ -162,9 +163,10 @@
 
 .loginModule {
   @extend .formModule;
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     min-width: 23rem;
-    padding: 0 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem 2rem;
+    width: 23rem;
   }
   height: auto;
   padding: 0 0 4rem 0;

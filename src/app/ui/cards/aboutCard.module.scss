@@ -2,7 +2,7 @@
 @import "/src/app/ui/cards/card.module.scss";
 
 .aboutCardContainer {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     width: 40rem;
     margin: 1rem;
   }

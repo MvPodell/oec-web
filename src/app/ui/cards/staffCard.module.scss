@@ -1,9 +1,10 @@
 @import "/src/app/ui/cards/card.module.scss";
 @import "/src/app/ui/cards/aboutCard.module.scss";
+@import "/src/styles/variables.module.scss";
 
 .cardStaff {
     @extend .card;
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
       height: 19rem;
       margin: 1rem;
       width: 27.5rem;
@@ -21,7 +22,7 @@
   }
 
   .staffCardImage {
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
       object-fit: cover;
       height: 100%;
     }
@@ -32,7 +33,7 @@
   }
 
   .staffCardImageContainer {
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
       width: 13.75rem;
       height: auto;
     }
@@ -48,7 +49,7 @@
 
   .cardInfoContainerStaff {
     @extend .cardInfoContainer;
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
       width: 13.75rem;
     }
   }

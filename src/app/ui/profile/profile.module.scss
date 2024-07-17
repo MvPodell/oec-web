@@ -1,6 +1,5 @@
 @import "/src/styles/variables.module.scss";
-
-@import "/src/app/ui/buttons/editButton.module.scss";
+@import "/src/app/ui/buttons/dialogButton.module.scss";
 
 .profileButtonContainer {
     border: 1px solid $highlight-blue;
@@ -18,7 +17,7 @@
 
 .ProfileDialogContent {
     @extend .AlertDialogContent;
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
         top: 50%;
         left: 50%;
         width: 18rem;
