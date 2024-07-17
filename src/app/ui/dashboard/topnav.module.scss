@@ -1,14 +1,5 @@
 @import "/src/styles/variables.module.scss";
 
-.profileButtonContainer {
-  display: flex;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  justify-content: center;
-  align-items: center;
-}
-
 .deskLinks {
   @media (min-width: 1024px) {
     padding: 0.5rem 0.5rem 0.5rem 2rem;

@@ -57,7 +57,7 @@ export const Profile = () => {
       <AlertDialog.Root>
         <AlertDialog.Trigger asChild>
           <div className={styles.profileButtonContainer}>
-            <button className={styles.addButton}>
+            <button>
               <PersonIcon />
             </button>
           </div>
@@ -97,7 +97,7 @@ export const Profile = () => {
               )}
 
               {!editMode && (
-                <button className={styles.profileEditButton} onClick={handleEdit}>
+                <button className={styles.adminButton} onClick={handleEdit}>
                 Edit
               </button>
               )}

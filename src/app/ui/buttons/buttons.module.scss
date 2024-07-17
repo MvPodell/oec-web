@@ -1,29 +1,25 @@
 @import "/src/styles/variables.module.scss";
+@import "/src/styles/mixins.module.scss";
 
-.staffButton {
-  align-items: center;
-  background-color: $slate1;
-  color: $oec-blue;
-  border: 2px solid $slate5;
+.addButton {
+  text-decoration: none;
+  background-color: white;
   border-radius: 0.375rem;
-  cursor: pointer;
-  display: flex;
-  height: 2rem;
-  justify-content: center;
-  margin: 0 0.5rem;
-  padding: 0.25rem;
-  width: 2rem;
+  border: 2px solid $slate3;
+  color: $muted-blue;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
 }
 
-.staffButton:active {
-  background-color: $oec-blue;
-  color: white;
+.addButton:hover {
+  background-color: $hover-blue;
+  transition-duration: 1s;
 }
 
-.staffButton:hover {
-  background-color: $highlight-blue;
-  border: 2px solid $highlight-blue;
-  transition: 1s;
+.addButtonContainer {
+  text-decoration: none;
+  margin-bottom: 0.5rem;
 }
 
 .adminButton {
@@ -36,12 +32,27 @@
   cursor: pointer;
 }
 .adminButton:hover {
+  @include dialog-button;
   background-color: $blue5;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
 }
-.adminButton:focus {
-  box-shadow: 0 0 0 2px $blue6;
+
+.staffButton {
+  align-items: center;
+  background-color: $slate1;
+  border: 2px solid $slate5;
   border-radius: 0.375rem;
-  padding: 0.5rem;
+  color: $oec-blue;
+  cursor: pointer;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  margin: 0 0.5rem;
+  padding: 0.25rem;
+  width: 2rem;
+}
+
+.staffButton:hover {
+  background-color: $highlight-blue;
+  border: 2px solid $highlight-blue;
+  transition: 1s;
 }
