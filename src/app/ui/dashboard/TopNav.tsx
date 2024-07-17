@@ -6,8 +6,8 @@ import Image from "next/image";
 import Logo from "../../../../public/images/OECTempLogoBlue.png";
 import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
-import { useAuth } from "@/config/AuthContext";
 import { Profile } from "../profile/Profile";
+import { useProfile } from "@/config/ProfileContext";
 
 export default function TopNav() {
   const links = [
@@ -17,7 +17,7 @@ export default function TopNav() {
     { name: "ABOUT", key: "about", href: "/dashboard/about" },
   ];
   const auth = getAuth();
-  const { user } = useAuth()
+  const { userData} = useProfile();
 
   const [isOpen, setOpen] = useState(false);
 

@@ -20,8 +20,8 @@ export const EditUserForm: React.FC<EditUserFormProps> = ({
   const firstInputRef = useRef<HTMLInputElement>(null);
   const lastInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const { userData } = useProfile();
+  const router = useRouter();
 
   useEffect(() => {
     if (firstInputRef.current) {
