@@ -8,7 +8,6 @@
   display: flex;
   padding: 0.8rem 1rem;
   margin-right: 1rem;
-  
 }
 
 .profileButtonContainer:hover {
@@ -16,13 +15,20 @@
   color: $oec-blue;
 }
 
-.ProfileDialogContent {
+.ProfileDialog {
   @extend .AlertDialogContent;
   @media (min-width: $desktop) {
     top: 50%;
     left: 50%;
     width: 18rem;
   }
+}
+
+.profileContent {
+  margin-bottom: 20px;
+  color: $mauve11;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .profileLabel {

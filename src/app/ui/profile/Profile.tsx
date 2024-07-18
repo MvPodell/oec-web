@@ -32,7 +32,7 @@ export const Profile: React.FC<ProfileProps> = ({userData}) => {
         </AlertDialog.Trigger>
         <AlertDialog.Portal>
           <AlertDialog.Overlay className={styles.AlertDialogOverlay} />
-          <AlertDialog.Content className={styles.ProfileDialogContent}>
+          <AlertDialog.Content className={styles.ProfileDialog}>
             <div className={styles.profileFormWrapper}>
               <AlertDialog.Cancel asChild>
                 <button >
@@ -40,18 +40,21 @@ export const Profile: React.FC<ProfileProps> = ({userData}) => {
                 </button>
               </AlertDialog.Cancel>
               <AlertDialog.Title className={styles.AlertDialogTitle}>
-                <div>Profile</div>
+                Profile
               </AlertDialog.Title>
                 <AlertDialog.Description
                   className={styles.AlertDialogDescription}
                 >
-                  <div className={styles.profileLabel}>Name</div>
-                    <div>{userData.firstName} {userData.lastName}</div>
-                  <div className={styles.profileLabel}>Email</div>
-                    <div>{userData.email}</div>
-                  <div className={styles.profileLabel}>Account Type</div>
-                    <div>{userData.role === "student" ? "Student" : "Staff"}</div>
+                  Your Information
                 </AlertDialog.Description>
+                <div className={styles.profileContent}>
+                  <div className={styles.profileLabel}>Name</div>
+                    {userData.firstName} {userData.lastName}
+                  <div className={styles.profileLabel}>Email</div>
+                    {userData.email}
+                  <div className={styles.profileLabel}>Account Type</div>
+                    {userData.role === "student" ? "Student" : "Staff"}
+                </div>
                 <button className={styles.adminButton} onClick={() => router.push("/account/profile")}>
                   Edit
                 </button>

@@ -46,10 +46,10 @@ export const EditButton: React.FC<EditButtonProps> = ({
                 className={styles.AlertDialogDescription}
               >
                 {editType != "carousel" && (
-                  `This action cannot be undone. This will permanently edit this ${editType}.` 
+                  `This action cannot be undone. This will permanently edit this ${editType}.`
                 )}
                 {editType === "carousel" && (
-                  <div>Use <TrashIcon /> column to select which images to permanently delete. Use <EyeOpenIcon /> column to select which images to set as visible.</div>
+                  <span>Use <TrashIcon /> column to select which images to permanently delete. Use <EyeOpenIcon /> column to select which images to set as visible.</span>
                   
                 )}
                 

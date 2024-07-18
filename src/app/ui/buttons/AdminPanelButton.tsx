@@ -24,6 +24,7 @@ export const AdminPanelButton: React.FC = ({}) => {
               <AlertDialog.Title className={styles.AlertDialogTitle}>
                 Admin Panel
               </AlertDialog.Title>
+              <AlertDialog.Description className={styles.AlertDialogDescription}>Click a tab to get started</AlertDialog.Description>
               <AdminTabs setOpen={setOpen} />
             </div>
           </AlertDialog.Content>
