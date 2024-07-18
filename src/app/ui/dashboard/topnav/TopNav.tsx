@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import styles from "@/app/ui/dashboard/topnav.module.scss";
+import styles from "@/app/ui/dashboard/topnav/topnav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../../public/images/OECTempLogoBlue.png";
+import Logo from "../../../../../public/images/OECTempLogoBlue.png";
 import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
-import { Profile } from "../profile/Profile";
+import { Profile } from "../../profile/Profile";
 import { useProfile } from "@/config/ProfileContext";
 
 export default function TopNav() {

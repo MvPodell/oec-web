@@ -20,21 +20,26 @@
   }
   
   .corkContainer {
+    @media (min-width: $desktop) {
+      margin: 2rem 0;
+
+    }
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
+    margin: 1rem 0;
     width: 99%;
-    align-items: center;
   }
   
   .corkHeader {
+    @media (min-width: $desktop) {
+      margin-top: 1rem;
+      padding-bottom: 1rem;
+    }
     color: $oec-blue;
     font-weight: 800;
     font-size: 2rem;
     display: flex;
-    margin-top: 1rem;
-    padding-bottom: 1rem;
     width: 100%;
     justify-content: center;
   }
