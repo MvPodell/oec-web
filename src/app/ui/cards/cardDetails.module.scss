@@ -54,7 +54,7 @@
 
 .cardHeaderLeft {
   @extend .cardHeader;
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     flex-direction: row;
   }
   display: flex;
@@ -65,7 +65,7 @@
 
 .cardHeaderTitle {
   @extend .cardHeader;
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     margin-right: 1rem;
   }
   margin: 0 0 0.5rem 0;

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Cross1Icon } from "@radix-ui/react-icons";
-import styles from "@/app/ui/buttons/editButton.module.scss";
+import styles from "@/app/ui/buttons/dialogButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { AdminTabs } from "../footer/AdminTabs";
 
@@ -24,6 +24,7 @@ export const AdminPanelButton: React.FC = ({}) => {
               <AlertDialog.Title className={styles.AlertDialogTitle}>
                 Admin Panel
               </AlertDialog.Title>
+              <AlertDialog.Description className={styles.AlertDialogDescription}>Click a tab to get started</AlertDialog.Description>
               <AdminTabs setOpen={setOpen} />
             </div>
           </AlertDialog.Content>

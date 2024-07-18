@@ -1,7 +1,7 @@
 @import "/src/styles/variables.module.scss";
 
 .aboutContainer {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     padding: 0 7rem 2rem 7rem;
   }
   align-content: center;

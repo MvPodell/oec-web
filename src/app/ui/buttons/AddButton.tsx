@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import styles from "@/app/ui/buttons/addButton.module.scss";
+import styles from "@/app/ui/buttons/buttons.module.scss";
 import Link from "next/link";
 import { useAuth } from "@/config/AuthContext";
 

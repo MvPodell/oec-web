@@ -1,7 +1,7 @@
 @import "/src/styles/variables.module.scss";
 
 .body {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     flex-grow: 1;
   }
   display: flex;
@@ -62,7 +62,7 @@
 }
 
 .dashHours {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     color: $highlight-blue;
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@
 .homeContainer {
   display: flex;
   flex-direction: column;
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     overflow: hidden;
   }
 }
@@ -109,7 +109,7 @@
 }
 
 .deskNavContainer {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -121,13 +121,13 @@
 }
 
 .deskNavContainer::after {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     box-shadow: 0px 1px 8px 1px rgba(121, 131, 154, 0.2);
   }
 }
 
 .mobileNavContainer {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     display: none;
   }
 }

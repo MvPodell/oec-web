@@ -44,7 +44,6 @@ const Carousel: React.FC<PropType> = (props) => {
 
   const fetchCarousel = useCallback(async () => {
     const carouselData = await getCarouselData();
-    console.log(carouselData);
     if (carouselData) {
       setCarousel(carouselData);
     } else {

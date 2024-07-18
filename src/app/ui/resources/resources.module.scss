@@ -13,7 +13,7 @@
 }
 
 .dropDown {
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
         margin: 0 7rem 0.5rem 7rem;
     }
     margin: 0.5rem 1rem;
@@ -26,7 +26,7 @@
 }
 
 .dropDownContainer {
-    @media (min-width: 768px) {
+    @media (min-width: $desktop) {
         margin: 0;
     }
     display: flex;

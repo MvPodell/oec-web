@@ -1,10 +1,8 @@
-import React, { useEffect, useCallback, useState } from "react";
-import { getUserData } from "@/config/firestore/firestore";
+import React from "react";
 import styles from "@/app/ui/profile/profile.module.scss";
 import { Cross1Icon, PersonIcon } from "@radix-ui/react-icons";
-import { useAuth } from "@/config/AuthContext";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { EditUserForm } from "../forms/EditUserForm";
+import { useRouter } from "next/navigation";
 
 export interface oecUser {
   id: string;
@@ -15,93 +13,51 @@ export interface oecUser {
   username: string;
 }
 
-export const Profile = () => {
-  const [editMode, setEditMode] = useState(false);
-  const [userData, setUserData] = useState<oecUser>({
-    id: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    role: "student",
-    username: "",
-  });
-  const { user } = useAuth();
 
-  const handleEdit = () => {
-    setEditMode(true);
-    // console.log(editMode);
-  };
-
-  const handleCancel = () => {
-    setEditMode(false);
-  }
-
-  const fetchUser = useCallback(async () => {
-    const fetchUserData = async () => {
-      if (user) {
-        const data = await getUserData(user.uid);
-        if (data) {
-          setUserData(data);
-        }
-      }
-    };
-    fetchUserData();
-  }, [user]);
-
-  useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+interface ProfileProps {
+  userData: oecUser;
+}
+export const Profile: React.FC<ProfileProps> = ({userData}) => {
+  const router = useRouter();
 
   return (
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger asChild>
           <div className={styles.profileButtonContainer}>
-            <button className={styles.addButton}>
+            <button>
               <PersonIcon />
             </button>
           </div>
         </AlertDialog.Trigger>
         <AlertDialog.Portal>
           <AlertDialog.Overlay className={styles.AlertDialogOverlay} />
-          <AlertDialog.Content className={styles.ProfileDialogContent}>
+          <AlertDialog.Content className={styles.ProfileDialog}>
             <div className={styles.profileFormWrapper}>
               <AlertDialog.Cancel asChild>
-                <button onClick={handleCancel}>
+                <button >
                   <Cross1Icon className={styles.formCancel} />
                 </button>
-                
               </AlertDialog.Cancel>
               <AlertDialog.Title className={styles.AlertDialogTitle}>
                 Profile
               </AlertDialog.Title>
-              {editMode === true ? (
-                <>
-                  <EditUserForm
-                    userData={userData}
-                    setOpen={setEditMode}
-                    onEdit={fetchUser}
-                  />
-                </>
-              ) : (
                 <AlertDialog.Description
                   className={styles.AlertDialogDescription}
                 >
-                  <div className={styles.profileLabel}>Name</div>
-                  {userData.firstName} {userData.lastName}
-                  <div className={styles.profileLabel}>Email</div>
-                  {userData.email}
-                  <div className={styles.profileLabel}>Account Type</div>
-                  {userData.role === "student" ? "Student" : "Staff"}
+                  Your Information
                 </AlertDialog.Description>
-              )}
-
-              {!editMode && (
-                <button className={styles.profileEditButton} onClick={handleEdit}>
-                Edit
-              </button>
-              )}
-              
+                <div className={styles.profileContent}>
+                  <div className={styles.profileLabel}>Name</div>
+                    {userData.firstName} {userData.lastName}
+                  <div className={styles.profileLabel}>Email</div>
+                    {userData.email}
+                  <div className={styles.profileLabel}>Account Type</div>
+                    {userData.role === "student" ? "Student" : "Staff"}
+                </div>
+                <button className={styles.adminButton} onClick={() => router.push("/account/profile")}>
+                  Edit
+                </button>
             </div>
           </AlertDialog.Content>
         </AlertDialog.Portal>

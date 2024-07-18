@@ -53,7 +53,11 @@ export async function getUserData(userId: string) {
     const userDoc = await getDoc(docRef);
 
     if (userDoc.exists()) {
-      const userData = userDoc.data();
+      let userData = userDoc.data();
+      userData = {
+        ...userData,
+        id: userId
+      };
       return userData as oecUser;
     } else {
       console.log("User does not exist!");

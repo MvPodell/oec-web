@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "@/app/ui/buttons/editButton.module.scss";
+import styles from "@/app/ui/buttons/dialogButton.module.scss";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { deleteTrip } from "@/config/firestore/tripFirestore";

@@ -11,7 +11,7 @@
 }
 
 .card {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     width: 100%;
   }
   border: 1px solid $oec-blue;
@@ -28,7 +28,7 @@
 }
 
 .cardContent {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     flex-direction: row;
   }
   display: flex;
@@ -79,7 +79,7 @@
 }
 
 .cardImage {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     width: 60%;
   }
   height: auto;
@@ -97,7 +97,7 @@
 }
 
 .cardInfoContainer {
-  @media (min-width: 768px) {
+  @media (min-width: $desktop) {
     width: 40%;
   }
   background-color: white;

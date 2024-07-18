@@ -100,8 +100,8 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
                             </input>
                     </div>
                     <div className={styles.formInputContainer}>
-                        <label htmlFor="tripShortDesc" className={styles.formLabel}>Trip Short Description</label>
-                        <div className={styles.sublabel}>One sentence, please!</div>
+                        <label htmlFor="tripShortDesc" className={styles.formLabel}>Blurb</label>
+                        <div className={styles.sublabel}>One sentence describing the trip</div>
                         <input 
                             id="tripShortDesc" 
                             className={styles.formInput} 
@@ -112,7 +112,7 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
                             </input>
                     </div>
                     <div className={styles.formInputContainer}>
-                        <label htmlFor="tripDesc" className={styles.formLabel}>Trip Description</label>
+                        <label htmlFor="tripDesc" className={styles.formLabel}>Description</label>
                         <div className={styles.sublabel}>Longer description</div>
                         <textarea 
                             rows={4}

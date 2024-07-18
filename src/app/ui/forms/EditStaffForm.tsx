@@ -120,12 +120,12 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Staff Name</Form.Label>
+          <Form.Label className={styles.formLabel}>Staff Name</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={nameInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
             // onChange={handleChange}
@@ -140,12 +140,12 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Hometown</Form.Label>
+          <Form.Label className={styles.formLabel}>Hometown</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={hometownInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
             // onChange={handleChange}
@@ -160,12 +160,12 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Tenure Range</Form.Label>
+          <Form.Label className={styles.formLabel}>Tenure Range</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={hireInputRef}
-            className={styles.Textarea}
+            className={styles.formTextArea}
             type="text"
             required
             // onChange={handleChange}
@@ -180,12 +180,12 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Hopes and Dreams</Form.Label>
+          <Form.Label className={styles.formLabel}>Hopes and Dreams</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={hopesInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="text"
             required
           />
@@ -199,7 +199,7 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>
+          <Form.Label className={styles.formLabel}>
             Graduation status (true/false)
           </Form.Label>
         </div>
@@ -220,12 +220,12 @@ export const EditStaffForm: React.FC<EditStaffFormProps> = ({
             justifyContent: "space-between",
           }}
         >
-          <Form.Label className={styles.FormLabel}>Image</Form.Label>
+          <Form.Label className={styles.formLabel}>Image</Form.Label>
         </div>
         <Form.Control asChild>
           <input
             ref={imageInputRef}
-            className={styles.Input}
+            className={styles.formInput}
             type="file"
             required
             // onChange={handleFileChange}

@@ -21,8 +21,6 @@ export const EditCarouselForm: React.FC<EditCarouselProps> = ({
   const [currCarouselList, setCurrCarouselList] = useState(carousel.imageArray);
   const [deleteList, setDeleteList] = useState<string[]>([]);
 
-console.log("currCarouselList", currCarouselList);
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {

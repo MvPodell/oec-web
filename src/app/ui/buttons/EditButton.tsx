@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Pencil1Icon, Cross1Icon } from "@radix-ui/react-icons";
-import styles from "@/app/ui/buttons/editButton.module.scss";
+import styles from "@/app/ui/buttons/dialogButton.module.scss";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { EditEventForm } from "../forms/EditEventForm";
 import { EditTripForm } from "../forms/EditTripForm";
@@ -46,10 +46,10 @@ export const EditButton: React.FC<EditButtonProps> = ({
                 className={styles.AlertDialogDescription}
               >
                 {editType != "carousel" && (
-                  `This action cannot be undone. This will permanently edit this ${editType}.` 
+                  `This action cannot be undone. This will permanently edit this ${editType}.`
                 )}
                 {editType === "carousel" && (
-                  <div>Use <TrashIcon /> column to select which images to permanently delete. Use <EyeOpenIcon /> column to select which images to set as visible.</div>
+                  <span>Use <TrashIcon /> column to select which images to permanently delete. Use <EyeOpenIcon /> column to select which images to set as visible.</span>
                   
                 )}
                 

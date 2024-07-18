@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AR_One_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/config/AuthContext";
+import { ProfileProvider } from "@/config/ProfileContext";
 
 const AROneSans = AR_One_Sans({
   style: "normal",
@@ -21,10 +22,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
+        <ProfileProvider>
           <head>
             <link rel="icon" href="/images/icon.ico"></link>
           </head>
           <body className={AROneSans.className}>{children}</body>
+        </ProfileProvider>
       </AuthProvider>
     </html>
   );
