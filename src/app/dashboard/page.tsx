@@ -55,7 +55,7 @@ export default async function Page() {
               options={OPTIONS}
             />
             <div className={styles.dashHeaderText}>
-              <div className={styles.subtitle2}>
+              <div className={styles.deskSubtitle}>
                 The Outdoor Education Center of Pomona College
               </div>
               <div className={styles.dashHours}>
