@@ -3,6 +3,7 @@ import styles from "@/app/ui/trips/trips.module.scss";
 import { TripList } from "@/app/ui/trips/TripList";
 import { fetchSortedAffairs } from "@/config/firestore/firestore";
 import { getPlaceholderImage } from "@/utils/ImageOpti";
+import classNames from "classnames";
 
 export interface Trip {
   capacity: string;
@@ -49,18 +50,14 @@ export  default async function Page() {
 
 
   return (
-    <div className={styles.tripsContainer}>
-      <div className={styles.currentTripsSection}>
-        <div className={styles.sectionHeaderCurrent}>Current Trips</div>
-        <div className={styles.deckContainer}>
-          <TripList kind="present" imageArray={currImageArray} />
-        </div>
+    <div className={styles.columnContainer}>
+      <div className={classNames(styles.blueSection, styles.section)}>
+        <div className={classNames(styles.sectionHeader, styles.white)}>Current Trips</div>
+        <TripList kind="present" imageArray={currImageArray} />
       </div>
-      <div className={styles.pastTripsSection}>
+      <div className={styles.section}>
         <div className={styles.sectionHeader}>Past Trips</div>
-        <div className={styles.deckContainer}>
-          <TripList kind="past" imageArray={prevImageArray}/>
-        </div>
+        <TripList kind="past" imageArray={prevImageArray}/>
       </div>
     </div>
   );

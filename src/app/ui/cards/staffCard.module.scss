@@ -1,6 +1,7 @@
 @import "/src/app/ui/cards/card.module.scss";
 @import "/src/app/ui/cards/aboutCard.module.scss";
 @import "/src/styles/variables.module.scss";
+@import "/src/styles/layout.module.scss";
 
 .cardStaff {
     @extend .card;
@@ -22,14 +23,13 @@
   }
 
   .staffCardImage {
+    @extend .image;
     @media (min-width: $desktop) {
       object-fit: cover;
       height: 100%;
     }
     display: flex;
-    width: 100%;
     overflow-x: hidden;
-    height: auto;
   }
 
   .staffCardImageContainer {

@@ -18,8 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.body}>{children}</div>
+        <DynamicFooter />
       </div>
-      <DynamicFooter />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Event } from "@/app/dashboard/page";
 import { getEvent } from "@/config/firestore/eventFirestore";
 import { useSearchParams } from "next/navigation";
+import classNames from "classnames";
 
 export const EventDetails: React.FC = () => {
   const [currentEvent, setCurrentEvent] = useState<Event | null>(null);
@@ -26,7 +27,7 @@ export const EventDetails: React.FC = () => {
   }, [eventId]);
 
   return (
-    <div className={styles.cardDetailsContainer}>
+    <div className={classNames(styles.blueSection, styles.section)}>
       <div className={styles.backButtonContainer}>
         <Link key="backArrow" href={"/dashboard"} className={styles.backButton}>
           Back to Dashboard
@@ -35,7 +36,7 @@ export const EventDetails: React.FC = () => {
       {currentEvent && (
         <div className={styles.cardDetails}>
           <Image
-            className={styles.cardDetailsImage}
+            className={styles.image}
             src={currentEvent.imageURL}
             alt="event poster"
             width="800"

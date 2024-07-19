@@ -99,7 +99,7 @@ export default function TopNav() {
           <Image
             alt="OEC logo"
             src={Logo}
-            className={styles.logoImage}
+            className={styles.image}
             priority
           />
         </div>
@@ -125,9 +125,7 @@ export default function TopNav() {
         </div>
         {userData ? (
           <div className={styles.deskLogout}>
-            <div className={styles.buttonContainer}>
               <Profile userData={userData}/>
-            </div>
             <button
               key="logout"
               className={styles.logoutButton}

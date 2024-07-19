@@ -31,9 +31,9 @@ export const EventCard: React.FC<EventCardProps> = ({
               <div className={styles.cardHeader}>{event.title}</div>
               <div className={styles.cardDate}>{event.date}</div>
             </div>
-            <div className={styles.cardButtonContainer}>
+            <div className={styles.detailsButtonContainer}>
               <Link
-                className={styles.cardButton}
+                className={styles.detailsButton}
                 href={`/dashboard/event-details?id=${event.id}`}
               >
                 SEE EVENT DETAILS

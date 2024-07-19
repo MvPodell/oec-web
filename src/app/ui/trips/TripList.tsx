@@ -4,7 +4,6 @@ import { fetchSortedAffairs } from "@/config/firestore/firestore";
 import styles from "@/app/ui/trips/trips.module.scss";
 import { Trip } from "@/app/dashboard/trips/page";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
-import { useAuth } from "@/config/AuthContext";
 import dynamic from "next/dynamic";
 
 interface TripListProps {
@@ -14,10 +13,7 @@ interface TripListProps {
 
 const DynamicTripCard = dynamic(() => import("@/app/ui/cards/TripCard").then(mod => mod.TripCard));
 
-// const DynamicAddButton = dynamic(() => import("@/app/ui/buttons/AddButton").then(mod => mod.AddButton));
-
 export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
-  const { isStaff } = useAuth();
   const [trips, setTrips] = useState<Trip[]>([]);
   const [pastTrips, setPastTrips] = useState<Trip[]>([]);
   const currentDate = useMemo(() => new Date(), []);
@@ -45,8 +41,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
 
   return (
     <>
-    {/* {kind === "present" && isStaff && (<DynamicAddButton label="ADD TRIP" dest="/form/add-trip" />)} */}
-    <div className={styles.tripListContainer}>
+    <div className={styles.columnContainer}>
       <div className={styles.cardDeck}>
       {trips &&
         kind === "present" &&
@@ -87,10 +82,10 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
       {kind === "present" && trips.length === 0 && (
         <div className={styles.emptyTripWarning}>No current trips!</div>
       )}
-      <div className={styles.graveButtonContainer}>
+      <div className={styles.loadButtonContainer}>
         {kind === "present" && trips.length > 2 ? (
           <button
-            className={styles.graveButton}
+            className={styles.loadButton}
             onClick={() =>
               currGrave.open
                 ? setCurrGrave({ open: false, label: "View more trips" })
@@ -101,7 +96,7 @@ export const TripList: React.FC<TripListProps> = ({ kind, imageArray }) => {
           </button>
         ) : (
           <button
-            className={styles.graveButton}
+            className={styles.loadButton}
             onClick={() =>
               pastGrave.open
                 ? setPastGrave({ open: false, label: "View past trips" })

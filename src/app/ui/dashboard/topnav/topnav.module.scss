@@ -1,4 +1,5 @@
 @import "/src/styles/variables.module.scss";
+@import "/src/styles/layout.module.scss";
 
 .deskLinks {
   @media (min-width: 1024px) {
@@ -67,11 +68,6 @@
   display: flex;
   height: 6rem;
   padding: 0.5rem;
-}
-
-.logoImage {
-  width: 100%;
-  height: auto;
 }
 
 .deskNavItem {
@@ -190,6 +186,5 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex-grow: 1;
   margin-bottom: 0.5rem;
 }

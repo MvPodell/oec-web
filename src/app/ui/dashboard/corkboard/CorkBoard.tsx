@@ -33,7 +33,6 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
         <div className={styles.subheader2}>Upcoming at the OEC</div>
       </div>
       <div className={styles.corkBody}>
-        {/* <DynamicAddButton label="ADD EVENT" dest="/form/add-event" /> */}
         <div className={styles.cardDeck}>
           {events.map((event, index) => (
             <EventCard

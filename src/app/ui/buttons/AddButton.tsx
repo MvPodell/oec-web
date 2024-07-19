@@ -16,7 +16,7 @@ export const AddButton: React.FC<AddButtonProps> = ({label, dest}) => {
         <>
             {isStaff && (
                 <div className={styles.addButtonContainer}>
-                    <Link href={`${dest}`} className={styles.addButton}>
+                    <Link href={`${dest}`} className={styles.loadButton}>
                         {label}
                     </Link>
                 </div>

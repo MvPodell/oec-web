@@ -1,14 +1,5 @@
 @import "/src/styles/variables.module.scss";
-
-
-.buttonContainer {
-  display: flex;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  justify-content: center;
-  align-items: center;
-}
+@import "/src/styles/layout.module.scss";
 
 .card {
   @media (min-width: $desktop) {
@@ -37,7 +28,7 @@
   width: 100%;
 }
 
-.cardButton {
+.detailsButton {
   background-color: white;
   border: 0;
   cursor: pointer;
@@ -52,13 +43,13 @@
   text-decoration: none;
 }
 
-.cardButton:hover {
+.detailsButton:hover {
   background-color: $hover-blue;
   border-radius: 0.375;
   transition-duration: 1s;
 }
 
-.cardButtonContainer {
+.detailsButtonContainer {
   padding: 0.5rem;
   display: flex;
   flex-direction: row;
@@ -79,11 +70,10 @@
 }
 
 .cardImage {
+  @extend .image;
   @media (min-width: $desktop) {
     width: 60%;
   }
-  height: auto;
-  width: 100%;
   overflow-x: hidden;
   display: flex;
 }

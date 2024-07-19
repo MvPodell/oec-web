@@ -42,9 +42,9 @@ export const TripCard: React.FC<TripCardProps> = ({
               <div className={styles.cardDate}>{date}</div>
               <div className={styles.cardText}>{shortDescription}</div>
             </div>
-            <div className={styles.cardButtonContainer}>
+            <div className={styles.detailsButtonContainer}>
               <Link
-                className={styles.cardButton}
+                className={styles.detailsButton}
                 href={`/dashboard/trips/trip-details?id=${id}`}
               >
                 SEE TRIP DETAILS
