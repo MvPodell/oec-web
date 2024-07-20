@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/app/ui/dashboard/topnav/topnav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
 import { Profile } from "../../profile/Profile";
 import { useProfile } from "@/config/ProfileContext";
+import { useAuth } from "@/config/AuthContext";
 
 export default function TopNav() {
   const links = [
@@ -18,6 +19,7 @@ export default function TopNav() {
   ];
   const auth = getAuth();
   const { userData} = useProfile();
+  const { user } = useAuth();
 
   const [isOpen, setOpen] = useState(false);
 
@@ -47,7 +49,7 @@ export default function TopNav() {
           </div>
           {!isOpen && <Image src="/images/OECTempLogoBlue.png" width="50" height="50" alt="mobile logo" className={styles.mobileLogo} />}
           {isOpen &&
-            (userData ? (
+            (user ? (
               <div className={styles.mobileLogout}>
                 <div className={styles.mobileLogoutItem}>
                   <button
@@ -121,9 +123,9 @@ export default function TopNav() {
           })}
         </div>
         <div className={styles.deskNavItemFill}>
-          {userData ? `Welcome ${userData.email}` : ""}
+          {user && userData ? `Welcome ${userData.email}` : ""}
         </div>
-        {userData ? (
+        {user && userData ? (
           <div className={styles.deskLogout}>
               <Profile userData={userData}/>
             <button
