@@ -1,4 +1,4 @@
-import TopNav from "../ui/dashboard/TopNav";
+import TopNav from "../ui/dashboard/topnav/TopNav";
 import styles from "@/app/dashboard/dashboard.module.scss";
 import dynamic from "next/dynamic";
 
@@ -18,8 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.body}>{children}</div>
+        <DynamicFooter />
       </div>
-      <DynamicFooter />
     </div>
   );
 }

@@ -1,0 +1,91 @@
+@import "/src/styles/variables.module.scss";
+
+.buttonContainer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+.columnContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+.blueSection {
+    background-color: $muted-blue;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+    // min-height: 46rem;
+}
+
+.sectionHeader {
+    color: $oec-blue;
+    font-weight: 800;
+    font-size: 2rem;
+    display: flex;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.white {
+    color: white;
+}
+
+.cardsContainer {
+    @media (min-width: $desktop) {
+        
+    }
+}
+
+.cardDeck {
+    @media (min-width: $desktop) {
+      width: 40rem;
+    }
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+  }
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.loadButton {
+    background-color: white;
+    border: 2px solid $slate3;
+    border-radius: 0.375rem;
+    color: $oec-blue;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+
+.loadButton:hover {
+    background-color: $hover-blue;
+    transition-duration: 1s;
+  }
+  
+.loadButtonContainer {
+    align-items: flex-end;
+    display: flex;
+    padding: 1rem;
+}

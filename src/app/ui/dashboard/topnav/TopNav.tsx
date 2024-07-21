@@ -1,13 +1,14 @@
 "use client";
-import React, { useState } from "react";
-import styles from "@/app/ui/dashboard/topnav.module.scss";
+import React, { useEffect, useState } from "react";
+import styles from "@/app/ui/dashboard/topnav/topnav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../../public/images/OECTempLogoBlue.png";
+import Logo from "../../../../../public/images/OECTempLogoBlue.png";
 import { getAuth, signOut } from "firebase/auth";
 import { Squash as Hamburger } from "hamburger-react";
-import { Profile } from "../profile/Profile";
+import { Profile } from "../../profile/Profile";
 import { useProfile } from "@/config/ProfileContext";
+import { useAuth } from "@/config/AuthContext";
 
 export default function TopNav() {
   const links = [
@@ -18,6 +19,7 @@ export default function TopNav() {
   ];
   const auth = getAuth();
   const { userData} = useProfile();
+  const { user } = useAuth();
 
   const [isOpen, setOpen] = useState(false);
 
@@ -47,7 +49,7 @@ export default function TopNav() {
           </div>
           {!isOpen && <Image src="/images/OECTempLogoBlue.png" width="50" height="50" alt="mobile logo" className={styles.mobileLogo} />}
           {isOpen &&
-            (userData ? (
+            (user ? (
               <div className={styles.mobileLogout}>
                 <div className={styles.mobileLogoutItem}>
                   <button
@@ -99,7 +101,7 @@ export default function TopNav() {
           <Image
             alt="OEC logo"
             src={Logo}
-            className={styles.logoImage}
+            className={styles.image}
             priority
           />
         </div>
@@ -121,13 +123,11 @@ export default function TopNav() {
           })}
         </div>
         <div className={styles.deskNavItemFill}>
-          {userData ? `Welcome ${userData.email}` : ""}
+          {user && userData ? `Welcome ${userData.email}` : ""}
         </div>
-        {userData ? (
+        {user && userData ? (
           <div className={styles.deskLogout}>
-            <div className={styles.buttonContainer}>
               <Profile userData={userData}/>
-            </div>
             <button
               key="logout"
               className={styles.logoutButton}

@@ -45,12 +45,12 @@ export const StaffSection = () => {
   }, [fetchStaff]);
 
   return (
-    <div className={styles.staffSectionContainer}>
-      <div className={styles.aboutHeader}>Manager</div>
+    <div className={styles.columnContainer}>
+      <div className={styles.sectionHeader}>Manager</div>
       <StaffDeck members={managerList} role="Manager" fetchStaff={fetchStaff} />
-      <div className={styles.aboutHeader}>Meet the Staff</div>
+      <div className={styles.sectionHeader}>Meet the Staff</div>
       <StaffDeck members={staffList} role="Staff" fetchStaff={fetchStaff} />
-      <div className={styles.aboutHeader}>Staff Graveyard</div>
+      <div className={styles.sectionHeader}>Staff Graveyard</div>
       <div className={styles.aboutSubheader}>Gone, but not forgotten</div>
       {grave.open && (
         <StaffDeck
@@ -59,9 +59,9 @@ export const StaffSection = () => {
           fetchStaff={fetchStaff}
         />
       )}
-      <div className={styles.graveButtonContainer}>
+      <div className={styles.loadButtonContainer}>
         <button
-          className={styles.graveButton}
+          className={styles.loadButton}
           onClick={() =>
             grave.open
               ? setGrave({ open: false, label: "Pay your respects" })

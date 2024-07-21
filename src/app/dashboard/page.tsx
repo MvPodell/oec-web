@@ -1,5 +1,5 @@
 import styles from "@/app/dashboard/dashboard.module.scss";
-import { CorkBoard } from "../ui/dashboard/CorkBoard";
+import { CorkBoard } from "../ui/dashboard/corkboard/CorkBoard";
 import { getCarouselData } from "@/config/firestore/carouselFirestore";
 import { getEventList } from "@/config/firestore/eventFirestore";
 
@@ -55,7 +55,7 @@ export default async function Page() {
               options={OPTIONS}
             />
             <div className={styles.dashHeaderText}>
-              <div className={styles.subtitle2}>
+              <div className={styles.deskSubtitle}>
                 The Outdoor Education Center of Pomona College
               </div>
               <div className={styles.dashHours}>

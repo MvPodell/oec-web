@@ -6,12 +6,15 @@
 }
 
 .footerContainer {
+    @media (min-width: $desktop) {
+        padding: 4rem 0;
+    }
+    align-items: center;
     background: $muted-blue;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 0;
+    justify-self: flex-end;
+    padding: 1rem 0;
     width: 100%;
 }
 

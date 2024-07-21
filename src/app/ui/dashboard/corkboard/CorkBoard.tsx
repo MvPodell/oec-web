@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import styles from "@/app/ui/dashboard/corkboard.module.scss";
-import { EventCard } from "../cards/EventCard";
+import styles from "@/app/ui/dashboard/corkboard/corkboard.module.scss";
+import { EventCard } from "../../cards/EventCard";
 import { fetchSortedAffairs } from "@/config/firestore/firestore";
 import { Event } from "@/app/dashboard/page";
 import { ImgAndPlaceholder } from "@/utils/interfaces";
@@ -33,7 +33,6 @@ export const CorkBoard: React.FC<CorkBoardProps> = ({ imageArray }) => {
         <div className={styles.subheader2}>Upcoming at the OEC</div>
       </div>
       <div className={styles.corkBody}>
-        {/* <DynamicAddButton label="ADD EVENT" dest="/form/add-event" /> */}
         <div className={styles.cardDeck}>
           {events.map((event, index) => (
             <EventCard

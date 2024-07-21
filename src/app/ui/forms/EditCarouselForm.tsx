@@ -83,14 +83,14 @@ export const EditCarouselForm: React.FC<EditCarouselProps> = ({
               </div>
             ))}
             <div className={styles.submitButtonContainer}>
+            <label className={styles.submitLabel}>
+                Reload after submission.
+              </label>
               <input
                 type="submit"
                 value="Submit"
                 className={styles.submitButton}
               ></input>
-              <label className={styles.submitLabel}>
-                Reload after submission.
-              </label>
             </div>
           </form>
         </div>

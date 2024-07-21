@@ -19,6 +19,7 @@ import { useAuth } from "@/config/AuthContext";
 import { EmailButton } from "../buttons/EmailButton";
 import { oecUser } from "../profile/Profile";
 import { ConfirmButton } from "../buttons/ConfirmButton";
+import classNames from "classnames";
 
 export const TripDetails: React.FC = () => {
   const auth = getAuth();
@@ -108,7 +109,7 @@ export const TripDetails: React.FC = () => {
   }
 
   return (
-    <div className={styles.cardDetailsContainer}>
+    <div className={classNames(styles.blueSection, styles.section)}>
       <div className={styles.backButtonContainer}>
         <Link
           key="backArrow"
@@ -122,7 +123,7 @@ export const TripDetails: React.FC = () => {
         <div className={styles.cardDetails}>
           <Image
             priority
-            className={styles.cardDetailsImage}
+            className={styles.image}
             src={trip.imageURL}
             alt="Joshua Tree"
             width="800"
@@ -148,7 +149,7 @@ export const TripDetails: React.FC = () => {
                   </div>
                 )}
               </div>
-              <div className={styles.cardButtonContainer}>
+              <div className={styles.detailsButtonContainer}>
                 {user && isMember ? (
                   <button
                     className={styles.joinButton}
