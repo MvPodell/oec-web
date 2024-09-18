@@ -12,9 +12,9 @@ interface EventFormProps {
 
 export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
   const eventTitleRef = useRef<HTMLInputElement>(null);
-  const eventDateRef = useRef("");
-  const eventLocationRef = useRef("");
-  const eventDescRef = useRef("");
+  const eventDateRef = useRef<HTMLInputElement>(null);
+  const eventLocationRef = useRef<HTMLInputElement>(null);
+  const eventDescRef = useRef<HTMLTextAreaElement>(null);
   const eventImageRef = useRef<HTMLInputElement>(null);
   const eventId = Math.random().toString(16);
 
@@ -25,7 +25,6 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
 
     const file = eventImageRef.current?.files?.[0];
     let imageUrl = "";
-    console.log("image: ", file);
     if (file) {
       const storageRef = ref(storage, `/images/events/${file.name}`);
       await uploadBytes(storageRef, file).then((data) => {
@@ -34,14 +33,13 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
       console.log("image uploaded!");
       imageUrl = await getDownloadURL(storageRef);
     }
-
     try {
       await addEventToFirestore(
-        eventDateRef.current,
-        eventDescRef.current,
+        eventDateRef.current?.value || "",
+        eventDescRef.current?.value || "",
         eventId,
         imageUrl,
-        eventLocationRef.current,
+        eventLocationRef.current?.value || "",
         eventTitleRef.current?.value || ""
       );
       setOpen(false);
@@ -79,7 +77,7 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
               type="date"
               className={styles.formInput}
               placeholder="Date"
-            //   onChange={(e) => (eventDateRef.current = e.target.value)}
+              ref={eventDateRef}
             ></input>
           </div>
           <div className={styles.formInputContainer}>
@@ -90,7 +88,7 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
               id="eventLocation"
               className={styles.formInput}
               placeholder="Location"
-            //   onChange={(e) => (eventLocationRef.current = e.target.value)}
+              ref={eventLocationRef}
             ></input>
           </div>
           <div className={styles.formInputContainer}>
@@ -102,7 +100,7 @@ export const EventForm: React.FC<EventFormProps> = ({ setOpen }) => {
               id="confirmeventDescPassword"
               className={styles.formInput}
               placeholder="Long Description"
-              onChange={(e) => (eventDescRef.current = e.target.value)}
+              ref={eventDescRef}
             ></textarea>
           </div>
           <div className={styles.formInputContainer}>

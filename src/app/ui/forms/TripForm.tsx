@@ -14,10 +14,10 @@ export interface TripFormProps {
 export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
     
     const tripTitleRef = useRef<HTMLInputElement>(null);
-    const tripDateRef = useRef("");
-    const tripCapacityRef = useRef("");
-    const tripShortDescRef = useRef("");
-    const tripDescRef = useRef("");
+    const tripDateRef = useRef<HTMLInputElement>(null);
+    const tripCapacityRef = useRef<HTMLInputElement>(null);
+    const tripShortDescRef = useRef<HTMLInputElement>(null);
+    const tripDescRef = useRef<HTMLTextAreaElement>(null);
     const tripImageRef = useRef<HTMLInputElement>(null);
     const tripId = Math.random().toString(16);
 
@@ -40,12 +40,12 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
 
         try {
             await addTripToFirestore(
-                tripCapacityRef.current,
-                tripDateRef.current,
-                tripDescRef.current,
+                tripCapacityRef.current?.value || "",
+                tripDateRef.current?.value || "",
+                tripDescRef.current?.value || "",
                 tripId,
                 imageUrl,
-                tripShortDescRef.current,
+                tripShortDescRef.current?.value || "",
                 tripTitleRef.current?.value || "",
             );
             setOpen(false);
@@ -81,7 +81,7 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
                             className={styles.formInput} 
                             placeholder="Date" 
                             type="date"
-                            onChange={(e) => tripDateRef.current = e.target.value}
+                            ref={tripDateRef}
                             >
 
                             </input>
@@ -94,7 +94,7 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
                             className={styles.formInput} 
                             aria-describedby="emailHelp" 
                             placeholder="Capacity" 
-                            onChange={(e) => tripCapacityRef.current = e.target.value}
+                            ref={tripCapacityRef}
                             >
 
                             </input>
@@ -106,7 +106,7 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
                             id="tripShortDesc" 
                             className={styles.formInput} 
                             placeholder="Short Description" 
-                            onChange={(e) => tripShortDescRef.current = e.target.value}
+                            ref={tripShortDescRef}
                             >
 
                             </input>
@@ -119,7 +119,7 @@ export const TripForm: React.FC<TripFormProps> = ({setOpen}) => {
                             id="confirmtripDescPassword" 
                             className={styles.formInput} 
                             placeholder="Long Description" 
-                            onChange={(e) => tripDescRef.current = e.target.value}
+                            ref={tripDescRef}
                             >
                         </textarea>
                     </div>
